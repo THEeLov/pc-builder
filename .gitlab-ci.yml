@@ -6,7 +6,74 @@
 # Note that environment variables can be set in several places
 # See https://docs.gitlab.com/ee/ci/variables/#cicd-variable-precedence
 stages:
+  - prepare
+  - lint
+  - format
   - test
+  - build
+
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules/
+    - dist/
+    - .nx/cache
+
+prepare:
+  stage: prepare
+  image: node:latest
+  script:
+    - npm install
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - node_modules/
+
+lint:
+  stage: lint
+  image: node:latest
+  script:
+    - npx nx run-many --target=lint --verbose=true --parallel=3 --all=true
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - node_modules/
+      - .nx/cache
+
+format:
+  stage: format
+  image: node:latest
+  script:
+    - npx nx format --verbose=true --parallel=3
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - node_modules/
+      - .nx/cache
+  allow_failure: true
+
+test:
+  stage: test
+  image: node:latest
+  script:
+    - npx nx run-many --target=test --verbose=true --parallel=3 --all=true --passWithNoTests
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - node_modules/
+      - .nx/cache
+
+build:
+  stage: build
+  image: node:latest
+  script:
+    - npx nx run-many --target=build --verbose=true --parallel=3 --all=true
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - node_modules/
+      - .nx/cache
+
 sast:
   stage: test
 include:
