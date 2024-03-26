@@ -5,12 +5,17 @@
 # Container Scanning customization: https://docs.gitlab.com/ee/user/application_security/container_scanning/#customizing-the-container-scanning-settings
 # Note that environment variables can be set in several places
 # See https://docs.gitlab.com/ee/ci/variables/#cicd-variable-precedence
+default:
+  tags:
+    - shared-fi
+
 stages:
   - prepare
   - lint
   - format
   - test
   - build
+  - sast
 
 cache:
   key: ${CI_COMMIT_REF_SLUG}
@@ -33,7 +38,7 @@ lint:
   stage: lint
   image: node:latest
   script:
-    - npx nx run-many --target=lint --verbose=true --parallel=3 --all=true
+    - npx nx run-many --target=lint --verbose=true--all=true
   cache:
     key: ${CI_COMMIT_REF_SLUG}
     paths:
@@ -44,7 +49,7 @@ format:
   stage: format
   image: node:latest
   script:
-    - npx nx format --verbose=true --parallel=3
+    - npx nx format --verbose=true
   cache:
     key: ${CI_COMMIT_REF_SLUG}
     paths:
@@ -56,7 +61,7 @@ test:
   stage: test
   image: node:latest
   script:
-    - npx nx run-many --target=test --verbose=true --parallel=3 --all=true --passWithNoTests
+    - npx nx run-many --target=test --verbose=true --all=true --passWithNoTests
   cache:
     key: ${CI_COMMIT_REF_SLUG}
     paths:
@@ -67,7 +72,7 @@ build:
   stage: build
   image: node:latest
   script:
-    - npx nx run-many --target=build --verbose=true --parallel=3 --all=true
+    - npx nx run-many --target=build --verbose=true --all=true
   cache:
     key: ${CI_COMMIT_REF_SLUG}
     paths:
@@ -75,6 +80,6 @@ build:
       - .nx/cache
 
 sast:
-  stage: test
+  stage: sast
 include:
   - template: Security/SAST.gitlab-ci.yml
