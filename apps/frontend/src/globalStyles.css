@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+
+:root {
+  --primary-color: #edae49;
+  --secondary-color: #fae8eb;
+  --text-color: rgb(19, 19, 19);
+
+  --navbar-bg-color: #23ce6b;
+
+  font-size: 16px;
+  font-family: "Cairo Play", sans-serif;
+}
+
+body,
+html {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+p {
+  font-weight: 300;
+}
+
+h1,h2,h3,h4,h5,h6,p{
+  margin: 0;
+}
