@@ -28,8 +28,13 @@ prepare:
   stage: prepare
   image: node:latest
   script:
+    - npm install nx
     - npm install
-    - npm install -g nx
+    - npx nx --version
+    - ls -la
+    - cat package.json
+    - ls -la node_modules/.bin
+    - npm install
   # cache:
   #     {}
     # key: ${CI_COMMIT_REF_SLUG}
