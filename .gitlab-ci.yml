@@ -30,6 +30,13 @@ prepare:
   script:
     - npm install nx
     - npm install
+  artifacts:
+    paths:
+      - node_modules/
+      - .nx/
+      - nx.json
+      - package.json
+      - package-lock.json
   # cache:
   #     {}
     # key: ${CI_COMMIT_REF_SLUG}
@@ -40,10 +47,9 @@ lint:
   stage: lint
   image: node:latest
   script:
-
-    - npm install
-    - npm install nx
     - npx nx run-many --target=lint --verbose=true--all=true
+  dependencies:
+    - prepare
   # cache:
   #   key: ${CI_COMMIT_REF_SLUG}
   #   paths:
