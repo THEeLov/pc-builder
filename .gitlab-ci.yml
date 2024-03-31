@@ -30,11 +30,6 @@ prepare:
   script:
     - npm install nx
     - npm install
-    - npx nx --version
-    - ls -la
-    - cat package.json
-    - ls -la node_modules/.bin
-    - npm install
   # cache:
   #     {}
     # key: ${CI_COMMIT_REF_SLUG}
@@ -45,6 +40,9 @@ lint:
   stage: lint
   image: node:latest
   script:
+
+    - npm install
+    - npm install nx
     - npx nx run-many --target=lint --verbose=true--all=true
   # cache:
   #   key: ${CI_COMMIT_REF_SLUG}
