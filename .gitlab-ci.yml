@@ -17,12 +17,12 @@ stages:
   - build
   - sast
 
-cache:
-  key: ${CI_COMMIT_REF_SLUG}
-  paths:
-    - node_modules/
-    - dist/
-    - .nx/cache
+# cache:
+#   key: ${CI_COMMIT_REF_SLUG}
+#   paths:
+#     - node_modules/
+#     - dist/
+#     - .nx/cache
 
 prepare:
   stage: prepare
@@ -30,32 +30,33 @@ prepare:
   script:
     - npm install
     - npm install -g nx
-  cache:
-    key: ${CI_COMMIT_REF_SLUG}
-    paths:
-      - node_modules/
+  # cache:
+  #     {}
+    # key: ${CI_COMMIT_REF_SLUG}
+    # paths:
+    #   - node_modules/
 
 lint:
   stage: lint
   image: node:latest
   script:
     - npx nx run-many --target=lint --verbose=true--all=true
-  cache:
-    key: ${CI_COMMIT_REF_SLUG}
-    paths:
-      - node_modules/
-      - .nx/cache
+  # cache:
+  #   key: ${CI_COMMIT_REF_SLUG}
+  #   paths:
+  #     - node_modules/
+  #     - .nx/cache
 
 format:
   stage: format
   image: node:latest
   script:
     - npx nx format --verbose=true
-  cache:
-    key: ${CI_COMMIT_REF_SLUG}
-    paths:
-      - node_modules/
-      - .nx/cache
+  # cache:
+  #   key: ${CI_COMMIT_REF_SLUG}
+  #   paths:
+  #     - node_modules/
+  #     - .nx/cache
   allow_failure: true
 
 test:
@@ -63,22 +64,22 @@ test:
   image: node:latest
   script:
     - npx nx run-many --target=test --verbose=true --all=true --passWithNoTests
-  cache:
-    key: ${CI_COMMIT_REF_SLUG}
-    paths:
-      - node_modules/
-      - .nx/cache
+  # cache:
+  #   key: ${CI_COMMIT_REF_SLUG}
+  #   paths:
+  #     - node_modules/
+  #     - .nx/cache
 
 build:
   stage: build
   image: node:latest
   script:
     - npx nx run-many --target=build --verbose=true --all=true
-  cache:
-    key: ${CI_COMMIT_REF_SLUG}
-    paths:
-      - node_modules/
-      - .nx/cache
+  # cache:
+  #   key: ${CI_COMMIT_REF_SLUG}
+  #   paths:
+  #     - node_modules/
+  #     - .nx/cache
 
 sast:
   stage: sast
