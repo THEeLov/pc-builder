@@ -29,6 +29,7 @@ prepare:
   image: node:latest
   script:
     - npm install
+    - npm install -g nx
   cache:
     key: ${CI_COMMIT_REF_SLUG}
     paths:
