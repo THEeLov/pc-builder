@@ -17,29 +17,31 @@ const ProductCarousel = () => {
             <CustomButton label="View all" btype="secondary" />
           </div>
         </div>
-        <div className="carousel-container">
-          <ConfigProvider
-            theme={{
-              token: {
-                colorPrimary: "red",
-              },
-            }}
-          >
-            <Carousel autoplay={true} autoplaySpeed={2000} dots={true}>
-              <div className="image-container">
-                <img src={Slider1} alt="first image" />
-              </div>
-              <div className="image-container">
-                <img src={Slider2} alt="first image" />
-              </div>
-              <div className="image-container">
-                <img src={Slider3} alt="first image" />
-              </div>
-              <div className="image-container">
-                <img src={Slider4} alt="first image" />
-              </div>
-            </Carousel>
-          </ConfigProvider>
+        <div className="carousel">
+          <div className="carousel-container">
+            <ConfigProvider
+              theme={{
+                token: {
+                  colorPrimary: "red",
+                },
+              }}
+            >
+              <Carousel autoplay={true} autoplaySpeed={2000} dots={true}>
+                <div className="image-container">
+                  <img src={Slider1} alt="first image" />
+                </div>
+                <div className="image-container">
+                  <img src={Slider2} alt="first image" />
+                </div>
+                <div className="image-container">
+                  <img src={Slider3} alt="first image" />
+                </div>
+                <div className="image-container">
+                  <img src={Slider4} alt="first image" />
+                </div>
+              </Carousel>
+            </ConfigProvider>
+          </div>
         </div>
       </div>
     </div>
