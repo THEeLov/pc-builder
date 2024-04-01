@@ -1,5 +1,5 @@
 .main {
-  height: 100%;
+  height: fit-content;
   padding: 1rem 2rem 2rem 2rem;
   text-align: justify;
   background-color: var(--primary-color);

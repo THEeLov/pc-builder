@@ -3,6 +3,12 @@
   padding: 1rem 2rem 2rem 2rem;
 }
 
+.product-carousel__content{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 .all-products {
   display: flex;
   align-items: center;

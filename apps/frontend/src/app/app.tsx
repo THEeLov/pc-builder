@@ -1,6 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import styles from "./app.module.css"
-
+import "./app.css"
 import Navbar from "../components/Homepage/Navbar/Navbar"
 import Main from "../components/Homepage/Main/Main"
 import ProductCarousel from "../components/Homepage/ProductCarousel/ProductCarousel"
