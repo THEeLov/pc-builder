@@ -19,6 +19,7 @@
   border-color: white;
   border-style: solid;
   box-shadow: none;
+  opacity: 0.5;
 }
 
 .footer-account {
@@ -31,9 +32,29 @@
   font-size: 1.5rem;
   text-decoration: none;
   font-weight: 300;
+  width: fit-content;
 }
 
 .footer a:hover {
   font-weight: 400;
   text-decoration: underline;
+}
+
+@media only screen and (min-width: 1024px) {
+  .footer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+  }
+
+  .footer-info {
+    grid-area: 1 / 1 / 2 / 2;
+    padding: 1rem;
+  }
+  .footer-account {
+    grid-area: 1 / 2 / 2 / 3;
+    padding: 1rem;
+  }
 }

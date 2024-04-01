@@ -8,10 +8,10 @@
 }
 
 .nav__site-name {
-  margin-left: 0.5rem;
+  margin-left: 1rem;
 }
 
-.nav__login{
+.nav__login {
   height: 100%;
   display: flex;
 }
@@ -37,7 +37,7 @@
   width: auto;
 }
 
-.nav-desktop{
+.nav-desktop {
   display: flex;
   align-items: center;
   visibility: none;
@@ -45,19 +45,17 @@
   width: 0;
 }
 
-@media only screen and (min-width: 1024px){
-
-  .nav-desktop{
+@media only screen and (min-width: 1024px) {
+  .nav-desktop {
     visibility: visible;
     height: 100%;
     width: auto;
     margin-right: 1rem;
   }
 
-  .nav__icons{
+  .nav__icons {
     visibility: none;
     height: 0;
     width: 0;
   }
-
 }
