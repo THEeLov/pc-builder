@@ -10,10 +10,12 @@ const ProductCarousel = () => {
   return (
     <div className="product-carousel">
       <div className="product-carousel__content">
-        <h1>Products</h1>
-        <div className="all-products">
-          <p>All current products available</p>
-          <CustomButton label="View all" btype="secondary" />
+        <div className="text-container">
+          <h1>Products</h1>
+          <div className="all-products">
+            <p>All current products available</p>
+            <CustomButton label="View all" btype="secondary" />
+          </div>
         </div>
         <div className="carousel-container">
           <ConfigProvider

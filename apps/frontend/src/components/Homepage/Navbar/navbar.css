@@ -11,6 +11,11 @@
   margin-left: 0.5rem;
 }
 
+.nav__login{
+  height: 100%;
+  display: flex;
+}
+
 .nav__icons {
   display: flex;
   align-items: center;
@@ -30,4 +35,29 @@
 .icon-container img {
   height: 60%;
   width: auto;
+}
+
+.nav-desktop{
+  display: flex;
+  align-items: center;
+  visibility: none;
+  height: 0;
+  width: 0;
+}
+
+@media only screen and (min-width: 1024px){
+
+  .nav-desktop{
+    visibility: visible;
+    height: 100%;
+    width: auto;
+    margin-right: 1rem;
+  }
+
+  .nav__icons{
+    visibility: none;
+    height: 0;
+    width: 0;
+  }
+
 }

@@ -42,7 +42,7 @@ const CustomButton = ({ label, icon, btype }: ButtonProps) => {
 
           colorBgContainer: `${borderColor}`,
           colorBorder: "black",
-          fontSize: 15,
+          fontSize: 18,
           fontFamily: "Cairo Play",
         },
       }}
