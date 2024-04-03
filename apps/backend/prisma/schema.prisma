@@ -23,11 +23,11 @@ model Component {
 
 model User {
   id              Int             @id @default(autoincrement())
-  configuration   PCConfiguration?
   username        String
   email           String
   password        String
   userType        String
+  configuration   PCConfiguration?
 }
 
 model Motherboard {
@@ -44,8 +44,50 @@ model Motherboard {
 model Processor {
   id            Int         @id @default(autoincrement())
   componentId   Int         @unique
-  
+  architecture  String
+  cores         Int
+  threads       Int
+  bits          Int
+  socket        String
+}
 
+model GPU {
+  id              Int       @id @default(autoincrement())
+  componentId     Int
+  memory          Int
+  powerConnector  String
+  interface       String
+  power           Int
+}
+
+model RAM {
+  id              Int      @id @default(autoincrement())
+  componentId     Int      @unique
+  memoryType      String
+  capacity        Int
+  computerType    String
+}
+
+model Storage {
+  id              Int      @id @default(autoincrement())
+  componentId     Int      @unique
+  storageType     String
+  capacity        Int
+  busType         String
+}
+
+model PowerSupply {
+  id              Int     @id @default(autoincrement())
+  componentId     Int     @unique
+  powerOutput     Int
+  efficiency      String
+  formFactor      String
+}
+
+model PCCase {
+  id              Int     @id @default(autoincrement())
+  componentId     Int     @unique
+  formFactor      String
 }
 
 model PCConfiguration {
