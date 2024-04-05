@@ -2,8 +2,7 @@ import express from 'express';
 import { PrismaClient } from '@prisma/client';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import bcrypt, { hash } from 'bcrypt';
-import { v4 as uuidv4 } from 'uuid';
+import bcrypt from 'bcrypt';
 import cookieParser from 'cookie-parser';
 
 
