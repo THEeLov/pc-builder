@@ -20,14 +20,25 @@ app.use(cors(
 app.use(bodyParser.json());
 const prisma = new PrismaClient();
 
-
+/**
+ * Password hashing function.
+ * We can compare password and its hash with:
+ * await bcrypt.compare(password, hashedPassword);
+ * @param password Password to hash
+ * @returns hashed password
+ */
 async function hashPassword(password: string) {
     const saltRounds = 10;
     const salt = await bcrypt.genSalt(saltRounds);
     const hashedPassword = await bcrypt.hash(password, salt);
     return hashedPassword;
 }
- 
+
+/**
+ * This function creates session in the DB.
+ * @param userId Id  of the user whos session is being created
+ * @returns the new created session
+ */
 async function createSession(userId: number) {
     const creation = new Date();
     const expiration = new Date();
@@ -49,6 +60,16 @@ async function createSession(userId: number) {
 }
 
 
+/**
+ * This api expects a request in this format:
+ * {
+ *         username: "John Wick"
+ *         email: "johnnywick@email.com"
+ *         password: "somethingverystrong48##"
+ * }
+ * If the format matches, creates a new user in DB.
+ * After that creates session for the new user.
+ */
 app.post('/register', async (req, res) => {
     const username: string = req.body.username;
     const email: string = req.body.email;
@@ -83,6 +104,12 @@ app.post('/register', async (req, res) => {
     }
 });
 
+/**
+ * This api:
+ * 1. Looks for user with email == email
+ * 2. Checks login credentials, compares to database
+ * 3. Creates session for the user.
+ */
 app.post('/login', async (req, res) => {
     try {
         const email: string = req.body.email;
