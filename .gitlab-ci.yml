@@ -5,9 +5,62 @@
 # Container Scanning customization: https://docs.gitlab.com/ee/user/application_security/container_scanning/#customizing-the-container-scanning-settings
 # Note that environment variables can be set in several places
 # See https://docs.gitlab.com/ee/ci/variables/#cicd-variable-precedence
+default:
+  tags:
+    - shared-fi
+
 stages:
-- test
-sast:
+  - prepare
+  - lint
+  - format
+  - test
+  - build
+  - sast
+
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules/
+    - .nx/cache
+
+prepare:
+  stage: prepare
+  image: node:latest
+  script:
+    - npm install nx
+    - npm install
+
+lint:
+  stage: lint
+  image: node:latest
+  script:
+    - npm ci
+    - npx nx run-many --target=lint --verbose=true--all=true
+
+format:
+  stage: format
+  image: node:latest
+  script:
+    - npm ci
+    - npx nx format --verbose=true
+  allow_failure: true
+
+test:
   stage: test
+  image: node:latest
+  script:
+    - npm ci
+    - npx nx run-many --target=test --verbose=true --all=true --passWithNoTests
+
+build:
+  stage: build
+  image: node:latest
+  script:
+    - npm ci
+    - npx nx run-many --target=build --verbose=true --all=true
+
+sast:
+  stage: sast
+  
 include:
-- template: Security/SAST.gitlab-ci.yml
+  - template: Security/SAST.gitlab-ci.yml
