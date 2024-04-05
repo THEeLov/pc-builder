@@ -1,0 +1,154 @@
+@startuml
+
+skinparam class {
+    BackgroundColor White
+    ArrowColor Black
+    BorderColor Black
+}
+
+' User-related DTOs
+class UserDTO {
+  - long id
+  - String userName
+  - String email
+  - UserType userType
+}
+
+class UserRegistrationDTO {
+  - username: String
+  - email: String
+  - password: String
+  - userType: UserType
+}
+
+class UserLoginDTO {
+  - username: String
+  - email: String
+  - password: String
+}
+
+class UserUpdateDTO {
+  - long id
+  - String userName
+  - String email
+  - String encryptedPassword
+  - UserType userType
+}
+
+enum UserType {
+  ADMIN
+  USER
+}
+
+' Configuration-related DTOs
+class ConfigurationDTO {
+  - long id
+  - userId: Long
+  - motherboardId: Long
+  - processorId: Long
+  - gpuId: Long
+  - ramIds: Long[]
+  - storageIds: Long[]
+  - powerSupplyId: Long
+  - pcCaseId: Long
+}
+
+class ConfigurationCreateDTO {
+  - userId: Long
+  - motherboardId: MotherboardDTO
+  - processorId: ProcessorDTO
+  - gpuId: GPUDTO
+  - ramIds: List<RAMDTO>
+  - storageIds: List<StorageDTO>
+  - powerSupplyId: PowerSupplyDTO
+  - pcCaseId: PCCaseDTO
+}
+
+class "ConfigurationUpdateDTO" {
+  - long id
+  - userId: Long
+  - motherboardId: MotherboardDTO
+  - processorId: ProcessorDTO
+  - gpuId: GPUDTO
+  - ramIds: List<RAMDTO>
+  - storageIds: List<StorageDTO>
+  - powerSupplyId: PowerSupplyDTO
+  - pcCaseId: PCCaseDTO
+}
+
+' Component-related DTOs
+class "ComponentAddDTO" {
+  - name: String
+  - type: ComponentType
+  - componentObj: Component
+  - price: Float
+  - manufacturer: String
+}
+
+class "ComponentUpdateDTO" {
+  - componentId: Long
+  - name: String
+  - type: ComponentType
+  - componentObj: Object
+  - price: Float
+  - manufacturer: String
+}
+
+enum "ComponentType" {
+  Motherboard
+  Processor
+  GPU
+  RAM
+  Storage
+  PowerSupply
+  PCCase
+}
+
+' Individual Component DTOs
+class "MotherboardDTO" {
+  - socket: String
+  - formFactor: String
+  - ramSlots: Int
+  - ramType: String
+  - gpuInterface: String
+  - storageBusType: String
+}
+
+class "ProcessorDTO" {
+  - architecture: String
+  - cores: Int
+  - threads: Int
+  - bits: Int
+  - socket: String
+}
+
+class "GPUDTO" {
+  - memory: Int
+  - powerConnector: String
+  - interface: String
+  - power: Int
+}
+
+class "RAMDTO" {
+  - memoryType: String
+  - capacity: Int
+  - computerType: String
+}
+
+class "StorageDTO" {
+  - storageType: String
+  - capacity: Long
+  - busType: String
+}
+
+class "PowerSupplyDTO" {
+  - powerOutput: Int
+  - efficiency: String
+  - formFactor: String
+}
+
+class "PCCaseDTO" {
+  - formFactor: String
+}
+
+@enduml
