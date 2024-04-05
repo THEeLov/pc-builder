@@ -33,7 +33,7 @@ model Component {
 model User {
   id              Int             @id @default(autoincrement())
   username        String
-  email           String
+  email           String          @unique
   password        String
   userType        String
   configuration   PCConfiguration?
