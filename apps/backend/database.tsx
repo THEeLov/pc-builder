@@ -183,7 +183,7 @@ app.post('/login', async (req, res) => {
    * Authorizes the user and gets all his pc configurations.
    */
   app.get('/user/:id/pc-configs', async (req, res) => {
-    const userId: number = parseInt(req.body.id);
+    const userId: number = parseInt(req.params.id);
     const sessionId = req.cookies.session;
     try {
         const session = await getSession(sessionId);
