@@ -35,6 +35,31 @@ async function hashPassword(password: string) {
 }
 
 /**
+ * Finds session in the database.
+ * @param sessionId 
+ * @returns the found session or null.
+ */
+async function getSession(sessionId: string) {
+    try {
+        const session = await prisma.session.findUnique( {
+            where: {
+                id: sessionId
+            }
+        });
+        if (!session) {
+            return null;
+        }
+        return session;
+    }
+    catch (error) {
+        console.log(error);
+    }
+    finally {
+        prisma.$disconnect();
+    }
+}
+
+/**
  * This function creates session in the DB.
  * @param userId Id  of the user whos session is being created
  * @returns the new created session
@@ -152,4 +177,39 @@ app.post('/login', async (req, res) => {
     } finally {
       await prisma.$disconnect();
     }
+  });
+
+  /**
+   * Authorizes the user and gets all his pc configurations.
+   */
+  app.get('/user/:id/pc-configs', async (req, res) => {
+    const userId: number = parseInt(req.body.id);
+    const sessionId = req.cookies.session;
+    try {
+        const session = await getSession(sessionId);
+        if ((session == null) || (session.userId != userId)) {
+            return res.status(401).json({message: "Unauthorized"});
+        }
+        const user = await prisma.user.findUnique( {
+            where: {
+                id: userId
+            },
+            include: {
+                configurations: true
+            }
+        } );
+        const configurations = user?.configurations;
+        return res.status(200).json({ message: "Success", configurations: configurations });
+    }
+    catch (error) {
+        console.log(error);
+        return res.status(500).json({ error: 'Internal server error' });
+    }
+    finally {
+        prisma.$disconnect();
+    }
+  });
+
+  app.listen(port, () => {
+    console.log(`Server running at http://localhost:${port}`);
   });

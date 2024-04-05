@@ -112,5 +112,6 @@ model PCConfiguration {
   storageIds    Int[]
   powerSupplyId Int
   user          User        @relation(fields: [userId], references: [id])
+  @@map("configurations")
 }
 
