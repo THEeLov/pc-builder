@@ -34,7 +34,9 @@ lint:
     stage: lint_test
     image: node:latest
     script:
-        - nx run-many --target=lint --verbose=true--all=true
+        - pwd
+        - ls -la
+        - ./node_modules/.bin/nx run-many --target=lint --verbose=true--all=true
     needs:
         - ["prepare"]
     cache:
