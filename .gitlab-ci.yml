@@ -10,7 +10,7 @@ default:
         - shared-fi
 
 variables:
-    GIT_CLEAN_FLAGS: "-e node_modules/ -e .nx/"
+    GIT_CLEAN_FLAGS: "-f -e node_modules/ -e .nx/"
 
 stages:
     - prepare
