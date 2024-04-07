@@ -8,10 +8,10 @@ skinparam class {
 
 ' User-related DTOs
 class UserDTO {
-  - long id
-  - String userName
-  - String email
-  - UserType userType
+  - id: Long
+  - userName: String
+  - email: String
+  - userType: UserType
 }
 
 class UserRegistrationDTO {
@@ -28,11 +28,11 @@ class UserLoginDTO {
 }
 
 class UserUpdateDTO {
-  - long id
-  - String userName
-  - String email
-  - String encryptedPassword
-  - UserType userType
+  - id: Long
+  - userName: String
+  - email: String
+  - encryptedPassword: String
+  - userType: UserType
 }
 
 enum UserType {
@@ -42,51 +42,60 @@ enum UserType {
 
 ' Configuration-related DTOs
 class ConfigurationDTO {
-  - long id
-  - userId: Long
-  - motherboardId: Long
-  - processorId: Long
-  - gpuId: Long
-  - ramIds: Long[]
-  - storageIds: Long[]
-  - powerSupplyId: Long
-  - pcCaseId: Long
+  - id: Long
+  - user: UserDTO
+  - motherboard: "MotherboardDTO"
+  - processor: "ProcessorDTO"
+  - gpu: "GPUDTO"
+  - rams: List<"RAMDTO">
+  - storages: List<"StorageDTO">
+  - powerSupply: "PowerSupplyDTO"
+  - pcCase: "PCCaseDTO"
 }
 
 class ConfigurationCreateDTO {
-  - userId: Long
-  - motherboardId: MotherboardDTO
-  - processorId: ProcessorDTO
-  - gpuId: GPUDTO
-  - ramIds: List<RAMDTO>
-  - storageIds: List<StorageDTO>
-  - powerSupplyId: PowerSupplyDTO
-  - pcCaseId: PCCaseDTO
+  - user: UserDTO
+  - motherboard: "MotherboardDTO"
+  - processor: "ProcessorDTO"
+  - gpu: "GPUDTO"
+  - rams: List<"RAMDTO">
+  - storages: List<"StorageDTO">
+  - powerSupply: "PowerSupplyDTO"
+  - pcCase: "PCCaseDTO"
 }
 
 class "ConfigurationUpdateDTO" {
-  - long id
-  - userId: Long
-  - motherboardId: MotherboardDTO
-  - processorId: ProcessorDTO
-  - gpuId: GPUDTO
-  - ramIds: List<RAMDTO>
-  - storageIds: List<StorageDTO>
-  - powerSupplyId: PowerSupplyDTO
-  - pcCaseId: PCCaseDTO
+  - id: Long
+  - user: UserDTO
+  - motherboard: "MotherboardDTO"
+  - processor: "ProcessorDTO"
+  - gpu: "GPUDTO"
+  - rams: List<"RAMDTO">
+  - storages: List<"StorageDTO">
+  - powerSupply: "PowerSupplyDTO"
+  - pcCase: "PCCaseDTO"
 }
 
 ' Component-related DTOs
+class ComponentDTO {
+  - id: Long
+  - name: String
+  - type: ComponentType
+  - componentObj: Object
+  - price: Float
+  - manufacturer: String
+}
+
 class "ComponentAddDTO" {
   - name: String
   - type: ComponentType
-  - componentObj: Component
+  - componentObj: Object
   - price: Float
   - manufacturer: String
 }
 
 class "ComponentUpdateDTO" {
-  - componentId: Long
+  - id: Long
   - name: String
   - type: ComponentType
   - componentObj: Object
@@ -125,7 +134,7 @@ class "ProcessorDTO" {
 class "GPUDTO" {
   - memory: Int
   - powerConnector: String
-  - interface: String
+  - _interface: String
   - power: Int
 }
 

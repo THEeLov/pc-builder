@@ -36,6 +36,30 @@ entity "User" {
   user_type: UserType
 }
 
+entity Session {
+    + id: Long
+    --
+    user_id: Long
+    configuration_ids: Long[]
+    created_at: DateTime
+    expires_at: DateTime
+}
+
+'Components:
+entity "PCConfiguration" {
+  + id: Long
+  --
+  user_id: Long
+  motherboard_id: Long
+  processor_id: Long
+  gpu_id: Long
+  ram_ids: Long[]
+  storage_ids: Long[]
+  power_supply_id: Long
+  pc_case_id: Long
+  total_price: Float
+}
+
 entity "Motherboard" {
   + id: Long
   --
@@ -103,19 +127,6 @@ entity "PCCase" {
   form_factor: String
 }
 
-entity "PCConfiguration" {
-  + id: Long
-  --
-  user_id: Long
-  motherboard_id: Long
-  processor_id: Long
-  gpu_id: Long
-  ram_ids: Long[]
-  storage_ids: Long[]
-  power_supply_id: Long
-  pc_case_id: Long
-  total_price: Float
-}
 
 ' Define relationships
 User ||--o{ PCConfiguration
