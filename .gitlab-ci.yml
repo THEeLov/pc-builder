@@ -37,6 +37,8 @@ lint:
         - nx run-many --target=lint --verbose=true--all=true
     needs:
         - ["prepare"]
+    cache:
+        policy: pull
 
 test:
     stage: lint_test
@@ -45,6 +47,8 @@ test:
         - nx run-many --target=test --verbose=true --all=true --passWithNoTests
     needs:
         - ["prepare"]
+    cache:
+        policy: pull
 
 build:
     stage: build
