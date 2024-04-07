@@ -6,54 +6,54 @@
 # Note that environment variables can be set in several places
 # See https://docs.gitlab.com/ee/ci/variables/#cicd-variable-precedence
 default:
-  tags:
-    - shared-fi
+    tags:
+        - shared-fi
 
 stages:
-  - prepare
-  - lint
-  - test
-  - build
-  - sast
+    - prepare
+    - lint
+    - test
+    - build
+    - sast
 
 cache:
-  key: ${CI_COMMIT_REF_SLUG}
-  paths:
-    - node_modules/
-    - .nx/cache/
-    - tmp/
-    - dist/
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+        - node_modules/
+        - .nx/cache/
+        - tmp/
+        - dist/
 
 prepare:
-  stage: prepare
-  image: node:latest
-  script:
-    - npm install nx
-    - npm install
+    stage: prepare
+    image: node:latest
+    script:
+        - npm install nx
+        - npm install
 
 lint:
-  stage: lint
-  image: node:latest
-  script:
-    - npm ci
-    - npx nx run-many --target=lint --verbose=true--all=true
+    stage: lint
+    image: node:latest
+    script:
+        - npm ci
+        - npx nx run-many --target=lint --verbose=true--all=true
 
 test:
-  stage: test
-  image: node:latest
-  script:
-    - npm ci
-    - npx nx run-many --target=test --verbose=true --all=true --passWithNoTests
+    stage: test
+    image: node:latest
+    script:
+        - npm ci
+        - npx nx run-many --target=test --verbose=true --all=true --passWithNoTests
 
 build:
-  stage: build
-  image: node:latest
-  script:
-    - npm ci
-    - npx nx run-many --target=build --verbose=true --all=true
+    stage: build
+    image: node:latest
+    script:
+        - npm ci
+        - npx nx run-many --target=build --verbose=true --all=true
 
 sast:
-  stage: sast
+    stage: sast
 
 include:
-  - template: Security/SAST.gitlab-ci.yml
+    - template: Security/SAST.gitlab-ci.yml
