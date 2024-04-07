@@ -28,32 +28,40 @@ prepare:
     stage: prepare
     image: node:latest
     script:
-        - npm install nx
         - npm install
+    artifacts:
+        paths:
+          - node_modules/
 
 lint:
     stage: lint
     image: node:latest
     script:
-        - npm ci
         - npx nx run-many --target=lint --verbose=true--all=true
+    needs:
+      - ["prepare"]
 
 test:
     stage: test
     image: node:latest
     script:
-        - npm ci
         - npx nx run-many --target=test --verbose=true --all=true --passWithNoTests
+    needs:
+      - ["prepare"]
 
 build:
     stage: build
     image: node:latest
     script:
-        - npm ci
         - npx nx run-many --target=build --verbose=true --all=true
+    needs:
+      - ["prepare"]
+
 
 sast:
     stage: sast
+    needs:
+      - ["build"]
 
 include:
     - template: Security/SAST.gitlab-ci.yml
