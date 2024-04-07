@@ -11,8 +11,7 @@ default:
 
 stages:
     - prepare
-    - lint
-    - test
+    - lint_test
     - build
     - sast
 
@@ -21,33 +20,31 @@ cache:
     paths:
         - node_modules/
         - .nx/cache/
-        - tmp/
-        - dist/
+    policy: push
 
 prepare:
     stage: prepare
     image: node:latest
     script:
         - npm install
-    artifacts:
-        paths:
-          - node_modules/
-
+    cache:
+        policy: pull-push
+        
 lint:
-    stage: lint
+    stage: lint_test
     image: node:latest
     script:
         - npx nx run-many --target=lint --verbose=true--all=true
     needs:
-      - ["prepare"]
+        - ["prepare"]
 
 test:
-    stage: test
+    stage: lint_test
     image: node:latest
     script:
         - npx nx run-many --target=test --verbose=true --all=true --passWithNoTests
     needs:
-      - ["prepare"]
+        - ["prepare"]
 
 build:
     stage: build
@@ -55,13 +52,12 @@ build:
     script:
         - npx nx run-many --target=build --verbose=true --all=true
     needs:
-      - ["prepare"]
-
+        - ["prepare"]
 
 sast:
     stage: sast
     needs:
-      - ["build"]
+        - ["build"]
 
 include:
     - template: Security/SAST.gitlab-ci.yml
