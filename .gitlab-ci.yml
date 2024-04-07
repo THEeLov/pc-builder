@@ -9,6 +9,9 @@ default:
     tags:
         - shared-fi
 
+variables:
+    GIT_CLEAN_FLAGS: "-e node_modules/ -e .nx/"
+
 stages:
     - prepare
     - lint_test
@@ -36,7 +39,7 @@ lint:
     script:
         - pwd
         - ls -la
-        - ./node_modules/.bin/nx run-many --target=lint --verbose=true--all=true
+        - nx run-many --target=lint --verbose=true--all=true
     needs:
         - ["prepare"]
     cache:
@@ -56,9 +59,11 @@ build:
     stage: build
     image: node:latest
     script:
-        - npx nx run-many --target=build --verbose=true --all=true
+        - nx run-many --target=build --verbose=true --all=true
     needs:
         - ["prepare"]
+    cache:
+        policy: pull
 
 sast:
     stage: sast
