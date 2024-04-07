@@ -12,7 +12,6 @@ default:
 stages:
   - prepare
   - lint
-  - format
   - test
   - build
   - sast
@@ -21,7 +20,9 @@ cache:
   key: ${CI_COMMIT_REF_SLUG}
   paths:
     - node_modules/
-    - .nx/cache
+    - .nx/cache/
+    - tmp/
+    - dist/
 
 prepare:
   stage: prepare
@@ -36,14 +37,6 @@ lint:
   script:
     - npm ci
     - npx nx run-many --target=lint --verbose=true--all=true
-
-format:
-  stage: format
-  image: node:latest
-  script:
-    - npm ci
-    - npx nx format --verbose=true
-  allow_failure: true
 
 test:
   stage: test
@@ -61,6 +54,6 @@ build:
 
 sast:
   stage: sast
-  
+
 include:
   - template: Security/SAST.gitlab-ci.yml
