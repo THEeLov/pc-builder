@@ -1,1 +1,1 @@
-npx nx format --verbose=true
+npx nx format
