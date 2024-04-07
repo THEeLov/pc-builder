@@ -24,7 +24,6 @@ cache:
     paths:
         - node_modules/
         - .nx/cache/
-    policy: push
 
 prepare:
     stage: prepare
@@ -32,38 +31,33 @@ prepare:
     script:
         - npm install nx
         - npm install
-    cache:
-        policy: pull-push
 
 lint:
     stage: lint
     image: node:latest
     script:
+        - npm ci
         - nx run-many --target=lint --verbose=true--all=true
     needs:
         - ["prepare"]
-    cache:
-        policy: pull
 
 test:
     stage: test
     image: node:latest
     script:
+        - npm ci
         - nx run-many --target=test --verbose=true --all=true --passWithNoTests
     needs:
         - ["prepare"]
-    cache:
-        policy: pull
 
 build:
     stage: build
     image: node:latest
     script:
+        - npm ci
         - nx run-many --target=build --verbose=true --all=true
     needs:
         - ["prepare"]
-    cache:
-        policy: pull
 
 sast:
     stage: sast
