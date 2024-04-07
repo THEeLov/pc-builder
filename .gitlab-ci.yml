@@ -29,12 +29,12 @@ prepare:
         - npm install
     cache:
         policy: pull-push
-        
+
 lint:
     stage: lint_test
     image: node:latest
     script:
-        - npx nx run-many --target=lint --verbose=true--all=true
+        - nx run-many --target=lint --verbose=true--all=true
     needs:
         - ["prepare"]
 
@@ -42,7 +42,7 @@ test:
     stage: lint_test
     image: node:latest
     script:
-        - npx nx run-many --target=test --verbose=true --all=true --passWithNoTests
+        - nx run-many --target=test --verbose=true --all=true --passWithNoTests
     needs:
         - ["prepare"]
 
