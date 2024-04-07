@@ -37,7 +37,7 @@ lint:
     image: node:latest
     script:
         - npm ci
-        - nx run-many --target=lint --verbose=true--all=true
+        - npx nx run-many --target=lint --verbose=true--all=true
     needs:
         - ["prepare"]
 
@@ -46,7 +46,7 @@ test:
     image: node:latest
     script:
         - npm ci
-        - nx run-many --target=test --verbose=true --all=true --passWithNoTests
+        - npx nx run-many --target=test --verbose=true --all=true --passWithNoTests
     needs:
         - ["prepare"]
 
@@ -55,7 +55,7 @@ build:
     image: node:latest
     script:
         - npm ci
-        - nx run-many --target=build --verbose=true --all=true
+        - npx nx run-many --target=build --verbose=true --all=true
     needs:
         - ["prepare"]
 
