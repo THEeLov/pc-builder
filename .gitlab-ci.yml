@@ -6,61 +6,63 @@
 # Note that environment variables can be set in several places
 # See https://docs.gitlab.com/ee/ci/variables/#cicd-variable-precedence
 default:
-  tags:
-    - shared-fi
+    tags:
+        - shared-fi
+
+variables:
+    GIT_CLEAN_FLAGS: "-f -e node_modules/ -e .nx/"
 
 stages:
-  - prepare
-  - lint
-  - format
-  - test
-  - build
-  - sast
+    - prepare
+    - lint
+    - test
+    - build
+    - sast
 
 cache:
-  key: ${CI_COMMIT_REF_SLUG}
-  paths:
-    - node_modules/
-    - .nx/cache
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+        - node_modules/
+        - .nx/cache/
 
 prepare:
-  stage: prepare
-  image: node:latest
-  script:
-    - npm install nx
-    - npm install
+    stage: prepare
+    image: node:latest
+    script:
+        - npm install nx
+        - npm install
 
 lint:
-  stage: lint
-  image: node:latest
-  script:
-    - npm ci
-    - npx nx run-many --target=lint --verbose=true--all=true
-
-format:
-  stage: format
-  image: node:latest
-  script:
-    - npm ci
-    - npx nx format --verbose=true
-  allow_failure: true
+    stage: lint
+    image: node:latest
+    script:
+        - npm ci
+        - npx nx run-many --target=lint --verbose=true--all=true
+    needs:
+        - ["prepare"]
 
 test:
-  stage: test
-  image: node:latest
-  script:
-    - npm ci
-    - npx nx run-many --target=test --verbose=true --all=true --passWithNoTests
+    stage: test
+    image: node:latest
+    script:
+        - npm ci
+        - npx nx run-many --target=test --verbose=true --all=true --passWithNoTests
+    needs:
+        - ["prepare"]
 
 build:
-  stage: build
-  image: node:latest
-  script:
-    - npm ci
-    - npx nx run-many --target=build --verbose=true --all=true
+    stage: build
+    image: node:latest
+    script:
+        - npm ci
+        - npx nx run-many --target=build --verbose=true --all=true
+    needs:
+        - ["prepare"]
 
 sast:
-  stage: sast
-  
+    stage: sast
+    needs:
+        - ["build"]
+
 include:
-  - template: Security/SAST.gitlab-ci.yml
+    - template: Security/SAST.gitlab-ci.yml
