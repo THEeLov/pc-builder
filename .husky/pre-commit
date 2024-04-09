@@ -1,2 +1,1 @@
-npx nx run-many --target=lint --verbose=true --parallel=3 --all=true 
-npx nx run-many --target=test --verbose=true --parallel=3 --all=true --passWithNoTests
+nx format --all

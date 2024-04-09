@@ -1,0 +1,152 @@
+@startuml
+
+' Define enums
+enum "UserType" {
+  User
+  Admin
+}
+
+enum "ComponentType" {
+  Motherboard
+  Processor
+  GPU
+  RAM
+  Storage
+  PowerSupply
+  PCCase
+}
+
+
+' Define entities
+entity "Component" {
+  + id: Long
+  --
+  name: String
+  type: ComponentType
+  price: Float
+  manufacturer: String
+}
+
+entity "User" {
+  + id: Long
+  --
+  username: String
+  email: String
+  password: String
+  user_type: UserType
+}
+
+entity Session {
+    + id: Long
+    --
+    user_id: Long
+    configuration_ids: Long[]
+    created_at: DateTime
+    expires_at: DateTime
+}
+
+'Components:
+entity "PCConfiguration" {
+  + id: Long
+  --
+  user_id: Long
+  motherboard_id: Long
+  processor_id: Long
+  gpu_id: Long
+  ram_ids: Long[]
+  storage_ids: Long[]
+  power_supply_id: Long
+  pc_case_id: Long
+  total_price: Float
+}
+
+entity "Motherboard" {
+  + id: Long
+  --
+  component_id: Long
+  socket: String
+  form_factor: String
+  ram_slots: Int
+  ram_type: String
+  gpu_interface: String
+  storage_bus_type: String
+}
+
+entity "Processor" {
+  + id: Long
+  --
+  component_id: Long
+  architecture: String
+  cores: Int
+  threads: Int
+  bits: Int
+  socket: String
+}
+
+entity "GPU" {
+  + id: Long
+  --
+  component_id: Long
+  memory: Int
+  power_connector: String
+  interface: String
+  power: Int
+}
+
+entity "RAM" {
+  + id: Long
+  --
+  component_id: Long
+  memory_type: String
+  capacity: Int
+  computer_type: String
+}
+
+entity "Storage" {
+  + id: Long
+  --
+  component_id: Long
+  storage_type: String
+  capacity: Long
+  bus_type: String
+}
+
+entity "PowerSupply" {
+  + id: Long
+  --
+  component_id: Long
+  power_output: Int
+  efficiency: String
+  form_factor: String
+}
+
+entity "PCCase" {
+  + id: Long
+  --
+  component_id: Long
+  form_factor: String
+}
+
+
+' Define relationships
+User ||--o{ PCConfiguration
+User }o--|| UserType
+
+Component ||--o{ Motherboard
+Component ||--o{ Processor
+Component ||--o{ GPU
+Component ||--o{ RAM
+Component ||--o{ Storage
+Component ||--o{ PowerSupply
+Component ||--o{ PCCase
+Component }o--|| ComponentType
+
+PCConfiguration }|---|| Motherboard
+PCConfiguration }|---|| Processor
+PCConfiguration }|---|| GPU
+PCConfiguration ||---o{ RAM
+PCConfiguration ||---o{ Storage
+PCConfiguration }|---|| PowerSupply
+PCConfiguration }|---|| PCCase
+
+@enduml
