@@ -28,6 +28,7 @@ model Component {
   type           String
   price          Float
   manufacturer   String
+  imageUrl       String
 }
 
 model User {
