@@ -1,31 +1,31 @@
 .main {
-  height: fit-content;
-  padding: 1rem 2rem 2rem 2rem;
-  text-align: justify;
-  background-color: var(--primary-color);
+    height: fit-content;
+    padding: 1rem 2rem 2rem 2rem;
+    text-align: justify;
+    background-color: var(--primary-color);
 }
 
 .main-content {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 @media only screen and (min-width: 1024px) {
-  .main-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
+    .main-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
 
-  .main-content h1 {
-    font-size: 4rem;
-  }
-  .main-content p {
-    font-size: 2rem;
-  }
+    .main-content h1 {
+        font-size: 4rem;
+    }
+    .main-content p {
+        font-size: 2rem;
+    }
 
-  .main-button {
-    margin-top: 2rem;
-  }
+    .main-button {
+        margin-top: 2rem;
+    }
 }

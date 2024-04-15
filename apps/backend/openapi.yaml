@@ -1,10 +1,10 @@
 openapi: 3.0.0
 info:
-  title: PCAssemblies
-  description: Backend Api for the PC Assemblies application
-  version: 0.0.1
+    title: PCAssemblies
+    description: Backend Api for the PC Assemblies application
+    version: 0.0.1
 servers:
-  - url: http://localhost:8080
+    - url: http://localhost:8080
 
 components:
     schemas:
@@ -19,7 +19,7 @@ components:
                 password:
                     type: string
                 userType:
-                    $ref: '#/components/schemas/UserType'
+                    $ref: "#/components/schemas/UserType"
             required:
                 - username
                 - email
@@ -50,7 +50,7 @@ components:
                 encryptedPassword:
                     type: string
                 userType:
-                    $ref: '#/components/schemas/UserType'
+                    $ref: "#/components/schemas/UserType"
             required:
                 - id
         ConfigurationCreateDTO:
@@ -60,23 +60,23 @@ components:
                     type: integer
                     format: int64
                 motherboardId:
-                    $ref: '#/components/schemas/MotherboardDTO'
+                    $ref: "#/components/schemas/MotherboardDTO"
                 processorId:
-                    $ref: '#/components/schemas/ProcessorDTO'
+                    $ref: "#/components/schemas/ProcessorDTO"
                 gpuId:
-                    $ref: '#/components/schemas/GPUDTO'
+                    $ref: "#/components/schemas/GPUDTO"
                 ramIds:
                     type: array
                     items:
-                        $ref: '#/components/schemas/RAMDTO'
+                        $ref: "#/components/schemas/RAMDTO"
                 storageIds:
                     type: array
                     items:
-                        $ref: '#/components/schemas/StorageDTO'
+                        $ref: "#/components/schemas/StorageDTO"
                 powerSupplyId:
-                    $ref: '#/components/schemas/PowerSupplyDTO'
+                    $ref: "#/components/schemas/PowerSupplyDTO"
                 pcCaseId:
-                    $ref: '#/components/schemas/PCCaseDTO'
+                    $ref: "#/components/schemas/PCCaseDTO"
             required:
                 - userId
                 - motherboardId
@@ -96,23 +96,23 @@ components:
                     type: integer
                     format: int64
                 motherboardId:
-                    $ref: '#/components/schemas/MotherboardDTO'
+                    $ref: "#/components/schemas/MotherboardDTO"
                 processorId:
-                    $ref: '#/components/schemas/ProcessorDTO'
+                    $ref: "#/components/schemas/ProcessorDTO"
                 gpuId:
-                    $ref: '#/components/schemas/GPUDTO'
+                    $ref: "#/components/schemas/GPUDTO"
                 ramIds:
                     type: array
                     items:
-                        $ref: '#/components/schemas/RAMDTO'
+                        $ref: "#/components/schemas/RAMDTO"
                 storageIds:
                     type: array
                     items:
-                        $ref: '#/components/schemas/StorageDTO'
+                        $ref: "#/components/schemas/StorageDTO"
                 powerSupplyId:
-                    $ref: '#/components/schemas/PowerSupplyDTO'
+                    $ref: "#/components/schemas/PowerSupplyDTO"
                 pcCaseId:
-                    $ref: '#/components/schemas/PCCaseDTO'
+                    $ref: "#/components/schemas/PCCaseDTO"
             required:
                 - id
                 - userId
@@ -195,78 +195,78 @@ components:
                     type: string
 
 paths:
-  /users/register:
-    post:
-      summary: Register a new user
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UserRegistrationDTO'
-      responses:
-        '200':
-          description: User registration successful
-  /users/login:
-    post:
-      summary: Log in as a user
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UserLoginDTO'
-      responses:
-        '200':
-          description: User login successful
-  /users/{userId}:
-    put:
-      summary: Update user details
-      parameters:
-        - in: path
-          name: userId
-          required: true
-          description: ID of the user to update
-          schema:
-            type: integer
-            format: int64
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UserUpdateDTO'
-      responses:
-        '200':
-          description: User details updated successfully
-  /configurations:
-    post:
-      summary: Create a new PC configuration
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ConfigurationCreateDTO'
-      responses:
-        '200':
-          description: PC configuration created successfully
-    put:
-      summary: Update an existing PC configuration
-      parameters:
-        - in: path
-          name: configurationId
-          required: true
-          description: ID of the configuration to update
-          schema:
-            type: integer
-            format: int64
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ConfigurationUpdateDTO'
-      responses:
-        '200':
-          description: PC configuration updated successfully
+    /users/register:
+        post:
+            summary: Register a new user
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/UserRegistrationDTO"
+            responses:
+                "200":
+                    description: User registration successful
+    /users/login:
+        post:
+            summary: Log in as a user
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/UserLoginDTO"
+            responses:
+                "200":
+                    description: User login successful
+    /users/{userId}:
+        put:
+            summary: Update user details
+            parameters:
+                - in: path
+                  name: userId
+                  required: true
+                  description: ID of the user to update
+                  schema:
+                      type: integer
+                      format: int64
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/UserUpdateDTO"
+            responses:
+                "200":
+                    description: User details updated successfully
+    /configurations:
+        post:
+            summary: Create a new PC configuration
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/ConfigurationCreateDTO"
+            responses:
+                "200":
+                    description: PC configuration created successfully
+        put:
+            summary: Update an existing PC configuration
+            parameters:
+                - in: path
+                  name: configurationId
+                  required: true
+                  description: ID of the configuration to update
+                  schema:
+                      type: integer
+                      format: int64
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/ConfigurationUpdateDTO"
+            responses:
+                "200":
+                    description: PC configuration updated successfully

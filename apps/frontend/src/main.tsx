@@ -10,37 +10,37 @@ import Login from "./components/Login/Login"
 import Register from "./components/Register/Register"
 
 const router = createBrowserRouter([
-  {
-    path: "/",
-    element: (
-      <App>
-        {" "}
-        <Homepage />{" "}
-      </App>
-    ),
-  },
-  {
-    path: "/build",
-    element: (
-      <App>
-        {" "}
-        <Build />{" "}
-      </App>
-    ),
-  },
-  {
-    path: "login",
-    element: <Login />,
-  },
-  {
-    path: "register",
-    element: <Register />,
-  },
+    {
+        path: "/",
+        element: (
+            <App>
+                {" "}
+                <Homepage />{" "}
+            </App>
+        ),
+    },
+    {
+        path: "/build",
+        element: (
+            <App>
+                {" "}
+                <Build />{" "}
+            </App>
+        ),
+    },
+    {
+        path: "login",
+        element: <Login />,
+    },
+    {
+        path: "register",
+        element: <Register />,
+    },
 ])
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
 root.render(
-  <StrictMode>
-    <RouterProvider router={router} />
-  </StrictMode>,
+    <StrictMode>
+        <RouterProvider router={router} />
+    </StrictMode>,
 )
