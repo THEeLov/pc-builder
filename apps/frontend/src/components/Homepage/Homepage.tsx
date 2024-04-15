@@ -1,5 +1,5 @@
 import React from "react"
-import Main from "./Main/Main"
+import Main from "@/components/Homepage/Main/Main"
 import ProductCarousel from "./ProductCarousel/ProductCarousel"
 
 const Homepage = () => {
