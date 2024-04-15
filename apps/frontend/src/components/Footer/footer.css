@@ -1,9 +1,9 @@
 .footer {
   background-color: var(--primary-color);
-  padding: 1rem;
+  padding: var(--normal-indent);
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: var(--large-indent);
   height: fit-content;
 }
 
@@ -12,10 +12,9 @@
   flex-direction: column;
 }
 
-.footer hr {
+.footer__hr {
   width: 100%;
   color: white;
-  opacity: 0.8;
   border-color: white;
   border-style: solid;
   box-shadow: none;
@@ -27,15 +26,15 @@
   flex-direction: column;
 }
 
-.footer a {
-  color: #000000;
-  font-size: 1.5rem;
+.footer__link {
+  color: black;
+  font-size: var(--medium-font);
   text-decoration: none;
   font-weight: 300;
   width: fit-content;
 }
 
-.footer a:hover {
+.footer__link:hover {
   font-weight: 400;
   text-decoration: underline;
 }
@@ -51,10 +50,10 @@
 
   .footer-info {
     grid-area: 1 / 1 / 2 / 2;
-    padding: 1rem;
+    padding: var(--normal-indent);
   }
   .footer-account {
     grid-area: 1 / 2 / 2 / 3;
-    padding: 1rem;
+    padding: var(--normal-indent);
   }
 }

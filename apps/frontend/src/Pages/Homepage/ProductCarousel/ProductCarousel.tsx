@@ -1,12 +1,14 @@
 import "./productCarousel.css"
-import CustomButton from "../../CustomButton"
-import { Carousel, ConfigProvider } from "antd"
+import CustomButton from "../../../components/CustomButton/CustomButton"
+import { Carousel, ConfigProvider, Divider } from "antd"
 import Slider1 from "../../../images/slider1.png"
 import Slider2 from "../../../images/slider2.png"
 import Slider3 from "../../../images/slider3.png"
 import Slider4 from "../../../images/slider4.png"
 
 const ProductCarousel = () => {
+  const images = [Slider1, Slider2, Slider3, Slider4]
+
   return (
     <div className="product-carousel">
       <div className="product-carousel__content">
@@ -27,18 +29,11 @@ const ProductCarousel = () => {
               }}
             >
               <Carousel autoplay={true} autoplaySpeed={2000} dots={true}>
-                <div className="image-container">
-                  <img src={Slider1} alt="first image" />
-                </div>
-                <div className="image-container">
-                  <img src={Slider2} alt="first image" />
-                </div>
-                <div className="image-container">
-                  <img src={Slider3} alt="first image" />
-                </div>
-                <div className="image-container">
-                  <img src={Slider4} alt="first image" />
-                </div>
+                {images.map((image, index) => (
+                  <div className="image-container" key={index}>
+                    <img className="image-container__image" src={image} alt={`Slide ${index + 1}`} />
+                  </div>
+                ))}
               </Carousel>
             </ConfigProvider>
           </div>

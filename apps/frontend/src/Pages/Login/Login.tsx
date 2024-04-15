@@ -4,11 +4,7 @@ import { SubmitHandler, useForm } from "react-hook-form"
 import { z } from "zod"
 import Bob from "../../images/sign_up_bob.png"
 import { zodResolver } from "@hookform/resolvers/zod"
-
-const schema = z.object({
-  username: z.string().min(8),
-  password: z.string().min(8),
-})
+import { schema } from "./validation"
 
 type FormFields = z.infer<typeof schema>
 
@@ -62,9 +58,7 @@ const Login = () => {
         </div>
 
         <div className="login-image">
-          <a href="/">
-            <img className="bob" src={Bob} alt="not working" />
-          </a>
+          <img className="bob" src={Bob} alt="not working" />
         </div>
       </div>
     </div>

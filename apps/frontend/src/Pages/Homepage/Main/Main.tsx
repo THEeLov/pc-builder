@@ -1,6 +1,6 @@
 import "./main.css"
 
-import CustomButton from "../../CustomButton"
+import CustomButton from "../../../components/CustomButton/CustomButton"
 import { ToolOutlined } from "@ant-design/icons"
 
 const Main = () => {

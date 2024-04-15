@@ -1,6 +1,6 @@
 import "./navbar.css"
 import SignIn from "../../images/sign_in.svg"
-import CustomButton from "../CustomButton"
+import CustomButton from "../CustomButton/CustomButton"
 
 const Navbar = () => {
   return (

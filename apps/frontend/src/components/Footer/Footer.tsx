@@ -5,14 +5,14 @@ const Footer = () => {
     <div className="footer">
       <div className="footer-info">
         <h2>PC Builder</h2>
-        <hr />
-        <a href="">Builder</a>
+        <hr className="footer__hr"/>
+        <a className="footer__link" href="">Builder</a>
       </div>
       <div className="footer-account">
         <h2>Account</h2>
-        <hr />
-        <a href="">Login</a>
-        <a href="">Register</a>
+        <hr className="footer__hr"/>
+        <a className="footer__link" href="">Login</a>
+        <a className="footer__link" href="">Register</a>
       </div>
     </div>
   )

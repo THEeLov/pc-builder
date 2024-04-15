@@ -3,13 +3,7 @@ import { SubmitHandler, useForm } from "react-hook-form"
 import { z } from "zod"
 import Bob from "../../images/sign_UP_bob.png"
 import { zodResolver } from "@hookform/resolvers/zod"
-
-const schema = z.object({
-  username: z.string().min(4),
-  email: z.string().email(),
-  password: z.string().min(8),
-  confirmPassword: z.string().min(8),
-})
+import { schema } from "./validation"
 
 type FormFields = z.infer<typeof schema>
 

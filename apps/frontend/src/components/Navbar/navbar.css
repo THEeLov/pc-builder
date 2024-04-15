@@ -8,7 +8,7 @@
 }
 
 .nav__site-name {
-  margin-left: 1rem;
+  margin-left: var(--normal-indent);
 }
 
 .nav__login {
@@ -28,7 +28,7 @@
   width: 100%;
   display: flex;
   align-items: center;
-  margin-right: 0.5rem;
+  margin-right: var(--small-indent);
   cursor: pointer;
 }
 
@@ -47,7 +47,7 @@
     align-items: center;
     height: 100%;
     width: auto;
-    margin-right: 1rem;
+    margin-right: var(--normal-indent);
   }
 
   .nav__icons {
