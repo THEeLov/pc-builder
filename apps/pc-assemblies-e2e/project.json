@@ -1,8 +1,0 @@
-{
-  "name": "pc-assemblies-e2e",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/pc-assemblies-e2e/src",
-  "implicitDependencies": ["pc-assemblies"],
-  "// targets": "to see all targets run: nx show project pc-assemblies-e2e --web",
-  "targets": {}
-}

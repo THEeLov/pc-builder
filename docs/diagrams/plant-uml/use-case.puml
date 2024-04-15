@@ -1,0 +1,52 @@
+@startuml
+
+skinparam actor {
+  BackgroundColor Gold
+  BorderColor Black
+  ArrowColor Olive
+}
+
+skinparam usecase {
+  BackgroundColor Wheat
+  BorderColor DarkSlateGray
+}
+
+left to right direction
+
+actor User
+actor Admin
+
+rectangle "PC Assemblies System" as System {
+  usecase "Select Predefined Configuration" as UC1
+  usecase "Create New Configuration" as UC2
+  usecase "Change Components In Configuration" as UC3
+  usecase "Validate Configuration" as UC4
+  usecase "View Total Price" as UC5
+  usecase "View Summary Of Configuration" as UC6
+  usecase "View Component Images" as UC7
+  usecase "Sort and Filter Listings" as UC8
+
+  usecase "Delete Component" as UC9
+  usecase "Update Component" as UC10
+  usecase "Create Component" as UC11
+  usecase "Add Predefined Configuration" as UC12
+}
+
+Admin -[norank]-|> User
+
+
+User --> UC1
+User --> UC2
+User --> UC3
+User --> UC4
+User --> UC5
+User --> UC6
+User --> UC7
+User --> UC8
+
+Admin --> UC9
+Admin --> UC10
+Admin --> UC11
+Admin --> UC12
+
+@enduml
