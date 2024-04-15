@@ -10,24 +10,22 @@
   flex-direction: column;
 }
 
-@media only screen and (min-width: 1024px){
-
-  .main-content{
+@media only screen and (min-width: 1024px) {
+  .main-content {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
   }
 
-  .main-content h1{
+  .main-content h1 {
     font-size: 4rem;
   }
-  .main-content p{
+  .main-content p {
     font-size: 2rem;
   }
 
-  .main-button{
+  .main-button {
     margin-top: 2rem;
   }
-
 }

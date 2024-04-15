@@ -30,21 +30,11 @@ const router = createBrowserRouter([
   },
   {
     path: "login",
-    element: (
-      <App>
-        {" "}
-        <Login />{" "}
-      </App>
-    ),
+    element: <Login />,
   },
   {
     path: "register",
-    element: (
-      <App>
-        {" "}
-        <Register />{" "}
-      </App>
-    ),
+    element: <Register />,
   },
 ])
 

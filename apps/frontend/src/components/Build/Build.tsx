@@ -1,5 +1,5 @@
-import './build.css'
-import { Card } from 'antd'
+import "./build.css"
+import { Card } from "antd"
 
 const Build = () => {
   return (

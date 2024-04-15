@@ -35,7 +35,6 @@ const CustomButton = ({ label, icon, btype }: ButtonProps) => {
     <ConfigProvider
       theme={{
         token: {
-
           colorText: `${textColor}`,
           colorPrimary: `${primaryColor}`,
           borderRadius: 4,

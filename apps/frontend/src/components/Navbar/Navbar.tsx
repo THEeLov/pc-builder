@@ -10,13 +10,15 @@ const Navbar = () => {
       </div>
       <div className="nav__login">
         <div className="nav__icons">
-          <div className="icon-container">
+          <a href="/login" className="icon-container">
             <img src={SignIn} alt="sign in" />
-          </div>
+          </a>
         </div>
 
         <div className="nav-desktop">
-          <CustomButton label="Sign in" btype="primary" />
+          <a href="/login">
+            <CustomButton label="Sign in" btype="primary" />
+          </a>
         </div>
       </div>
     </nav>

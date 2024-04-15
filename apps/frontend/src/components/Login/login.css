@@ -1,16 +1,17 @@
 .login {
   display: flex;
-  height: 92vh;
+  height: 100vh;
   justify-content: center;
   width: 100%;
+  background-color: var(--secondary-color);
+  overflow: hidden;
 }
 
 .login-container {
   display: flex;
   flex-direction: column;
   text-align: center;
-  width: 350px;
-  border: 1px solid black;
+  width: 325px;
   padding: 1rem;
 }
 
@@ -23,12 +24,90 @@
 
 .form-input {
   width: 100%;
+  padding: 1rem 0rem 1rem 0.5rem;
+  font-size: 1rem;
+  border: none;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.315);
+  border-radius: 0.5rem;
+}
+
+.form-input:focus {
+  border: 2px solid rgba(0, 0, 0, 0.075);
+  outline: none;
+}
+
+.form-input:focus::placeholder {
+  color: transparent;
+}
+
+.form-input::placeholder {
+  color: rgb(41, 41, 41);
+  padding-left: 0.5rem;
 }
 
 .form-button {
   width: 100%;
+  font-size: 1rem;
+  padding: 0.5rem 0rem 0.5rem 0rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: url(../../images/screw-driver.png), auto;
+  background-color: black;
+  color: white;
+}
+
+.form-button:hover {
+  background-color: rgba(0, 0, 0, 0.842);
 }
 
 .login__headline {
   margin: 1rem 0 1rem 0;
+}
+
+.login-questions {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.login-questions a {
+  color: black;
+}
+
+.login-image {
+  height: 500px;
+  width: 500px;
+  position: fixed;
+  left: -300px;
+  bottom: -40px;
+  display: none;
+}
+
+.bob {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  transform: translateY(0);
+
+  animation: jump 1s ease infinite alternate;
+}
+
+@keyframes jump {
+  0% {
+    bottom: 0;
+  }
+  50% {
+    bottom: 40px;
+  }
+  100% {
+    bottom: 0;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .login-image {
+    display: block;
+  }
 }
