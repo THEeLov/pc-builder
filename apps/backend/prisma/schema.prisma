@@ -29,6 +29,13 @@ model Component {
   price          Float
   manufacturer   String
   imageUrl       String
+  motherboard    Motherboard?
+  processor      Processor?
+  gpu            GPU?
+  ram            RAM?
+  storage        Storage?
+  powerSupply    PowerSupply?
+  pcCase         PCCase?
 }
 
 model User {
@@ -51,6 +58,7 @@ model Motherboard {
   ramType         String
   gpuInterface    String
   stroageBusType  String
+  component    Component @relation(fields: [componentId], references: [id])
 }
 
 model Processor {
@@ -61,15 +69,18 @@ model Processor {
   threads       Int
   bits          Int
   socket        String
+  component    Component @relation(fields: [componentId], references: [id])
+
 }
 
 model GPU {
   id              Int       @id @default(autoincrement())
-  componentId     Int
+  componentId     Int       @unique
   memory          Int
   powerConnector  String
   interface       String
   power           Int
+  component    Component @relation(fields: [componentId], references: [id])
 }
 
 model RAM {
@@ -78,6 +89,7 @@ model RAM {
   memoryType      String
   capacity        Int
   computerType    String
+  component    Component @relation(fields: [componentId], references: [id])
 }
 
 model Storage {
@@ -86,6 +98,7 @@ model Storage {
   storageType     String
   capacity        Int
   busType         String
+  component    Component @relation(fields: [componentId], references: [id])
 }
 
 model PowerSupply {
@@ -94,12 +107,14 @@ model PowerSupply {
   powerOutput     Int
   efficiency      String
   formFactor      String
+  component    Component @relation(fields: [componentId], references: [id])
 }
 
 model PCCase {
   id              Int     @id @default(autoincrement())
   componentId     Int     @unique
   formFactor      String
+  component    Component @relation(fields: [componentId], references: [id])
 }
 
 model PCConfiguration {
