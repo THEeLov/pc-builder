@@ -7,40 +7,44 @@ import Slider3 from "../../../images/slider3.png"
 import Slider4 from "../../../images/slider4.png"
 
 const ProductCarousel = () => {
-  const images = [Slider1, Slider2, Slider3, Slider4]
+    const images = [Slider1, Slider2, Slider3, Slider4]
 
-  return (
-    <div className="product-carousel">
-      <div className="product-carousel__content">
-        <div className="text-container">
-          <h1>Products</h1>
-          <div className="all-products">
-            <p>All current products available</p>
-            <CustomButton label="View all" btype="secondary" />
-          </div>
+    return (
+        <div className="product-carousel">
+            <div className="product-carousel__content">
+                <div className="text-container">
+                    <h1>Products</h1>
+                    <div className="all-products">
+                        <p>All current products available</p>
+                        <CustomButton label="View all" btype="secondary" />
+                    </div>
+                </div>
+                <div className="carousel">
+                    <div className="carousel-container">
+                        <ConfigProvider
+                            theme={{
+                                token: {
+                                    colorPrimary: "red",
+                                },
+                            }}
+                        >
+                            <Carousel autoplay={true} autoplaySpeed={2000} dots={true}>
+                                {images.map((image, index) => (
+                                    <div className="image-container" key={index}>
+                                        <img
+                                            className="image-container__image"
+                                            src={image}
+                                            alt={`Slide ${index + 1}`}
+                                        />
+                                    </div>
+                                ))}
+                            </Carousel>
+                        </ConfigProvider>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div className="carousel">
-          <div className="carousel-container">
-            <ConfigProvider
-              theme={{
-                token: {
-                  colorPrimary: "red",
-                },
-              }}
-            >
-              <Carousel autoplay={true} autoplaySpeed={2000} dots={true}>
-                {images.map((image, index) => (
-                  <div className="image-container" key={index}>
-                    <img className="image-container__image" src={image} alt={`Slide ${index + 1}`} />
-                  </div>
-                ))}
-              </Carousel>
-            </ConfigProvider>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
+    )
 }
 
 export default ProductCarousel

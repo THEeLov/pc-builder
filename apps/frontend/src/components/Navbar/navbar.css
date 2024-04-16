@@ -8,7 +8,7 @@
 }
 
 .nav__site-name {
-  margin-left: var(--normal-indent);
+    margin-left: var(--normal-indent);
 }
 
 .nav__login {
@@ -24,12 +24,12 @@
 }
 
 .icon-container {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  margin-right: var(--small-indent);
-  cursor: pointer;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-right: var(--small-indent);
+    cursor: pointer;
 }
 
 .icon-container img {
@@ -42,13 +42,13 @@
 }
 
 @media only screen and (min-width: 1024px) {
-  .nav-desktop {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    width: auto;
-    margin-right: var(--normal-indent);
-  }
+    .nav-desktop {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        width: auto;
+        margin-right: var(--normal-indent);
+    }
 
     .nav__icons {
         display: none;

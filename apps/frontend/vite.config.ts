@@ -2,11 +2,11 @@
 import { defineConfig } from "vite"
 import react from "@vitejs/plugin-react"
 import { nxViteTsPaths } from "@nx/vite/plugins/nx-tsconfig-paths.plugin"
-import { resolve, dirname } from 'path';
-import { fileURLToPath } from 'url';
+import { resolve, dirname } from "path"
+import { fileURLToPath } from "url"
 
 // Define __dirname in terms of ES Module scope
-const __dirname = dirname(fileURLToPath(import.meta.url));
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
     root: __dirname,
@@ -25,10 +25,10 @@ export default defineConfig({
     plugins: [react(), nxViteTsPaths()],
     resolve: {
         alias: {
-          '@': resolve(__dirname, './src'),
-          '@/hooks': resolve(__dirname, './src/hooks'),
-          '@/data': resolve(__dirname, './src/data'),
-        }
+            "@": resolve(__dirname, "./src"),
+            "@/hooks": resolve(__dirname, "./src/hooks"),
+            "@/data": resolve(__dirname, "./src/data"),
+        },
     },
 
     // Uncomment this if you are using workers.
