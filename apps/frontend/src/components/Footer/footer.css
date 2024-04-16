@@ -8,8 +8,8 @@
 }
 
 .footer-info {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .footer__hr {
@@ -22,8 +22,8 @@
 }
 
 .footer-account {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .footer__link {
@@ -40,13 +40,13 @@
 }
 
 @media only screen and (min-width: 1024px) {
-  .footer {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 1fr;
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-  }
+    .footer {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 1fr;
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+    }
 
   .footer-info {
     grid-area: 1 / 1 / 2 / 2;
