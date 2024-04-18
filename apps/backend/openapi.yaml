@@ -4,7 +4,18 @@ info:
   description: Backend Api for the PC Assemblies application
   version: 0.0.1
 servers:
-  - url: http://localhost:8080
+- url: "{scheme}//{server}:{port}"
+  description: the server
+  variables:
+    scheme:
+      default: "http:"
+      enum:
+      - "http:"
+      - "https:"
+    server:
+      default: localhost
+    port:
+      default: "8080"
 
 components:
     schemas:
