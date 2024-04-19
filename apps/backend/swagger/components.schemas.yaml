@@ -30,10 +30,17 @@ components:
                                 enum: [GAMING, OFFICE, WORK]
                 price:
                     type: integer
+                    format: float
                 imageUrl:
                     type: string
                 manufacturer:
                     type: string
+            required:
+                -   name
+                -   type
+                -   price
+                -   imageUrl
+                -   manufacturer
         UserLoginDTO:
             type: object
             properties:
@@ -285,37 +292,6 @@ components:
                 example: "13c45a61-7260-41b6-88de-2260fc61ccb2"
               message:
                 type: string
-    responses:
-        BadRequestError:
-            description: The provided data are not okay.
-            content:
-                application/json:
-                    schema:
-                        $ref: './components.yaml#/components/schemas/BadRequestError'
-        ServerSideError:
-            description: Server side error.
-            content:
-                application/json:
-                    schema:
-                        $ref: './components.yaml#/components/schemas/InternalServerError'
-        Success:
-            description: Success
-            content:
-              application/json:
-                schema:
-                    $ref: './components.yaml#/components/schemas/SuccessfulResponse'
-        ConfigurationListResponse:
-            description: Gets all configurations of userId.
-            content:
-              application/json:
-                schema:
-                    $ref: './components.yaml#/components/schemas/ConfigurationList'
-        NotFoundError:
-            description: element not found.
-            content:
-                application/json:
-                    schema:
-                        $ref: './components.yaml#/components/schemas/NotFoundError'
     securitySchemes:
         sessionCookie:
             type: apiKey

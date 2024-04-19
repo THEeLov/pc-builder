@@ -62,9 +62,6 @@ paths:
         /storages/{storageId}:
             $ref: './routes/components/storages.yaml#/storagesStorageId'
 
-
-
-
 # Funkcionalita by mala byť taká, že na to aby mohol user začať buildiť svoj pc sa musi
 # zaregistrivať/prihlásiť. Tým pádom dostane session cookie. session cookie sa viaže na jeho Konfiguraciu
 # Potom keď urobi klient request na napriklad /components/procesors tak pošle spolu s tým svoju session cookie.
