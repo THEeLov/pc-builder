@@ -164,7 +164,7 @@ model UserConfiguration {
   user              User              @relation(fields: [userId], references: [id])
   configuration     PCConfiguration   @relation(fields: [configurationId], references: [id])
   createdAt         DateTime
-  updatedAt         DateTime
-  deletedAt         DateTime
+  updatedAt         DateTime?
+  deletedAt         DateTime?
 }
 

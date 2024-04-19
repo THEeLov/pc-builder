@@ -1,5 +1,6 @@
 components:
     schemas:
+    ## DTO OBJECTS
         UserRegistrationDTO:
             type: object
             properties:
@@ -96,6 +97,7 @@ components:
             required:
                 - userId
             # najskor sa config vytvori, potom sa do nej budu putovat komponenty.
+            # Kukni prisma schema. vsetko je tam nullable a kompatibilita sa bude resolvovat v backende :-)
         ConfigurationDTO:
             type: object
             properties:
@@ -257,6 +259,7 @@ components:
                     type: string
             required:
              -  formFactor
+        ## RESPONSE OBJECTS
         ConfigurationList:
             type: array
             items:
@@ -292,6 +295,14 @@ components:
                 example: "13c45a61-7260-41b6-88de-2260fc61ccb2"
               message:
                 type: string
+    ## session cookie scheme:
+    ## session cookie je vpodstate len uuid.
+    ## ked klient posle request na databazu, musi vzdy nastavit withCredentials na true,
+    ## k requestu sa potom prilepí jeho session cookie. V backende sa skontroluje nasledovne:
+    ## precita sa to uuid zo session cookie. Vyhlada sa session v databaze sessions a potom sa budu overovať prístupové práva.
+    ## Napr ked posle request get na /configurations a do query dá svoje userId, pomocou session sa overi či ide skutočne o toho usera s tým userId.
+    ## overovanie už teda neprebieha po prihlásení pomocou username a hesla ale pomocou userId a session cookie. V sessione je taktiez napisane
+    ## ci je to len USER alebo ADMIN.
     securitySchemes:
         sessionCookie:
             type: apiKey
