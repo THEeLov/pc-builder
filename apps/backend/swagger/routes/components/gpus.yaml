@@ -19,7 +19,7 @@ gpus:
                                         $ref: '../../components.schemas.yaml#/components/schemas/ComponentDTO'
             '500':
                 $ref: '../../components.responses.yaml#/components/responses/ServerSideError'
-    security:
+        security:
             - sessionCookie: []
     post:
         requestBody:

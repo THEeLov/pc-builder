@@ -18,7 +18,7 @@ enum UserType {
   USER
 }
 
-enum ComponentType {
+enum ConfigurationType {
   GAMING
   OFFICE
   WORK
@@ -42,7 +42,7 @@ model Session {
 model Component {
   id             Int      @id @default(autoincrement())
   name           String
-  type           ComponentType[]
+  type           ConfigurationType[]
   price          Float
   manufacturer   String
   imageUrl       String
@@ -141,8 +141,9 @@ model PCCase {
 }
 
 model PCConfiguration {
-  id                 Int                  @id @default(autoincrement())
+  id                 Int                   @id @default(autoincrement())
   totalPrice         Float
+  configurationType  ConfigurationType
   motherboardId      Int?
   motherboard        Motherboard?          @relation(fields: [motherboardId], references: [id])
   processorId        Int?
