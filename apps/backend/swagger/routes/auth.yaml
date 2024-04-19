@@ -1,0 +1,51 @@
+register:
+    post:
+        summary: Register a new user
+        requestBody:
+            required: true
+            content:
+                application/json:
+                    schema:
+                        $ref: '../components.schemas.yaml#/components/schemas/UserRegistrationDTO'
+        responses:
+            '200':
+                description: User registration successful
+                headers:
+                    Set-Cookie:
+                        description: Session ID Cookie
+                        schema:
+                            type: string
+                content:
+                    application/json:
+                        schema:
+                            $ref: '../components.schemas.yaml#/components/schemas/LoginSuccess'
+
+            '400':
+                $ref: '../components.responses.yaml#/components/responses/BadRequestError'
+            '500':
+                $ref: '../components.responses.yaml#/components/responses/BadRequestError'
+login:
+    post:
+        summary: Log in as a user
+        requestBody:
+            required: true
+            content:
+                application/json:
+                    schema:
+                        $ref: '../components.schemas.yaml#/components/schemas/UserLoginDTO'
+        responses:
+            '200':
+                description: User login successful
+                headers:
+                    Set-Cookie:
+                        description: Session ID Cookie
+                        schema:
+                            type: string
+                content:
+                    application/json:
+                        schema:
+                            $ref: '../components.schemas.yaml#/components/schemas/LoginSuccess'
+            '400':
+                $ref: '../components.responses.yaml#/components/responses/BadRequestError'
+            '500':
+                $ref: '../components.responses.yaml#/components/responses/ServerSideError'

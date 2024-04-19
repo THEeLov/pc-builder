@@ -1,0 +1,68 @@
+powersupplies:
+    get:
+        responses:
+            '200':
+                description: gets all powersupplies
+                content:
+                    application/json:
+                        schema:
+                            type: array
+                            items:
+                                type: object
+                                properties:
+                                    id:
+                                        type: integer
+                                        description: ID of the PowerSupply.
+                                    data:
+                                        $ref: '../../components.schemas.yaml#/components/schemas/PowerSupplyDTO'
+                                    component:
+                                        $ref: '../../components.schemas.yaml#/components/schemas/ComponentDTO'
+            '500':
+                $ref: '../../components.responses.yaml#/components/responses/ServerSideError'
+        security:
+            - sessionCookie: []
+    post:
+        requestBody:
+            required: true
+            content:
+                application/json:
+                        schema:
+                            $ref: '../../components.schemas.yaml#/components/schemas/PowerSupplyDTO'
+        responses:
+            '200':
+                $ref: '../../components.responses.yaml#/components/responses/Success'
+            '400':
+                $ref: '../../components.responses.yaml#/components/responses/BadRequestError'
+            '500':
+                $ref: '../../components.responses.yaml#/components/responses/ServerSideError'
+        security:
+            - sessionCookie: []
+powersuppliesPowerSupplyId:
+    get:
+        parameters:
+          - in: path
+            name: powerSupplyId
+            required: true
+            description: ID of PowerSupply
+            schema:
+                type: integer
+                format: int64
+        responses:
+            '200':
+                description: gets a powersupply with powerSupplyId
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                id:
+                                    type: integer
+                                    description: ID of the PowerSupplyDTO.
+                                data:
+                                    $ref: '../../components.schemas.yaml#/components/schemas/PowerSupplyDTO'
+                                component:
+                                    $ref: '../../components.schemas.yaml#/components/schemas/ComponentDTO'
+            '404':
+                $ref: '../../components.responses.yaml#/components/responses/NotFoundError'
+            '500':
+                $ref: '../../components.responses.yaml#/components/responses/ServerSideError'

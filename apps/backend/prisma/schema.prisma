@@ -13,19 +13,36 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum UserType {
+  ADMIN
+  USER
+}
+
+enum ComponentType {
+  GAMING
+  OFFICE
+  WORK
+}
+
+enum ComputerType {
+  DESKTOP
+  LAPTOP
+}
+
+
 model Session {
-  id        String    @id @default(uuid())
-  createdAt DateTime  @default(now())
+  id        String        @id @default(uuid())
+  createdAt DateTime      @default(now())
   expiresAt DateTime
   userId    Int
-  user      User?     @relation(fields: [userId], references: [id])
-  @@map("sessions")
+  userType  UserType
+  user      User?         @relation(fields: [userId], references: [id])
 }
 
 model Component {
   id             Int      @id @default(autoincrement())
   name           String
-  type           String
+  type           ComponentType[]
   price          Float
   manufacturer   String
   imageUrl       String
@@ -39,95 +56,115 @@ model Component {
 }
 
 model User {
-  id              Int             @id @default(autoincrement())
-  username        String
-  email           String          @unique
-  password        String
-  userType        String
-  configurations   PCConfiguration[]
-  sessions        Session[]
-  @@map("user")
+  id                  Int             @id @default(autoincrement())
+  username            String
+  email               String          @unique
+  password            String
+  userType            UserType        @default(USER)
+  userconfigurations  UserConfiguration[]
+  sessions            Session[]
 }
 
 model Motherboard {
   id              Int           @id @default(autoincrement())
-  componentId     Int           @unique
   socket          String
   formFactor      String
   ramSlots        Int
   ramType         String
   gpuInterface    String
   stroageBusType  String
-  component    Component @relation(fields: [componentId], references: [id])
+  componentId     Int           @unique
+  component       Component     @relation(fields: [componentId], references: [id])
+  configurations  PCConfiguration[]
 }
 
 model Processor {
-  id            Int         @id @default(autoincrement())
-  componentId   Int         @unique
-  architecture  String
-  cores         Int
-  threads       Int
-  bits          Int
-  socket        String
-  component    Component @relation(fields: [componentId], references: [id])
+  id              Int               @id @default(autoincrement())
+  architecture    String
+  cores           Int
+  threads         Int
+  bits            Int
+  socket          String
+  componentId     Int               @unique
+  component       Component         @relation(fields: [componentId], references: [id])
+  configurations  PCConfiguration[]  
 
 }
 
 model GPU {
   id              Int       @id @default(autoincrement())
-  componentId     Int       @unique
   memory          Int
   powerConnector  String
   interface       String
   power           Int
-  component    Component @relation(fields: [componentId], references: [id])
+  componentId     Int       @unique
+  component       Component @relation(fields: [componentId], references: [id])
+  configurations  PCConfiguration[]
 }
 
 model RAM {
   id              Int      @id @default(autoincrement())
-  componentId     Int      @unique
   memoryType      String
   capacity        Int
-  computerType    String
-  component    Component @relation(fields: [componentId], references: [id])
+  computerType    ComputerType
+  componentId     Int      @unique
+  component       Component @relation(fields: [componentId], references: [id])
+  configurations  PCConfiguration[]
 }
 
 model Storage {
   id              Int      @id @default(autoincrement())
-  componentId     Int      @unique
   storageType     String
   capacity        Int
   busType         String
-  component    Component @relation(fields: [componentId], references: [id])
+  componentId     Int      @unique
+  component       Component @relation(fields: [componentId], references: [id])
+  configurations  PCConfiguration[]
 }
 
 model PowerSupply {
-  id              Int     @id @default(autoincrement())
-  componentId     Int     @unique
+  id              Int             @id @default(autoincrement())
   powerOutput     Int
   efficiency      String
   formFactor      String
-  component    Component @relation(fields: [componentId], references: [id])
+  componentId     Int             @unique
+  component       Component       @relation(fields: [componentId], references: [id])
+  configurations  PCConfiguration[]
 }
 
 model PCCase {
-  id              Int     @id @default(autoincrement())
-  componentId     Int     @unique
+  id              Int                     @id @default(autoincrement())
   formFactor      String
-  component    Component @relation(fields: [componentId], references: [id])
+  componentId     Int                     @unique
+  component       Component               @relation(fields: [componentId], references: [id])
+  configurations  PCConfiguration[]
 }
 
 model PCConfiguration {
-  id            Int         @id @default(autoincrement())
-  userId        Int
-  totalPrice    Float
-  motherboardId Int
-  processorId   Int
-  ramIds        Int[]
-  gpuId         Int
-  storageIds    Int[]
-  powerSupplyId Int
-  user          User        @relation(fields: [userId], references: [id])
-  @@map("configurations")
+  id                 Int                  @id @default(autoincrement())
+  totalPrice         Float
+  motherboardId      Int?
+  motherboard        Motherboard?          @relation(fields: [motherboardId], references: [id])
+  processorId        Int?
+  processor          Processor?            @relation(fields: [processorId], references: [id])
+  rams               RAM[]
+  gpuId              Int?
+  gpu                GPU?                  @relation(fields: [gpuId], references: [id])
+  storages           Storage[]
+  powerSupplyId      Int?
+  powerSupply        PowerSupply?          @relation(fields: [powerSupplyId], references: [id])
+  pcCaseId           Int?
+  pcCase             PCCase?               @relation(fields: [pcCaseId], references: [id])
+  userConfiguration  UserConfiguration?
+}
+
+model UserConfiguration {
+  userId            Int
+  configurationId   Int               @id
+  user              User              @relation(fields: [userId], references: [id])
+  configuration     PCConfiguration   @relation(fields: [configurationId], references: [id])
+  createdAt         DateTime
+  updatedAt         DateTime
+  deletedAt         DateTime
 }
 

@@ -1,0 +1,72 @@
+openapi: 3.1.0
+info:
+  title: PCAssemblies
+  description: Backend Api for the PC Assemblies application
+  version: 0.0.1
+servers:
+- url: "{scheme}//{server}:{port}"
+  description: the server
+  variables:
+    scheme:
+      default: "http:"
+      enum:
+      - "http:"
+      - "https:"
+    server:
+      default: localhost
+    port:
+      default: "8080"
+
+security:
+  - sessionCookie: []
+
+
+paths:
+    /users/register:
+        $ref: './routes/auth.yaml#/register'
+    /users/login:
+        $ref: './routes/auth.yaml#/login'
+    /users/{userId}:
+        $ref: './routes/users.yaml#/usersUserId'
+    /configurations:
+        $ref: './routes/configurations.yaml#/configurations'
+    /configurations/{userId}:
+        $ref: './routes/configurations.yaml#/configurationsUserId'
+    /components:
+        /gpus:
+            $ref: './routes/components/gpus.yaml#/gpus'
+        /gpus/{gpuId}:
+            $ref: './routes/components/gpus.yaml#/gpusGpuId'
+        /motherboards:
+            $ref: './routes/components/motherboards.yaml#/motherboards'
+        /motherboards/{motherboardId}:
+            $ref: './routes/components/motherboards.yaml#/motherboardsMotherboardId'
+        /pccases:
+            $ref: './routes/components/pccases.yaml#/pccases'
+        /pccases/{pcCaseId}:
+            $ref: './routes/components/pccases.yaml#/pccasesPcCaseId'
+        /powersupplies:
+            $ref: './routes/components/powersupplies.yaml#/powersupplies'
+        /powersupplies/{powersupplyid}:
+            $ref: './routes/components/powersupplies.yaml#/powersuppliesPowerSupplyId'
+        /processors:
+            $ref: './routes/components/processors.yaml#/processors'
+        /processors/{processorId}:
+            $ref: './routes/components/processors.yaml#/processorsProcessorId'
+        /rams:
+            $ref: './routes/components/rams.yaml#/rams'
+        /rams/{ramId}:
+            $ref: './routes/components/rams.yaml#/ramsRamId'
+        /storages:
+            $ref: './routes/components/storages.yaml#/storages'
+        /storages/{storageId}:
+            $ref: './routes/components/storages.yaml#/storagesStorageId'
+
+
+
+
+# Funkcionalita by mala byť taká, že na to aby mohol user začať buildiť svoj pc sa musi
+# zaregistrivať/prihlásiť. Tým pádom dostane session cookie. session cookie sa viaže na jeho Konfiguraciu
+# Potom keď urobi klient request na napriklad /components/procesors tak pošle spolu s tým svoju session cookie.
+# v backende sa vyrieši kompatibilita s jeho konfiguraciou a vratia sa mu presne tie komponenty, ktoré sú kompatibilné s
+# jeho konfiguráciou.

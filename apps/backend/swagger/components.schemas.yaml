@@ -1,0 +1,323 @@
+components:
+    schemas:
+        UserRegistrationDTO:
+            type: object
+            properties:
+                username:
+                    type: string
+                email:
+                    type: string
+                    format: email
+                password:
+                    type: string
+                userType:
+                    $ref: '#/components/schemas/UserType'
+            required:
+                - username
+                - email
+                - password
+                - userType
+        ComponentDTO:
+            type: object
+            properties:
+                name:
+                    type: string
+                type:
+                    type:
+                        array:
+                            items:
+                                type: string
+                                enum: [GAMING, OFFICE, WORK]
+                price:
+                    type: integer
+                imageUrl:
+                    type: string
+                manufacturer:
+                    type: string
+        UserLoginDTO:
+            type: object
+            properties:
+                email:
+                    type: string
+                    format: email
+                password:
+                    type: string
+            required:
+                - email
+                - password
+        UserUpdateDTO:
+            type: object
+            properties:
+                id:
+                    type: integer
+                    format: int64
+                username:
+                    type: string
+                email:
+                    type: string
+                    format: email
+                encryptedPassword:
+                    type: string
+                userType:
+                    $ref: '#/components/schemas/UserType'
+            required:
+                - id
+        ConfigurationCreateDTO:
+            type: object
+            properties:
+                userId:
+                    type: integer
+                    format: int64
+                motherboardId:
+                    $ref: '#/components/schemas/MotherboardDTO'
+                processorId:
+                    $ref: '#/components/schemas/ProcessorDTO'
+                gpuId:
+                    $ref: '#/components/schemas/GPUDTO'
+                ramIds:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/RAMDTO'
+                storageIds:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/StorageDTO'
+                powerSupplyId:
+                    $ref: '#/components/schemas/PowerSupplyDTO'
+                pcCaseId:
+                    $ref: '#/components/schemas/PCCaseDTO'
+            required:
+                - userId
+            # najskor sa config vytvori, potom sa do nej budu putovat komponenty.
+        ConfigurationDTO:
+            type: object
+            properties:
+                motherboard:
+                    $ref: '#/components/schemas/MotherboardDTO'
+                processor:
+                    $ref: '#/components/schemas/ProcessorDTO'
+                rams:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/RAMDTO'
+                storages:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/StorageDTO'
+                powerSupply:
+                    $ref: '#/components/schemas/PowerSupplyDTO'
+                pcCase:
+                    $ref: '#/components/schemas/PCCaseDTO'
+            required:
+             -  motherboard
+             -  processor
+             -  rams
+             -  storages
+             -  powerSupply
+             -  pcCase
+        ConfigurationUpdateDTO:
+            type: object
+            properties:
+                id:
+                    type: integer
+                    format: int64
+                userId:
+                    type: integer
+                    format: int64
+                motherboardId:
+                    type: integer
+                processorId:
+                    type: integer
+                gpuId:
+                    type: integer
+                ramIds:
+                    type: array
+                    items:
+                        type: integer
+                storageIds:
+                    type: array
+                    items:
+                        type: integer
+                powerSupplyId:
+                    type: integer
+                pcCaseId:
+                    type: integer
+            required:
+                - id
+                - userId
+        UserType:
+            type: string
+            enum:
+                - ADMIN
+                - USER
+        MotherboardDTO:
+            type: object
+            properties:
+                socket:
+                    type: string
+                formFactor:
+                    type: string
+                ramSlots:
+                    type: integer
+                ramType:
+                    type: string
+                gpuInterface:
+                    type: string
+                storageBusType:
+                    type: string
+            required:
+             -  socket
+             -  formFactor
+             -  ramSlots
+             -  ramType
+             -  gpuInterface
+             -  storageBusType
+        ProcessorDTO:
+            type: object
+            properties:
+                architecture:
+                    type: string
+                cores:
+                    type: integer
+                threads:
+                    type: integer
+                bits:
+                    type: integer
+                socket:
+                    type: string
+            required:
+             -  architecture
+             -  cores
+             -  threads
+             -  bits
+             -  socket
+        GPUDTO:
+            type: object
+            properties:
+                memory:
+                    type: integer
+                powerConnector:
+                    type: string
+                interface:
+                    type: string
+                power:
+                    type: integer
+        RAMDTO:
+            type: object
+            properties:
+                memoryType:
+                    type: string
+                capacity:
+                    type: integer
+                computerType:
+                    type: string
+                    enum: [DESKTOP, LAPTOP]
+            required:
+             -  memoryType
+             -  capacity
+             -  computerType
+        StorageDTO:
+            type: object
+            properties:
+                storageType:
+                    type: string
+                capacity:
+                    type: integer
+                    format: int64
+                busType:
+                    type: string
+            required:
+             -  storageType
+             -  capacity
+             -  busType
+        PowerSupplyDTO:
+            type: object
+            properties:
+                powerOutput:
+                    type: integer
+                efficiency:
+                    type: string
+                formFactor:
+                    type: string
+            required:
+             -  powerOutput
+             -  efficiency
+             -  formFactor
+        PCCaseDTO:
+            type: object
+            properties:
+                formFactor:
+                    type: string
+            required:
+             -  formFactor
+        ConfigurationList:
+            type: array
+            items:
+                $ref: '#/components/schemas/ConfigurationDTO'
+        SuccessfulResponse:
+            type: object
+            properties:
+              message:
+                type: string
+                example: "Success!"
+        NotFoundError:
+            type: object
+            properties:
+              message:
+                type: string
+                example: "Not found"
+        BadRequestError:
+            type: object
+            properties:
+              message:
+                type: string
+                example: "Bad request"
+        InternalServerError:
+            type: object
+            properties:
+              message:
+                type: string
+        LoginSuccess:
+            type: object
+            properties:
+              id:
+                type: string
+                example: "13c45a61-7260-41b6-88de-2260fc61ccb2"
+              message:
+                type: string
+    responses:
+        BadRequestError:
+            description: The provided data are not okay.
+            content:
+                application/json:
+                    schema:
+                        $ref: './components.yaml#/components/schemas/BadRequestError'
+        ServerSideError:
+            description: Server side error.
+            content:
+                application/json:
+                    schema:
+                        $ref: './components.yaml#/components/schemas/InternalServerError'
+        Success:
+            description: Success
+            content:
+              application/json:
+                schema:
+                    $ref: './components.yaml#/components/schemas/SuccessfulResponse'
+        ConfigurationListResponse:
+            description: Gets all configurations of userId.
+            content:
+              application/json:
+                schema:
+                    $ref: './components.yaml#/components/schemas/ConfigurationList'
+        NotFoundError:
+            description: element not found.
+            content:
+                application/json:
+                    schema:
+                        $ref: './components.yaml#/components/schemas/NotFoundError'
+    securitySchemes:
+        sessionCookie:
+            type: apiKey
+            in: cookie
+            name: session

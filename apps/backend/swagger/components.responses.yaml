@@ -1,0 +1,32 @@
+components:
+  responses:
+        BadRequestError:
+            description: The provided data are not okay.
+            content:
+                application/json:
+                    schema:
+                        $ref: './components.schemas.yaml#/components/schemas/BadRequestError'
+        ServerSideError:
+            description: Server side error.
+            content:
+                application/json:
+                    schema:
+                        $ref: './components.schemas.yaml#/components/schemas/InternalServerError'
+        Success:
+            description: Success
+            content:
+              application/json:
+                schema:
+                    $ref: './components.schemas.yaml#/components/schemas/SuccessfulResponse'
+        ConfigurationListResponse:
+            description: Gets all configurations of userId.
+            content:
+              application/json:
+                schema:
+                    $ref: './components.schemas.yaml#/components/schemas/ConfigurationList'
+        NotFoundError:
+            description: element not found.
+            content:
+                application/json:
+                    schema:
+                        $ref: './components.schemas.yaml#/components/schemas/NotFoundError'

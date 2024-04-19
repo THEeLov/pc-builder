@@ -1,0 +1,68 @@
+gpus:
+    get:
+        responses:
+            '200':
+                description: gets gpus
+                content:
+                    application/json:
+                        schema:
+                            type: array
+                            items:
+                                type: object
+                                properties:
+                                    id:
+                                        type: integer
+                                        description: ID of the GPU.
+                                    data:
+                                        $ref: '../../components.schemas.yaml#/components/schemas/GPUDTO'
+                                    component:
+                                        $ref: '../../components.schemas.yaml#/components/schemas/ComponentDTO'
+            '500':
+                $ref: '../../components.responses.yaml#/components/responses/ServerSideError'
+    security:
+            - sessionCookie: []
+    post:
+        requestBody:
+            required: true
+            content:
+                application/json:
+                        schema:
+                            $ref: '../../components.schemas.yaml#/components/schemas/GPUDTO'
+        responses:
+            '200':
+                $ref: '../../components.responses.yaml#/components/responses/Success'
+            '400':
+                $ref: '../../components.responses.yaml#/components/responses/BadRequestError'
+            '500':
+                $ref: '../../components.responses.yaml#/components/responses/ServerSideError'
+        security:
+            - sessionCookie: []
+gpusGpuId:
+    get:
+        parameters:
+         -  in: path
+            name: gpuId
+            required: true
+            description: ID of GPU
+            schema:
+                type: integer
+                format: int64
+        responses:
+            '200':
+                description: gets gpuId gpu
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                id:
+                                    type: integer
+                                    description: ID of the GPU.
+                                data:
+                                    $ref: '../../components.schemas.yaml#/components/schemas/GPUDTO'
+                                component:
+                                    $ref: '../../components.schemas.yaml#/components/schemas/ComponentDTO'
+            '404':
+                $ref: '../../components.responses.yaml#/components/responses/NotFoundError'
+            '500':
+                $ref: '../../components.responses.yaml#/components/responses/ServerSideError'

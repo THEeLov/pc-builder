@@ -1,0 +1,77 @@
+processors:
+    get:
+        parameters:
+          - in: query
+            name: socket
+            description: Socket of processor
+            required: false
+            schema:
+                type: string
+                example: "LGA1200"
+        responses:
+            '200':
+                description: gets all processors
+                content:
+                    application/json:
+                        schema:
+                            type: array
+                            items:
+                                type: object
+                                properties:
+                                    id:
+                                        type: integer
+                                        description: ID of the Processor.
+                                    data:
+                                        $ref: '../../components.schemas.yaml#/components/schemas/ProcessorDTO'
+                                    component:
+                                        $ref: '../../components.schemas.yaml#/components/schemas/ComponentDTO'
+            '500':
+                $ref: '../../components.responses.yaml#/components/responses/ServerSideError'
+        security:
+            - sessionCookie: []
+    post:
+        requestBody:
+            required: true
+            content:
+                application/json:
+                        schema:
+                            $ref:
+                                '../../components.schemas.yaml#/components/schemas/ProcessorDTO'
+        responses:
+            '200':
+                $ref: '../../components.responses.yaml#/components/responses/Success'
+            '400':
+                $ref: '../../components.responses.yaml#/components/responses/BadRequestError'
+            '500':
+                $ref: '../../components.responses.yaml#/components/responses/ServerSideError'
+        security:
+            - sessionCookie: []
+processorsProcessorId:
+    get:
+        parameters:
+          - in: path
+            name: processorId
+            required: true
+            description: ID of Processor
+            schema:
+                type: integer
+                format: int64
+        responses:
+            '200':
+                description: gets processorId processor
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                id:
+                                    type: integer
+                                    description: ID of the Processor.
+                                data:
+                                    $ref: '../../components.schemas.yaml#/components/schemas/ProcessorDTO'
+                                component:
+                                    $ref: '../../components.schemas.yaml#/components/schemas/ComponentDTO'
+            '404':
+                $ref: '../../components.responses.yaml#/components/responses/NotFoundError'
+            '500':
+                $ref: '../../components.responses.yaml#/components/responses/ServerSideError'
