@@ -6,3 +6,5 @@ properties:
     message:
         type: string
         example: "Successfully logged in"
+required:
+    - message

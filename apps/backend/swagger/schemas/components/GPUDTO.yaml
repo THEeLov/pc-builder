@@ -8,3 +8,8 @@ properties:
         type: string
     power:
         type: integer
+required:
+    - memory
+    - powerConnector
+    - interface
+    - power

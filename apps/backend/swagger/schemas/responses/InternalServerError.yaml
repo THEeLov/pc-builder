@@ -3,3 +3,5 @@ properties:
     message:
         type: string
         example: "Internal server error."
+required:
+    - message
