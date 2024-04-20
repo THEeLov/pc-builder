@@ -1,24 +1,24 @@
 openapi: 3.1.0
 info:
-  title: PCAssemblies
-  description: Backend Api for the PC Assemblies application
-  version: 0.0.1
+    title: PCAssemblies
+    description: Backend Api for the PC Assemblies application
+    version: 0.0.1
 servers:
-- url: "{scheme}//{server}:{port}"
-  description: the server
-  variables:
-    scheme:
-      default: "http:"
-      enum:
-      - "http:"
-      - "https:"
-    server:
-      default: localhost
-    port:
-      default: "8080"
+    - url: "{scheme}//{server}:{port}"
+      description: the server
+      variables:
+          scheme:
+              default: "http:"
+              enum:
+                  - "http:"
+                  - "https:"
+          server:
+              default: localhost
+          port:
+              default: "8080"
 
 security:
-  - sessionCookie: []
+    - sessionCookie: []
 
 components:
     schemas:
@@ -30,73 +30,73 @@ components:
 
         # User:
         UserDTO:
-            $ref: './schemas/user/UserDTO.yaml'
+            $ref: "./schemas/user/UserDTO.yaml"
         UserUpdateDTO:
-            $ref: './schemas/user/UserUpdateDTO.yaml'
+            $ref: "./schemas/user/UserUpdateDTO.yaml"
         UserLoginDTO:
-            $ref: './schemas/user/UserLoginDTO.yaml'
+            $ref: "./schemas/user/UserLoginDTO.yaml"
         UserRegistrationDTO:
-            $ref: './schemas/user/UserRegistrationDTO.yaml'
+            $ref: "./schemas/user/UserRegistrationDTO.yaml"
         UserType:
-            $ref: './schemas/user/UserType.yaml'
+            $ref: "./schemas/user/UserType.yaml"
 
         # Components:
         GPUDTO:
-            $ref: './schemas/components/GPUDTO.yaml'
+            $ref: "./schemas/components/GPUDTO.yaml"
         MotherboardDTO:
-            $ref: './schemas/components/MotherboardDTO.yaml'
+            $ref: "./schemas/components/MotherboardDTO.yaml"
         PCCaseDTO:
-            $ref: './schemas/components/PCCaseDTO.yaml'
+            $ref: "./schemas/components/PCCaseDTO.yaml"
         PowerSupplyDTO:
-            $ref: './schemas/components/PowerSupplyDTO.yaml'
+            $ref: "./schemas/components/PowerSupplyDTO.yaml"
         ProcessorDTO:
-            $ref: './schemas/components/ProcessorDTO.yaml'
+            $ref: "./schemas/components/ProcessorDTO.yaml"
         RAMDTO:
-            $ref: './schemas/components/RAMDTO.yaml'
+            $ref: "./schemas/components/RAMDTO.yaml"
         StorageDTO:
-            $ref: './schemas/components/StorageDTO.yaml'
+            $ref: "./schemas/components/StorageDTO.yaml"
 
         # Configuration:
         ConfigurationCreateDTO:
-            $ref: './schemas/configuration/ConfigurationCreateDTO.yaml'
+            $ref: "./schemas/configuration/ConfigurationCreateDTO.yaml"
         ConfigurationDTO:
-            $ref: './schemas/configuration/ConfigurationDTO.yaml'
+            $ref: "./schemas/configuration/ConfigurationDTO.yaml"
         ConfigurationUpdateDTO:
-            $ref: './schemas/configuration/ConfigurationUpdateDTO.yaml'
+            $ref: "./schemas/configuration/ConfigurationUpdateDTO.yaml"
 
         # PartialConfiguration:
         PartialConfigurationCreateDTO:
-            $ref: './schemas/partial-configuration/PartialConfigurationCreateDTO.yaml'
+            $ref: "./schemas/partial-configuration/PartialConfigurationCreateDTO.yaml"
         PartialConfigurationDTO:
-            $ref: './schemas/partial-configuration/PartialConfigurationDTO.yaml'
+            $ref: "./schemas/partial-configuration/PartialConfigurationDTO.yaml"
         PartialConfigurationUpdateDTO:
-            $ref: './schemas/partial-configuration/PartialConfigurationCreateDTO.yaml'
+            $ref: "./schemas/partial-configuration/PartialConfigurationCreateDTO.yaml"
 
         # Responses:
         BadRequestError:
-            $ref: './schemas/responses/BadRequestError.yaml'
+            $ref: "./schemas/responses/BadRequestError.yaml"
         ConfigurationList:
-            $ref: './schemas/responses/ConfigurationList.yaml'
+            $ref: "./schemas/responses/ConfigurationList.yaml"
         InternalServerError:
-            $ref: './schemas/responses/InternalServerError.yaml'
+            $ref: "./schemas/responses/InternalServerError.yaml"
         LoginSuccess:
-            $ref: './schemas/responses/LoginSuccess.yaml'
+            $ref: "./schemas/responses/LoginSuccess.yaml"
         NotFoundError:
-            $ref: './schemas/responses/NotFoundError.yaml'
+            $ref: "./schemas/responses/NotFoundError.yaml"
         Success:
-            $ref: './schemas/responses/Success.yaml'
+            $ref: "./schemas/responses/Success.yaml"
 
     responses:
         BadRequestErrorResponse:
-            $ref: './responses/BadRequestErrorResponse.yaml'
+            $ref: "./responses/BadRequestErrorResponse.yaml"
         InternalServerError:
-            $ref: './responses/InternalServerErrorResponse.yaml'
+            $ref: "./responses/InternalServerErrorResponse.yaml"
         SuccessResponse:
-            $ref: './responses/SuccessResponse.yaml'
+            $ref: "./responses/SuccessResponse.yaml"
         ConfigurationListResponse:
-            $ref: './responses/ConfigurationListResponse.yaml'
+            $ref: "./responses/ConfigurationListResponse.yaml"
         NotFoundErrorResponse:
-            $ref: './responses/NotFoundErrorResponse.yaml'
+            $ref: "./responses/NotFoundErrorResponse.yaml"
 
 paths:
     /users/register:

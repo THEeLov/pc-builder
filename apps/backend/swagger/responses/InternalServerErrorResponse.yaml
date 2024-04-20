@@ -2,4 +2,4 @@ description: Server side error.
 content:
     application/json:
         schema:
-            $ref: '../openapi.yaml#/components/schemas/InternalServerError'
+            $ref: "../openapi.yaml#/components/schemas/InternalServerError"

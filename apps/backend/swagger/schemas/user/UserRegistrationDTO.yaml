@@ -8,7 +8,7 @@ properties:
     password:
         type: string
     userType:
-        $ref: '../../openapi.yaml#/components/schemas/UserType'
+        $ref: "../../openapi.yaml#/components/schemas/UserType"
 required:
     - username
     - email

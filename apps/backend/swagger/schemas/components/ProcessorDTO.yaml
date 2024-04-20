@@ -11,8 +11,8 @@ properties:
     socket:
         type: string
 required:
-    -  architecture
-    -  cores
-    -  threads
-    -  bits
-    -  socket
+    - architecture
+    - cores
+    - threads
+    - bits
+    - socket

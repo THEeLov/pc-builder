@@ -2,4 +2,4 @@ description: The provided data are not okay.
 content:
     application/json:
         schema:
-            $ref: '../openapi.yaml#/components/schemas/BadRequestError'
+            $ref: "../openapi.yaml#/components/schemas/BadRequestError"

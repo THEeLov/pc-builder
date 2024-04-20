@@ -4,23 +4,23 @@ properties:
         type: integer
         format: int64
     motherboard:
-        $ref: '../../openapi.yaml#/components/schemas/MotherboardDTO'
+        $ref: "../../openapi.yaml#/components/schemas/MotherboardDTO"
     processor:
-        $ref: '../../openapi.yaml#/components/schemas/ProcessorDTO'
+        $ref: "../../openapi.yaml#/components/schemas/ProcessorDTO"
     gpu:
-        $ref: '../../openapi.yaml#/components/schemas/GPUDTO'
+        $ref: "../../openapi.yaml#/components/schemas/GPUDTO"
     rams:
         type: array
         items:
-        $ref: '../../openapi.yaml#/components/schemas/RAMDTO'
+        $ref: "../../openapi.yaml#/components/schemas/RAMDTO"
     storages:
         type: array
         items:
-            $ref: '../../openapi.yaml#/components/schemas/StorageDTO'
+            $ref: "../../openapi.yaml#/components/schemas/StorageDTO"
     powerSupply:
-        $ref: '../../openapi.yaml#/components/schemas/PowerSupplyDTO'
+        $ref: "../../openapi.yaml#/components/schemas/PowerSupplyDTO"
     pcCase:
-        $ref: '../../openapi.yaml#/components/schemas/PCCaseDTO'
+        $ref: "../../openapi.yaml#/components/schemas/PCCaseDTO"
 required:
     - userId
     - motherboard

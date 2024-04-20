@@ -9,7 +9,7 @@ properties:
         type: string
         format: email
     userType:
-        $ref: '../../openapi.yaml#/components/schemas/UserType'
+        $ref: "../../openapi.yaml#/components/schemas/UserType"
 required:
     - id
     - username

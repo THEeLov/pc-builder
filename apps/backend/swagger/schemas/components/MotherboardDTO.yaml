@@ -13,9 +13,9 @@ properties:
     storageBusType:
         type: string
 required:
-    -  socket
-    -  formFactor
-    -  ramSlots
-    -  ramType
-    -  gpuInterface
-    -  storageBusType
+    - socket
+    - formFactor
+    - ramSlots
+    - ramType
+    - gpuInterface
+    - storageBusType

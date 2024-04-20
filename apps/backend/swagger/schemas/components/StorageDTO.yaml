@@ -8,6 +8,6 @@ properties:
     busType:
         type: string
 required:
-    -  storageType
-    -  capacity
-    -  busType
+    - storageType
+    - capacity
+    - busType

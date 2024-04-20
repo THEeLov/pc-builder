@@ -2,4 +2,4 @@ description: element not found.
 content:
     application/json:
         schema:
-            $ref: '../openapi.yaml#/components/schemas/NotFoundError'
+            $ref: "../openapi.yaml#/components/schemas/NotFoundError"

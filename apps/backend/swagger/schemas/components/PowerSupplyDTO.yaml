@@ -7,6 +7,6 @@ properties:
     formFactor:
         type: string
 required:
-    -  powerOutput
-    -  efficiency
-    -  formFactor
+    - powerOutput
+    - efficiency
+    - formFactor

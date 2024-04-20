@@ -8,6 +8,6 @@ properties:
         type: string
         enum: [DESKTOP, LAPTOP]
 required:
-    -  memoryType
-    -  capacity
-    -  computerType
+    - memoryType
+    - capacity
+    - computerType

@@ -2,4 +2,4 @@ description: Gets all configurations of userId.
 content:
     application/json:
         schema:
-            $ref: '../openapi.yaml#/components/schemas/ConfigurationList'
+            $ref: "../openapi.yaml#/components/schemas/ConfigurationList"

@@ -2,4 +2,4 @@ description: Success
 content:
     application/json:
         schema:
-            $ref: '../openapi.yaml#/components/schemas/Success'
+            $ref: "../openapi.yaml#/components/schemas/Success"
