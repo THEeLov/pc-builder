@@ -32,6 +32,10 @@ paths:
         $ref: './routes/configurations.yaml#/configurations'
     /configurations/{userId}:
         $ref: './routes/configurations.yaml#/configurationsUserId'
+    /configurations/partial:
+        $ref: './routes/configurations.yaml#/partialConfigurations'
+    /configurations/partial/{userId}:
+        $ref: './routes/configurations.yaml#/partialConfigurationsUserId'
     /components/gpus:
             $ref: './routes/components/gpus.yaml#/gpus'
     /components/gpus/{gpuId}:

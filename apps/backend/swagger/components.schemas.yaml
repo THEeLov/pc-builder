@@ -70,6 +70,39 @@ components:
                     $ref: '#/components/schemas/UserType'
             required:
                 - id
+        PartialConfigurationCreateDTO:
+            type: object
+            properties:
+                userId:
+                    type: integer
+                    format: int64
+                motherboardId:
+                    type: integer
+                    format: int64
+                processorId:
+                    type: integer
+                    format: int64
+                gpuId:
+                    type: integer
+                    format: int64
+                ramIds:
+                    type: array
+                    items:
+                        type: integer
+                        format: int64
+                storageIds:
+                    type: array
+                    items:
+                        type: integer
+                        format: int64
+                powerSupplyId:
+                    type: integer
+                    format: int64
+                pcCaseId:
+                    type: integer
+                    format: int64
+            required:
+                 - userId
         ConfigurationCreateDTO:
             type: object
             properties:
@@ -77,25 +110,39 @@ components:
                     type: integer
                     format: int64
                 motherboardId:
-                    $ref: '#/components/schemas/MotherboardDTO'
+                    type: integer
+                    format: int64
                 processorId:
-                    $ref: '#/components/schemas/ProcessorDTO'
+                    type: integer
+                    format: int64
                 gpuId:
-                    $ref: '#/components/schemas/GPUDTO'
+                    type: integer
+                    format: int64
                 ramIds:
                     type: array
                     items:
-                        $ref: '#/components/schemas/RAMDTO'
+                        type: integer
+                        format: int64
                 storageIds:
                     type: array
                     items:
-                        $ref: '#/components/schemas/StorageDTO'
+                        type: integer
+                        format: int64
                 powerSupplyId:
-                    $ref: '#/components/schemas/PowerSupplyDTO'
+                    type: integer
+                    format: int64
                 pcCaseId:
-                    $ref: '#/components/schemas/PCCaseDTO'
+                    type: integer
+                    format: int64
             required:
                 - userId
+                - motherboardId
+                - processorId
+                - gpuId
+                - ramIds
+                - storageIds
+                - powerSupplyId
+                - pcCaseId
             # najskor sa config vytvori, potom sa do nej budu putovat komponenty.
             # Kukni prisma schema. vsetko je tam nullable a kompatibilita sa bude resolvovat v backende :-)
         ConfigurationDTO:
@@ -117,13 +164,6 @@ components:
                     $ref: '#/components/schemas/PowerSupplyDTO'
                 pcCase:
                     $ref: '#/components/schemas/PCCaseDTO'
-            required:
-             -  motherboard
-             -  processor
-             -  rams
-             -  storages
-             -  powerSupply
-             -  pcCase
         ConfigurationUpdateDTO:
             type: object
             properties:

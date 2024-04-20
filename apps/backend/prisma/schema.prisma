@@ -56,13 +56,14 @@ model Component {
 }
 
 model User {
-  id                  Int             @id @default(autoincrement())
-  username            String
-  email               String          @unique
-  password            String
-  userType            UserType        @default(USER)
-  userconfigurations  UserConfiguration[]
-  sessions            Session[]
+  id                        Int             @id @default(autoincrement())
+  username                  String
+  email                     String          @unique
+  password                  String
+  userType                  UserType        @default(USER)
+  userconfigurations        UserConfiguration[]
+  partialUserConfigurations ParcialPCConfiguration[]
+  sessions                  Session[]
 }
 
 model Motherboard {
@@ -76,6 +77,7 @@ model Motherboard {
   componentId     Int           @unique
   component       Component     @relation(fields: [componentId], references: [id])
   configurations  PCConfiguration[]
+  partial         ParcialPCConfiguration[]
 }
 
 model Processor {
@@ -87,8 +89,8 @@ model Processor {
   socket          String
   componentId     Int               @unique
   component       Component         @relation(fields: [componentId], references: [id])
-  configurations  PCConfiguration[]  
-
+  configurations  PCConfiguration[]
+  partial         ParcialPCConfiguration[]
 }
 
 model GPU {
@@ -100,6 +102,7 @@ model GPU {
   componentId     Int       @unique
   component       Component @relation(fields: [componentId], references: [id])
   configurations  PCConfiguration[]
+  partial         ParcialPCConfiguration[]
 }
 
 model RAM {
@@ -110,6 +113,7 @@ model RAM {
   componentId     Int      @unique
   component       Component @relation(fields: [componentId], references: [id])
   configurations  PCConfiguration[]
+  partial         ParcialPCConfiguration[]
 }
 
 model Storage {
@@ -120,6 +124,7 @@ model Storage {
   componentId     Int      @unique
   component       Component @relation(fields: [componentId], references: [id])
   configurations  PCConfiguration[]
+  partial         ParcialPCConfiguration[]
 }
 
 model PowerSupply {
@@ -130,6 +135,7 @@ model PowerSupply {
   componentId     Int             @unique
   component       Component       @relation(fields: [componentId], references: [id])
   configurations  PCConfiguration[]
+  partial         ParcialPCConfiguration[]
 }
 
 model PCCase {
@@ -138,9 +144,10 @@ model PCCase {
   componentId     Int                     @unique
   component       Component               @relation(fields: [componentId], references: [id])
   configurations  PCConfiguration[]
+  partial         ParcialPCConfiguration[]
 }
 
-model PCConfiguration {
+model ParcialPCConfiguration {
   id                 Int                   @id @default(autoincrement())
   totalPrice         Float
   configurationType  ConfigurationType
@@ -156,6 +163,26 @@ model PCConfiguration {
   powerSupply        PowerSupply?          @relation(fields: [powerSupplyId], references: [id])
   pcCaseId           Int?
   pcCase             PCCase?               @relation(fields: [pcCaseId], references: [id])
+  userId             Int
+  user               User                  @relation(fields: [userId], references: [id])
+}
+
+model PCConfiguration {
+  id                 Int                   @id @default(autoincrement())
+  totalPrice         Float
+  configurationType  ConfigurationType
+  motherboardId      Int
+  motherboard        Motherboard          @relation(fields: [motherboardId], references: [id])
+  processorId        Int
+  processor          Processor            @relation(fields: [processorId], references: [id])
+  rams               RAM[]
+  gpuId              Int
+  gpu                GPU                  @relation(fields: [gpuId], references: [id])
+  storages           Storage[]
+  powerSupplyId      Int
+  powerSupply        PowerSupply          @relation(fields: [powerSupplyId], references: [id])
+  pcCaseId           Int
+  pcCase             PCCase               @relation(fields: [pcCaseId], references: [id])
   userConfiguration  UserConfiguration?
 }
 
