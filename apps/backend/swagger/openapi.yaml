@@ -1,70 +1,68 @@
 openapi: 3.1.0
 info:
-  title: PCAssemblies
-  description: Backend Api for the PC Assemblies application
-  version: 0.0.1
+    title: PCAssemblies
+    description: Backend Api for the PC Assemblies application
+    version: 0.0.1
 servers:
-- url: "{scheme}//{server}:{port}"
-  description: the server
-  variables:
-    scheme:
-      default: "http:"
-      enum:
-      - "http:"
-      - "https:"
-    server:
-      default: localhost
-    port:
-      default: "8080"
+    - url: "{scheme}//{server}:{port}"
+      description: the server
+      variables:
+          scheme:
+              default: "http:"
+              enum:
+                  - "http:"
+                  - "https:"
+          server:
+              default: localhost
+          port:
+              default: "8080"
 
 security:
-  - sessionCookie: []
-
+    - sessionCookie: []
 
 paths:
     /users/register:
-        $ref: './routes/auth.yaml#/register'
+        $ref: "./routes/auth.yaml#/register"
     /users/login:
-        $ref: './routes/auth.yaml#/login'
+        $ref: "./routes/auth.yaml#/login"
     /users/{userId}:
-        $ref: './routes/users.yaml#/usersUserId'
+        $ref: "./routes/users.yaml#/usersUserId"
     /configurations:
-        $ref: './routes/configurations.yaml#/configurations'
+        $ref: "./routes/configurations.yaml#/configurations"
     /configurations/{userId}:
-        $ref: './routes/configurations.yaml#/configurationsUserId'
+        $ref: "./routes/configurations.yaml#/configurationsUserId"
     /configurations/partial:
-        $ref: './routes/configurations.yaml#/partialConfigurations'
+        $ref: "./routes/configurations.yaml#/partialConfigurations"
     /configurations/partial/{userId}:
-        $ref: './routes/configurations.yaml#/partialConfigurationsUserId'
+        $ref: "./routes/configurations.yaml#/partialConfigurationsUserId"
     /components/gpus:
-            $ref: './routes/components/gpus.yaml#/gpus'
+        $ref: "./routes/components/gpus.yaml#/gpus"
     /components/gpus/{gpuId}:
-            $ref: './routes/components/gpus.yaml#/gpusGpuId'
+        $ref: "./routes/components/gpus.yaml#/gpusGpuId"
     /components/motherboards:
-            $ref: './routes/components/motherboards.yaml#/motherboards'
+        $ref: "./routes/components/motherboards.yaml#/motherboards"
     /components/motherboards/{motherboardId}:
-            $ref: './routes/components/motherboards.yaml#/motherboardsMotherboardId'
+        $ref: "./routes/components/motherboards.yaml#/motherboardsMotherboardId"
     /components/pccases:
-            $ref: './routes/components/pccases.yaml#/pccases'
+        $ref: "./routes/components/pccases.yaml#/pccases"
     /components/pccases/{pcCaseId}:
-            $ref: './routes/components/pccases.yaml#/pccasesPcCaseId'
+        $ref: "./routes/components/pccases.yaml#/pccasesPcCaseId"
     /components/powersupplies:
-            $ref: './routes/components/powersupplies.yaml#/powersupplies'
+        $ref: "./routes/components/powersupplies.yaml#/powersupplies"
     /components/powersupplies/{powersupplyid}:
-            $ref: './routes/components/powersupplies.yaml#/powersuppliesPowerSupplyId'
+        $ref: "./routes/components/powersupplies.yaml#/powersuppliesPowerSupplyId"
     /components/processors:
-            $ref: './routes/components/processors.yaml#/processors'
+        $ref: "./routes/components/processors.yaml#/processors"
     /components/processors/{processorId}:
-            $ref: './routes/components/processors.yaml#/processorsProcessorId'
+        $ref: "./routes/components/processors.yaml#/processorsProcessorId"
     /components/rams:
-            $ref: './routes/components/rams.yaml#/rams'
+        $ref: "./routes/components/rams.yaml#/rams"
     /components/rams/{ramId}:
-            $ref: './routes/components/rams.yaml#/ramsRamId'
+        $ref: "./routes/components/rams.yaml#/ramsRamId"
     /components/storages:
-            $ref: './routes/components/storages.yaml#/storages'
+        $ref: "./routes/components/storages.yaml#/storages"
     /components/storages/{storageId}:
-            $ref: './routes/components/storages.yaml#/storagesStorageId'
-
+        $ref: "./routes/components/storages.yaml#/storagesStorageId"
 # Funkcionalita by mala byť taká, že na to aby mohol user začať buildiť svoj pc sa musi
 # zaregistrivať/prihlásiť. Tým pádom dostane session cookie. session cookie sa viaže na jeho Konfiguraciu
 # Potom keď urobi klient request na napriklad /components/procesors tak pošle spolu s tým svoju session cookie.

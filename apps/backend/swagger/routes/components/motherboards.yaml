@@ -2,7 +2,7 @@ motherboards:
     get:
         summary: Get all motherboards.
         responses:
-            '200':
+            "200":
                 description: Gets all motherboards.
                 content:
                     application/json:
@@ -15,11 +15,11 @@ motherboards:
                                         type: integer
                                         description: ID of the motherboard.
                                     data:
-                                        $ref: '../../components.schemas.yaml#/components/schemas/MotherboardDTO'
+                                        $ref: "../../components.schemas.yaml#/components/schemas/MotherboardDTO"
                                     component:
-                                        $ref: '../../components.schemas.yaml#/components/schemas/ComponentDTO'
-            '500':
-                $ref: '../../components.responses.yaml#/components/responses/ServerSideError'
+                                        $ref: "../../components.schemas.yaml#/components/schemas/ComponentDTO"
+            "500":
+                $ref: "../../components.responses.yaml#/components/responses/ServerSideError"
         security:
             - sessionCookie: []
     post:
@@ -28,42 +28,42 @@ motherboards:
             content:
                 application/json:
                     schema:
-                        $ref: '../../components.schemas.yaml#/components/schemas/MotherboardDTO'
+                        $ref: "../../components.schemas.yaml#/components/schemas/MotherboardDTO"
         responses:
-            '200':
-                $ref: '../../components.responses.yaml#/components/responses/Success'
-            '400':
-                $ref: '../../components.responses.yaml#/components/responses/BadRequestError'
-            '500':
-                $ref: '../../components.responses.yaml#/components/responses/ServerSideError'
+            "200":
+                $ref: "../../components.responses.yaml#/components/responses/Success"
+            "400":
+                $ref: "../../components.responses.yaml#/components/responses/BadRequestError"
+            "500":
+                $ref: "../../components.responses.yaml#/components/responses/ServerSideError"
         security:
             - sessionCookie: []
 motherboardsMotherboardId:
     get:
         parameters:
-          - in: path
-            name: motherboardId
-            required: true
-            description: ID of the motherboard
-            schema:
-                type: integer
-                format: int64
+            - in: path
+              name: motherboardId
+              required: true
+              description: ID of the motherboard
+              schema:
+                  type: integer
+                  format: int64
         responses:
-            '200':
+            "200":
                 description: Gets motherboard with motherboardId
                 content:
-                  application/json:
-                    schema:
-                        type: object
-                        properties:
-                            id:
-                                type: integer
-                                description: ID of the motherboard.
-                            data:
-                                $ref: '../../components.schemas.yaml#/components/schemas/MotherboardDTO'
-                            component:
-                                $ref: '../../components.schemas.yaml#/components/schemas/ComponentDTO'
-            '404':
-                $ref: '../../components.responses.yaml#/components/responses/NotFoundError'
-            '500':
-                $ref: '../../components.responses.yaml#/components/responses/ServerSideError'
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                id:
+                                    type: integer
+                                    description: ID of the motherboard.
+                                data:
+                                    $ref: "../../components.schemas.yaml#/components/schemas/MotherboardDTO"
+                                component:
+                                    $ref: "../../components.schemas.yaml#/components/schemas/ComponentDTO"
+            "404":
+                $ref: "../../components.responses.yaml#/components/responses/NotFoundError"
+            "500":
+                $ref: "../../components.responses.yaml#/components/responses/ServerSideError"

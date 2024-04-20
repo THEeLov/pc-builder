@@ -1,7 +1,7 @@
 pccases:
     get:
         responses:
-            '200':
+            "200":
                 description: gets pccases
                 content:
                     application/json:
@@ -14,11 +14,11 @@ pccases:
                                         type: integer
                                         description: ID of the PCCase.
                                     data:
-                                        $ref: '../../components.schemas.yaml#/components/schemas/PCCaseDTO'
+                                        $ref: "../../components.schemas.yaml#/components/schemas/PCCaseDTO"
                                     component:
-                                        $ref: '../../components.schemas.yaml#/components/schemas/ComponentDTO'
-            '500':
-                $ref: '../../components.responses.yaml#/components/responses/ServerSideError'
+                                        $ref: "../../components.schemas.yaml#/components/schemas/ComponentDTO"
+            "500":
+                $ref: "../../components.responses.yaml#/components/responses/ServerSideError"
         security:
             - sessionCookie: []
     post:
@@ -26,29 +26,29 @@ pccases:
             required: true
             content:
                 application/json:
-                        schema:
-                            $ref: '../../components.schemas.yaml#/components/schemas/PCCaseDTO'
+                    schema:
+                        $ref: "../../components.schemas.yaml#/components/schemas/PCCaseDTO"
         responses:
-            '200':
-                $ref: '../../components.responses.yaml#/components/responses/Success'
-            '400':
-                $ref: '../../components.responses.yaml#/components/responses/BadRequestError'
-            '500':
-                $ref: '../../components.responses.yaml#/components/responses/ServerSideError'
+            "200":
+                $ref: "../../components.responses.yaml#/components/responses/Success"
+            "400":
+                $ref: "../../components.responses.yaml#/components/responses/BadRequestError"
+            "500":
+                $ref: "../../components.responses.yaml#/components/responses/ServerSideError"
         security:
             - sessionCookie: []
 pccasesPcCaseId:
     get:
         parameters:
-          - in: path
-            name: pcCaseId
-            required: true
-            description: ID of PCCase
-            schema:
-                type: integer
-                format: int64
+            - in: path
+              name: pcCaseId
+              required: true
+              description: ID of PCCase
+              schema:
+                  type: integer
+                  format: int64
         responses:
-            '200':
+            "200":
                 description: gets pccaseId pccase
                 content:
                     application/json:
@@ -59,10 +59,10 @@ pccasesPcCaseId:
                                     type: integer
                                     description: ID of the PCCase.
                                 data:
-                                    $ref: '../../components.schemas.yaml#/components/schemas/PCCaseDTO'
+                                    $ref: "../../components.schemas.yaml#/components/schemas/PCCaseDTO"
                                 component:
-                                    $ref: '../../components.schemas.yaml#/components/schemas/ComponentDTO'
-            '404':
-                $ref: '../../components.responses.yaml#/components/responses/NotFoundError'
-            '500':
-                $ref: '../../components.responses.yaml#/components/responses/ServerSideError'
+                                    $ref: "../../components.schemas.yaml#/components/schemas/ComponentDTO"
+            "404":
+                $ref: "../../components.responses.yaml#/components/responses/NotFoundError"
+            "500":
+                $ref: "../../components.responses.yaml#/components/responses/ServerSideError"

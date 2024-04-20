@@ -2,25 +2,25 @@ usersUserId:
     put:
         summary: Update user details
         parameters:
-          - in: path
-            name: userId
-            required: true
-            description: ID of the user to update
-            schema:
-                type: integer
-                format: int64
+            - in: path
+              name: userId
+              required: true
+              description: ID of the user to update
+              schema:
+                  type: integer
+                  format: int64
         requestBody:
             required: true
             content:
                 application/json:
                     schema:
-                        $ref: '../components.schemas.yaml#/components/schemas/UserUpdateDTO'
+                        $ref: "../components.schemas.yaml#/components/schemas/UserUpdateDTO"
         responses:
-            '200':
-                $ref: '../components.responses.yaml#/components/responses/Success'
-            '400':
-                $ref: '../components.responses.yaml#/components/responses/BadRequestError'
-            '500':
-                $ref: '../components.responses.yaml#/components/responses/ServerSideError'
+            "200":
+                $ref: "../components.responses.yaml#/components/responses/Success"
+            "400":
+                $ref: "../components.responses.yaml#/components/responses/BadRequestError"
+            "500":
+                $ref: "../components.responses.yaml#/components/responses/ServerSideError"
         security:
             - sessionCookie: []

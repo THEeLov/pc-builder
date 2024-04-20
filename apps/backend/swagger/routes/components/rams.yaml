@@ -1,15 +1,15 @@
 rams:
     get:
         parameters:
-          - in: query
-            name: memoryType
-            description: Specific type of ram memory
-            required: false
-            schema:
-                type: string
-                example: "ddr4"
+            - in: query
+              name: memoryType
+              description: Specific type of ram memory
+              required: false
+              schema:
+                  type: string
+                  example: "ddr4"
         responses:
-            '200':
+            "200":
                 description: gets all rams
                 content:
                     application/json:
@@ -22,11 +22,11 @@ rams:
                                         type: integer
                                         description: ID of the RAM.
                                     data:
-                                        $ref: '../../components.schemas.yaml#/components/schemas/RAMDTO'
+                                        $ref: "../../components.schemas.yaml#/components/schemas/RAMDTO"
                                     component:
-                                        $ref: '../../components.schemas.yaml#/components/schemas/ComponentDTO'
-            '500':
-                $ref: '../../components.responses.yaml#/components/responses/ServerSideError'
+                                        $ref: "../../components.schemas.yaml#/components/schemas/ComponentDTO"
+            "500":
+                $ref: "../../components.responses.yaml#/components/responses/ServerSideError"
         security:
             - sessionCookie: []
     post:
@@ -34,30 +34,29 @@ rams:
             required: true
             content:
                 application/json:
-                        schema:
-                            $ref:
-                                '../../components.schemas.yaml#/components/schemas/RAMDTO'
+                    schema:
+                        $ref: "../../components.schemas.yaml#/components/schemas/RAMDTO"
         responses:
-            '200':
-                $ref: '../../components.responses.yaml#/components/responses/Success'
-            '400':
-                $ref: '../../components.responses.yaml#/components/responses/BadRequestError'
-            '500':
-                $ref: '../../components.responses.yaml#/components/responses/ServerSideError'
+            "200":
+                $ref: "../../components.responses.yaml#/components/responses/Success"
+            "400":
+                $ref: "../../components.responses.yaml#/components/responses/BadRequestError"
+            "500":
+                $ref: "../../components.responses.yaml#/components/responses/ServerSideError"
         security:
             - sessionCookie: []
 ramsRamId:
     get:
         parameters:
-          - in: path
-            name: ramId
-            required: true
-            description: ID of RAM
-            schema:
-                type: integer
-                format: int64
+            - in: path
+              name: ramId
+              required: true
+              description: ID of RAM
+              schema:
+                  type: integer
+                  format: int64
         responses:
-            '200':
+            "200":
                 description: gets a ram with ramId
                 content:
                     application/json:
@@ -68,10 +67,10 @@ ramsRamId:
                                     type: integer
                                     description: ID of the RAM.
                                 data:
-                                    $ref: '../../components.schemas.yaml#/components/schemas/RAMDTO'
+                                    $ref: "../../components.schemas.yaml#/components/schemas/RAMDTO"
                                 component:
-                                    $ref: '../../components.schemas.yaml#/components/schemas/ComponentDTO'
-            '404':
-                $ref: '../../components.responses.yaml#/components/responses/NotFoundError'
-            '500':
-                $ref: '../../components.responses.yaml#/components/responses/ServerSideError'
+                                    $ref: "../../components.schemas.yaml#/components/schemas/ComponentDTO"
+            "404":
+                $ref: "../../components.responses.yaml#/components/responses/NotFoundError"
+            "500":
+                $ref: "../../components.responses.yaml#/components/responses/ServerSideError"

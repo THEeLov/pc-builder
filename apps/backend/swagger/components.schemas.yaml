@@ -1,6 +1,6 @@
 components:
     schemas:
-    ## DTO OBJECTS
+        ## DTO OBJECTS
         UserRegistrationDTO:
             type: object
             properties:
@@ -12,7 +12,7 @@ components:
                 password:
                     type: string
                 userType:
-                    $ref: '#/components/schemas/UserType'
+                    $ref: "#/components/schemas/UserType"
             required:
                 - username
                 - email
@@ -37,11 +37,11 @@ components:
                 manufacturer:
                     type: string
             required:
-                -   name
-                -   type
-                -   price
-                -   imageUrl
-                -   manufacturer
+                - name
+                - type
+                - price
+                - imageUrl
+                - manufacturer
         UserLoginDTO:
             type: object
             properties:
@@ -67,7 +67,7 @@ components:
                 encryptedPassword:
                     type: string
                 userType:
-                    $ref: '#/components/schemas/UserType'
+                    $ref: "#/components/schemas/UserType"
             required:
                 - id
         PartialConfigurationCreateDTO:
@@ -102,7 +102,7 @@ components:
                     type: integer
                     format: int64
             required:
-                 - userId
+                - userId
         ConfigurationCreateDTO:
             type: object
             properties:
@@ -149,21 +149,21 @@ components:
             type: object
             properties:
                 motherboard:
-                    $ref: '#/components/schemas/MotherboardDTO'
+                    $ref: "#/components/schemas/MotherboardDTO"
                 processor:
-                    $ref: '#/components/schemas/ProcessorDTO'
+                    $ref: "#/components/schemas/ProcessorDTO"
                 rams:
                     type: array
                     items:
-                        $ref: '#/components/schemas/RAMDTO'
+                        $ref: "#/components/schemas/RAMDTO"
                 storages:
                     type: array
                     items:
-                        $ref: '#/components/schemas/StorageDTO'
+                        $ref: "#/components/schemas/StorageDTO"
                 powerSupply:
-                    $ref: '#/components/schemas/PowerSupplyDTO'
+                    $ref: "#/components/schemas/PowerSupplyDTO"
                 pcCase:
-                    $ref: '#/components/schemas/PCCaseDTO'
+                    $ref: "#/components/schemas/PCCaseDTO"
         ConfigurationUpdateDTO:
             type: object
             properties:
@@ -215,12 +215,12 @@ components:
                 storageBusType:
                     type: string
             required:
-             -  socket
-             -  formFactor
-             -  ramSlots
-             -  ramType
-             -  gpuInterface
-             -  storageBusType
+                - socket
+                - formFactor
+                - ramSlots
+                - ramType
+                - gpuInterface
+                - storageBusType
         ProcessorDTO:
             type: object
             properties:
@@ -235,11 +235,11 @@ components:
                 socket:
                     type: string
             required:
-             -  architecture
-             -  cores
-             -  threads
-             -  bits
-             -  socket
+                - architecture
+                - cores
+                - threads
+                - bits
+                - socket
         GPUDTO:
             type: object
             properties:
@@ -262,9 +262,9 @@ components:
                     type: string
                     enum: [DESKTOP, LAPTOP]
             required:
-             -  memoryType
-             -  capacity
-             -  computerType
+                - memoryType
+                - capacity
+                - computerType
         StorageDTO:
             type: object
             properties:
@@ -276,9 +276,9 @@ components:
                 busType:
                     type: string
             required:
-             -  storageType
-             -  capacity
-             -  busType
+                - storageType
+                - capacity
+                - busType
         PowerSupplyDTO:
             type: object
             properties:
@@ -289,52 +289,52 @@ components:
                 formFactor:
                     type: string
             required:
-             -  powerOutput
-             -  efficiency
-             -  formFactor
+                - powerOutput
+                - efficiency
+                - formFactor
         PCCaseDTO:
             type: object
             properties:
                 formFactor:
                     type: string
             required:
-             -  formFactor
+                - formFactor
         ## RESPONSE OBJECTS
         ConfigurationList:
             type: array
             items:
-                $ref: '#/components/schemas/ConfigurationDTO'
+                $ref: "#/components/schemas/ConfigurationDTO"
         SuccessfulResponse:
             type: object
             properties:
-              message:
-                type: string
-                example: "Success!"
+                message:
+                    type: string
+                    example: "Success!"
         NotFoundError:
             type: object
             properties:
-              message:
-                type: string
-                example: "Not found"
+                message:
+                    type: string
+                    example: "Not found"
         BadRequestError:
             type: object
             properties:
-              message:
-                type: string
-                example: "Bad request"
+                message:
+                    type: string
+                    example: "Bad request"
         InternalServerError:
             type: object
             properties:
-              message:
-                type: string
+                message:
+                    type: string
         LoginSuccess:
             type: object
             properties:
-              id:
-                type: string
-                example: "13c45a61-7260-41b6-88de-2260fc61ccb2"
-              message:
-                type: string
+                id:
+                    type: string
+                    example: "13c45a61-7260-41b6-88de-2260fc61ccb2"
+                message:
+                    type: string
     ## session cookie scheme:
     ## session cookie je vpodstate len uuid.
     ## ked klient posle request na databazu, musi vzdy nastavit withCredentials na true,
