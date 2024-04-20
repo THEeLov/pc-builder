@@ -1,0 +1,206 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+enum UserType {
+    ADMIN
+    USER
+}
+
+enum ConfigurationType {
+    GAMING
+    OFFICE
+    WORK
+}
+
+enum ComputerType {
+    DESKTOP
+    LAPTOP
+}
+
+enum ComponentType {
+    MOTHERBOARD
+    PROCESSOR
+    GPU
+    RAM
+    STORAGE
+    POWERSUPPLY
+    PCCASE
+}
+
+model Session {
+    id        String                   @id @default(uuid())
+    createdAt DateTime                 @default(now())
+    expiresAt DateTime
+    userId    Int
+    userType  UserType
+    user      User                     @relation(fields: [userId], references: [id])
+    partial   ParcialPCConfiguration[]
+}
+
+model Component {
+    id                Int                 @id @default(autoincrement())
+    name              String
+    configurationType ConfigurationType[]
+    componentType     ComponentType
+    price             Float
+    manufacturer      String
+    imageUrl          String
+    motherboard       Motherboard?
+    processor         Processor?
+    gpu               GPU?
+    ram               RAM?
+    storage           Storage?
+    powerSupply       PowerSupply?
+    pcCase            PCCase?
+}
+
+model User {
+    id                        Int                      @id @default(autoincrement())
+    username                  String
+    email                     String                   @unique
+    password                  String
+    userType                  UserType                 @default(USER)
+    userconfigurations        PCConfiguration[]
+    partialUserConfigurations ParcialPCConfiguration[]
+    sessions                  Session[]
+}
+
+model Motherboard {
+    id             Int                      @id @default(autoincrement())
+    socket         String
+    formFactor     String
+    ramSlots       Int
+    ramType        String
+    gpuInterface   String
+    stroageBusType String
+    componentId    Int                      @unique
+    component      Component                @relation(fields: [componentId], references: [id])
+    configurations PCConfiguration[]
+    partial        ParcialPCConfiguration[]
+}
+
+model Processor {
+    id             Int                      @id @default(autoincrement())
+    architecture   String
+    cores          Int
+    threads        Int
+    bits           Int
+    socket         String
+    componentId    Int                      @unique
+    component      Component                @relation(fields: [componentId], references: [id])
+    configurations PCConfiguration[]
+    partial        ParcialPCConfiguration[]
+}
+
+model GPU {
+    id             Int                      @id @default(autoincrement())
+    memory         Int
+    powerConnector String
+    interface      String
+    power          Int
+    componentId    Int                      @unique
+    component      Component                @relation(fields: [componentId], references: [id])
+    configurations PCConfiguration[]
+    partial        ParcialPCConfiguration[]
+}
+
+model RAM {
+    id             Int                      @id @default(autoincrement())
+    memoryType     String
+    capacity       Int
+    computerType   ComputerType
+    componentId    Int                      @unique
+    component      Component                @relation(fields: [componentId], references: [id])
+    configurations PCConfiguration[]
+    partial        ParcialPCConfiguration[]
+}
+
+model Storage {
+    id             Int                      @id @default(autoincrement())
+    storageType    String
+    capacity       Int
+    busType        String
+    componentId    Int                      @unique
+    component      Component                @relation(fields: [componentId], references: [id])
+    configurations PCConfiguration[]
+    partial        ParcialPCConfiguration[]
+}
+
+model PowerSupply {
+    id             Int                      @id @default(autoincrement())
+    powerOutput    Int
+    efficiency     String
+    formFactor     String
+    componentId    Int                      @unique
+    component      Component                @relation(fields: [componentId], references: [id])
+    configurations PCConfiguration[]
+    partial        ParcialPCConfiguration[]
+}
+
+model PCCase {
+    id             Int                      @id @default(autoincrement())
+    formFactor     String
+    componentId    Int                      @unique
+    component      Component                @relation(fields: [componentId], references: [id])
+    configurations PCConfiguration[]
+    partial        ParcialPCConfiguration[]
+}
+
+model ParcialPCConfiguration {
+    id                Int               @id @default(autoincrement())
+    totalPrice        Float
+    configurationType ConfigurationType
+    motherboardId     Int?
+    motherboard       Motherboard?      @relation(fields: [motherboardId], references: [id])
+    processorId       Int?
+    processor         Processor?        @relation(fields: [processorId], references: [id])
+    rams              RAM[]
+    gpuId             Int?
+    gpu               GPU?              @relation(fields: [gpuId], references: [id])
+    storages          Storage[]
+    powerSupplyId     Int?
+    powerSupply       PowerSupply?      @relation(fields: [powerSupplyId], references: [id])
+    pcCaseId          Int?
+    pcCase            PCCase?           @relation(fields: [pcCaseId], references: [id])
+    userId            Int
+    user              User              @relation(fields: [userId], references: [id])
+    sessionId         String
+    session           Session           @relation(fields: [sessionId], references: [id])
+    createdAt         DateTime          @default(now())
+    updatedAt         DateTime          @default(now())
+}
+
+model PCConfiguration {
+    id                Int               @id @default(autoincrement())
+    totalPrice        Float
+    configurationType ConfigurationType
+    motherboardId     Int
+    motherboard       Motherboard       @relation(fields: [motherboardId], references: [id])
+    processorId       Int
+    processor         Processor         @relation(fields: [processorId], references: [id])
+    rams              RAM[]
+    gpuId             Int
+    gpu               GPU               @relation(fields: [gpuId], references: [id])
+    storages          Storage[]
+    powerSupplyId     Int
+    powerSupply       PowerSupply       @relation(fields: [powerSupplyId], references: [id])
+    pcCaseId          Int
+    pcCase            PCCase            @relation(fields: [pcCaseId], references: [id])
+    userId            Int
+    user              User              @relation(fields: [userId], references: [id])
+    createdAt         DateTime          @default(now())
+    updatedAt         DateTime          @default(now())
+    deletedAt         DateTime?
+}

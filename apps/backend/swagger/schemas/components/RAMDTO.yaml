@@ -1,0 +1,13 @@
+type: object
+properties:
+    memoryType:
+        type: string
+    capacity:
+        type: integer
+    computerType:
+        type: string
+        enum: [DESKTOP, LAPTOP]
+required:
+    - memoryType
+    - capacity
+    - computerType

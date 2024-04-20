@@ -1,0 +1,127 @@
+motherboards:
+    get:
+        summary: Get all motherboards.
+        responses:
+            "200":
+                description: Gets all motherboards.
+                content:
+                    application/json:
+                        schema:
+                            type: array
+                            items:
+                                type: object
+                                properties:
+                                    id:
+                                        type: integer
+                                        description: ID of the motherboard.
+                                    data:
+                                        $ref: "../../openapi.yaml#/components/schemas/MotherboardDTO"
+            "400":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+            "404":
+                $ref: "../../openapi.yaml#/components/responses/NotFoundErrorResponse"
+            "500":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+        security:
+            - sessionCookie: []
+    post:
+        requestBody:
+            required: true
+            content:
+                application/json:
+                    schema:
+                        $ref: "../../openapi.yaml#/components/schemas/MotherboardDTO"
+        responses:
+            "200":
+                $ref: "../../openapi.yaml#/components/responses/SuccessResponse"
+            "400":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+            "500":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+        security:
+            - sessionCookie: []
+motherboardsMotherboardId:
+    get:
+        parameters:
+            - in: path
+              name: motherboardId
+              required: true
+              description: ID of the motherboard
+              schema:
+                  type: integer
+                  format: int64
+        responses:
+            "200":
+                description: Gets motherboard with motherboardId
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                id:
+                                    type: integer
+                                    description: ID of the motherboard.
+                                data:
+                                    $ref: "../../openapi.yaml#/components/schemas/MotherboardDTO"
+            "400":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+            "404":
+                $ref: "../../openapi.yaml#/components/responses/NotFoundErrorResponse"
+            "500":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+    put:
+        parameters:
+            - in: path
+              name: motherboardId
+              required: true
+              description: ID of the motherboard
+              schema:
+                  type: integer
+                  format: int64
+        responses:
+            "200":
+                description: Gets motherboard with motherboardId
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                id:
+                                    type: integer
+                                    description: ID of the motherboard.
+                                data:
+                                    $ref: "../../openapi.yaml#/components/schemas/MotherboardDTO"
+            "400":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+            "404":
+                $ref: "../../openapi.yaml#/components/responses/NotFoundErrorResponse"
+            "500":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+    delete:
+        parameters:
+            - in: path
+              name: motherboardId
+              required: true
+              description: ID of the motherboard
+              schema:
+                  type: integer
+                  format: int64
+        responses:
+            "200":
+                description: Gets motherboard with motherboardId
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                id:
+                                    type: integer
+                                    description: ID of the motherboard.
+                                data:
+                                    $ref: "../../openapi.yaml#/components/schemas/MotherboardDTO"
+            "400":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+            "404":
+                $ref: "../../openapi.yaml#/components/responses/NotFoundErrorResponse"
+            "500":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"

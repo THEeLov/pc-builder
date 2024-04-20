@@ -1,0 +1,126 @@
+pccases:
+    get:
+        responses:
+            "200":
+                description: gets pccases
+                content:
+                    application/json:
+                        schema:
+                            type: array
+                            items:
+                                type: object
+                                properties:
+                                    id:
+                                        type: integer
+                                        description: ID of the PCCase.
+                                    data:
+                                        $ref: "../../openapi.yaml#/components/schemas/PCCaseDTO"
+            "400":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+            "404":
+                $ref: "../../openapi.yaml#/components/responses/NotFoundErrorResponse"
+            "500":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+        security:
+            - sessionCookie: []
+    post:
+        requestBody:
+            required: true
+            content:
+                application/json:
+                    schema:
+                        $ref: "../../openapi.yaml#/components/schemas/PCCaseDTO"
+        responses:
+            "200":
+                $ref: "../../openapi.yaml#/components/responses/SuccessResponse"
+            "400":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+            "500":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+        security:
+            - sessionCookie: []
+pccasesPcCaseId:
+    get:
+        parameters:
+            - in: path
+              name: pcCaseId
+              required: true
+              description: ID of PCCase
+              schema:
+                  type: integer
+                  format: int64
+        responses:
+            "200":
+                description: gets pccaseId pccase
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                id:
+                                    type: integer
+                                    description: ID of the PCCase.
+                                data:
+                                    $ref: "../../openapi.yaml#/components/schemas/PCCaseDTO"
+            "400":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+            "404":
+                $ref: "../../openapi.yaml#/components/responses/NotFoundErrorResponse"
+            "500":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+    put:
+        parameters:
+            - in: path
+              name: pcCaseId
+              required: true
+              description: ID of PCCase
+              schema:
+                  type: integer
+                  format: int64
+        responses:
+            "200":
+                description: gets pccaseId pccase
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                id:
+                                    type: integer
+                                    description: ID of the PCCase.
+                                data:
+                                    $ref: "../../openapi.yaml#/components/schemas/PCCaseDTO"
+            "400":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+            "404":
+                $ref: "../../openapi.yaml#/components/responses/NotFoundErrorResponse"
+            "500":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+    delete:
+        parameters:
+            - in: path
+              name: pcCaseId
+              required: true
+              description: ID of PCCase
+              schema:
+                  type: integer
+                  format: int64
+        responses:
+            "200":
+                description: gets pccaseId pccase
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                id:
+                                    type: integer
+                                    description: ID of the PCCase.
+                                data:
+                                    $ref: "../../openapi.yaml#/components/schemas/PCCaseDTO"
+            "400":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+            "404":
+                $ref: "../../openapi.yaml#/components/responses/NotFoundErrorResponse"
+            "500":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"

@@ -1,0 +1,15 @@
+type: object
+properties:
+    memory:
+        type: integer
+    powerConnector:
+        type: string
+    interface:
+        type: string
+    power:
+        type: integer
+required:
+    - memory
+    - powerConnector
+    - interface
+    - power

@@ -1,0 +1,10 @@
+type: object
+properties:
+    id:
+        type: string
+        example: "13c45a61-7260-41b6-88de-2260fc61ccb2"
+    message:
+        type: string
+        example: "Successfully logged in"
+required:
+    - message
