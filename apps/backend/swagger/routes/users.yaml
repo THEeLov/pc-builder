@@ -24,3 +24,28 @@ usersUserId:
                 $ref: "../openapi.yaml#/components/responses/InternalServerError"
         security:
             - sessionCookie: []
+    delete:
+        summary: Deletes a user's account
+        parameters:
+            - in: path
+              name: userId
+              required: true
+              description: ID of the user to delete
+              schema:
+                  type: integer
+                  format: int64
+        requestBody:
+            required: true
+            content:
+                application/json:
+                    schema:
+                        $ref: "../openapi.yaml#/components/schemas/UserUpdateDTO"
+        responses:
+            "200":
+                $ref: "../openapi.yaml#/components/responses/SuccessResponse"
+            "400":
+                $ref: "../openapi.yaml#/components/responses/BadRequestErrorResponse"
+            "500":
+                $ref: "../openapi.yaml#/components/responses/InternalServerError"
+        security:
+            - sessionCookie: []

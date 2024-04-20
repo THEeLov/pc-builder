@@ -76,3 +76,59 @@ processorsProcessorId:
                 $ref: "../../openapi.yaml#/components/responses/NotFoundErrorResponse"
             "500":
                 $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+    put:
+        parameters:
+            - in: path
+              name: processorId
+              required: true
+              description: ID of Processor
+              schema:
+                  type: integer
+                  format: int64
+        responses:
+            "200":
+                description: gets processorId processor
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                id:
+                                    type: integer
+                                    description: ID of the Processor.
+                                data:
+                                    $ref: "../../openapi.yaml#/components/schemas/ProcessorDTO"
+            "400":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+            "404":
+                $ref: "../../openapi.yaml#/components/responses/NotFoundErrorResponse"
+            "500":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+    delete:
+        parameters:
+            - in: path
+              name: processorId
+              required: true
+              description: ID of Processor
+              schema:
+                  type: integer
+                  format: int64
+        responses:
+            "200":
+                description: gets processorId processor
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                id:
+                                    type: integer
+                                    description: ID of the Processor.
+                                data:
+                                    $ref: "../../openapi.yaml#/components/schemas/ProcessorDTO"
+            "400":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+            "404":
+                $ref: "../../openapi.yaml#/components/responses/NotFoundErrorResponse"
+            "500":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"

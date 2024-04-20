@@ -68,3 +68,59 @@ powersuppliesPowerSupplyId:
                 $ref: "../../openapi.yaml#/components/responses/NotFoundErrorResponse"
             "500":
                 $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+    put:
+        parameters:
+            - in: path
+              name: powerSupplyId
+              required: true
+              description: ID of PowerSupply
+              schema:
+                  type: integer
+                  format: int64
+        responses:
+            "200":
+                description: gets a powersupply with powerSupplyId
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                id:
+                                    type: integer
+                                    description: ID of the PowerSupplyDTO.
+                                data:
+                                    $ref: "../../openapi.yaml#/components/schemas/PowerSupplyDTO"
+            "400":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+            "404":
+                $ref: "../../openapi.yaml#/components/responses/NotFoundErrorResponse"
+            "500":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+    delete:
+        parameters:
+            - in: path
+              name: powerSupplyId
+              required: true
+              description: ID of PowerSupply
+              schema:
+                  type: integer
+                  format: int64
+        responses:
+            "200":
+                description: gets a powersupply with powerSupplyId
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                id:
+                                    type: integer
+                                    description: ID of the PowerSupplyDTO.
+                                data:
+                                    $ref: "../../openapi.yaml#/components/schemas/PowerSupplyDTO"
+            "400":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+            "404":
+                $ref: "../../openapi.yaml#/components/responses/NotFoundErrorResponse"
+            "500":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"

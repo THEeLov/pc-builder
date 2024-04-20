@@ -76,3 +76,59 @@ ramsRamId:
                 $ref: "../../openapi.yaml#/components/responses/NotFoundErrorResponse"
             "500":
                 $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+    put:
+        parameters:
+            - in: path
+              name: ramId
+              required: true
+              description: ID of RAM
+              schema:
+                  type: integer
+                  format: int64
+        responses:
+            "200":
+                description: gets a ram with ramId
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                id:
+                                    type: integer
+                                    description: ID of the RAM.
+                                data:
+                                    $ref: "../../openapi.yaml#/components/schemas/RAMDTO"
+            "400":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+            "404":
+                $ref: "../../openapi.yaml#/components/responses/NotFoundErrorResponse"
+            "500":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+    delete:
+        parameters:
+            - in: path
+              name: ramId
+              required: true
+              description: ID of RAM
+              schema:
+                  type: integer
+                  format: int64
+        responses:
+            "200":
+                description: gets a ram with ramId
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                id:
+                                    type: integer
+                                    description: ID of the RAM.
+                                data:
+                                    $ref: "../../openapi.yaml#/components/schemas/RAMDTO"
+            "400":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+            "404":
+                $ref: "../../openapi.yaml#/components/responses/NotFoundErrorResponse"
+            "500":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"

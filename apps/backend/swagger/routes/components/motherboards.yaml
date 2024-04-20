@@ -69,3 +69,59 @@ motherboardsMotherboardId:
                 $ref: "../../openapi.yaml#/components/responses/NotFoundErrorResponse"
             "500":
                 $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+    put:
+        parameters:
+            - in: path
+              name: motherboardId
+              required: true
+              description: ID of the motherboard
+              schema:
+                  type: integer
+                  format: int64
+        responses:
+            "200":
+                description: Gets motherboard with motherboardId
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                id:
+                                    type: integer
+                                    description: ID of the motherboard.
+                                data:
+                                    $ref: "../../openapi.yaml#/components/schemas/MotherboardDTO"
+            "400":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+            "404":
+                $ref: "../../openapi.yaml#/components/responses/NotFoundErrorResponse"
+            "500":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+    delete:
+        parameters:
+            - in: path
+              name: motherboardId
+              required: true
+              description: ID of the motherboard
+              schema:
+                  type: integer
+                  format: int64
+        responses:
+            "200":
+                description: Gets motherboard with motherboardId
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                id:
+                                    type: integer
+                                    description: ID of the motherboard.
+                                data:
+                                    $ref: "../../openapi.yaml#/components/schemas/MotherboardDTO"
+            "400":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+            "404":
+                $ref: "../../openapi.yaml#/components/responses/NotFoundErrorResponse"
+            "500":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"

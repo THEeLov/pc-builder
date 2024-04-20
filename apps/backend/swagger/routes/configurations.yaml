@@ -75,6 +75,37 @@ configurationsUserId:
                 $ref: "../openapi.yaml#/components/responses/InternalServerError"
         security:
             - sessionCookie: []
+    delete:
+        summary: Update an existing PC configuration
+        parameters:
+            - in: path
+              name: userId
+              required: true
+              description: ID of the user
+              schema:
+                  type: integer
+                  format: int64
+        requestBody:
+            required: true
+            content:
+                application/json:
+                    schema:
+                        type: object
+                        properties:
+                            id:
+                                type: integer
+                                description: Id of configuration
+                            configuration:
+                                $ref: "../openapi.yaml#/components/schemas/ConfigurationUpdateDTO"
+        responses:
+            "200":
+                $ref: "../openapi.yaml#/components/responses/SuccessResponse"
+            "400":
+                $ref: "../openapi.yaml#/components/responses/BadRequestErrorResponse"
+            "500":
+                $ref: "../openapi.yaml#/components/responses/InternalServerError"
+        security:
+            - sessionCookie: []
 partialConfigurations:
     get:
         summary: Get all PartialConfigurations for the user based on the sessionCookie.
@@ -89,7 +120,73 @@ partialConfigurations:
             - sessionCookie: []
 partialConfigurationsUserId:
     post:
-        summary: Create a new PC configuration for user.
+        summary: Create a new partial PC configuration for user.
+        parameters:
+            - in: path
+              name: userId
+              required: true
+              description: ID of the user.
+              schema:
+                  type: integer
+                  format: int64
+        requestBody:
+            required: true
+            content:
+                application/json:
+                    schema:
+                        $ref: "../openapi.yaml#/components/schemas/PartialConfigurationCreateDTO"
+        responses:
+            "200":
+                description: PC configuration created successfully
+                content:
+                    application/json:
+                        schema:
+                            id:
+                                description: The ID of the partial configuration.
+                                type: integer
+                            message:
+                                type: string
+            "400":
+                $ref: "../openapi.yaml#/components/responses/BadRequestErrorResponse"
+            "500":
+                $ref: "../openapi.yaml#/components/responses/InternalServerError"
+        security:
+            - sessionCookie: []
+    put:
+        summary: Updates a partial PC configuration for user.
+        parameters:
+            - in: path
+              name: userId
+              required: true
+              description: ID of the user.
+              schema:
+                  type: integer
+                  format: int64
+        requestBody:
+            required: true
+            content:
+                application/json:
+                    schema:
+                        $ref: "../openapi.yaml#/components/schemas/PartialConfigurationCreateDTO"
+        responses:
+            "200":
+                description: PC configuration created successfully
+                content:
+                    application/json:
+                        schema:
+                            id:
+                                description: The ID of the partial configuration.
+                                type: integer
+                            message:
+                                type: string
+            "400":
+                $ref: "../openapi.yaml#/components/responses/BadRequestErrorResponse"
+            "500":
+                $ref: "../openapi.yaml#/components/responses/InternalServerError"
+        security:
+            - sessionCookie: []
+    delete:
+        summary: Deletes a partial PC configuration for user.
         parameters:
             - in: path
               name: userId

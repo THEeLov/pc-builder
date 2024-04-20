@@ -68,3 +68,59 @@ storagesStorageId:
                 $ref: "../../openapi.yaml#/components/responses/NotFoundErrorResponse"
             "500":
                 $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+    put:
+        parameters:
+            - in: path
+              name: storageId
+              required: true
+              description: ID of Storage.
+              schema:
+                  type: integer
+                  format: int64
+        responses:
+            "200":
+                description: gets storage with storageId
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                id:
+                                    type: integer
+                                    description: ID of the Storage..
+                                data:
+                                    $ref: "../../openapi.yaml#/components/schemas/StorageDTO"
+            "400":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+            "404":
+                $ref: "../../openapi.yaml#/components/responses/NotFoundErrorResponse"
+            "500":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+    delete:
+        parameters:
+            - in: path
+              name: storageId
+              required: true
+              description: ID of Storage.
+              schema:
+                  type: integer
+                  format: int64
+        responses:
+            "200":
+                description: gets storage with storageId
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                id:
+                                    type: integer
+                                    description: ID of the Storage..
+                                data:
+                                    $ref: "../../openapi.yaml#/components/schemas/StorageDTO"
+            "400":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+            "404":
+                $ref: "../../openapi.yaml#/components/responses/NotFoundErrorResponse"
+            "500":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
