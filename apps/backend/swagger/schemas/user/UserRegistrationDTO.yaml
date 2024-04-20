@@ -1,0 +1,16 @@
+type: object
+properties:
+    username:
+        type: string
+    email:
+        type: string
+        format: email
+    password:
+        type: string
+    userType:
+        $ref: '../../openapi.yaml#/components/schemas/UserType'
+required:
+    - username
+    - email
+    - password
+    - userType

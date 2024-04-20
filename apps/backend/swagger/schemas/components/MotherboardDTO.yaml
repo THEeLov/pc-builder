@@ -1,0 +1,21 @@
+type: object
+properties:
+    socket:
+        type: string
+    formFactor:
+        type: string
+    ramSlots:
+        type: integer
+    ramType:
+        type: string
+    gpuInterface:
+        type: string
+    storageBusType:
+        type: string
+required:
+    -  socket
+    -  formFactor
+    -  ramSlots
+    -  ramType
+    -  gpuInterface
+    -  storageBusType

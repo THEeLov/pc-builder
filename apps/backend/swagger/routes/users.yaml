@@ -14,13 +14,13 @@ usersUserId:
             content:
                 application/json:
                     schema:
-                        $ref: "../components.schemas.yaml#/components/schemas/UserUpdateDTO"
+                        $ref: "../openapi.yaml#/components/schemas/UserUpdateDTO"
         responses:
             "200":
-                $ref: "../components.responses.yaml#/components/responses/Success"
+                $ref: "../openapi.yaml#/components/responses/SuccessResponse"
             "400":
-                $ref: "../components.responses.yaml#/components/responses/BadRequestError"
+                $ref: "../openapi.yaml#/components/responses/BadRequestErrorResponse"
             "500":
-                $ref: "../components.responses.yaml#/components/responses/ServerSideError"
+                $ref: "../openapi.yaml#/components/responses/InternalServerError"
         security:
             - sessionCookie: []

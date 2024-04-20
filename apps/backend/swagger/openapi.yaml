@@ -1,24 +1,102 @@
 openapi: 3.1.0
 info:
-    title: PCAssemblies
-    description: Backend Api for the PC Assemblies application
-    version: 0.0.1
+  title: PCAssemblies
+  description: Backend Api for the PC Assemblies application
+  version: 0.0.1
 servers:
-    - url: "{scheme}//{server}:{port}"
-      description: the server
-      variables:
-          scheme:
-              default: "http:"
-              enum:
-                  - "http:"
-                  - "https:"
-          server:
-              default: localhost
-          port:
-              default: "8080"
+- url: "{scheme}//{server}:{port}"
+  description: the server
+  variables:
+    scheme:
+      default: "http:"
+      enum:
+      - "http:"
+      - "https:"
+    server:
+      default: localhost
+    port:
+      default: "8080"
 
 security:
-    - sessionCookie: []
+  - sessionCookie: []
+
+components:
+    schemas:
+        Security:
+            SessionCookie:
+                type: apiKey
+                in: cookie
+                name: session
+
+        # User:
+        UserDTO:
+            $ref: './schemas/user/UserDTO.yaml'
+        UserUpdateDTO:
+            $ref: './schemas/user/UserUpdateDTO.yaml'
+        UserLoginDTO:
+            $ref: './schemas/user/UserLoginDTO.yaml'
+        UserRegistrationDTO:
+            $ref: './schemas/user/UserRegistrationDTO.yaml'
+        UserType:
+            $ref: './schemas/user/UserType.yaml'
+
+        # Components:
+        GPUDTO:
+            $ref: './schemas/components/GPUDTO.yaml'
+        MotherboardDTO:
+            $ref: './schemas/components/MotherboardDTO.yaml'
+        PCCaseDTO:
+            $ref: './schemas/components/PCCaseDTO.yaml'
+        PowerSupplyDTO:
+            $ref: './schemas/components/PowerSupplyDTO.yaml'
+        ProcessorDTO:
+            $ref: './schemas/components/ProcessorDTO.yaml'
+        RAMDTO:
+            $ref: './schemas/components/RAMDTO.yaml'
+        StorageDTO:
+            $ref: './schemas/components/StorageDTO.yaml'
+
+        # Configuration:
+        ConfigurationCreateDTO:
+            $ref: './schemas/configuration/ConfigurationCreateDTO.yaml'
+        ConfigurationDTO:
+            $ref: './schemas/configuration/ConfigurationDTO.yaml'
+        ConfigurationUpdateDTO:
+            $ref: './schemas/configuration/ConfigurationUpdateDTO.yaml'
+
+        # PartialConfiguration:
+        PartialConfigurationCreateDTO:
+            $ref: './schemas/partial-configuration/PartialConfigurationCreateDTO.yaml'
+        PartialConfigurationDTO:
+            $ref: './schemas/partial-configuration/PartialConfigurationDTO.yaml'
+        PartialConfigurationUpdateDTO:
+            $ref: './schemas/partial-configuration/PartialConfigurationCreateDTO.yaml'
+
+        # Responses:
+        BadRequestError:
+            $ref: './schemas/responses/BadRequestError.yaml'
+        ConfigurationList:
+            $ref: './schemas/responses/ConfigurationList.yaml'
+        InternalServerError:
+            $ref: './schemas/responses/InternalServerError.yaml'
+        LoginSuccess:
+            $ref: './schemas/responses/LoginSuccess.yaml'
+        NotFoundError:
+            $ref: './schemas/responses/NotFoundError.yaml'
+        Success:
+            $ref: './schemas/responses/Success.yaml'
+
+    responses:
+        BadRequestErrorResponse:
+            $ref: './responses/BadRequestErrorResponse.yaml'
+        InternalServerError:
+            $ref: './responses/InternalServerErrorResponse.yaml'
+        SuccessResponse:
+            $ref: './responses/SuccessResponse.yaml'
+        ConfigurationListResponse:
+            $ref: './responses/ConfigurationListResponse.yaml'
+        NotFoundErrorResponse:
+            $ref: './responses/NotFoundErrorResponse.yaml'
 
 paths:
     /users/register:
@@ -63,8 +141,3 @@ paths:
         $ref: "./routes/components/storages.yaml#/storages"
     /components/storages/{storageId}:
         $ref: "./routes/components/storages.yaml#/storagesStorageId"
-# Funkcionalita by mala byť taká, že na to aby mohol user začať buildiť svoj pc sa musi
-# zaregistrivať/prihlásiť. Tým pádom dostane session cookie. session cookie sa viaže na jeho Konfiguraciu
-# Potom keď urobi klient request na napriklad /components/procesors tak pošle spolu s tým svoju session cookie.
-# v backende sa vyrieši kompatibilita s jeho konfiguraciou a vratia sa mu presne tie komponenty, ktoré sú kompatibilné s
-# jeho konfiguráciou.

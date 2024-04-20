@@ -3,11 +3,11 @@ configurations:
         summary: Get all configurations for the user based on the sessionCookie.
         responses:
             "200":
-                $ref: "../components.responses.yaml#/components/responses/ConfigurationListResponse"
+                $ref: "../openapi.yaml#/components/responses/ConfigurationListResponse"
             "400":
-                $ref: "../components.responses.yaml#/components/responses/BadRequestError"
+                $ref: "../openapi.yaml#/components/responses/BadRequestErrorResponse"
             "500":
-                $ref: "../components.responses.yaml#/components/responses/ServerSideError"
+                $ref: "../openapi.yaml#/components/responses/InternalServerError"
         security:
             - sessionCookie: []
 configurationsUserId:
@@ -26,7 +26,7 @@ configurationsUserId:
             content:
                 application/json:
                     schema:
-                        $ref: "../components.schemas.yaml#/components/schemas/ConfigurationCreateDTO"
+                        $ref: "../openapi.yaml#/components/schemas/ConfigurationCreateDTO"
         responses:
             "200":
                 description: PC configuration created successfully
@@ -39,9 +39,9 @@ configurationsUserId:
                             message:
                                 type: string
             "400":
-                $ref: "../components.responses.yaml#/components/responses/BadRequestError"
+                $ref: "../openapi.yaml#/components/responses/BadRequestErrorResponse"
             "500":
-                $ref: "../components.responses.yaml#/components/responses/ServerSideError"
+                $ref: "../openapi.yaml#/components/responses/InternalServerError"
         security:
             - sessionCookie: []
     put:
@@ -65,14 +65,14 @@ configurationsUserId:
                                 type: integer
                                 description: Id of configuration
                             configuration:
-                                $ref: "../components.schemas.yaml#/components/schemas/ConfigurationUpdateDTO"
+                                $ref: "../openapi.yaml#/components/schemas/ConfigurationUpdateDTO"
         responses:
             "200":
-                $ref: "../components.responses.yaml#/components/responses/Success"
+                $ref: "../openapi.yaml#/components/responses/SuccessResponse"
             "400":
-                $ref: "../components.responses.yaml#/components/responses/BadRequestError"
+                $ref: "../openapi.yaml#/components/responses/BadRequestErrorResponse"
             "500":
-                $ref: "../components.responses.yaml#/components/responses/ServerSideError"
+                $ref: "../openapi.yaml#/components/responses/InternalServerError"
         security:
             - sessionCookie: []
 partialConfigurations:
@@ -80,11 +80,11 @@ partialConfigurations:
         summary: Get all PartialConfigurations for the user based on the sessionCookie.
         responses:
             "200":
-                $ref: "../components.responses.yaml#/components/responses/ConfigurationListResponse"
+                $ref: "../openapi.yaml#/components/responses/ConfigurationListResponse"
             "400":
-                $ref: "../components.responses.yaml#/components/responses/BadRequestError"
+                $ref: "../openapi.yaml#/components/responses/BadRequestErrorResponse"
             "500":
-                $ref: "../components.responses.yaml#/components/responses/ServerSideError"
+                $ref: "../openapi.yaml#/components/responses/InternalServerError"
         security:
             - sessionCookie: []
 partialConfigurationsUserId:
@@ -103,7 +103,7 @@ partialConfigurationsUserId:
             content:
                 application/json:
                     schema:
-                        $ref: "../components.schemas.yaml#/components/schemas/PartialConfigurationCreateDTO"
+                        $ref: "../openapi.yaml#/components/schemas/PartialConfigurationCreateDTO"
         responses:
             "200":
                 description: PC configuration created successfully
@@ -116,8 +116,8 @@ partialConfigurationsUserId:
                             message:
                                 type: string
             "400":
-                $ref: "../components.responses.yaml#/components/responses/BadRequestError"
+                $ref: "../openapi.yaml#/components/responses/BadRequestErrorResponse"
             "500":
-                $ref: "../components.responses.yaml#/components/responses/ServerSideError"
+                $ref: "../openapi.yaml#/components/responses/InternalServerError"
         security:
             - sessionCookie: []

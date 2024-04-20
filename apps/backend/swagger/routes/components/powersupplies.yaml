@@ -14,11 +14,13 @@ powersupplies:
                                         type: integer
                                         description: ID of the PowerSupply.
                                     data:
-                                        $ref: "../../components.schemas.yaml#/components/schemas/PowerSupplyDTO"
-                                    component:
-                                        $ref: "../../components.schemas.yaml#/components/schemas/ComponentDTO"
+                                        $ref: "../../openapi.yaml#/components/schemas/PowerSupplyDTO"
+            "400":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+            "404":
+                $ref: "../../openapi.yaml#/components/responses/NotFoundErrorResponse"
             "500":
-                $ref: "../../components.responses.yaml#/components/responses/ServerSideError"
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
         security:
             - sessionCookie: []
     post:
@@ -27,14 +29,14 @@ powersupplies:
             content:
                 application/json:
                     schema:
-                        $ref: "../../components.schemas.yaml#/components/schemas/PowerSupplyDTO"
+                        $ref: "../../openapi.yaml#/components/schemas/PowerSupplyDTO"
         responses:
             "200":
-                $ref: "../../components.responses.yaml#/components/responses/Success"
+                $ref: "../../openapi.yaml#/components/responses/SuccessResponse"
             "400":
-                $ref: "../../components.responses.yaml#/components/responses/BadRequestError"
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
             "500":
-                $ref: "../../components.responses.yaml#/components/responses/ServerSideError"
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
         security:
             - sessionCookie: []
 powersuppliesPowerSupplyId:
@@ -59,10 +61,10 @@ powersuppliesPowerSupplyId:
                                     type: integer
                                     description: ID of the PowerSupplyDTO.
                                 data:
-                                    $ref: "../../components.schemas.yaml#/components/schemas/PowerSupplyDTO"
-                                component:
-                                    $ref: "../../components.schemas.yaml#/components/schemas/ComponentDTO"
+                                    $ref: "../../openapi.yaml#/components/schemas/PowerSupplyDTO"
+            "400":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
             "404":
-                $ref: "../../components.responses.yaml#/components/responses/NotFoundError"
+                $ref: "../../openapi.yaml#/components/responses/NotFoundErrorResponse"
             "500":
-                $ref: "../../components.responses.yaml#/components/responses/ServerSideError"
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"

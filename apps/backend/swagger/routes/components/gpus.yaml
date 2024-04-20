@@ -14,11 +14,13 @@ gpus:
                                         type: integer
                                         description: ID of the GPU.
                                     data:
-                                        $ref: "../../components.schemas.yaml#/components/schemas/GPUDTO"
-                                    component:
-                                        $ref: "../../components.schemas.yaml#/components/schemas/ComponentDTO"
+                                        $ref: "../../openapi.yaml#/components/schemas/GPUDTO"
+            "400":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+            "404":
+                $ref: "../../openapi.yaml#/components/responses/NotFoundErrorResponse"
             "500":
-                $ref: "../../components.responses.yaml#/components/responses/ServerSideError"
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
         security:
             - sessionCookie: []
     post:
@@ -27,14 +29,14 @@ gpus:
             content:
                 application/json:
                     schema:
-                        $ref: "../../components.schemas.yaml#/components/schemas/GPUDTO"
+                        $ref: "../../openapi.yaml#/components/schemas/GPUDTO"
         responses:
             "200":
-                $ref: "../../components.responses.yaml#/components/responses/Success"
+                $ref: "../../openapi.yaml#/components/responses/SuccessResponse"
             "400":
-                $ref: "../../components.responses.yaml#/components/responses/BadRequestError"
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
             "500":
-                $ref: "../../components.responses.yaml#/components/responses/ServerSideError"
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
         security:
             - sessionCookie: []
 gpusGpuId:
@@ -49,7 +51,7 @@ gpusGpuId:
                   format: int64
         responses:
             "200":
-                description: gets gpuId gpu
+                description: gets gpuId
                 content:
                     application/json:
                         schema:
@@ -59,10 +61,10 @@ gpusGpuId:
                                     type: integer
                                     description: ID of the GPU.
                                 data:
-                                    $ref: "../../components.schemas.yaml#/components/schemas/GPUDTO"
-                                component:
-                                    $ref: "../../components.schemas.yaml#/components/schemas/ComponentDTO"
+                                    $ref: "../../openapi.yaml#/components/schemas/GPUDTO"
+            "400":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
             "404":
-                $ref: "../../components.responses.yaml#/components/responses/NotFoundError"
+                $ref: "../../openapi.yaml#/components/responses/NotFoundErrorResponse"
             "500":
-                $ref: "../../components.responses.yaml#/components/responses/ServerSideError"
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"

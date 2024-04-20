@@ -1,0 +1,13 @@
+type: object
+properties:
+    storageType:
+        type: string
+    capacity:
+        type: integer
+        format: int64
+    busType:
+        type: string
+required:
+    -  storageType
+    -  capacity
+    -  busType

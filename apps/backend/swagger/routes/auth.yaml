@@ -6,7 +6,7 @@ register:
             content:
                 application/json:
                     schema:
-                        $ref: "../components.schemas.yaml#/components/schemas/UserRegistrationDTO"
+                        $ref: "../openapi.yaml#/components/schemas/UserRegistrationDTO"
         responses:
             "200":
                 description: User registration successful
@@ -18,12 +18,12 @@ register:
                 content:
                     application/json:
                         schema:
-                            $ref: "../components.schemas.yaml#/components/schemas/LoginSuccess"
+                            $ref: "../openapi.yaml#/components/schemas/LoginSuccess"
 
             "400":
-                $ref: "../components.responses.yaml#/components/responses/BadRequestError"
+                $ref: "../openapi.yaml#/components/responses/BadRequestErrorResponse"
             "500":
-                $ref: "../components.responses.yaml#/components/responses/BadRequestError"
+                $ref: "../openapi.yaml#/components/responses/InternalServerError"
 login:
     post:
         summary: Log in as a user
@@ -32,7 +32,7 @@ login:
             content:
                 application/json:
                     schema:
-                        $ref: "../components.schemas.yaml#/components/schemas/UserLoginDTO"
+                        $ref: "../openapi.yaml#/components/schemas/UserLoginDTO"
         responses:
             "200":
                 description: User login successful
@@ -44,8 +44,8 @@ login:
                 content:
                     application/json:
                         schema:
-                            $ref: "../components.schemas.yaml#/components/schemas/LoginSuccess"
+                            $ref: "../openapi.yaml#/components/schemas/LoginSuccess"
             "400":
-                $ref: "../components.responses.yaml#/components/responses/BadRequestError"
+                $ref: "../openapi.yaml#/components/responses/BadRequestErrorResponse"
             "500":
-                $ref: "../components.responses.yaml#/components/responses/ServerSideError"
+                $ref: "../openapi.yaml#/components/responses/InternalServerError"

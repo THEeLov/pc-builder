@@ -22,11 +22,13 @@ rams:
                                         type: integer
                                         description: ID of the RAM.
                                     data:
-                                        $ref: "../../components.schemas.yaml#/components/schemas/RAMDTO"
-                                    component:
-                                        $ref: "../../components.schemas.yaml#/components/schemas/ComponentDTO"
+                                        $ref: "../../openapi.yaml#/components/schemas/RAMDTO"
+            "400":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+            "404":
+                $ref: "../../openapi.yaml#/components/responses/NotFoundErrorResponse"
             "500":
-                $ref: "../../components.responses.yaml#/components/responses/ServerSideError"
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
         security:
             - sessionCookie: []
     post:
@@ -35,14 +37,14 @@ rams:
             content:
                 application/json:
                     schema:
-                        $ref: "../../components.schemas.yaml#/components/schemas/RAMDTO"
+                        $ref: "../../openapi.yaml#/components/schemas/RAMDTO"
         responses:
             "200":
-                $ref: "../../components.responses.yaml#/components/responses/Success"
+                $ref: "../../openapi.yaml#/components/responses/SuccessResponse"
             "400":
-                $ref: "../../components.responses.yaml#/components/responses/BadRequestError"
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
             "500":
-                $ref: "../../components.responses.yaml#/components/responses/ServerSideError"
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
         security:
             - sessionCookie: []
 ramsRamId:
@@ -67,10 +69,10 @@ ramsRamId:
                                     type: integer
                                     description: ID of the RAM.
                                 data:
-                                    $ref: "../../components.schemas.yaml#/components/schemas/RAMDTO"
-                                component:
-                                    $ref: "../../components.schemas.yaml#/components/schemas/ComponentDTO"
+                                    $ref: "../../openapi.yaml#/components/schemas/RAMDTO"
+            "400":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
             "404":
-                $ref: "../../components.responses.yaml#/components/responses/NotFoundError"
+                $ref: "../../openapi.yaml#/components/responses/NotFoundErrorResponse"
             "500":
-                $ref: "../../components.responses.yaml#/components/responses/ServerSideError"
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
