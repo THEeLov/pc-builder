@@ -12,7 +12,7 @@ properties:
     rams:
         type: array
         items:
-        $ref: "../../openapi.yaml#/components/schemas/RAMDTO"
+            $ref: "../../openapi.yaml#/components/schemas/RAMDTO"
     storages:
         type: array
         items:
