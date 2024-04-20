@@ -1,3 +1,1 @@
-npx nx format --all
-npx nx generate-backend
-npx nx generate-frontend
+nx format --all
