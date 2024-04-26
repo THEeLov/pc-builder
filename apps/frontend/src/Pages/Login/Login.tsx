@@ -31,24 +31,34 @@ const Login = () => {
 
     return (
         <div className="login">
-            <div className="login-container">
-                <h1 className="login__headline">Sign in</h1>
-                <form className="login__form" onSubmit={handleSubmit(onSubmit)}>
-                    <input {...register("username")} className="form-input" type="text" placeholder="username" />
-                    <input {...register("password")} className="form-input" type="password" placeholder="password" />
-                    <button className="form-button" type="submit">
-                        Sign In
-                    </button>
+            <div className="login__logo">
+                <h1>PC Builder</h1>
+            </div>
+            <div className="login__container">
+                <div className="login__form-container">
+                    <h1 className="login__form-container__headline">Sign in</h1>
+                    <form className="login__form" onSubmit={handleSubmit(onSubmit)}>
+                        <input {...register("username")} className="form-input" type="text" placeholder="username" />
+                        <input
+                            {...register("password")}
+                            className="form-input"
+                            type="password"
+                            placeholder="password"
+                        />
+                        <button className="form-button" type="submit">
+                            Sign In
+                        </button>
 
-                    {/* Show error if user doesnt exit */}
-                    {errors.root && <div>{errors.root.message}</div>}
-                </form>
-                <div className="login-questions">
-                    <a href="/register">Dont have an account ? Sign Up</a>
-                </div>
+                        {/* Show error if user doesnt exit */}
+                        {errors.root && <div>{errors.root.message}</div>}
+                    </form>
+                    <div className="login__form-container__questions">
+                        <a href="/register">Dont have an account ? Sign Up</a>
+                    </div>
 
-                <div className="login-image">
-                    <img className="bob" src={Bob} alt="not working" />
+                    <div className="login-image">
+                        <img className="bob" src={Bob} alt="not working" />
+                    </div>
                 </div>
             </div>
         </div>

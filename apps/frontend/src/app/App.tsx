@@ -2,12 +2,15 @@
 import "./app.css"
 import Navbar from "../components/Navbar/Navbar"
 import Footer from "../components/Footer/Footer"
+import { Outlet } from "react-router-dom"
 
-const App = ({ children }: { children: React.ReactNode }) => {
+const App = () => {
     return (
         <div>
             <Navbar />
-            {children}
+            <main>
+                <Outlet />
+            </main>
             <Footer />
         </div>
     )

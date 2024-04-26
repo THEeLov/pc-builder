@@ -8,28 +8,24 @@ import Register from "../Pages/Register/Register"
 export const router = createBrowserRouter([
     {
         path: "/",
-        element: (
-            <App>
-                {" "}
-                <Homepage />{" "}
-            </App>
-        ),
-    },
-    {
-        path: "/build",
-        element: (
-            <App>
-                {" "}
-                <Build />{" "}
-            </App>
-        ),
+        Component: App,
+        children: [
+            {
+                index: true,
+                Component: Homepage
+            },
+            {
+                path: '/build',
+                Component: Build
+            }
+        ]
     },
     {
         path: "login",
-        element: <Login />,
+        Component: Login
     },
     {
         path: "register",
-        element: <Register />,
+        Component: Register
     },
 ])
