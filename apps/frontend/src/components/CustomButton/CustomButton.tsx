@@ -7,39 +7,52 @@ type ButtonProps = {
     icon?: ReactNode
 }
 
-const buttonTypeStyles = {
-    primary: {
-        textColor: "white",
-        primaryColor: "white",
-        borderColor: "black",
-    },
-    secondary: {
-        textColor: "black",
-        primaryColor: "black",
-        borderColor: "inherit",
-    },
-    special: {
-        textColor: "purple",
-        primaryColor: "red",
-        borderColor: "inherit",
-    },
+type ButtonType = "primary" | "secondary" | "special"
+type ButtonArgs = {
+    colorText: string
+    colorPrimary: string
+    colorBgContainer: string
 }
 
 const CustomButton = ({ label, icon, btype }: ButtonProps) => {
-    const buttonStyle = buttonTypeStyles[btype]
-    const textColor = buttonStyle.textColor
-    const primaryColor = buttonStyle.primaryColor
-    const borderColor = buttonStyle.borderColor
+    const buttonTypeStyles: Map<ButtonType, ButtonArgs> = new Map([
+        [
+            "primary",
+            {
+                colorText: "white",
+                colorPrimary: "white",
+                colorBgContainer: "black",
+            },
+        ],
+        [
+            "secondary",
+            {
+                colorText: "black",
+                colorPrimary: "black",
+                colorBgContainer: "inherit",
+            },
+        ],
+        [
+            "special",
+            {
+                colorText: "purple",
+                colorPrimary: "red",
+                colorBgContainer: "inherit",
+            },
+        ],
+    ])
+
+    const buttonStyle = buttonTypeStyles.get(btype)
 
     return (
         <ConfigProvider
             theme={{
                 token: {
-                    colorText: `${textColor}`,
-                    colorPrimary: `${primaryColor}`,
+                    colorText: `${buttonStyle?.colorText}`,
+                    colorPrimary: `${buttonStyle?.colorPrimary}`,
                     borderRadius: 4,
 
-                    colorBgContainer: `${borderColor}`,
+                    colorBgContainer: `${buttonStyle?.colorBgContainer}`,
                     colorBorder: "black",
                     fontSize: 18,
                     fontFamily: "Cairo Play",
