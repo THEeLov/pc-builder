@@ -106,14 +106,14 @@
     color: var(--error-message);
 }
 
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 1024px) and (min-height: 700px){
     .register-image {
         display: block;
-        height: 700px;
-        width: 700px;
+        height: 850px;
+        width: 850px;
         position: fixed;
         bottom: -150px;
-        left: -860px;
+        left: -1100px;
         transform: rotate(0);
     }
 
@@ -130,37 +130,37 @@
             transform: rotate(0deg) translateX(0);
         }
         2.5% {
-            transform: rotate(20deg) translateX(300px) translateY(-100px);
+            transform: rotate(25deg) translateX(325px) translateY(-200px);
         }
         12.5% {
-            transform: rotate(20deg) translateX(300px) translateY(-100px);
+            transform: rotate(25deg) translateX(325px) translateY(-200px);
         }
         25% {
             transform: rotate(0deg) translateX(0);
         }
         27.5% {
-            transform: rotate(20deg) translateX(300px) translateY(-100px);
+            transform: rotate(25deg) translateX(325px) translateY(-200px);
         }
         30% {
-            transform: rotate(20deg) translateX(300px) translateY(-100px);
+            transform: rotate(25deg) translateX(325px) translateY(-200px);
         }
         50% {
             transform: rotate(0deg) translateX(0);
         }
         52.5% {
-            transform: rotate(20deg) translateX(300px) translateY(-100px);
+            transform: rotate(25deg) translateX(325px) translateY(-200px);
         }
         65% {
-            transform: rotate(20deg) translateX(300px) translateY(-100px);
+            transform: rotate(25deg) translateX(325px) translateY(-200px);
         }
         75% {
             transform: rotate(0deg) translateX(0);
         }
         77.5% {
-            transform: rotate(20deg) translateX(300px) translateY(-100px);
+            transform: rotate(25deg) translateX(325px) translateY(-200px);
         }
         80% {
-            transform: rotate(20deg) translateX(300px) translateY(-100px);
+            transform: rotate(25deg) translateX(325px) translateY(-200px);
         }
         90% {
             transform: rotate(180deg) translateX(2000px) translateY(-4000px);

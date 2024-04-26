@@ -108,14 +108,14 @@
     display: none;
 }
 
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 1024px) and (min-height: 725px){
     .login-image {
         display: block;
-        height: 600px;
-        width: 600px;
+        height: 800px;
+        width: 800px;
         position: fixed;
-        left: -300px;
-        bottom: -40px;
+        left: -400px;
+        bottom: -60px;
     }
 
     .bob {
@@ -123,7 +123,6 @@
         width: 100%;
         position: absolute;
         transform: translateY(0);
-
         animation: jump 2s ease infinite forwards;
     }
 
