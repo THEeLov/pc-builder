@@ -1,24 +1,27 @@
 import "./navbar.css"
 import SignIn from "../../images/sign_in.svg"
 import CustomButton from "../CustomButton/CustomButton"
+import { Link } from "react-router-dom"
 
 const Navbar = () => {
     return (
         <nav className="nav">
             <div className="nav__site-name">
-                <h1>PC Builder</h1>
+                <Link to="/" className="nav__site-name__link">
+                    <h1>PC Builder</h1>
+                </Link>
             </div>
             <div className="nav__login">
                 <div className="nav__icons">
-                    <a href="/login" className="icon-container">
+                    <Link to="/login" className="icon-container">
                         <img src={SignIn} alt="sign in" />
-                    </a>
+                    </Link>
                 </div>
 
                 <div className="nav-desktop">
-                    <a href="/login">
+                    <Link to="/login">
                         <CustomButton label="Sign in" btype="primary" />
-                    </a>
+                    </Link>
                 </div>
             </div>
         </nav>

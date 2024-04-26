@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import "./footer.css"
 
 const Footer = () => {
@@ -6,19 +7,19 @@ const Footer = () => {
             <div className="footer-info">
                 <h2>PC Builder</h2>
                 <hr className="footer__hr" />
-                <a className="footer__link" href="">
+                <Link className="footer__link" to="/build">
                     Builder
-                </a>
+                </Link>
             </div>
             <div className="footer-account">
                 <h2>Account</h2>
                 <hr className="footer__hr" />
-                <a className="footer__link" href="">
+                <Link className="footer__link" to="/login">
                     Login
-                </a>
-                <a className="footer__link" href="">
+                </Link>
+                <Link className="footer__link" to="/register">
                     Register
-                </a>
+                </Link>
             </div>
         </div>
     )

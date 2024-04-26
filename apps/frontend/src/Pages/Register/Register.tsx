@@ -4,6 +4,7 @@ import { z } from "zod"
 import Bob from "../../images/sign_UP_bob.png"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { schema } from "./validation"
+import { Link } from "react-router-dom"
 
 type FormFields = z.infer<typeof schema>
 
@@ -35,7 +36,9 @@ const Register = () => {
     return (
         <div className="register">
             <div className="register__logo">
-                <h1>PC Builder</h1>
+                <Link to="/" className="register__logo__link">
+                    <h1>PC Builder</h1>
+                </Link>
             </div>
             <div className="register__container">
                 <div className="register__form-container">
@@ -73,7 +76,7 @@ const Register = () => {
                         {errors.root && <div className="error-message">{errors.root.message}</div>}
                     </form>
                     <div className="register__form-container__questions">
-                        <a href="/login">Already have an accout ? Sign In</a>
+                        <Link to="/login">Already have an accout ? Sign In</Link>
                     </div>
 
                     <div className="register-image">

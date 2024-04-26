@@ -5,6 +5,7 @@ import { z } from "zod"
 import Bob from "../../images/sign_up_bob.png"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { schema } from "./validation"
+import { Link } from "react-router-dom"
 
 type FormFields = z.infer<typeof schema>
 
@@ -32,7 +33,9 @@ const Login = () => {
     return (
         <div className="login">
             <div className="login__logo">
-                <h1>PC Builder</h1>
+                <Link to="/" className="login__logo__link">
+                    <h1>PC Builder</h1>
+                </Link>
             </div>
             <div className="login__container">
                 <div className="login__form-container">
@@ -53,7 +56,7 @@ const Login = () => {
                         {errors.root && <div>{errors.root.message}</div>}
                     </form>
                     <div className="login__form-container__questions">
-                        <a href="/register">Dont have an account ? Sign Up</a>
+                        <Link to="/register">Dont have an account ? Sign Up</Link>
                     </div>
 
                     <div className="login-image">
