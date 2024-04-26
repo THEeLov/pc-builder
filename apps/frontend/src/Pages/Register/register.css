@@ -5,7 +5,7 @@
     overflow: hidden;
 }
 
-.register-image{
+.register-image {
     display: none;
 }
 
@@ -81,14 +81,14 @@
     background-color: var(--button-hovor-color);
 }
 
-.register__form-container__questions{
+.register__form-container__questions {
     margin-top: var(--large-indent);
     display: flex;
     flex-direction: column;
     gap: var(--small-indent);
 }
 
-.register__form-container__questions a{
+.register__form-container__questions a {
     color: black;
 }
 
@@ -139,7 +139,7 @@
         52.5% {
             transform: rotate(20deg) translateX(300px) translateY(-100px);
         }
-        65%{
+        65% {
             transform: rotate(20deg) translateX(300px) translateY(-100px);
         }
         75% {
@@ -151,7 +151,7 @@
         80% {
             transform: rotate(20deg) translateX(300px) translateY(-100px);
         }
-        90%{
+        90% {
             transform: rotate(180deg) translateX(2000px) translateY(-4000px);
         }
         100% {

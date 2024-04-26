@@ -121,12 +121,12 @@
         0% {
             bottom: 0;
         }
-        25%{
-            bottom: 40px
-        }
-        30%{
+        25% {
             bottom: 40px;
-        }    
+        }
+        30% {
+            bottom: 40px;
+        }
         100% {
             bottom: 0;
         }

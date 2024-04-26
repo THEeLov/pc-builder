@@ -12,20 +12,20 @@ export const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                Component: Homepage
+                Component: Homepage,
             },
             {
-                path: '/build',
-                Component: Build
-            }
-        ]
+                path: "/build",
+                Component: Build,
+            },
+        ],
     },
     {
         path: "login",
-        Component: Login
+        Component: Login,
     },
     {
         path: "register",
-        Component: Register
+        Component: Register,
     },
 ])
