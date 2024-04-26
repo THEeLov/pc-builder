@@ -106,7 +106,7 @@
     color: var(--error-message);
 }
 
-@media only screen and (min-width: 1024px) and (min-height: 700px){
+@media only screen and (min-width: 1024px) and (min-height: 700px) {
     .register-image {
         display: block;
         height: 850px;
