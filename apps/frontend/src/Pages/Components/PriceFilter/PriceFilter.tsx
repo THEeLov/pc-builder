@@ -2,8 +2,8 @@ import React from "react"
 import { Slider } from "antd"
 
 interface PriceFilterProps {
-    filterFunction: (values: number[]) => void | undefined;
-    range: number[];
+    filterFunction: (values: number[]) => void | undefined
+    range: number[]
 }
 
 const PriceFilter = ({ filterFunction, range }: PriceFilterProps) => {

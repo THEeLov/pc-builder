@@ -2,10 +2,10 @@ import React from "react"
 import { Flex, Radio, RadioChangeEvent } from "antd"
 
 interface OrderFilterProps {
-  filterFunction: (value: RadioChangeEvent) => void | undefined;
+    filterFunction: (value: RadioChangeEvent) => void | undefined
 }
 
-const OrderFilter = ({filterFunction} : OrderFilterProps) => {
+const OrderFilter = ({ filterFunction }: OrderFilterProps) => {
     return (
         <div className="filter--order">
             <h2>Order by:</h2>

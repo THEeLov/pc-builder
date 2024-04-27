@@ -12,7 +12,7 @@ const Components = () => {
     const [searchParamt, setSearchParams] = useSearchParams()
     const minPriceParam = searchParamt.get("minPrice")
     const maxPriceParam = searchParamt.get("maxPrice")
-    console.log(minPriceParam, maxPriceParam);
+    console.log(minPriceParam, maxPriceParam)
 
     const basicFilter = {
         sort: "name",
@@ -21,15 +21,15 @@ const Components = () => {
     }
 
     const [rangeValues, setRangeValues] = useState(() => {
-        const minPrice = searchParamt.get("minPrice") || "0";
-        const maxPrice = searchParamt.get("maxPrice") || "400";
-        return [Number(minPrice), Number(maxPrice)]; 
-    });
+        const minPrice = searchParamt.get("minPrice") || "0"
+        const maxPrice = searchParamt.get("maxPrice") || "400"
+        return [Number(minPrice), Number(maxPrice)]
+    })
 
     const [orderValue, setOrderValue] = useState(() => {
-        const sortParam = searchParamt.get("sort") || "debilko";
-        return sortParam;
-    });
+        const sortParam = searchParamt.get("sort") || "debilko"
+        return sortParam
+    })
 
     const handlePriceChange = (values: number[]) => {
         setRangeValues(values)

@@ -1,13 +1,12 @@
 import "./build.css"
 import { useQuery } from "@tanstack/react-query"
-import  CustomButton  from "../../components/CustomButton/CustomButton"
+import CustomButton from "../../components/CustomButton/CustomButton"
 import { PlusOutlined } from "@ant-design/icons"
 
 const Build = () => {
-    
     const components = ["Motherboard", "Processor", "RAM", "Storage", "GPU", "Power Supply", "Case"]
-    const total = 0;
-    
+    const total = 0
+
     const { data, isLoading } = useQuery({
         queryKey: ["components"],
         queryFn: async () => {
@@ -24,7 +23,7 @@ const Build = () => {
             </div>
             <div className="build__components-container">
                 <div className="build__components">
-                    {isLoading? (
+                    {isLoading ? (
                         <h1>Loading...</h1>
                     ) : (
                         components.map((component) => (
@@ -33,7 +32,7 @@ const Build = () => {
                                     <h2>{component}</h2>
                                 </div>
                                 <div className="component__info">
-                                    <CustomButton label="Add" btype="primary" icon={<PlusOutlined/>}></CustomButton>
+                                    <CustomButton label="Add" btype="primary" icon={<PlusOutlined />}></CustomButton>
                                 </div>
                             </div>
                         ))

@@ -22,7 +22,7 @@ export const router = createBrowserRouter([
             {
                 path: "/components",
                 Component: Components,
-            }
+            },
         ],
     },
     {
