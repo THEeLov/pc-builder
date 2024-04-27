@@ -5,6 +5,7 @@ import Slider1 from "../../../images/slider1.png"
 import Slider2 from "../../../images/slider2.png"
 import Slider3 from "../../../images/slider3.png"
 import Slider4 from "../../../images/slider4.png"
+import { Link } from "react-router-dom"
 
 const ProductCarousel = () => {
     const images = [Slider1, Slider2, Slider3, Slider4]
@@ -16,7 +17,9 @@ const ProductCarousel = () => {
                     <h1>Products</h1>
                     <div className="all-products">
                         <p>All current products available</p>
-                        <CustomButton label="View all" btype="secondary" />
+                        <Link to="/components">
+                            <CustomButton label="View all" btype="secondary" />
+                        </Link>
                     </div>
                 </div>
                 <div className="carousel">

@@ -1,0 +1,8 @@
+.filter--price{
+  width: 300px;
+}
+
+.filter--price__range{
+  display: flex;
+  justify-content: space-between;
+}

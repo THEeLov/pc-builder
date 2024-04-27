@@ -1,0 +1,29 @@
+.components{
+  padding: var(--normal-indent);
+  background-color: var(--secondary-color);
+}
+
+.filter--headline{
+  font-size: var(--medium-font);
+}
+
+.components__filter-container{
+  display: flex;
+  flex-direction: column;
+  gap: var(--normal-indent);
+  position: sticky;
+}
+
+.filter--price{
+  width: 300px;
+}
+
+.filter--price__range{
+  display: flex;
+  justify-content: space-between;
+}
+
+.filter--order{
+  user-select: none;
+}
+

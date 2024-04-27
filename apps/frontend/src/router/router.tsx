@@ -4,6 +4,7 @@ import Homepage from "../Pages/Homepage/Homepage"
 import Build from "../Pages/Build/Build"
 import Login from "../Pages/Login/Login"
 import Register from "../Pages/Register/Register"
+import Components from "../Pages/Components/Components"
 
 export const router = createBrowserRouter([
     {
@@ -18,6 +19,10 @@ export const router = createBrowserRouter([
                 path: "/build",
                 Component: Build,
             },
+            {
+                path: "/components",
+                Component: Components,
+            }
         ],
     },
     {
