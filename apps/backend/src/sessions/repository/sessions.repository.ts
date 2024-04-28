@@ -26,7 +26,7 @@ async function create(userId: number): DbResult<Session> {
         })
         return Result.ok(newSession)
     } catch {
-        return internalError();
+        return internalError()
     }
 }
 
@@ -42,7 +42,7 @@ async function get(sessionId: string): DbResult<Session> {
         }
         return Result.ok(session)
     } catch {
-        return internalError();
+        return internalError()
     }
 }
 

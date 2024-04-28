@@ -24,9 +24,9 @@ async function create(data: UserCreate): DbResult<User> {
         return Result.ok(newUser)
     } catch (error) {
         if (error.code === "P2002") {
-            return conflictError("User already exists");
+            return conflictError("User already exists")
         } else {
-            return internalError();
+            return internalError()
         }
     }
 }
@@ -40,11 +40,11 @@ async function update(id: number, data: UserEdit): DbResult<User> {
             data: data,
         })
         if (!user) {
-            return notFoundError("User not found");
+            return notFoundError("User not found")
         }
         return Result.ok(user)
     } catch (error) {
-        return internalError();
+        return internalError()
     }
 }
 
@@ -57,7 +57,7 @@ async function remove(id: number): DbResult<void> {
         })
         return Result.ok(undefined)
     } catch (error) {
-        return internalError();
+        return internalError()
     }
 }
 
@@ -84,7 +84,7 @@ async function get(identifier: number | string): DbResult<User> {
 
         return Result.ok(user)
     } catch (error) {
-        return internalError();
+        return internalError()
     }
 }
 
