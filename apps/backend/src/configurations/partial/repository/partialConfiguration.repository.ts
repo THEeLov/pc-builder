@@ -1,2 +1,1 @@
-import {prisma} from '../../../client'
-
+import { prisma } from "../../../client"
