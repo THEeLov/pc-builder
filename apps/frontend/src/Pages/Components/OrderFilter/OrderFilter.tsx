@@ -1,16 +1,26 @@
 import React from "react"
 import { Flex, Radio, RadioChangeEvent } from "antd"
+import { useSearchParams } from "react-router-dom"
+import { useState } from "react"
+import './orderfilter.css'
 
-interface OrderFilterProps {
-    filterFunction: (value: RadioChangeEvent) => void | undefined
-}
+const OrderFilter = () => {
+    const [searchParam, setSearchParams] = useSearchParams()
 
-const OrderFilter = ({ filterFunction }: OrderFilterProps) => {
+    const [orderValue, setOrderValue] = useState(searchParam.get("sort") ?? "name");
+
+    const handleButtonChange = (e: RadioChangeEvent) => {
+        setOrderValue(e.target.value)
+        searchParam.set("sort", e.target.value)
+        setSearchParams(searchParam, {
+            replace: true,
+        })
+    }
     return (
         <div className="filter--order">
-            <h2>Order by:</h2>
+            <h2>Order filter:</h2>
             <Flex vertical gap="middle">
-                <Radio.Group size="large" defaultValue="name" onChange={filterFunction}>
+                <Radio.Group size="large" defaultValue={orderValue} onChange={handleButtonChange}>
                     <Radio.Button value="name">Name</Radio.Button>
                     <Radio.Button value="higher">▴ Price</Radio.Button>
                     <Radio.Button value="lower">▾ Price</Radio.Button>
