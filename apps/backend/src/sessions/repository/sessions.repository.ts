@@ -2,8 +2,9 @@ import { DbResult, InternalError, NotFoundError } from "apps/backend/types"
 import { prisma } from "../../../client"
 import { Session, User, UserType } from "@prisma/client"
 import { Result } from "@badrap/result"
+import { internalError, notFoundError } from "../../utils"
 
-const ONE_DAY_MILLIS = 1000 * 60 * 60 * 24;
+const ONE_DAY_MILLIS = 1000 * 60 * 60 * 24
 
 async function create(userId: number): DbResult<Session> {
     try {
@@ -15,7 +16,7 @@ async function create(userId: number): DbResult<Session> {
         if (!user) {
             return Result.err(new NotFoundError("User not found"))
         }
-        const tomorrow = new Date(new Date().getTime() + ONE_DAY_MILLIS);
+        const tomorrow = new Date(new Date().getTime() + ONE_DAY_MILLIS)
         const newSession = await prisma.session.create({
             data: {
                 expiresAt: tomorrow,
@@ -25,7 +26,7 @@ async function create(userId: number): DbResult<Session> {
         })
         return Result.ok(newSession)
     } catch {
-        return Result.err(new InternalError("internal error"))
+        return internalError();
     }
 }
 
@@ -37,11 +38,11 @@ async function get(sessionId: string): DbResult<Session> {
             },
         })
         if (!session) {
-            return Result.err(new NotFoundError("Session not found"))
+            return notFoundError("Session not found")
         }
         return Result.ok(session)
     } catch {
-        return Result.err(new InternalError("internal error"))
+        return internalError();
     }
 }
 

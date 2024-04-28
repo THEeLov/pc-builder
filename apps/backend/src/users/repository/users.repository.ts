@@ -1,7 +1,8 @@
 import { prisma } from "../../../client"
 import { User, UserType } from "@prisma/client"
-import { DbResult, UserCreate, UserEdit } from "../../../types"
-import { ConflictError, InternalError, NotFoundError } from "../../../types"
+import { DbResult } from "../../../types"
+import { UserCreate, UserEdit } from "../userTypes"
+import { internalError, notFoundError, conflictError } from "../../utils"
 import bcrypt from "bcryptjs"
 import { Result } from "@badrap/result"
 
@@ -23,9 +24,9 @@ async function create(data: UserCreate): DbResult<User> {
         return Result.ok(newUser)
     } catch (error) {
         if (error.code === "P2002") {
-            return Result.err(new ConflictError("User already exists"))
+            return conflictError("User already exists");
         } else {
-            return Result.err(new InternalError(error.message))
+            return internalError();
         }
     }
 }
@@ -39,11 +40,11 @@ async function update(id: number, data: UserEdit): DbResult<User> {
             data: data,
         })
         if (!user) {
-            return Result.err(new NotFoundError("User not found"))
+            return notFoundError("User not found");
         }
         return Result.ok(user)
     } catch (error) {
-        return Result.err(new InternalError(error.message))
+        return internalError();
     }
 }
 
@@ -56,7 +57,7 @@ async function remove(id: number): DbResult<void> {
         })
         return Result.ok(undefined)
     } catch (error) {
-        return Result.err(new InternalError(error.message))
+        return internalError();
     }
 }
 
@@ -78,12 +79,12 @@ async function get(identifier: number | string): DbResult<User> {
         }
 
         if (!user) {
-            return Result.err(new NotFoundError("User not found"))
+            return notFoundError("User not found")
         }
 
         return Result.ok(user)
     } catch (error) {
-        return Result.err(new InternalError(error.message))
+        return internalError();
     }
 }
 

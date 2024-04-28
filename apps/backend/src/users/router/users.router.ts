@@ -11,5 +11,4 @@ router
     .delete(UsersController.deleteSingle)
     .put(UsersController.updateSingle)
 
-
-export default router;
+export default router
