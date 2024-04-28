@@ -2,12 +2,12 @@ import React from "react"
 import { Flex, Radio, RadioChangeEvent } from "antd"
 import { useSearchParams } from "react-router-dom"
 import { useState } from "react"
-import './orderfilter.css'
+import "./orderfilter.css"
 
 const OrderFilter = () => {
     const [searchParam, setSearchParams] = useSearchParams()
 
-    const [orderValue, setOrderValue] = useState(searchParam.get("sort") ?? "name");
+    const [orderValue, setOrderValue] = useState(searchParam.get("sort") ?? "name")
 
     const handleButtonChange = (e: RadioChangeEvent) => {
         setOrderValue(e.target.value)

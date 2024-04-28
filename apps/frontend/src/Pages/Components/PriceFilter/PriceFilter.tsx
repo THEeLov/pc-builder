@@ -2,22 +2,21 @@ import React from "react"
 import { Slider } from "antd"
 import { useSearchParams } from "react-router-dom"
 import { useState } from "react"
-import './pricefilter.css'
+import "./pricefilter.css"
 
 const PriceFilter = () => {
-
     const [searchParam, setSearchParams] = useSearchParams()
 
     const [rangeValues, setRangeValues] = useState(() => {
-        const minPrice = Number(searchParam.get("minPrice") ?? "0");
-        const maxPrice = Number(searchParam.get("maxPrice") ?? "400");
-        return [minPrice, maxPrice];
-    });
+        const minPrice = Number(searchParam.get("minPrice") ?? "0")
+        const maxPrice = Number(searchParam.get("maxPrice") ?? "400")
+        return [minPrice, maxPrice]
+    })
 
     const handlePriceChange = (values: number[]) => {
         setRangeValues(values)
-        searchParam.set("minPrice", `${values[0]}`);
-        searchParam.set("maxPrice", `${values[1]}`);
+        searchParam.set("minPrice", `${values[0]}`)
+        searchParam.set("maxPrice", `${values[1]}`)
         setSearchParams(searchParam, {
             replace: true,
         })
