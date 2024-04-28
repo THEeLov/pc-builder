@@ -46,7 +46,6 @@ model Session {
     userId    Int
     userType  UserType
     user      User                     @relation(fields: [userId], references: [id])
-    partial   ParcialPCConfiguration[]
 }
 
 model Component {
@@ -73,7 +72,7 @@ model User {
     password                  String
     userType                  UserType                 @default(USER)
     userconfigurations        PCConfiguration[]
-    partialUserConfigurations ParcialPCConfiguration[]
+    partialUserConfiguration ParcialPCConfiguration?
     sessions                  Session[]
 }
 
@@ -174,10 +173,8 @@ model ParcialPCConfiguration {
     powerSupply       PowerSupply?      @relation(fields: [powerSupplyId], references: [id])
     pcCaseId          Int?
     pcCase            PCCase?           @relation(fields: [pcCaseId], references: [id])
-    userId            Int
+    userId            Int               @unique
     user              User              @relation(fields: [userId], references: [id])
-    sessionId         String
-    session           Session           @relation(fields: [sessionId], references: [id])
     createdAt         DateTime          @default(now())
     updatedAt         DateTime          @default(now())
 }
