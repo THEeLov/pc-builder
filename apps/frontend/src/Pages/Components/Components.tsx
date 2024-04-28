@@ -1,10 +1,4 @@
-import React, { useEffect } from "react"
-import CustomButton from "../../components/CustomButton/CustomButton"
 import "./components.css"
-import { useState } from "react"
-import { RadioChangeEvent, Slider } from "antd"
-import { Flex, Radio } from "antd"
-import { useSearchParams } from "react-router-dom"
 import PriceFilter from "./PriceFilter/PriceFilter"
 import OrderFilter from "./OrderFilter/OrderFilter"
 
