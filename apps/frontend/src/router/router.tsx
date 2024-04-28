@@ -5,6 +5,7 @@ import Build from "../Pages/Build/Build"
 import Login from "../Pages/Login/Login"
 import Register from "../Pages/Register/Register"
 import Components from "../Pages/Components/Components"
+import OptionsPage from "../Pages/Options/OptionsPage"
 
 export const router = createBrowserRouter([
     {
@@ -16,13 +17,17 @@ export const router = createBrowserRouter([
                 Component: Homepage,
             },
             {
-                path: "/build",
-                Component: Build,
+                path: "/options",
+                Component: OptionsPage,
             },
             {
                 path: "/components",
                 Component: Components,
             },
+            {
+                path: "/build",
+                Component: Build,
+            }
         ],
     },
     {

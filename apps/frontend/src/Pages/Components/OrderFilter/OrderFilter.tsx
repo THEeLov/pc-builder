@@ -1,4 +1,3 @@
-import React from "react"
 import { Flex, Radio, RadioChangeEvent } from "antd"
 import { useSearchParams } from "react-router-dom"
 import { useState } from "react"

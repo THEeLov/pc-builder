@@ -1,4 +1,3 @@
-import React from "react"
 import { Slider } from "antd"
 import { useSearchParams } from "react-router-dom"
 import { useState } from "react"

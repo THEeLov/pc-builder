@@ -15,7 +15,7 @@ const Main = () => {
                     simple and enjoyable.
                 </p>
                 <div className="main-button">
-                    <Link to="/build">
+                    <Link to="/options">
                         <CustomButton label="Lets start" icon={<ToolOutlined />} btype="primary" />
                     </Link>
                 </div>
