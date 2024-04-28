@@ -27,8 +27,6 @@ async function create(data: UserCreate): DbResult<User> {
         } else {
             return Result.err(new InternalError(error.message))
         }
-    } finally {
-        await prisma.$disconnect()
     }
 }
 
@@ -46,8 +44,6 @@ async function update(id: number, data: UserEdit): DbResult<User> {
         return Result.ok(user)
     } catch (error) {
         return Result.err(new InternalError(error.message))
-    } finally {
-        await prisma.$disconnect()
     }
 }
 
@@ -61,8 +57,6 @@ async function remove(id: number): DbResult<void> {
         return Result.ok(undefined)
     } catch (error) {
         return Result.err(new InternalError(error.message))
-    } finally {
-        await prisma.$disconnect()
     }
 }
 
@@ -90,8 +84,6 @@ async function get(identifier: number | string): DbResult<User> {
         return Result.ok(user)
     } catch (error) {
         return Result.err(new InternalError(error.message))
-    } finally {
-        await prisma.$disconnect()
     }
 }
 

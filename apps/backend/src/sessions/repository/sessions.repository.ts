@@ -3,6 +3,8 @@ import { prisma } from "../../../client"
 import { Session, User, UserType } from "@prisma/client"
 import { Result } from "@badrap/result"
 
+const ONE_DAY_MILLIS = 1000 * 60 * 60 * 24;
+
 async function create(userId: number): DbResult<Session> {
     try {
         const user = await prisma.user.findUnique({
@@ -13,7 +15,7 @@ async function create(userId: number): DbResult<Session> {
         if (!user) {
             return Result.err(new NotFoundError("User not found"))
         }
-        const tomorrow = new Date(new Date().getTime() + 24 * 60 * 60 * 1000)
+        const tomorrow = new Date(new Date().getTime() + ONE_DAY_MILLIS);
         const newSession = await prisma.session.create({
             data: {
                 expiresAt: tomorrow,
@@ -24,8 +26,6 @@ async function create(userId: number): DbResult<Session> {
         return Result.ok(newSession)
     } catch {
         return Result.err(new InternalError("internal error"))
-    } finally {
-        await prisma.$disconnect()
     }
 }
 
@@ -42,8 +42,6 @@ async function get(sessionId: string): DbResult<Session> {
         return Result.ok(session)
     } catch {
         return Result.err(new InternalError("internal error"))
-    } finally {
-        await prisma.$disconnect()
     }
 }
 
