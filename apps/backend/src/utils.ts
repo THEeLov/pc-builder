@@ -1,6 +1,19 @@
-import { InternalError, NotFoundError, ConflictError } from "../types"
+import InternalError from "./errors/InternalError"
+import ConflictError from "./errors/ConflictError"
+import NotFoundError from "./errors/NotFoundError"
 import { Result } from "@badrap/result"
 
-export const internalError = (message?: string) => Result.err(new InternalError(message ? message : "Internal error"))
-export const notFoundError = (message?: string) => Result.err(new NotFoundError(message ? message : "Not found"))
-export const conflictError = (message?: string) => Result.err(new ConflictError(message ? message : "Conflict"))
+const PRISMA_CONFLICT_ERROR = "P2002"
+const PRISMA_NOT_FOUND_ERROR = "P2001"
+
+const handleError = (error: any, message: string) => {
+    if (error.code === PRISMA_CONFLICT_ERROR) {
+        return Result.err(new ConflictError(message))
+    }
+    if (error.code === PRISMA_NOT_FOUND_ERROR) {
+        return Result.err(new NotFoundError(message))
+    }
+    return Result.err(new InternalError())
+}
+
+export default handleError
