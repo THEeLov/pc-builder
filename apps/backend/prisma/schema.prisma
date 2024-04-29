@@ -159,7 +159,6 @@ model PCCase {
 
 model ParcialPCConfiguration {
     id                Int               @id @default(autoincrement())
-    totalPrice        Float
     configurationType ConfigurationType
     motherboardId     Int?
     motherboard       Motherboard?      @relation(fields: [motherboardId], references: [id])

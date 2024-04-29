@@ -5,8 +5,7 @@ export type PartialConfigCreate = {
     configurationType: ConfigurationType
 }
 
-export type PartielaConfigEdit = {
-    userId?: number
+export type ParcialConfigEdit = {
     configurationType?: ConfigurationType
     motherboardId?: number
     peocessorId?: number
