@@ -18,8 +18,7 @@ const handleError = (error: any, message: string) => {
 }
 
 export function sessionNotExpired(session: Session): boolean {
-    return session.expiresAt > new Date();
+    return session.expiresAt > new Date()
 }
-
 
 export default handleError
