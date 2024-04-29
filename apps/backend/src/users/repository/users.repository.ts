@@ -2,7 +2,7 @@ import { prisma } from "../../../client"
 import { User } from "@prisma/client"
 import { DbResult } from "../../../types"
 import { UserCreate, UserEdit } from "../userTypes"
-import { internalError, notFoundError, conflictError } from "../../utils"
+import handleError from "../../utils"
 import bcrypt from "bcryptjs"
 import { Result } from "@badrap/result"
 
@@ -23,11 +23,7 @@ async function create(data: UserCreate): DbResult<User> {
         })
         return Result.ok(newUser)
     } catch (error) {
-        if (error.code === "P2002") {
-            return conflictError("User already exists")
-        } else {
-            return internalError()
-        }
+        return handleError(error, "in user create")
     }
 }
 
@@ -39,12 +35,9 @@ async function update(id: number, data: UserEdit): DbResult<User> {
             },
             data: data,
         })
-        if (!user) {
-            return notFoundError("User not found")
-        }
         return Result.ok(user)
     } catch (error) {
-        return internalError()
+        return handleError(error, "in update user")
     }
 }
 
@@ -57,7 +50,7 @@ async function remove(id: number): DbResult<void> {
         })
         return Result.ok(undefined)
     } catch (error) {
-        return internalError()
+        return handleError(error, "in user remove")
     }
 }
 
@@ -77,14 +70,9 @@ async function get(identifier: number | string): DbResult<User> {
                 },
             })
         }
-
-        if (!user) {
-            return notFoundError("User not found")
-        }
-
         return Result.ok(user)
     } catch (error) {
-        return internalError()
+        return handleError(error, "in user get")
     }
 }
 
