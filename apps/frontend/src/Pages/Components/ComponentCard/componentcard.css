@@ -1,0 +1,20 @@
+.component{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.199);
+  padding: var(--large-indent);
+}
+
+.component:first-child{
+  border-top: none;
+}
+
+
+.component-item{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  height: 100%;
+}

@@ -1,18 +1,29 @@
 .components {
-    padding: var(--normal-indent);
-    background-color: var(--secondary-color);
+    background-color: white;
+    gap: var(--large-indent)
 }
 
 .filter--headline {
     font-size: var(--medium-font);
 }
 
+.filter--filters{
+    border-radius: var(--normal-indent);
+}
+
 .components__filter-container {
     display: flex;
+    background-color: rgb(255, 246, 246);
     flex-direction: column;
     gap: var(--normal-indent);
-    position: sticky;
     align-items: center;
+    padding: var(--large-indent);
+    box-shadow: 8px 0px 12px rgba(0, 0, 0, 0.089);
+
+}
+
+.filter--line{
+    opacity: 0.3;
 }
 
 .filter--price {
@@ -26,4 +37,26 @@
 
 .filter--order {
     user-select: none;
+}
+
+.components-container{
+    padding: var(--normal-indent);
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+
+@media only screen and (min-width: 1024px) {
+    .components{
+        display: flex;
+    }
+
+    .components__filter-container{
+        width: 300px;
+    }
+
+    .components-container{
+        width: 100%;
+    }
+
 }

@@ -1,8 +1,6 @@
 .filter--price {
     width: 300px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.336);
     padding: 1rem;
-    border-radius: var(--normal-indent);
 }
 
 .filter--price__range {
