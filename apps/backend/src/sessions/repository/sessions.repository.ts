@@ -23,7 +23,7 @@ async function create(userId: number): DbResult<Session> {
         })
         return Result.ok(newSession)
     } catch (e) {
-        return handleError(e, "in session create");
+        return handleError(e, "in session create")
     }
 }
 
