@@ -8,7 +8,7 @@ const ONE_DAY_MILLIS = 1000 * 60 * 60 * 24
 
 async function create(userId: number): DbResult<Session> {
     try {
-        const user = await prisma.user.findUnique({
+        const user = await prisma.user.findUniqueOrThrow({
             where: {
                 id: userId,
             },
@@ -29,7 +29,7 @@ async function create(userId: number): DbResult<Session> {
 
 async function get(sessionId: string): DbResult<Session> {
     try {
-        const session = await prisma.session.findUnique({
+        const session = await prisma.session.findUniqueOrThrow({
             where: {
                 id: sessionId,
             },

@@ -58,13 +58,13 @@ async function get(identifier: number | string): DbResult<User> {
     try {
         let user
         if (typeof identifier === "number") {
-            user = await prisma.user.findUnique({
+            user = await prisma.user.findUniqueOrThrow({
                 where: {
                     id: identifier,
                 },
             })
         } else {
-            user = await prisma.user.findUnique({
+            user = await prisma.user.findUniqueOrThrow({
                 where: {
                     email: identifier,
                 },
