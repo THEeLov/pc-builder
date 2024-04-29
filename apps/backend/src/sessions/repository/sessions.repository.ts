@@ -14,7 +14,7 @@ async function create(userId: number): DbResult<Session> {
             },
         })
         if (!user) {
-            return notFoundError("User not found");
+            return notFoundError("User not found")
         }
         const tomorrow = new Date(new Date().getTime() + ONE_DAY_MILLIS)
         const newSession = await prisma.session.create({
