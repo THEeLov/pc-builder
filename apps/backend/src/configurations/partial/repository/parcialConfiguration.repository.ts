@@ -1,7 +1,6 @@
 import { prisma } from "../../../client"
-import {ConfigurationType} from '@prisma/client'
+import { ConfigurationType } from "@prisma/client"
 import { notFoundError, internalError } from "apps/backend/src/utils"
-
 
 async function create(userId: string, type: ConfigurationType) {
     try {
@@ -9,8 +8,8 @@ async function create(userId: string, type: ConfigurationType) {
             data: {
                 userId,
                 configurationType: type,
-                totalPrice: 0
-            }
+                totalPrice: 0,
+            },
         })
-    }
+    } catch {}
 }
