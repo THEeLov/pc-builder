@@ -1,5 +1,5 @@
 import { prisma } from "../../../client"
-import { User, UserType } from "@prisma/client"
+import { User } from "@prisma/client"
 import { DbResult } from "../../../types"
 import { UserCreate, UserEdit } from "../userTypes"
 import { internalError, notFoundError, conflictError } from "../../utils"

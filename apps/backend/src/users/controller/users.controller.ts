@@ -3,7 +3,7 @@ import { SessionsRepository } from "../../sessions/repository/sessions.repositor
 import { Request, Response } from "express"
 import { UserSchema } from "../validation/validation"
 import bcrypt from "bcryptjs"
-import { UserDTO } from "apps/backend/types"
+import { UserDTO } from "../userTypes"
 
 async function register(req: Request, res: Response): Promise<Response<UserDTO | Error>> {
     const register = UserSchema.Register.safeParse(req.body)

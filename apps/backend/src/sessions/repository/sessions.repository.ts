@@ -1,6 +1,6 @@
-import { DbResult, InternalError, NotFoundError } from "apps/backend/types"
+import { DbResult } from "../../../types"
 import { prisma } from "../../../client"
-import { Session, User, UserType } from "@prisma/client"
+import { Session } from "@prisma/client"
 import { Result } from "@badrap/result"
 import { internalError, notFoundError } from "../../utils"
 
@@ -14,7 +14,7 @@ async function create(userId: number): DbResult<Session> {
             },
         })
         if (!user) {
-            return Result.err(new NotFoundError("User not found"))
+            return notFoundError("User not found");
         }
         const tomorrow = new Date(new Date().getTime() + ONE_DAY_MILLIS)
         const newSession = await prisma.session.create({
