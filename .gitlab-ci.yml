@@ -31,6 +31,7 @@ prepare:
     script:
         - npm install nx
         - npm install
+        - npx prisma generate
 
 lint:
     stage: lint
