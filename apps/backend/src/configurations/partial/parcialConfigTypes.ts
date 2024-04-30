@@ -11,6 +11,6 @@ export type ParcialConfigEdit = {
     gpuId?: number
     powerSupplyId?: number
     PCCaseId?: number
-    rams?: {id: number}[]
-    storages?: {id: number}[]
+    rams?: { id: number }[]
+    storages?: { id: number }[]
 }

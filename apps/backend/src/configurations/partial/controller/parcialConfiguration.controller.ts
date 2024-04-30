@@ -26,8 +26,7 @@ async function get(req: Request, res: Response): Promise<Response<ParcialPCConfi
 
 async function update(req: Request, res: Response): Promise<Response<ParcialPCConfiguration>> {
     const validatedParams = parcialConfigSchema.userIdRequestParams.safeParse(req.params)
-    if (!validatedParams.success 
-        || !authorize(validatedParams.data.userId, req.cookies.sessionId)) {
+    if (!validatedParams.success || !authorize(validatedParams.data.userId, req.cookies.sessionId)) {
         return res.status(401).json(new Error("Unauthorized"))
     }
     const validatedBody = parcialConfigSchema.updateObject.safeParse(req.body)
@@ -35,27 +34,31 @@ async function update(req: Request, res: Response): Promise<Response<ParcialPCCo
         return res.status(400).json(new Error("Bad request"))
     }
 
-    const updatedConfig = await ParcialConfigurationRepository
-                                .update(validatedParams.data.userId, validatedBody.data)
+    const updatedConfig = await ParcialConfigurationRepository.update(validatedParams.data.userId, validatedBody.data)
     if (!updatedConfig.isOk) {
-        return res.status(500).json((updatedConfig.isErr) ? updatedConfig.error : new Error("Internal error"));
+        return res.status(500).json(updatedConfig.isErr ? updatedConfig.error : new Error("Internal error"))
     }
-    return res.status(200).json(updatedConfig.value);
+    return res.status(200).json(updatedConfig.value)
 }
 
 async function create(req: Request, res: Response): Promise<Response<ParcialPCConfiguration>> {
     const validatedParams = parcialConfigSchema.userIdRequestParams.safeParse(req.params)
     const validatedBody = parcialConfigSchema.createObject.safeParse(req.body)
-    if (!validatedParams.success 
-        || !validatedBody.success 
-        || !authorize(validatedParams.data.userId, req.cookies.sessionId)) {
+    if (
+        !validatedParams.success ||
+        !validatedBody.success ||
+        !authorize(validatedParams.data.userId, req.cookies.sessionId)
+    ) {
         return res.status(400).json(new Error("Bad request"))
     }
-    const createdPartialConfig = await ParcialConfigurationRepository
-                                        .create(validatedParams.data.userId, validatedBody.data.configurationType)
+    const createdPartialConfig = await ParcialConfigurationRepository.create(
+        validatedParams.data.userId,
+        validatedBody.data.configurationType,
+    )
     if (!createdPartialConfig.isOk) {
-        return res.status(500).json((createdPartialConfig.isErr) ? createdPartialConfig.error 
-                                                                : new Error("Internal error"));
+        return res
+            .status(500)
+            .json(createdPartialConfig.isErr ? createdPartialConfig.error : new Error("Internal error"))
     }
     return res.status(200).json(createdPartialConfig.value)
 }
@@ -76,5 +79,5 @@ export const ParcialConfigurationController = {
     get,
     update,
     create,
-    remove
+    remove,
 }

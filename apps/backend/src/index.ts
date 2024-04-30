@@ -1,5 +1,5 @@
 import express from "express"
-import cors from 'cors'
+import cors from "cors"
 import { config } from "dotenv"
 import { env } from "process"
 import UserRouter from "./users/router/users.router"
