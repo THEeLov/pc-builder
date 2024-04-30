@@ -11,7 +11,6 @@ async function create(userId: number, type: ConfigurationType): DbResult<Parcial
             data: {
                 userId,
                 configurationType: type,
-                totalPrice: 0,
             },
         })
         return Result.ok(newConfig)

@@ -2,6 +2,7 @@ import { UsersRepository } from "../repository/users.repository"
 import { SessionsRepository } from "../../sessions/repository/sessions.repository"
 import { Request, Response } from "express"
 import { UserSchema } from "../validation/validation"
+import { authorize } from "../../utils"
 import bcrypt from "bcryptjs"
 import { UserDTO } from "../userTypes"
 
@@ -62,20 +63,6 @@ async function login(req: Request, res: Response): Promise<Response<UserDTO | Er
             return res.status(400).json(new Error("Invalid credentials"))
         }
     }
-}
-
-async function authorize(userId: number, sessionId?: string): Promise<boolean> {
-    if (!sessionId) {
-        return false
-    }
-    const session = await SessionsRepository.get(sessionId)
-    if (session.isErr) {
-        return false
-    }
-    if (session.isOk) {
-        return session.value.expiresAt > new Date() && session.value.userId === userId
-    }
-    return false
 }
 
 async function getSingle(req: Request, res: Response): Promise<Response<UserDTO | Error>> {

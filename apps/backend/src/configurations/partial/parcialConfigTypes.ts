@@ -1,7 +1,6 @@
 import { ConfigurationType, RAM, Storage } from "@prisma/client"
 
 export type PartialConfigCreate = {
-    userId: number
     configurationType: ConfigurationType
 }
 
@@ -12,6 +11,6 @@ export type ParcialConfigEdit = {
     gpuId?: number
     powerSupplyId?: number
     PCCaseId?: number
-    rams?: RAM[]
-    storages?: Storage[]
+    rams?: {id: number}[]
+    storages?: {id: number}[]
 }

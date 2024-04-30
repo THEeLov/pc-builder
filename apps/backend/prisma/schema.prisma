@@ -22,6 +22,8 @@ enum ConfigurationType {
     GAMING
     OFFICE
     WORK
+    HIGH_END
+    DEFAULT
 }
 
 enum ComputerType {
