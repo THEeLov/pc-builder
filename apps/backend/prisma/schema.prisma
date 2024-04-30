@@ -40,13 +40,12 @@ enum ComponentType {
 }
 
 model Session {
-    id        String                   @id @default(uuid())
-    createdAt DateTime                 @default(now())
+    id        String   @id @default(uuid())
+    createdAt DateTime @default(now())
     expiresAt DateTime
     userId    Int
     userType  UserType
-    user      User                     @relation(fields: [userId], references: [id])
-    partial   ParcialPCConfiguration[]
+    user      User     @relation(fields: [userId], references: [id])
 }
 
 model Component {
@@ -67,14 +66,14 @@ model Component {
 }
 
 model User {
-    id                        Int                      @id @default(autoincrement())
-    username                  String
-    email                     String                   @unique
-    password                  String
-    userType                  UserType                 @default(USER)
-    userconfigurations        PCConfiguration[]
-    partialUserConfigurations ParcialPCConfiguration[]
-    sessions                  Session[]
+    id                       Int                     @id @default(autoincrement())
+    username                 String
+    email                    String                  @unique
+    password                 String
+    userType                 UserType                @default(USER)
+    userconfigurations       PCConfiguration[]
+    partialUserConfiguration ParcialPCConfiguration?
+    sessions                 Session[]
 }
 
 model Motherboard {
@@ -174,10 +173,8 @@ model ParcialPCConfiguration {
     powerSupply       PowerSupply?      @relation(fields: [powerSupplyId], references: [id])
     pcCaseId          Int?
     pcCase            PCCase?           @relation(fields: [pcCaseId], references: [id])
-    userId            Int
+    userId            Int               @unique
     user              User              @relation(fields: [userId], references: [id])
-    sessionId         String
-    session           Session           @relation(fields: [sessionId], references: [id])
     createdAt         DateTime          @default(now())
     updatedAt         DateTime          @default(now())
 }
