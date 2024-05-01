@@ -1,9 +1,8 @@
 import z from "zod"
 import { configType } from "../../baseValidation"
 
-
-const configIdSchema = z.object( {
-    configId: z.number()
+const configIdSchema = z.object({
+    configId: z.number(),
 })
 
 const createObject = z.object({
@@ -19,7 +18,7 @@ const createObject = z.object({
 
 const configValidation = {
     configIdSchema,
-    createObject
+    createObject,
 }
 
 export default configValidation

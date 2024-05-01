@@ -7,8 +7,7 @@ import { ParcialConfigurationRepository } from "../repository/parcialConfigurati
 
 async function get(req: Request, res: Response): Promise<Response<ParcialPCConfiguration>> {
     const validatedParams = baseValidation.userIdRequestParams.safeParse(req.params)
-    if (!validatedParams.success
-        || !await authorize(validatedParams.data.userId, req.cookies.sessionId)) {
+    if (!validatedParams.success || !(await authorize(validatedParams.data.userId, req.cookies.sessionId))) {
         return res.status(400).json(new Error("Bad request"))
     }
     const configuration = await ParcialConfigurationRepository.get(validatedParams.data.userId)
@@ -23,7 +22,7 @@ async function get(req: Request, res: Response): Promise<Response<ParcialPCConfi
 
 async function update(req: Request, res: Response): Promise<Response<ParcialPCConfiguration>> {
     const validatedParams = baseValidation.userIdRequestParams.safeParse(req.params)
-    if (!validatedParams.success || !await authorize(validatedParams.data.userId, req.cookies.sessionId)) {
+    if (!validatedParams.success || !(await authorize(validatedParams.data.userId, req.cookies.sessionId))) {
         return res.status(401).json(new Error("Unauthorized"))
     }
     const validatedBody = parcialConfigSchema.updateObject.safeParse(req.body)
@@ -44,7 +43,7 @@ async function create(req: Request, res: Response): Promise<Response<ParcialPCCo
     if (
         !validatedParams.success ||
         !validatedBody.success ||
-        !await authorize(validatedParams.data.userId, req.cookies.sessionId)
+        !(await authorize(validatedParams.data.userId, req.cookies.sessionId))
     ) {
         return res.status(400).json(new Error("Bad request"))
     }
@@ -62,7 +61,7 @@ async function create(req: Request, res: Response): Promise<Response<ParcialPCCo
 
 async function remove(req: Request, res: Response): Promise<Response<void>> {
     const validatedParams = baseValidation.userIdRequestParams.safeParse(req.params)
-    if (!validatedParams.success || !await authorize(validatedParams.data.userId, req.cookies.sessionId)) {
+    if (!validatedParams.success || !(await authorize(validatedParams.data.userId, req.cookies.sessionId))) {
         return res.status(400).json(new Error("Bad Request"))
     }
     const result = await ParcialConfigurationRepository.remove(validatedParams.data.userId)

@@ -1,17 +1,15 @@
-import { PCConfiguration } from "@prisma/client";
-import { Response, Request } from "express";
-import { baseValidation } from "../../../base/validation/validation";
-import configurationRepository from "../repository/configuration.repository";
-import { parcialConfigSchema } from "../../partial/validation/validation";
-import { authorize, authorizeWithConfigId } from "../../../utils";
-import configValidation from "../validation/validation";
-
+import { PCConfiguration } from "@prisma/client"
+import { Response, Request } from "express"
+import { baseValidation } from "../../../base/validation/validation"
+import configurationRepository from "../repository/configuration.repository"
+import { parcialConfigSchema } from "../../partial/validation/validation"
+import { authorize, authorizeWithConfigId } from "../../../utils"
+import configValidation from "../validation/validation"
 
 async function getMany(req: Request, res: Response): Promise<Response<PCConfiguration[]>> {
     const validatedParams = baseValidation.userIdRequestParams.safeParse(req.params)
-    if (!validatedParams.success
-        || !await authorize(validatedParams.data.userId, req.cookies.sessionId)) {
-            return res.status(400).json(new Error("Bad request"))
+    if (!validatedParams.success || !(await authorize(validatedParams.data.userId, req.cookies.sessionId))) {
+        return res.status(400).json(new Error("Bad request"))
     }
     const result = await configurationRepository.getMany(validatedParams.data.userId)
     if (!result.isOk) {
@@ -24,9 +22,11 @@ async function update(req: Request, res: Response): Promise<Response<PCConfigura
     const validatedParams = configValidation.configIdSchema.safeParse(req.params)
     const validatedBody = parcialConfigSchema.updateObject.safeParse(req.body)
 
-    if (!validatedParams.success 
-        || !await authorizeWithConfigId(validatedParams.data.configId, req.cookies.sessionId)
-        || !validatedBody.success) {
+    if (
+        !validatedParams.success ||
+        !(await authorizeWithConfigId(validatedParams.data.configId, req.cookies.sessionId)) ||
+        !validatedBody.success
+    ) {
         return res.status(400).json(new Error("Bad request"))
     }
     const config = await configurationRepository.update(validatedParams.data.configId, validatedBody.data)
@@ -39,8 +39,9 @@ async function update(req: Request, res: Response): Promise<Response<PCConfigura
 async function create(req: Request, res: Response): Promise<Response<PCConfiguration>> {
     const validatedParams = baseValidation.userIdRequestParams.safeParse(req.params)
     const validatedBody = configValidation.createObject.safeParse(req.body)
-    if (!validatedParams.success ||
-        !await authorize(validatedParams.data.userId, req.cookies.sessionId) ||
+    if (
+        !validatedParams.success ||
+        !(await authorize(validatedParams.data.userId, req.cookies.sessionId)) ||
         !validatedBody.success
     ) {
         return res.status(400).json(new Error("Bad request"))
@@ -54,8 +55,9 @@ async function create(req: Request, res: Response): Promise<Response<PCConfigura
 
 async function remove(req: Request, res: Response): Promise<Response<void>> {
     const validatedParams = configValidation.configIdSchema.safeParse(req.params)
-    if (!validatedParams.success ||
-        !await authorizeWithConfigId(validatedParams.data.configId, req.cookies.sessionId)
+    if (
+        !validatedParams.success ||
+        !(await authorizeWithConfigId(validatedParams.data.configId, req.cookies.sessionId))
     ) {
         return res.status(400).json(new Error("Bad request"))
     }

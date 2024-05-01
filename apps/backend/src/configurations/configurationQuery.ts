@@ -3,39 +3,39 @@ import { ConfigurationType } from "@prisma/client"
 const includeQuery = {
     motherboard: {
         include: {
-            component: true
-        }
+            component: true,
+        },
     },
     processor: {
         include: {
-            component: true
-        }
+            component: true,
+        },
     },
     rams: {
         include: {
-            component: true
-        }
+            component: true,
+        },
     },
     gpu: {
         include: {
-            component: true
-        }
+            component: true,
+        },
     },
     storages: {
         include: {
-            component: true
-        }
+            component: true,
+        },
     },
     powerSupply: {
         include: {
-            component:true
-        }
+            component: true,
+        },
     },
     pcCase: {
         include: {
-            component:true
-        }
-    }
+            component: true,
+        },
+    },
 }
 
 export type ParcialConfigEdit = {

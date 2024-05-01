@@ -14,7 +14,7 @@ async function hashPassword(password: string): Promise<string> {
 
 async function create(data: UserCreate): DbResult<User> {
     try {
-        const hashed = await hashPassword(data.password);
+        const hashed = await hashPassword(data.password)
         console.log("this ok")
         console.log(hashed)
         const newUser = await prisma.user.create({

@@ -4,7 +4,7 @@ import { ConfigurationType, ParcialPCConfiguration } from "@prisma/client"
 import handleError from "../../../utils"
 import { DbResult } from "../../../../types"
 import { PartialConfigCreate } from "../parcialConfigTypes"
-import includeQuery, {ParcialConfigEdit} from "../../configurationQuery"
+import includeQuery, { ParcialConfigEdit } from "../../configurationQuery"
 async function create(userId: number, type: ConfigurationType): DbResult<ParcialPCConfiguration> {
     try {
         const newConfig = await prisma.parcialPCConfiguration.create({
@@ -39,7 +39,7 @@ async function update(userId: number, data: ParcialConfigEdit): DbResult<Parcial
                     set: data.rams,
                 },
             },
-            include: includeQuery
+            include: includeQuery,
         })
         return Result.ok(config)
     } catch (e) {
@@ -66,8 +66,8 @@ async function get(userId: number): DbResult<ParcialPCConfiguration> {
             where: {
                 userId,
             },
-            include: includeQuery
-        });
+            include: includeQuery,
+        })
         return Result.ok(config)
     } catch (e) {
         return handleError(e, "at parcial config get")

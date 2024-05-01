@@ -72,7 +72,7 @@ async function getSingle(req: Request, res: Response): Promise<Response<UserDTO 
     if (!userId.success) {
         return res.status(400).json(new Error(userId.error.message))
     }
-    if (!await authorize(userId.data.id, req.cookies.sessionId)) {
+    if (!(await authorize(userId.data.id, req.cookies.sessionId))) {
         return res.status(401).json(new Error("Unauthorized"))
     }
     const user = await UsersRepository.get(userId.data.id)
@@ -94,7 +94,7 @@ async function deleteSingle(req: Request, res: Response): Promise<Response<strin
     if (!userId.success) {
         return res.status(400).json(new Error(userId.error.message))
     }
-    if (!await authorize(userId.data.id, req.cookies.sessionId)) {
+    if (!(await authorize(userId.data.id, req.cookies.sessionId))) {
         return res.status(401).json(new Error("Unauthorized"))
     }
     const user = await UsersRepository.remove(userId.data.id)
@@ -116,7 +116,7 @@ async function updateSingle(req: Request, res: Response): Promise<Response<UserD
     if (!userId.success) {
         return res.status(400).json(new Error(userId.error.message))
     }
-    if (!await authorize(userId.data.id, req.cookies.sessionId)) {
+    if (!(await authorize(userId.data.id, req.cookies.sessionId))) {
         return res.status(401).json(new Error("Unauthorized"))
     }
     const user = await UsersRepository.update(userId.data.id, updateParams.data)

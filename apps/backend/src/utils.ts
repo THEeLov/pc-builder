@@ -33,7 +33,7 @@ export async function authorizeWithConfigId(configId: number, sessionId?: string
     }
     const config = await configurationRepository.get(configId)
     if (config.isErr) {
-        return false        
+        return false
     }
     return config.value.userId === session.value.userId
 }

@@ -32,7 +32,7 @@ async function get(sessionId: string): DbResult<Session> {
         const session = await prisma.session.findUniqueOrThrow({
             where: {
                 id: sessionId,
-            }
+            },
         })
         return Result.ok(session)
     } catch (e) {
