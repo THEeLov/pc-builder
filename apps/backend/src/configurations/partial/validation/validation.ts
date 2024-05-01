@@ -1,10 +1,6 @@
 import z from "zod"
 import { configType } from "../../baseValidation"
 
-const userIdRequestParams = z.object({
-    userId: z.number(),
-})
-
 const createObject = z.object({
     configurationType: configType,
 })
@@ -12,7 +8,7 @@ const createObject = z.object({
 const updateObject = z.object({
     configurationType: configType.optional(),
     motherboardId: z.number().optional(),
-    peocessorId: z.number().optional(),
+    processorId: z.number().optional(),
     gpuId: z.number().optional(),
     powerSupplyId: z.number().optional(),
     PCCaseId: z.number().optional(),
@@ -21,7 +17,6 @@ const updateObject = z.object({
 })
 
 export const parcialConfigSchema = {
-    userIdRequestParams,
     updateObject,
     createObject,
 }

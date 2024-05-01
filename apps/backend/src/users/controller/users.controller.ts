@@ -6,7 +6,7 @@ import { authorize } from "../../utils"
 import bcrypt from "bcryptjs"
 import { UserDTO } from "../userTypes"
 
-async function register(req: Request, res: Response): Promise<Response<UserDTO | Error>> {
+async function register(req: Request, res: Response): Promise<Response<UserDTO>> {
     const register = UserSchema.Register.safeParse(req.body)
     if (!register.success) {
         return res.status(400).json(new Error(register.error.message))
@@ -33,6 +33,7 @@ async function register(req: Request, res: Response): Promise<Response<UserDTO |
             email: result.value.email,
         })
     }
+    return res.status(500).json(new Error("Internal error"))
 }
 
 async function login(req: Request, res: Response): Promise<Response<UserDTO | Error>> {
@@ -45,7 +46,7 @@ async function login(req: Request, res: Response): Promise<Response<UserDTO | Er
         return res.status(400).json(user.error)
     }
     if (user.isOk) {
-        const result = bcrypt.compare(login.data.password, user.value.password)
+        const result = await bcrypt.compare(login.data.password, user.value.password)
         if (result) {
             const session = await SessionsRepository.create(user.value.id)
             if (!session.isOk) {
@@ -63,6 +64,7 @@ async function login(req: Request, res: Response): Promise<Response<UserDTO | Er
             return res.status(400).json(new Error("Invalid credentials"))
         }
     }
+    return res.status(500).json(new Error("Internal error"))
 }
 
 async function getSingle(req: Request, res: Response): Promise<Response<UserDTO | Error>> {
@@ -70,7 +72,7 @@ async function getSingle(req: Request, res: Response): Promise<Response<UserDTO 
     if (!userId.success) {
         return res.status(400).json(new Error(userId.error.message))
     }
-    if (!authorize(userId.data.id, req.cookies.sessionId)) {
+    if (!await authorize(userId.data.id, req.cookies.sessionId)) {
         return res.status(401).json(new Error("Unauthorized"))
     }
     const user = await UsersRepository.get(userId.data.id)
@@ -84,6 +86,7 @@ async function getSingle(req: Request, res: Response): Promise<Response<UserDTO 
             email: user.value.email,
         })
     }
+    return res.status(500).json(new Error("Internal error"))
 }
 
 async function deleteSingle(req: Request, res: Response): Promise<Response<string | Error>> {
@@ -91,7 +94,7 @@ async function deleteSingle(req: Request, res: Response): Promise<Response<strin
     if (!userId.success) {
         return res.status(400).json(new Error(userId.error.message))
     }
-    if (!authorize(userId.data.id, req.cookies.sessionId)) {
+    if (!await authorize(userId.data.id, req.cookies.sessionId)) {
         return res.status(401).json(new Error("Unauthorized"))
     }
     const user = await UsersRepository.remove(userId.data.id)
@@ -101,6 +104,7 @@ async function deleteSingle(req: Request, res: Response): Promise<Response<strin
     if (user.isOk) {
         return res.status(200).json("Success!")
     }
+    return res.status(500).json(new Error("Internal error"))
 }
 
 async function updateSingle(req: Request, res: Response): Promise<Response<UserDTO | Error>> {
@@ -112,7 +116,7 @@ async function updateSingle(req: Request, res: Response): Promise<Response<UserD
     if (!userId.success) {
         return res.status(400).json(new Error(userId.error.message))
     }
-    if (!authorize(userId.data.id, req.cookies.sessionId)) {
+    if (!await authorize(userId.data.id, req.cookies.sessionId)) {
         return res.status(401).json(new Error("Unauthorized"))
     }
     const user = await UsersRepository.update(userId.data.id, updateParams.data)
@@ -122,6 +126,7 @@ async function updateSingle(req: Request, res: Response): Promise<Response<UserD
     if (user.isOk) {
         return res.status(200).json(user)
     }
+    return res.status(500).json(new Error("Internal error"))
 }
 
 export const UsersController = {

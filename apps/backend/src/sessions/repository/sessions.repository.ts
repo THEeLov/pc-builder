@@ -1,5 +1,5 @@
 import { DbResult } from "../../../types"
-import { prisma } from "../../../client"
+import { prisma } from "../../client"
 import { Session } from "@prisma/client"
 import { Result } from "@badrap/result"
 import handleError from "../../utils"
@@ -32,7 +32,7 @@ async function get(sessionId: string): DbResult<Session> {
         const session = await prisma.session.findUniqueOrThrow({
             where: {
                 id: sessionId,
-            },
+            }
         })
         return Result.ok(session)
     } catch (e) {

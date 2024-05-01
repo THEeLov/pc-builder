@@ -1,20 +1,17 @@
-import { ConfigurationType, ParcialPCConfiguration } from "@prisma/client"
-import { SessionsRepository } from "../../../sessions/repository/sessions.repository"
+import { ParcialPCConfiguration } from "@prisma/client"
 import { Request, Response } from "express"
-import { sessionNotExpired } from "apps/backend/src/utils"
 import { parcialConfigSchema } from "../validation/validation"
+import { baseValidation } from "../../../base/validation/validation"
 import { authorize } from "../../../utils"
 import { ParcialConfigurationRepository } from "../repository/parcialConfiguration.repository"
 
 async function get(req: Request, res: Response): Promise<Response<ParcialPCConfiguration>> {
-    if (!req.cookies.sessionId) {
-        res.status(401).json(new Error("Unauthorized"))
+    const validatedParams = baseValidation.userIdRequestParams.safeParse(req.params)
+    if (!validatedParams.success
+        || !await authorize(validatedParams.data.userId, req.cookies.sessionId)) {
+        return res.status(400).json(new Error("Bad request"))
     }
-    const session = await SessionsRepository.get(req.cookies.sessionId)
-    if (!session.isOk || !sessionNotExpired(session.value)) {
-        return res.status(401).json(new Error("Unauthorized"))
-    }
-    const configuration = await ParcialConfigurationRepository.get(session.value.userId)
+    const configuration = await ParcialConfigurationRepository.get(validatedParams.data.userId)
     if (configuration.isErr) {
         return res.status(401).json(configuration.error)
     }
@@ -25,8 +22,8 @@ async function get(req: Request, res: Response): Promise<Response<ParcialPCConfi
 }
 
 async function update(req: Request, res: Response): Promise<Response<ParcialPCConfiguration>> {
-    const validatedParams = parcialConfigSchema.userIdRequestParams.safeParse(req.params)
-    if (!validatedParams.success || !authorize(validatedParams.data.userId, req.cookies.sessionId)) {
+    const validatedParams = baseValidation.userIdRequestParams.safeParse(req.params)
+    if (!validatedParams.success || !await authorize(validatedParams.data.userId, req.cookies.sessionId)) {
         return res.status(401).json(new Error("Unauthorized"))
     }
     const validatedBody = parcialConfigSchema.updateObject.safeParse(req.body)
@@ -42,12 +39,12 @@ async function update(req: Request, res: Response): Promise<Response<ParcialPCCo
 }
 
 async function create(req: Request, res: Response): Promise<Response<ParcialPCConfiguration>> {
-    const validatedParams = parcialConfigSchema.userIdRequestParams.safeParse(req.params)
+    const validatedParams = baseValidation.userIdRequestParams.safeParse(req.params)
     const validatedBody = parcialConfigSchema.createObject.safeParse(req.body)
     if (
         !validatedParams.success ||
         !validatedBody.success ||
-        !authorize(validatedParams.data.userId, req.cookies.sessionId)
+        !await authorize(validatedParams.data.userId, req.cookies.sessionId)
     ) {
         return res.status(400).json(new Error("Bad request"))
     }
@@ -64,8 +61,8 @@ async function create(req: Request, res: Response): Promise<Response<ParcialPCCo
 }
 
 async function remove(req: Request, res: Response): Promise<Response<void>> {
-    const validatedParams = parcialConfigSchema.userIdRequestParams.safeParse(req.params)
-    if (!validatedParams.success || !authorize(validatedParams.data.userId, req.cookies.sessionId)) {
+    const validatedParams = baseValidation.userIdRequestParams.safeParse(req.params)
+    if (!validatedParams.success || !await authorize(validatedParams.data.userId, req.cookies.sessionId)) {
         return res.status(400).json(new Error("Bad Request"))
     }
     const result = await ParcialConfigurationRepository.remove(validatedParams.data.userId)

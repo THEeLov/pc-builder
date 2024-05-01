@@ -1,10 +1,10 @@
 import { Result } from "@badrap/result"
 import { prisma } from "../../../client"
 import { ConfigurationType, ParcialPCConfiguration } from "@prisma/client"
-import handleError from "apps/backend/src/utils"
-import { DbResult } from "apps/backend/types"
-import { ParcialConfigEdit, PartialConfigCreate } from "../parcialConfigTypes"
-
+import handleError from "../../../utils"
+import { DbResult } from "../../../../types"
+import { PartialConfigCreate } from "../parcialConfigTypes"
+import includeQuery, {ParcialConfigEdit} from "../../configurationQuery"
 async function create(userId: number, type: ConfigurationType): DbResult<ParcialPCConfiguration> {
     try {
         const newConfig = await prisma.parcialPCConfiguration.create({
@@ -28,17 +28,18 @@ async function update(userId: number, data: ParcialConfigEdit): DbResult<Parcial
             data: {
                 configurationType: data.configurationType,
                 motherboardId: data.motherboardId,
-                processorId: data.peocessorId,
+                processorId: data.processorId,
                 gpuId: data.gpuId,
                 pcCaseId: data.PCCaseId,
                 powerSupplyId: data.powerSupplyId,
                 storages: {
-                    connect: data.storages,
+                    set: data.storages,
                 },
                 rams: {
-                    connect: data.rams,
+                    set: data.rams,
                 },
             },
+            include: includeQuery
         })
         return Result.ok(config)
     } catch (e) {
@@ -65,7 +66,8 @@ async function get(userId: number): DbResult<ParcialPCConfiguration> {
             where: {
                 userId,
             },
-        })
+            include: includeQuery
+        });
         return Result.ok(config)
     } catch (e) {
         return handleError(e, "at parcial config get")

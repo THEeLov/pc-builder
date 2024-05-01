@@ -1,4 +1,4 @@
-import { prisma } from "../../../client"
+import { prisma } from "../../client"
 import { User } from "@prisma/client"
 import { DbResult } from "../../../types"
 import { UserCreate, UserEdit } from "../userTypes"
@@ -14,15 +14,19 @@ async function hashPassword(password: string): Promise<string> {
 
 async function create(data: UserCreate): DbResult<User> {
     try {
+        const hashed = await hashPassword(data.password);
+        console.log("this ok")
+        console.log(hashed)
         const newUser = await prisma.user.create({
             data: {
                 username: data.username,
                 email: data.email,
-                password: await hashPassword(data.password),
+                password: hashed,
             },
         })
         return Result.ok(newUser)
     } catch (error) {
+        console.log(error)
         return handleError(error, "in user create")
     }
 }

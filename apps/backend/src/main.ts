@@ -1,14 +1,33 @@
 import express from "express"
+import cors from "cors"
+import { config } from "dotenv"
+import { env } from "process"
+import UserRouter from "./users/router/users.router"
+import ConfigRouter from "./configurations/configurations.router"
 
-const host = process.env.HOST ?? "localhost"
-const port = process.env.PORT ? Number(process.env.PORT) : 3000
+config()
 
 const app = express()
+const port = env.PORT ?? 3000
 
-app.get("/", (req, res) => {
-    res.send({ message: "Hello API" })
+// CORS middleware
+app.use(cors())
+
+// JSON middleware
+app.use(express.json())
+
+// parse URL encoded strings
+app.use(express.urlencoded({ extended: true }))
+
+app.use("/users", UserRouter)
+app.use("/configurations", ConfigRouter)
+
+app.use((_req, res) => {
+    res.status(404).send("Not found")
 })
 
-app.listen(port, host, () => {
-    console.log(`[ ready ] http://${host}:${port}`)
-})
+if (env.NODE_ENV !== "test") {
+    app.listen(port, () => {
+        console.log(`[${new Date().toISOString()}] RESTful API  is listening on port ${port}`)
+    })
+}

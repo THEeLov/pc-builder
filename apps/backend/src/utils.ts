@@ -4,6 +4,7 @@ import NotFoundError from "./errors/NotFoundError"
 import { Result } from "@badrap/result"
 import { Session } from "@prisma/client"
 import { SessionsRepository } from "./sessions/repository/sessions.repository"
+import configurationRepository from "./configurations/full/repository/configuration.repository"
 
 const PRISMA_CONFLICT_ERROR = "P2002"
 const PRISMA_NOT_FOUND_ERROR = "P2001"
@@ -20,6 +21,21 @@ const handleError = (error: any, message: string) => {
 
 export function sessionNotExpired(session: Session): boolean {
     return session.expiresAt > new Date()
+}
+
+export async function authorizeWithConfigId(configId: number, sessionId?: string) {
+    if (!sessionId) {
+        return false
+    }
+    const session = await SessionsRepository.get(sessionId)
+    if (session.isErr || session.value.expiresAt > new Date()) {
+        return false
+    }
+    const config = await configurationRepository.get(configId)
+    if (config.isErr) {
+        return false        
+    }
+    return config.value.userId === session.value.userId
 }
 
 export async function authorize(userId: number, sessionId?: string): Promise<boolean> {
