@@ -6,10 +6,9 @@ import { Prisma, RAM } from "@prisma/client"
 import { Result } from "@badrap/result"
 import { CreateRAM } from "../validation/validation"
 
-
 type RAMWithComponent = Prisma.RAMGetPayload<{
-    include: { component: true };
-  }>;
+    include: { component: true }
+}>
 
 async function getMany(query: ComponentQuery): DbResult<RAM[]> {
     try {
@@ -26,44 +25,41 @@ async function getMany(query: ComponentQuery): DbResult<RAM[]> {
 
 async function create(createObj: CreateRAM): DbResult<RAMWithComponent> {
     try {
-        const ram = await prisma.$transaction( async () => {
+        const ram = await prisma.$transaction(async () => {
             const component = await prisma.component.create({
-                data: createObj.component
+                data: createObj.component,
             })
             const ram = await prisma.rAM.create({
                 data: {
                     memoryType: createObj.memoryType,
                     capacity: createObj.capacity,
                     computerType: createObj.computerType,
-                    componentId: component.id
+                    componentId: component.id,
                 },
                 include: {
-                    component: true
-                }
+                    component: true,
+                },
             })
-            return ram;
-        } );
-        return Result.ok(ram);
-    }
-    catch (e) {
+            return ram
+        })
+        return Result.ok(ram)
+    } catch (e) {
         return handleError(e, "Ram create")
     }
 }
-
 
 async function getSingle(id: number): DbResult<RAMWithComponent> {
     try {
         const ram = await prisma.rAM.findUniqueOrThrow({
             where: {
-                id
+                id,
             },
             include: {
-                component: true
-            }
-        });
-        return Result.ok(ram);
-    }
-    catch (e) {
-        return handleError(e, "in RAM getSingle");
+                component: true,
+            },
+        })
+        return Result.ok(ram)
+    } catch (e) {
+        return handleError(e, "in RAM getSingle")
     }
 }

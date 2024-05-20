@@ -13,14 +13,14 @@ export const RamCreate = z.object({
 
 export type CreateRAM = {
     component: {
-        name: string;
-        configurationType: ConfigurationType[];
+        name: string
+        configurationType: ConfigurationType[]
         componentType: ComponentType
-        price: number;
-        manufacturer: string;
-        imageUrl: string;
-    };
-    memoryType: string;
-    capacity: number;
-    computerType: ComputerType;
+        price: number
+        manufacturer: string
+        imageUrl: string
+    }
+    memoryType: string
+    capacity: number
+    computerType: ComputerType
 }
