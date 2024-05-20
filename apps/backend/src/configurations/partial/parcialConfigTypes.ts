@@ -5,11 +5,11 @@ export type PartialConfigCreate = {
 }
 
 export type FullPartialConfig = {
-    motherboard?: Motherboard,
-    processor?: Processor,
-    rams: RAM[],
-    gpu?: GPU,
-    storages: Storage[],
-    powerSupply?: PowerSupply,
+    motherboard?: Motherboard
+    processor?: Processor
+    rams: RAM[]
+    gpu?: GPU
+    storages: Storage[]
+    powerSupply?: PowerSupply
     pcCase?: PCCase
 }

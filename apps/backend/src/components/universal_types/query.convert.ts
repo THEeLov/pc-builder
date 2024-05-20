@@ -1,5 +1,5 @@
-import ComponentQuery from "./query.type";
-import { FullPartialConfig } from "../../configurations/partial/parcialConfigTypes";
+import ComponentQuery from "./query.type"
+import { FullPartialConfig } from "../../configurations/partial/parcialConfigTypes"
 
 export function convertConfigurationToQueryType(configuration: FullPartialConfig): ComponentQuery {
     const query: ComponentQuery = {
@@ -9,7 +9,7 @@ export function convertConfigurationToQueryType(configuration: FullPartialConfig
         ramType: undefined,
         gpuInterface: undefined,
         storageBusType: undefined,
-        powerIO: undefined
+        powerIO: undefined,
     }
     if (configuration.motherboard) {
         query.socket = configuration.motherboard.socket
@@ -20,8 +20,7 @@ export function convertConfigurationToQueryType(configuration: FullPartialConfig
         query.storageBusType = configuration.motherboard.stroageBusType
     }
     if (configuration.gpu) {
-        query.gpuInterface = configuration.gpu.interface,
-        query.powerIO = configuration.gpu.power
+        ;(query.gpuInterface = configuration.gpu.interface), (query.powerIO = configuration.gpu.power)
     }
     if (configuration.pcCase) {
         query.formFactor = configuration.pcCase.formFactor
@@ -38,5 +37,5 @@ export function convertConfigurationToQueryType(configuration: FullPartialConfig
     if (configuration.storages.length > 0) {
         query.storageBusType = configuration.storages[0].busType
     }
-    return query;
+    return query
 }
