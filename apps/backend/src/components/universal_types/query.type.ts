@@ -14,3 +14,5 @@ type ComponentQuery = {
     storageBusType?: string
     powerIO?: number
 }
+
+export default ComponentQuery
