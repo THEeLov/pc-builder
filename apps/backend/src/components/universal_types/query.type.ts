@@ -1,4 +1,3 @@
-
 /**
  * Toto sa bude posielať vždy ako query ked budete fetchovat
  * akukolvek komponentu.
@@ -6,12 +5,12 @@
  * Je to myslienka aby bol jednotny objekt pomocou ktoreho
  * vieme popisat request na akukolvek komponentu...
  */
-type ComponentQuery =  {
-    socket?: string,
-    formFactor?: string,
-    ramSlots?: number,
-    ramType?: string,
-    gpuInterface?: string,
-    storageBusType?: string,
+type ComponentQuery = {
+    socket?: string
+    formFactor?: string
+    ramSlots?: number
+    ramType?: string
+    gpuInterface?: string
+    storageBusType?: string
     powerIO?: number
 }
