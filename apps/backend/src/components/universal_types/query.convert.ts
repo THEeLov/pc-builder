@@ -1,5 +1,20 @@
 import ComponentQuery from "./query.type"
 import { FullPartialConfig } from "../../configurations/partial/parcialConfigTypes"
+import { Prisma } from "@prisma/client"
+import includeQuery from "../../configurations/configurationQuery"
+
+export function convertConfig(config: Prisma.ParcialPCConfigurationGetPayload<{ include: typeof includeQuery }>) {
+    const returnObj: FullPartialConfig = {
+        motherboard: config.motherboard ?? undefined,
+        processor: config.processor ?? undefined,
+        rams: config.rams,
+        gpu: config.gpu ?? undefined,
+        storages: config.storages,
+        powerSupply: config.powerSupply ?? undefined,
+        pcCase: config.pcCase ?? undefined,
+    }
+    return returnObj
+}
 
 export function convertConfigurationToQueryType(configuration: FullPartialConfig): ComponentQuery {
     const query: ComponentQuery = {

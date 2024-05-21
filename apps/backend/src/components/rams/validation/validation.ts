@@ -1,6 +1,6 @@
 import z from "zod"
 import { componentCreate } from "../../base/validation/validation"
-import { ComponentType, ComputerType, ConfigurationType } from "@prisma/client"
+import { ComponentType, ComputerType, ConfigurationType, Prisma } from "@prisma/client"
 
 const computerType = z.enum(["DESKTOP", "LAPTOP"])
 
@@ -24,3 +24,12 @@ export type CreateRAM = {
     capacity: number
     computerType: ComputerType
 }
+export type UpdateRAM = {
+    memoryType?: string
+    capacity?: number
+    computerType?: ComputerType
+}
+
+export type RAMWithComponent = Prisma.RAMGetPayload<{
+    include: { component: true }
+}>

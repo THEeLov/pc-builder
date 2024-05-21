@@ -5,6 +5,7 @@ import handleError from "../../../utils"
 import { DbResult } from "../../../../types"
 import { PartialConfigCreate } from "../parcialConfigTypes"
 import includeQuery, { ParcialConfigEdit } from "../../configurationQuery"
+
 async function create(userId: number, type: ConfigurationType): DbResult<ParcialPCConfiguration> {
     try {
         const newConfig = await prisma.parcialPCConfiguration.create({

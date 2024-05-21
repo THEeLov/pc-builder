@@ -4,11 +4,7 @@ import { DbResult } from "apps/backend/types"
 import handleError from "apps/backend/src/utils"
 import { Prisma, RAM } from "@prisma/client"
 import { Result } from "@badrap/result"
-import { CreateRAM } from "../validation/validation"
-
-type RAMWithComponent = Prisma.RAMGetPayload<{
-    include: { component: true }
-}>
+import { CreateRAM, UpdateRAM, RAMWithComponent } from "../validation/validation"
 
 async function getMany(query: ComponentQuery): DbResult<RAM[]> {
     try {
@@ -63,3 +59,43 @@ async function getSingle(id: number): DbResult<RAMWithComponent> {
         return handleError(e, "in RAM getSingle")
     }
 }
+
+async function update(id: number, updateObj: UpdateRAM): DbResult<RAMWithComponent> {
+    try {
+        const ram = await prisma.rAM.update({
+            where: {
+                id,
+            },
+            data: updateObj,
+            include: {
+                component: true,
+            },
+        })
+        return Result.ok(ram)
+    } catch (e) {
+        return handleError(e, "In update RAM")
+    }
+}
+
+async function remove(id: number): DbResult<void> {
+    try {
+        await prisma.rAM.delete({
+            where: {
+                id,
+            },
+        })
+        return Result.ok(undefined)
+    } catch (e) {
+        return handleError(e, "In RAM remove")
+    }
+}
+
+const RAMRepo = {
+    getMany,
+    getSingle,
+    create,
+    update,
+    remove,
+}
+
+export default RAMRepo

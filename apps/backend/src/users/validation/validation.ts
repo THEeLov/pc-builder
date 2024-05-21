@@ -1,3 +1,4 @@
+import { Prisma } from "@prisma/client"
 import z from "zod"
 
 const Register = z.object({
@@ -20,6 +21,13 @@ const Edit = z.object({
     email: z.string().email().optional(),
     password: z.string().optional(),
 })
+
+export type UserWithEverything = Prisma.UserGetPayload<{
+    include: {
+        partialUserConfiguration: true
+        userconfigurations: true
+    }
+}>
 
 export const UserSchema = {
     Register,

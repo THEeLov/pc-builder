@@ -4,6 +4,7 @@ import { DbResult } from "../../../types"
 import { UserCreate, UserEdit } from "../userTypes"
 import handleError from "../../utils"
 import bcrypt from "bcryptjs"
+import { UserWithEverything } from "../validation/validation"
 import { Result } from "@badrap/result"
 
 const saltRounds = 10
@@ -15,8 +16,6 @@ async function hashPassword(password: string): Promise<string> {
 async function create(data: UserCreate): DbResult<User> {
     try {
         const hashed = await hashPassword(data.password)
-        console.log("this ok")
-        console.log(hashed)
         const newUser = await prisma.user.create({
             data: {
                 username: data.username,
@@ -31,13 +30,17 @@ async function create(data: UserCreate): DbResult<User> {
     }
 }
 
-async function update(id: number, data: UserEdit): DbResult<User> {
+async function update(id: number, data: UserEdit): DbResult<UserWithEverything> {
     try {
         const user = await prisma.user.update({
             where: {
                 id: id,
             },
             data: data,
+            include: {
+                userconfigurations: true,
+                partialUserConfiguration: true,
+            },
         })
         return Result.ok(user)
     } catch (error) {
@@ -58,7 +61,7 @@ async function remove(id: number): DbResult<void> {
     }
 }
 
-async function get(identifier: number | string): DbResult<User> {
+async function get(identifier: number | string): DbResult<UserWithEverything> {
     try {
         let user
         if (typeof identifier === "number") {
@@ -66,11 +69,19 @@ async function get(identifier: number | string): DbResult<User> {
                 where: {
                     id: identifier,
                 },
+                include: {
+                    userconfigurations: true,
+                    partialUserConfiguration: true,
+                },
             })
         } else {
             user = await prisma.user.findUniqueOrThrow({
                 where: {
                     email: identifier,
+                },
+                include: {
+                    userconfigurations: true,
+                    partialUserConfiguration: true,
                 },
             })
         }
