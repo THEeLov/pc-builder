@@ -2,7 +2,6 @@ import z from "zod"
 import { componentCreate } from "../../base/validation/validation"
 import { ComponentType, ComputerType, ConfigurationType, Prisma } from "@prisma/client"
 
-
 const computerType = z.enum(Object.values(ComputerType) as [ComputerType, ...ComputerType[]])
 
 export const RamCreate = z.object({

@@ -5,8 +5,6 @@ const router = express.Router()
 
 router.route("/").post(RAMController.create).get(RAMController.getMany)
 
-router.route("/:id").put(RAMController.update)
-        .get(RAMController.getSingle)
-        .delete(RAMController.remove)
+router.route("/:id").put(RAMController.update).get(RAMController.getSingle).delete(RAMController.remove)
 
 export default router
