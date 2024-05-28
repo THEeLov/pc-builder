@@ -7,11 +7,11 @@ import { authorize, authorizeWithConfigId } from "../../../utils"
 import configValidation from "../validation/validation"
 
 async function getMany(req: Request, res: Response): Promise<Response<PCConfiguration[]>> {
-    const validatedParams = baseValidation.userIdRequestParams.safeParse(req.params)
-    if (!validatedParams.success || !(await authorize(validatedParams.data.userId, req.cookies.sessionId))) {
+    const validatedParams = baseValidation.IdRequestParams.safeParse(req.params)
+    if (!validatedParams.success || !(await authorize(validatedParams.data.id, req.cookies.sessionId))) {
         return res.status(400).json(new Error("Bad request"))
     }
-    const result = await configurationRepository.getMany(validatedParams.data.userId)
+    const result = await configurationRepository.getMany(validatedParams.data.id)
     if (!result.isOk) {
         return res.status(500).json(result.error)
     }
@@ -37,16 +37,16 @@ async function update(req: Request, res: Response): Promise<Response<PCConfigura
 }
 
 async function create(req: Request, res: Response): Promise<Response<PCConfiguration>> {
-    const validatedParams = baseValidation.userIdRequestParams.safeParse(req.params)
+    const validatedParams = baseValidation.IdRequestParams.safeParse(req.params)
     const validatedBody = configValidation.createObject.safeParse(req.body)
     if (
         !validatedParams.success ||
-        !(await authorize(validatedParams.data.userId, req.cookies.sessionId)) ||
+        !(await authorize(validatedParams.data.id, req.cookies.sessionId)) ||
         !validatedBody.success
     ) {
         return res.status(400).json(new Error("Bad request"))
     }
-    const newConfig = await configurationRepository.create(validatedParams.data.userId, validatedBody.data)
+    const newConfig = await configurationRepository.create(validatedParams.data.id, validatedBody.data)
     if (!newConfig.isOk) {
         return res.status(500).json(newConfig.error)
     }

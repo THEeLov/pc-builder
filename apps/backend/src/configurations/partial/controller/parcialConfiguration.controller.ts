@@ -6,11 +6,11 @@ import { authorize } from "../../../utils"
 import { ParcialConfigurationRepository } from "../repository/parcialConfiguration.repository"
 
 async function get(req: Request, res: Response): Promise<Response<ParcialPCConfiguration>> {
-    const validatedParams = baseValidation.userIdRequestParams.safeParse(req.params)
-    if (!validatedParams.success || !(await authorize(validatedParams.data.userId, req.cookies.sessionId))) {
+    const validatedParams = baseValidation.IdRequestParams.safeParse(req.params)
+    if (!validatedParams.success || !(await authorize(validatedParams.data.id, req.cookies.sessionId))) {
         return res.status(400).json(new Error("Bad request"))
     }
-    const configuration = await ParcialConfigurationRepository.get(validatedParams.data.userId)
+    const configuration = await ParcialConfigurationRepository.get(validatedParams.data.id)
     if (configuration.isErr) {
         return res.status(401).json(configuration.error)
     }
@@ -21,8 +21,8 @@ async function get(req: Request, res: Response): Promise<Response<ParcialPCConfi
 }
 
 async function update(req: Request, res: Response): Promise<Response<ParcialPCConfiguration>> {
-    const validatedParams = baseValidation.userIdRequestParams.safeParse(req.params)
-    if (!validatedParams.success || !(await authorize(validatedParams.data.userId, req.cookies.sessionId))) {
+    const validatedParams = baseValidation.IdRequestParams.safeParse(req.params)
+    if (!validatedParams.success || !(await authorize(validatedParams.data.id, req.cookies.sessionId))) {
         return res.status(401).json(new Error("Unauthorized"))
     }
     const validatedBody = parcialConfigSchema.updateObject.safeParse(req.body)
@@ -30,7 +30,7 @@ async function update(req: Request, res: Response): Promise<Response<ParcialPCCo
         return res.status(400).json(new Error("Bad request"))
     }
 
-    const updatedConfig = await ParcialConfigurationRepository.update(validatedParams.data.userId, validatedBody.data)
+    const updatedConfig = await ParcialConfigurationRepository.update(validatedParams.data.id, validatedBody.data)
     if (!updatedConfig.isOk) {
         return res.status(500).json(updatedConfig.isErr ? updatedConfig.error : new Error("Internal error"))
     }
@@ -38,17 +38,17 @@ async function update(req: Request, res: Response): Promise<Response<ParcialPCCo
 }
 
 async function create(req: Request, res: Response): Promise<Response<ParcialPCConfiguration>> {
-    const validatedParams = baseValidation.userIdRequestParams.safeParse(req.params)
+    const validatedParams = baseValidation.IdRequestParams.safeParse(req.params)
     const validatedBody = parcialConfigSchema.createObject.safeParse(req.body)
     if (
         !validatedParams.success ||
         !validatedBody.success ||
-        !(await authorize(validatedParams.data.userId, req.cookies.sessionId))
+        !(await authorize(validatedParams.data.id, req.cookies.sessionId))
     ) {
         return res.status(400).json(new Error("Bad request"))
     }
     const createdPartialConfig = await ParcialConfigurationRepository.create(
-        validatedParams.data.userId,
+        validatedParams.data.id,
         validatedBody.data.configurationType,
     )
     if (!createdPartialConfig.isOk) {
@@ -60,11 +60,11 @@ async function create(req: Request, res: Response): Promise<Response<ParcialPCCo
 }
 
 async function remove(req: Request, res: Response): Promise<Response<void>> {
-    const validatedParams = baseValidation.userIdRequestParams.safeParse(req.params)
-    if (!validatedParams.success || !(await authorize(validatedParams.data.userId, req.cookies.sessionId))) {
+    const validatedParams = baseValidation.IdRequestParams.safeParse(req.params)
+    if (!validatedParams.success || !(await authorize(validatedParams.data.id, req.cookies.sessionId))) {
         return res.status(400).json(new Error("Bad Request"))
     }
-    const result = await ParcialConfigurationRepository.remove(validatedParams.data.userId)
+    const result = await ParcialConfigurationRepository.remove(validatedParams.data.id)
     if (result.isErr) {
         return res.status(500).json(result.error)
     }

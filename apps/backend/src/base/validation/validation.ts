@@ -1,6 +1,6 @@
 import z from "zod"
-const userIdRequestParams = z.object({
-    userId: z.number(),
+const IdRequestParams = z.object({
+    id: z.number(),
 })
 
 const cookieSchema = z.object({
@@ -8,6 +8,6 @@ const cookieSchema = z.object({
 })
 
 export const baseValidation = {
-    userIdRequestParams,
+    IdRequestParams,
     cookieSchema,
 }

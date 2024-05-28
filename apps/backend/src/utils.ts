@@ -2,7 +2,7 @@ import InternalError from "./errors/InternalError"
 import ConflictError from "./errors/ConflictError"
 import NotFoundError from "./errors/NotFoundError"
 import { Result } from "@badrap/result"
-import { Session } from "@prisma/client"
+import { Session, UserType } from "@prisma/client"
 import { SessionsRepository } from "./sessions/repository/sessions.repository"
 import configurationRepository from "./configurations/full/repository/configuration.repository"
 
@@ -36,6 +36,20 @@ export async function authorizeWithConfigId(configId: number, sessionId?: string
         return false
     }
     return config.value.userId === session.value.userId
+}
+
+export async function authorizeAdmin(sessionId?: string): Promise<boolean> {
+    if (!sessionId) {
+        return false
+    }
+    const session = await SessionsRepository.get(sessionId)
+    if (session.isErr) {
+        return false
+    }
+    if (session.isOk) {
+        return session.value.expiresAt > new Date() && session.value.userType === UserType.ADMIN
+    }
+    return false
 }
 
 export async function authorize(userId: number, sessionId?: string): Promise<boolean> {

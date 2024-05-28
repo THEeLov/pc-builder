@@ -79,11 +79,21 @@ async function update(id: number, updateObj: UpdateRAM): DbResult<RAMWithCompone
 
 async function remove(id: number): DbResult<void> {
     try {
-        await prisma.rAM.delete({
-            where: {
-                id,
-            },
-        })
+        await prisma.$transaction( async () => {
+            const ram = await prisma.rAM.findUniqueOrThrow( {
+                where: {id}
+            } )
+            await prisma.component.delete( {
+                where: {
+                    id: ram.componentId
+                }
+            } )
+            await prisma.rAM.delete({
+                where: {
+                    id,
+                }
+            })
+        } )
         return Result.ok(undefined)
     } catch (e) {
         return handleError(e, "In RAM remove")

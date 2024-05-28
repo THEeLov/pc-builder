@@ -65,6 +65,7 @@ model Component {
     storage           Storage?
     powerSupply       PowerSupply?
     pcCase            PCCase?
+    deletedAt         DateTime?
 }
 
 model User {
@@ -90,6 +91,7 @@ model Motherboard {
     component      Component                @relation(fields: [componentId], references: [id])
     configurations PCConfiguration[]
     partial        ParcialPCConfiguration[]
+    deletedAt      DateTime?
 }
 
 model Processor {
@@ -103,6 +105,7 @@ model Processor {
     component      Component                @relation(fields: [componentId], references: [id])
     configurations PCConfiguration[]
     partial        ParcialPCConfiguration[]
+    deletedAt      DateTime?
 }
 
 model GPU {
@@ -115,6 +118,7 @@ model GPU {
     component      Component                @relation(fields: [componentId], references: [id])
     configurations PCConfiguration[]
     partial        ParcialPCConfiguration[]
+    deletedAt      DateTime?
 }
 
 model RAM {
@@ -126,6 +130,7 @@ model RAM {
     component      Component                @relation(fields: [componentId], references: [id])
     configurations PCConfiguration[]
     partial        ParcialPCConfiguration[]
+    deletedAt      DateTime?
 }
 
 model Storage {
@@ -137,6 +142,7 @@ model Storage {
     component      Component                @relation(fields: [componentId], references: [id])
     configurations PCConfiguration[]
     partial        ParcialPCConfiguration[]
+    deletedAt      DateTime?
 }
 
 model PowerSupply {
@@ -148,6 +154,7 @@ model PowerSupply {
     component      Component                @relation(fields: [componentId], references: [id])
     configurations PCConfiguration[]
     partial        ParcialPCConfiguration[]
+    deletedAt      DateTime?
 }
 
 model PCCase {
@@ -157,6 +164,7 @@ model PCCase {
     component      Component                @relation(fields: [componentId], references: [id])
     configurations PCConfiguration[]
     partial        ParcialPCConfiguration[]
+    deletedAt      DateTime?
 }
 
 model ParcialPCConfiguration {
@@ -178,6 +186,7 @@ model ParcialPCConfiguration {
     user              User              @relation(fields: [userId], references: [id])
     createdAt         DateTime          @default(now())
     updatedAt         DateTime          @default(now())
+    deletedAt         DateTime?
 }
 
 model PCConfiguration {
