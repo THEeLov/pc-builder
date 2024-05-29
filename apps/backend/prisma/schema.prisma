@@ -41,6 +41,7 @@ enum ComponentType {
     PCCASE
 }
 
+//Done
 model Session {
     id        String   @id @default(uuid())
     createdAt DateTime @default(now())
@@ -50,6 +51,7 @@ model Session {
     user      User     @relation(fields: [userId], references: [id])
 }
 
+//Done ?? Mozno sa budu pridavat nejake metody
 model Component {
     id                Int                 @id @default(autoincrement())
     name              String
@@ -68,6 +70,7 @@ model Component {
     deletedAt         DateTime?
 }
 
+//Done
 model User {
     id                       Int                     @id @default(autoincrement())
     username                 String
@@ -121,6 +124,7 @@ model GPU {
     deletedAt      DateTime?
 }
 
+//Done
 model RAM {
     id             Int                      @id @default(autoincrement())
     memoryType     String
@@ -167,6 +171,7 @@ model PCCase {
     deletedAt      DateTime?
 }
 
+//Done
 model ParcialPCConfiguration {
     id                Int               @id @default(autoincrement())
     configurationType ConfigurationType
@@ -189,6 +194,7 @@ model ParcialPCConfiguration {
     deletedAt         DateTime?
 }
 
+//Done
 model PCConfiguration {
     id                Int               @id @default(autoincrement())
     totalPrice        Float

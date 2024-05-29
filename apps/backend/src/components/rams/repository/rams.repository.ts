@@ -2,7 +2,7 @@ import ComponentQuery from "../../universal_types/query.type"
 import { prisma } from "apps/backend/src/client"
 import { DbResult } from "apps/backend/types"
 import handleError from "apps/backend/src/utils"
-import { Prisma, RAM } from "@prisma/client"
+import { RAM } from "@prisma/client"
 import { Result } from "@badrap/result"
 import { CreateRAM, UpdateRAM, RAMWithComponent } from "../validation/validation"
 
