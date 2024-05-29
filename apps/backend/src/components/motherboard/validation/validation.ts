@@ -1,5 +1,5 @@
-import z from 'zod'
-import { componentCreate } from '../../base/validation/validation'
+import z from "zod"
+import { componentCreate } from "../../base/validation/validation"
 
 const MotherboardCreate = z.object({
     component: componentCreate,
@@ -22,7 +22,7 @@ const MotherboardEdit = z.object({
 
 const MotherboardSchemas = {
     MotherboardCreate,
-    MotherboardEdit
+    MotherboardEdit,
 }
 
 export default MotherboardSchemas

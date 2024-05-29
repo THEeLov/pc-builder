@@ -1,18 +1,17 @@
-import { prisma } from "../../../client";
-import { DbResult } from "apps/backend/types";
-import { MotherboardCreate, MotherboardEdit, MotherboardWithComponent } from "../validation/motherboard.types";
-import { Result } from "@badrap/result";
-import handleError from "apps/backend/src/utils";
-import ComponentQuery from "../../universal_types/query.type";
-
+import { prisma } from "../../../client"
+import { DbResult } from "apps/backend/types"
+import { MotherboardCreate, MotherboardEdit, MotherboardWithComponent } from "../validation/motherboard.types"
+import { Result } from "@badrap/result"
+import handleError from "apps/backend/src/utils"
+import ComponentQuery from "../../universal_types/query.type"
 
 async function create(createObj: MotherboardCreate): DbResult<MotherboardWithComponent> {
     try {
         const motherboard = await prisma.$transaction(async () => {
-            const component = await prisma.component.create( {
-                data: createObj.component
+            const component = await prisma.component.create({
+                data: createObj.component,
             })
-            const motherboard = await prisma.motherboard.create( {
+            const motherboard = await prisma.motherboard.create({
                 data: {
                     socket: createObj.socket,
                     formFactor: createObj.formFactor,
@@ -20,24 +19,23 @@ async function create(createObj: MotherboardCreate): DbResult<MotherboardWithCom
                     ramType: createObj.ramType,
                     gpuInterface: createObj.gpuInterface,
                     stroageBusType: createObj.storageBusType,
-                    componentId: component.id
+                    componentId: component.id,
                 },
                 include: {
-                    component: true
-                }
-            } )
+                    component: true,
+                },
+            })
             return motherboard
         })
         return Result.ok(motherboard)
-    }
-    catch (e) {
+    } catch (e) {
         return handleError(e, "In motherboard create")
     }
 }
 
 async function getMany(query: ComponentQuery): DbResult<MotherboardWithComponent[]> {
     try {
-        const motherboards = await prisma.motherboard.findMany( {
+        const motherboards = await prisma.motherboard.findMany({
             where: {
                 socket: query.socket,
                 formFactor: query.formFactor,
@@ -47,12 +45,11 @@ async function getMany(query: ComponentQuery): DbResult<MotherboardWithComponent
                 stroageBusType: query.storageBusType,
             },
             include: {
-                component: true
-            }
-        } )
+                component: true,
+            },
+        })
         return Result.ok(motherboards)
-    }
-    catch (e) {
+    } catch (e) {
         return handleError(e, "In motherboard getMany")
     }
 }
@@ -60,12 +57,11 @@ async function getMany(query: ComponentQuery): DbResult<MotherboardWithComponent
 async function getSingle(id: number): DbResult<MotherboardWithComponent> {
     try {
         const motherboard = await prisma.motherboard.findUniqueOrThrow({
-            where: {id},
-            include: {component:true}
+            where: { id },
+            include: { component: true },
         })
         return Result.ok(motherboard)
-    }
-    catch (e) {
+    } catch (e) {
         return handleError(e, "In motherboard getSingle")
     }
 }
@@ -73,15 +69,14 @@ async function getSingle(id: number): DbResult<MotherboardWithComponent> {
 async function update(id: number, updateObj: MotherboardEdit): DbResult<MotherboardWithComponent> {
     try {
         const motherboard = await prisma.motherboard.update({
-            where: {id},
+            where: { id },
             data: updateObj,
             include: {
-                component: true
-            }
+                component: true,
+            },
         })
         return Result.ok(motherboard)
-    }
-    catch (e) {
+    } catch (e) {
         return handleError(e, "in motherboard update")
     }
 }
@@ -90,20 +85,19 @@ async function remove(id: number): DbResult<void> {
     try {
         await prisma.$transaction(async () => {
             const motherboard = await prisma.motherboard.findUniqueOrThrow({
-                where: {id}
+                where: { id },
             })
             await prisma.component.delete({
                 where: {
-                    id: motherboard.componentId
-                }
+                    id: motherboard.componentId,
+                },
             })
             await prisma.motherboard.delete({
-                where: {id}
+                where: { id },
             })
-        } )
+        })
         return Result.ok(undefined)
-    }
-    catch (e) {
+    } catch (e) {
         return handleError(e, "in motherboard remove")
     }
 }
@@ -113,7 +107,7 @@ const MotherboardRepo = {
     getMany,
     getSingle,
     update,
-    remove
+    remove,
 }
 
 export default MotherboardRepo
