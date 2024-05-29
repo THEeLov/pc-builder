@@ -140,6 +140,7 @@ model RAM {
     deletedAt      DateTime?
 }
 
+//Done
 model Storage {
     id             Int                      @id @default(autoincrement())
     storageType    String
