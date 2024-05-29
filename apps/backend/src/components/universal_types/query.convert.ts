@@ -42,6 +42,7 @@ export function convertConfigurationToQueryType(configuration: FullPartialConfig
     }
     if (configuration.powerSupply) {
         query.powerIO = configuration.powerSupply.powerOutput
+        query.formFactor = configuration.powerSupply.formFactor
     }
     if (configuration.processor) {
         query.socket = configuration.processor.socket

@@ -10,6 +10,7 @@ import MotherboardRouter from "./components/motherboard/router/motherboard.route
 import ProcessorRouter from "./components/processor/router/processor.router"
 import GPURouter from "./components/gpu/router/gpu.router"
 import StorageRouter from "./components/storage/router/storage.router"
+import PowerSupplyRouter from "./components/powerSupply/router/powerSupply.router"
 
 config()
 
@@ -27,6 +28,7 @@ app.use(express.json())
 // parse URL encoded strings
 app.use(express.urlencoded({ extended: true }))
 
+app.use("/components/power-supplies", PowerSupplyRouter)
 app.use("/components/storages", StorageRouter)
 app.use("/components/gpus", GPURouter)
 app.use("/components/processors", ProcessorRouter)

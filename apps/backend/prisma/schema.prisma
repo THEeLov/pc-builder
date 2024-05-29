@@ -153,6 +153,7 @@ model Storage {
     deletedAt      DateTime?
 }
 
+//Done
 model PowerSupply {
     id             Int                      @id @default(autoincrement())
     powerOutput    Int
