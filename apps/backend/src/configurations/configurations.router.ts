@@ -11,8 +11,10 @@ router
     .delete(ParcialConfigurationController.remove)
 
 router.route("/").get(ConfigurationController.getMany)
-router.route("/:id").put(ConfigurationController.update)
-                    .post(ConfigurationController.create)
-                    .delete(ConfigurationController.remove)
+router
+    .route("/:id")
+    .put(ConfigurationController.update)
+    .post(ConfigurationController.create)
+    .delete(ConfigurationController.remove)
 
 export default router

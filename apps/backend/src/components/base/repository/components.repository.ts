@@ -18,7 +18,7 @@ async function getMany(type: ComponentType | undefined): DbResult<Component[]> {
 }
 
 const ComponentRepo = {
-    getMany
+    getMany,
 }
 
 export default ComponentRepo

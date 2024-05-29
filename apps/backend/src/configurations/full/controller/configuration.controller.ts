@@ -72,7 +72,7 @@ const ConfigurationController = {
     getMany,
     create,
     update,
-    remove
+    remove,
 }
 
 export default ConfigurationController
