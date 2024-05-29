@@ -82,6 +82,7 @@ model User {
     sessions                 Session[]
 }
 
+//Done
 model Motherboard {
     id             Int                      @id @default(autoincrement())
     socket         String

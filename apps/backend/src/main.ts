@@ -6,6 +6,8 @@ import cookieParser from "cookie-parser"
 import UserRouter from "./users/router/users.router"
 import ConfigRouter from "./configurations/configurations.router"
 import RAMRouter from "./components/rams/router/rams.router"
+import MotherboardRouter from "./components/motherboard/router/motherboard.router"
+import ProcessorRouter from "./components/processor/router/processor.router"
 
 config()
 
@@ -23,7 +25,9 @@ app.use(express.json())
 // parse URL encoded strings
 app.use(express.urlencoded({ extended: true }))
 
+app.use("/components/processors", ProcessorRouter)
 app.use("/components/rams", RAMRouter)
+app.use("/components/motherboards", MotherboardRouter)
 app.use("/users", UserRouter)
 app.use("/configurations", ConfigRouter)
 
