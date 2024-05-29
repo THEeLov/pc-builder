@@ -1,5 +1,5 @@
-import z from 'zod'
-import { componentCreate } from '../../base/validation/validation'
+import z from "zod"
+import { componentCreate } from "../../base/validation/validation"
 
 const PowerSupplyCreate = z.object({
     powerOutput: z.number(),
@@ -16,7 +16,7 @@ const PowerSupplyEdit = z.object({
 
 const PowerSupplySchema = {
     PowerSupplyCreate,
-    PowerSupplyEdit
+    PowerSupplyEdit,
 }
 
 export default PowerSupplySchema
