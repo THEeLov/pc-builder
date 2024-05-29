@@ -12,8 +12,8 @@ async function getMany(query: ComponentQuery): DbResult<RAMWithComponent[]> {
                 memoryType: query.ramType,
             },
             include: {
-                component: true
-            }
+                component: true,
+            },
         })
         return Result.ok(rams)
     } catch (e) {
