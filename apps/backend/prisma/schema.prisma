@@ -166,6 +166,7 @@ model PowerSupply {
     deletedAt      DateTime?
 }
 
+//Done
 model PCCase {
     id             Int                      @id @default(autoincrement())
     formFactor     String
