@@ -1,5 +1,5 @@
-import z from 'zod'
-import { componentCreate } from '../../base/validation/validation'
+import z from "zod"
+import { componentCreate } from "../../base/validation/validation"
 
 const ProcessorCreate = z.object({
     architecture: z.string(),
@@ -20,7 +20,7 @@ const ProcessorEdit = z.object({
 
 const ProcessorSchema = {
     ProcessorCreate,
-    ProcessorEdit
+    ProcessorEdit,
 }
 
 export default ProcessorSchema
