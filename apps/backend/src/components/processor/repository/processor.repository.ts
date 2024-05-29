@@ -1,8 +1,8 @@
-import { DbResult } from "apps/backend/types"
+import { DbResult } from "../../../../types"
 import { Result } from "@badrap/result"
-import { prisma } from "apps/backend/src/client"
+import { prisma } from "../../../client"
 import { ProcessorWithComponent, ProcessorCreate, ProcessorEdit } from "../validation/processor.types"
-import handleError from "apps/backend/src/utils"
+import handleError from "../../../utils"
 import ComponentQuery from "../../universal_types/query.type"
 
 async function create(createObj: ProcessorCreate): DbResult<ProcessorWithComponent> {

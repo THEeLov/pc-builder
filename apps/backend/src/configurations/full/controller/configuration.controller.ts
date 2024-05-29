@@ -67,3 +67,12 @@ async function remove(req: Request, res: Response): Promise<Response<void>> {
     }
     return res.status(200).json(result.value)
 }
+
+const ConfigurationController = {
+    getMany,
+    create,
+    update,
+    remove
+}
+
+export default ConfigurationController

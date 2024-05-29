@@ -16,3 +16,9 @@ async function getMany(type: ComponentType | undefined): DbResult<Component[]> {
         return handleError(e, "getMany components")
     }
 }
+
+const ComponentRepo = {
+    getMany
+}
+
+export default ComponentRepo

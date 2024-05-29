@@ -1,5 +1,5 @@
 import z from "zod"
-import { component, componentCreate } from "../../base/validation/validation"
+import { componentCreate } from "../../base/validation/validation"
 
 const GPUCreate = z.object({
     memory: z.number(),

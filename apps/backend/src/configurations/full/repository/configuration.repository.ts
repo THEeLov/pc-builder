@@ -2,7 +2,7 @@ import { prisma } from "../../../client"
 import { ConfigurationCreate } from "../configurationTypes"
 import { DbResult } from "../../../../types"
 import handleError from "../../../utils"
-import { ConfigurationType, PCConfiguration } from "@prisma/client"
+import { PCConfiguration } from "@prisma/client"
 import { Result } from "@badrap/result"
 import includeQuery, { ParcialConfigEdit } from "../../configurationQuery"
 

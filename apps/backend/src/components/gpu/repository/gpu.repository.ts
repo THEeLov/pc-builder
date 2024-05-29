@@ -1,8 +1,8 @@
 import { GPUCreate, GPUEdit, GPUWithComponent } from "../validation/gpu.types"
-import { prisma } from "apps/backend/src/client"
+import { prisma } from "../../../client"
 import { Result } from "@badrap/result"
-import { DbResult } from "apps/backend/types"
-import handleError from "apps/backend/src/utils"
+import { DbResult } from "../../../../types"
+import handleError from "../../../utils"
 import ComponentQuery from "../../universal_types/query.type"
 
 async function create(createObj: GPUCreate): DbResult<GPUWithComponent> {

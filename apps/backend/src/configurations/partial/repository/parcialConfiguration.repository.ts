@@ -3,7 +3,6 @@ import { prisma } from "../../../client"
 import { ConfigurationType, ParcialPCConfiguration } from "@prisma/client"
 import handleError from "../../../utils"
 import { DbResult } from "../../../../types"
-import { PartialConfigCreate } from "../parcialConfigTypes"
 import includeQuery, { ParcialConfigEdit } from "../../configurationQuery"
 
 async function create(userId: number, type: ConfigurationType): DbResult<ParcialPCConfiguration> {

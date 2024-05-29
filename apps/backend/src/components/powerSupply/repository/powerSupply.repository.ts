@@ -1,7 +1,7 @@
-import { prisma } from "apps/backend/src/client"
-import { DbResult } from "apps/backend/types"
+import { prisma } from "../../../client"
+import { DbResult } from "../../../../types"
 import { Result } from "@badrap/result"
-import handleError from "apps/backend/src/utils"
+import handleError from "../../../utils"
 import ComponentQuery from "../../universal_types/query.type"
 import { PowerSupplyCreate, PowerSupplyEdit, PowerSupplyWithComponent } from "../validation/powerSupply.types"
 

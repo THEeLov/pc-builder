@@ -1,7 +1,7 @@
-import { prisma } from "apps/backend/src/client"
+import { prisma } from "../../../client"
 import { Result } from "@badrap/result"
-import { DbResult } from "apps/backend/types"
-import handleError from "apps/backend/src/utils"
+import { DbResult } from "../../../../types"
+import handleError from "../../../utils"
 import ComponentQuery from "../../universal_types/query.type"
 import { PCCaseWithComponent, PCCaseCreate, PCCaseEdit } from "../validation/pcCase.types"
 

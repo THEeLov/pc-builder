@@ -1,15 +1,15 @@
-import Unauthorized from "apps/backend/src/errors/Unauthorized"
+import Unauthorized from "../../../errors/Unauthorized"
 import { Request, Response } from "express"
 import { baseValidation } from "../../../base/validation/validation"
 import ComponentQuery from "../../universal_types/query.type"
-import { DbResult } from "apps/backend/types"
-import { SessionsRepository } from "apps/backend/src/sessions/repository/sessions.repository"
-import BadRequest from "apps/backend/src/errors/BadRequest"
+import { DbResult } from "../../../../types"
+import { SessionsRepository } from "../../../sessions/repository/sessions.repository"
+import BadRequest from "../../../errors/BadRequest"
 import { convertConfig, convertConfigurationToQueryType } from "../../universal_types/query.convert"
-import { FullPartialConfig } from "apps/backend/src/configurations/partial/parcialConfigTypes"
-import InternalError from "apps/backend/src/errors/InternalError"
+import { FullPartialConfig } from "../../../configurations/partial/parcialConfigTypes"
+import InternalError from "../../../errors/InternalError"
 import z from "zod"
-import { authorizeAdmin } from "apps/backend/src/utils"
+import { authorizeAdmin } from "../../../utils"
 
 type Repository<T> = {
     getMany: (query: ComponentQuery) => DbResult<T[]>

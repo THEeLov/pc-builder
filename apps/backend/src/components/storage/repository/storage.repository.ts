@@ -1,8 +1,8 @@
-import { prisma } from "apps/backend/src/client"
-import { DbResult } from "apps/backend/types"
+import { prisma } from "../../../client"
+import { DbResult } from "../../../../types"
 import { Result } from "@badrap/result"
 import { StorageCreate, StorageEdit, StorageWithComponent } from "../validation/storage.types"
-import handleError from "apps/backend/src/utils"
+import handleError from "../../../utils"
 import ComponentQuery from "../../universal_types/query.type"
 
 async function create(createObj: StorageCreate): DbResult<StorageWithComponent> {
