@@ -98,6 +98,7 @@ model Motherboard {
     deletedAt      DateTime?
 }
 
+//Done
 model Processor {
     id             Int                      @id @default(autoincrement())
     architecture   String
