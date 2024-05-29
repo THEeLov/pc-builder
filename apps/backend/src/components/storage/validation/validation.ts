@@ -1,5 +1,5 @@
-import z from 'zod'
-import { componentCreate } from '../../base/validation/validation'
+import z from "zod"
+import { componentCreate } from "../../base/validation/validation"
 
 const StorageCreate = z.object({
     storageType: z.string(),
@@ -16,7 +16,7 @@ const StorageEdit = z.object({
 
 const StorageSchema = {
     StorageCreate,
-    StorageEdit
+    StorageEdit,
 }
 
 export default StorageSchema
