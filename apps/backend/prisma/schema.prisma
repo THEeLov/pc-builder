@@ -113,6 +113,7 @@ model Processor {
     deletedAt      DateTime?
 }
 
+//Done
 model GPU {
     id             Int                      @id @default(autoincrement())
     memory         Int
