@@ -1,8 +1,8 @@
 import { prisma } from "../../../client"
-import { DbResult } from "apps/backend/types"
+import { DbResult } from "../../../../types"
 import { MotherboardCreate, MotherboardEdit, MotherboardWithComponent } from "../validation/motherboard.types"
 import { Result } from "@badrap/result"
-import handleError from "apps/backend/src/utils"
+import handleError from "../../../utils"
 import ComponentQuery from "../../universal_types/query.type"
 
 async function create(createObj: MotherboardCreate): DbResult<MotherboardWithComponent> {

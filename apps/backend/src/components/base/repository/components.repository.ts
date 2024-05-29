@@ -1,6 +1,6 @@
-import { prisma } from "apps/backend/src/client"
-import { DbResult } from "apps/backend/types"
-import handleError from "apps/backend/src/utils"
+import { prisma } from "../../../client"
+import { DbResult } from "../../../../types"
+import handleError from "../../../utils"
 import { ComponentType, Component } from "@prisma/client"
 import { Result } from "@badrap/result"
 
