@@ -1,5 +1,5 @@
-import z from 'zod'
-import { componentCreate } from '../../base/validation/validation'
+import z from "zod"
+import { componentCreate } from "../../base/validation/validation"
 
 const PCCaseCreate = z.object({
     formFactor: z.string(),
@@ -7,7 +7,7 @@ const PCCaseCreate = z.object({
 })
 
 const PCCaseEdit = z.object({
-    formFactor: z.string().optional()
+    formFactor: z.string().optional(),
 })
 
 const PCCaseSchema = {
