@@ -1,6 +1,6 @@
 import z from "zod"
 const IdRequestParams = z.object({
-    id: z.number(),
+    id: z.string().uuid(),
 })
 
 const cookieSchema = z.object({

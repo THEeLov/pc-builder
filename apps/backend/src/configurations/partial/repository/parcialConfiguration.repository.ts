@@ -5,7 +5,7 @@ import handleError from "../../../utils"
 import { DbResult } from "../../../../types"
 import includeQuery, { ParcialConfigEdit } from "../../configurationQuery"
 
-async function create(userId: number, type: ConfigurationType): DbResult<ParcialPCConfiguration> {
+async function create(userId: string, type: ConfigurationType): DbResult<ParcialPCConfiguration> {
     try {
         const newConfig = await prisma.parcialPCConfiguration.create({
             data: {
@@ -19,7 +19,7 @@ async function create(userId: number, type: ConfigurationType): DbResult<Parcial
     }
 }
 
-async function update(userId: number, data: ParcialConfigEdit): DbResult<ParcialPCConfiguration> {
+async function update(userId: string, data: ParcialConfigEdit): DbResult<ParcialPCConfiguration> {
     try {
         const config = await prisma.parcialPCConfiguration.update({
             where: {
@@ -47,7 +47,7 @@ async function update(userId: number, data: ParcialConfigEdit): DbResult<Parcial
     }
 }
 
-async function remove(userId: number): DbResult<void> {
+async function remove(userId: string): DbResult<void> {
     try {
         await prisma.parcialPCConfiguration.delete({
             where: {
@@ -60,7 +60,7 @@ async function remove(userId: number): DbResult<void> {
     }
 }
 
-async function get(userId: number): DbResult<ParcialPCConfiguration> {
+async function get(userId: string): DbResult<ParcialPCConfiguration> {
     try {
         const config = await prisma.parcialPCConfiguration.findFirstOrThrow({
             where: {

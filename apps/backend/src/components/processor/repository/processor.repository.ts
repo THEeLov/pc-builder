@@ -48,7 +48,7 @@ async function getMany(query: ComponentQuery): DbResult<ProcessorWithComponent[]
     }
 }
 
-async function getSingle(id: number): DbResult<ProcessorWithComponent> {
+async function getSingle(id: string): DbResult<ProcessorWithComponent> {
     try {
         const processor = await prisma.processor.findUniqueOrThrow({
             where: { id },
@@ -60,7 +60,7 @@ async function getSingle(id: number): DbResult<ProcessorWithComponent> {
     }
 }
 
-async function update(id: number, updateObj: ProcessorEdit): DbResult<ProcessorWithComponent> {
+async function update(id: string, updateObj: ProcessorEdit): DbResult<ProcessorWithComponent> {
     try {
         const processor = await prisma.processor.update({
             where: { id },
@@ -73,7 +73,7 @@ async function update(id: number, updateObj: ProcessorEdit): DbResult<ProcessorW
     }
 }
 
-async function remove(id: number): DbResult<void> {
+async function remove(id: string): DbResult<void> {
     try {
         await prisma.$transaction(async () => {
             const processor = await prisma.processor.findUniqueOrThrow({

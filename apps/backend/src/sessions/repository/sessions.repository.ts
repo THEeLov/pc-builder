@@ -19,7 +19,7 @@ type SessionWithFullUser = Prisma.SessionGetPayload<{
     }
 }>
 
-async function create(userId: number): DbResult<Session> {
+async function create(userId: string): DbResult<Session> {
     try {
         const user = await prisma.user.findUniqueOrThrow({
             where: {

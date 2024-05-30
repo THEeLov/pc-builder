@@ -46,7 +46,7 @@ async function getMany(query: ComponentQuery): DbResult<StorageWithComponent[]> 
     }
 }
 
-async function getSingle(id: number): DbResult<StorageWithComponent> {
+async function getSingle(id: string): DbResult<StorageWithComponent> {
     try {
         const storage = await prisma.storage.findUniqueOrThrow({
             where: { id },
@@ -58,7 +58,7 @@ async function getSingle(id: number): DbResult<StorageWithComponent> {
     }
 }
 
-async function update(id: number, updateObj: StorageEdit): DbResult<StorageWithComponent> {
+async function update(id: string, updateObj: StorageEdit): DbResult<StorageWithComponent> {
     try {
         const storage = await prisma.storage.update({
             where: { id },
@@ -73,7 +73,7 @@ async function update(id: number, updateObj: StorageEdit): DbResult<StorageWithC
     }
 }
 
-async function remove(id: number): DbResult<void> {
+async function remove(id: string): DbResult<void> {
     try {
         await prisma.$transaction(async () => {
             const storage = await prisma.storage.findUniqueOrThrow({

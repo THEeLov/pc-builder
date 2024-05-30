@@ -23,7 +23,7 @@ export function sessionNotExpired(session: Session): boolean {
     return session.expiresAt > new Date()
 }
 
-export async function authorizeWithConfigId(configId: number, sessionId?: string) {
+export async function authorizeWithConfigId(configId: string, sessionId?: string) {
     if (!sessionId) {
         return false
     }
@@ -52,7 +52,7 @@ export async function authorizeAdmin(sessionId?: string): Promise<boolean> {
     return false
 }
 
-export async function authorize(userId: number, sessionId?: string): Promise<boolean> {
+export async function authorize(userId: string, sessionId?: string): Promise<boolean> {
     if (!sessionId) {
         return false
     }

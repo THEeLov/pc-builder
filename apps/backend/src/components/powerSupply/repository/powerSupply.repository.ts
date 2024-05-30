@@ -47,7 +47,7 @@ async function getMany(query: ComponentQuery): DbResult<PowerSupplyWithComponent
     }
 }
 
-async function getSingle(id: number): DbResult<PowerSupplyWithComponent> {
+async function getSingle(id: string): DbResult<PowerSupplyWithComponent> {
     try {
         const powerSupply = await prisma.powerSupply.findUniqueOrThrow({
             where: { id },
@@ -59,7 +59,7 @@ async function getSingle(id: number): DbResult<PowerSupplyWithComponent> {
     }
 }
 
-async function update(id: number, updateObj: PowerSupplyEdit): DbResult<PowerSupplyWithComponent> {
+async function update(id: string, updateObj: PowerSupplyEdit): DbResult<PowerSupplyWithComponent> {
     try {
         const powerSupply = await prisma.powerSupply.update({
             where: { id },
@@ -72,7 +72,7 @@ async function update(id: number, updateObj: PowerSupplyEdit): DbResult<PowerSup
     }
 }
 
-async function remove(id: number): DbResult<void> {
+async function remove(id: string): DbResult<void> {
     try {
         await prisma.$transaction(async () => {
             const powerSupply = await prisma.powerSupply.findUniqueOrThrow({

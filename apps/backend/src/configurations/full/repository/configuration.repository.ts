@@ -6,7 +6,7 @@ import { PCConfiguration } from "@prisma/client"
 import { Result } from "@badrap/result"
 import includeQuery, { ParcialConfigEdit } from "../../configurationQuery"
 
-async function create(userId: number, data: ConfigurationCreate): DbResult<PCConfiguration> {
+async function create(userId: string, data: ConfigurationCreate): DbResult<PCConfiguration> {
     try {
         const config = await prisma.$transaction(async (prisma) => {
             const config = await prisma.pCConfiguration.create({
@@ -53,7 +53,7 @@ async function create(userId: number, data: ConfigurationCreate): DbResult<PCCon
     }
 }
 
-async function update(configId: number, data: ParcialConfigEdit): DbResult<PCConfiguration> {
+async function update(configId: string, data: ParcialConfigEdit): DbResult<PCConfiguration> {
     try {
         const config = await prisma.$transaction(async (prisma) => {
             const config = await prisma.pCConfiguration.update({
@@ -101,7 +101,7 @@ async function update(configId: number, data: ParcialConfigEdit): DbResult<PCCon
     }
 }
 
-async function get(configId: number) {
+async function get(configId: string) {
     try {
         const config = await prisma.pCConfiguration.findFirstOrThrow({
             where: {
@@ -115,7 +115,7 @@ async function get(configId: number) {
     }
 }
 
-async function getMany(userId: number): DbResult<PCConfiguration[]> {
+async function getMany(userId: string): DbResult<PCConfiguration[]> {
     try {
         const configs = await prisma.pCConfiguration.findMany({
             where: {
@@ -129,7 +129,7 @@ async function getMany(userId: number): DbResult<PCConfiguration[]> {
     }
 }
 
-async function remove(configId: number): DbResult<void> {
+async function remove(configId: string): DbResult<void> {
     try {
         await prisma.pCConfiguration.delete({
             where: {

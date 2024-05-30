@@ -7,13 +7,13 @@ const createObject = z.object({
 
 const updateObject = z.object({
     configurationType: configType.optional(),
-    motherboardId: z.number().optional(),
-    processorId: z.number().optional(),
-    gpuId: z.number().optional(),
-    powerSupplyId: z.number().optional(),
-    PCCaseId: z.number().optional(),
-    rams: z.optional(z.array(z.object({ id: z.number() }))),
-    storages: z.optional(z.array(z.object({ id: z.number() }))),
+    motherboardId: z.string().uuid().optional(),
+    processorId: z.string().uuid().optional(),
+    gpuId: z.string().uuid().optional(),
+    powerSupplyId: z.string().uuid().optional(),
+    PCCaseId: z.string().uuid().optional(),
+    rams: z.optional(z.array(z.object({ id: z.string().uuid() }))),
+    storages: z.optional(z.array(z.object({ id: z.string().uuid() }))),
 })
 
 export const parcialConfigSchema = {

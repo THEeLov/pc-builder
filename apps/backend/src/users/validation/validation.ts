@@ -13,7 +13,7 @@ const Login = z.object({
 })
 
 const getParams = z.object({
-    id: z.number(),
+    id: z.string().uuid(),
 })
 
 const Edit = z.object({

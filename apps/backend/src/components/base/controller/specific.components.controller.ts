@@ -13,10 +13,10 @@ import { authorizeAdmin } from "../../../utils"
 
 type Repository<T> = {
     getMany: (query: ComponentQuery) => DbResult<T[]>
-    getSingle: (id: number) => DbResult<T>
+    getSingle: (id: string) => DbResult<T>
     create: (createObj: any) => DbResult<T>
-    remove: (id: number) => DbResult<void>
-    update: (id: number, updateObj: any) => DbResult<T>
+    remove: (id: string) => DbResult<void>
+    update: (id: string, updateObj: any) => DbResult<T>
 }
 
 async function getMany<T>(repo: Repository<T>, req: Request, res: Response): Promise<Response<T[]>> {

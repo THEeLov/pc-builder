@@ -44,7 +44,7 @@ async function getMany(query: ComponentQuery): DbResult<PCCaseWithComponent[]> {
     }
 }
 
-async function getSingle(id: number): DbResult<PCCaseWithComponent> {
+async function getSingle(id: string): DbResult<PCCaseWithComponent> {
     try {
         const pcCase = await prisma.pCCase.findUniqueOrThrow({
             where: { id },
@@ -56,7 +56,7 @@ async function getSingle(id: number): DbResult<PCCaseWithComponent> {
     }
 }
 
-async function update(id: number, updateObj: PCCaseEdit): DbResult<PCCaseWithComponent> {
+async function update(id: string, updateObj: PCCaseEdit): DbResult<PCCaseWithComponent> {
     try {
         const pcCase = await prisma.pCCase.update({
             where: { id },
@@ -71,7 +71,7 @@ async function update(id: number, updateObj: PCCaseEdit): DbResult<PCCaseWithCom
     }
 }
 
-async function remove(id: number): DbResult<void> {
+async function remove(id: string): DbResult<void> {
     try {
         await prisma.$transaction(async () => {
             const pcCase = await prisma.pCCase.findUniqueOrThrow({

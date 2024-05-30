@@ -46,14 +46,14 @@ model Session {
     id        String   @id @default(uuid())
     createdAt DateTime @default(now())
     expiresAt DateTime
-    userId    Int
+    userId    String
     userType  UserType
     user      User     @relation(fields: [userId], references: [id])
 }
 
 //Done ?? Mozno sa budu pridavat nejake metody
 model Component {
-    id                Int                 @id @default(autoincrement())
+    id                String                 @id @default(uuid())
     name              String
     configurationType ConfigurationType[]
     componentType     ComponentType
@@ -72,7 +72,7 @@ model Component {
 
 //Done
 model User {
-    id                       Int                     @id @default(autoincrement())
+    id                       String                     @id @default(uuid())
     username                 String
     email                    String                  @unique
     password                 String
@@ -84,14 +84,14 @@ model User {
 
 //Done
 model Motherboard {
-    id             Int                      @id @default(autoincrement())
+    id             String                      @id @default(uuid())
     socket         String
     formFactor     String
     ramSlots       Int
     ramType        String
     gpuInterface   String
     stroageBusType String
-    componentId    Int                      @unique
+    componentId    String                      @unique
     component      Component                @relation(fields: [componentId], references: [id])
     configurations PCConfiguration[]
     partial        ParcialPCConfiguration[]
@@ -100,13 +100,13 @@ model Motherboard {
 
 //Done
 model Processor {
-    id             Int                      @id @default(autoincrement())
+    id             String                      @id @default(uuid())
     architecture   String
     cores          Int
     threads        Int
     bits           Int
     socket         String
-    componentId    Int                      @unique
+    componentId    String                      @unique
     component      Component                @relation(fields: [componentId], references: [id])
     configurations PCConfiguration[]
     partial        ParcialPCConfiguration[]
@@ -115,12 +115,12 @@ model Processor {
 
 //Done
 model GPU {
-    id             Int                      @id @default(autoincrement())
+    id             String                      @id @default(uuid())
     memory         Int
     powerConnector String
     interface      String
     power          Int
-    componentId    Int                      @unique
+    componentId    String                      @unique
     component      Component                @relation(fields: [componentId], references: [id])
     configurations PCConfiguration[]
     partial        ParcialPCConfiguration[]
@@ -129,11 +129,11 @@ model GPU {
 
 //Done
 model RAM {
-    id             Int                      @id @default(autoincrement())
+    id             String                      @id @default(uuid())
     memoryType     String
     capacity       Int
     computerType   ComputerType
-    componentId    Int                      @unique
+    componentId    String                      @unique
     component      Component                @relation(fields: [componentId], references: [id])
     configurations PCConfiguration[]
     partial        ParcialPCConfiguration[]
@@ -142,11 +142,11 @@ model RAM {
 
 //Done
 model Storage {
-    id             Int                      @id @default(autoincrement())
+    id             String                      @id @default(uuid())
     storageType    String
     capacity       Int
     busType        String
-    componentId    Int                      @unique
+    componentId    String                      @unique
     component      Component                @relation(fields: [componentId], references: [id])
     configurations PCConfiguration[]
     partial        ParcialPCConfiguration[]
@@ -155,11 +155,11 @@ model Storage {
 
 //Done
 model PowerSupply {
-    id             Int                      @id @default(autoincrement())
+    id             String                      @id @default(uuid())
     powerOutput    Int
     efficiency     String
     formFactor     String
-    componentId    Int                      @unique
+    componentId    String                      @unique
     component      Component                @relation(fields: [componentId], references: [id])
     configurations PCConfiguration[]
     partial        ParcialPCConfiguration[]
@@ -168,9 +168,9 @@ model PowerSupply {
 
 //Done
 model PCCase {
-    id             Int                      @id @default(autoincrement())
+    id             String                      @id @default(uuid())
     formFactor     String
-    componentId    Int                      @unique
+    componentId    String                      @unique
     component      Component                @relation(fields: [componentId], references: [id])
     configurations PCConfiguration[]
     partial        ParcialPCConfiguration[]
@@ -179,21 +179,21 @@ model PCCase {
 
 //Done
 model ParcialPCConfiguration {
-    id                Int               @id @default(autoincrement())
+    id                String               @id @default(uuid())
     configurationType ConfigurationType
-    motherboardId     Int?
+    motherboardId     String?
     motherboard       Motherboard?      @relation(fields: [motherboardId], references: [id])
-    processorId       Int?
+    processorId       String?
     processor         Processor?        @relation(fields: [processorId], references: [id])
     rams              RAM[]
-    gpuId             Int?
+    gpuId             String?
     gpu               GPU?              @relation(fields: [gpuId], references: [id])
     storages          Storage[]
-    powerSupplyId     Int?
+    powerSupplyId     String?
     powerSupply       PowerSupply?      @relation(fields: [powerSupplyId], references: [id])
-    pcCaseId          Int?
+    pcCaseId          String?
     pcCase            PCCase?           @relation(fields: [pcCaseId], references: [id])
-    userId            Int               @unique
+    userId            String               @unique
     user              User              @relation(fields: [userId], references: [id])
     createdAt         DateTime          @default(now())
     updatedAt         DateTime          @default(now())
@@ -202,22 +202,22 @@ model ParcialPCConfiguration {
 
 //Done
 model PCConfiguration {
-    id                Int               @id @default(autoincrement())
+    id                String               @id @default(uuid())
     totalPrice        Float
     configurationType ConfigurationType
-    motherboardId     Int
+    motherboardId     String
     motherboard       Motherboard       @relation(fields: [motherboardId], references: [id])
-    processorId       Int
+    processorId       String
     processor         Processor         @relation(fields: [processorId], references: [id])
     rams              RAM[]
-    gpuId             Int
+    gpuId             String
     gpu               GPU               @relation(fields: [gpuId], references: [id])
     storages          Storage[]
-    powerSupplyId     Int
+    powerSupplyId     String
     powerSupply       PowerSupply       @relation(fields: [powerSupplyId], references: [id])
-    pcCaseId          Int
+    pcCaseId          String
     pcCase            PCCase            @relation(fields: [pcCaseId], references: [id])
-    userId            Int
+    userId            String
     user              User              @relation(fields: [userId], references: [id])
     createdAt         DateTime          @default(now())
     updatedAt         DateTime          @default(now())

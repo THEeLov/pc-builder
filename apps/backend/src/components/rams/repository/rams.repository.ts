@@ -46,7 +46,7 @@ async function create(createObj: CreateRAM): DbResult<RAMWithComponent> {
     }
 }
 
-async function getSingle(id: number): DbResult<RAMWithComponent> {
+async function getSingle(id: string): DbResult<RAMWithComponent> {
     try {
         const ram = await prisma.rAM.findUniqueOrThrow({
             where: {
@@ -62,7 +62,7 @@ async function getSingle(id: number): DbResult<RAMWithComponent> {
     }
 }
 
-async function update(id: number, updateObj: UpdateRAM): DbResult<RAMWithComponent> {
+async function update(id: string, updateObj: UpdateRAM): DbResult<RAMWithComponent> {
     try {
         const ram = await prisma.rAM.update({
             where: {
@@ -79,7 +79,7 @@ async function update(id: number, updateObj: UpdateRAM): DbResult<RAMWithCompone
     }
 }
 
-async function remove(id: number): DbResult<void> {
+async function remove(id: string): DbResult<void> {
     try {
         await prisma.$transaction(async () => {
             const ram = await prisma.rAM.findUniqueOrThrow({

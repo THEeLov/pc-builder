@@ -30,7 +30,7 @@ async function create(data: UserCreate): DbResult<User> {
     }
 }
 
-async function update(id: number, data: UserEdit): DbResult<UserWithEverything> {
+async function update(id: string, data: UserEdit): DbResult<UserWithEverything> {
     try {
         const user = await prisma.user.update({
             where: {
@@ -48,7 +48,7 @@ async function update(id: number, data: UserEdit): DbResult<UserWithEverything> 
     }
 }
 
-async function remove(id: number): DbResult<void> {
+async function remove(id: string): DbResult<void> {
     try {
         await prisma.user.delete({
             where: {
@@ -61,30 +61,18 @@ async function remove(id: number): DbResult<void> {
     }
 }
 
-async function get(identifier: number | string): DbResult<UserWithEverything> {
+async function get(identifier: string): DbResult<UserWithEverything> {
     try {
         let user
-        if (typeof identifier === "number") {
-            user = await prisma.user.findUniqueOrThrow({
-                where: {
-                    id: identifier,
-                },
-                include: {
-                    userconfigurations: true,
-                    partialUserConfiguration: true,
-                },
-            })
-        } else {
-            user = await prisma.user.findUniqueOrThrow({
-                where: {
-                    email: identifier,
-                },
-                include: {
-                    userconfigurations: true,
-                    partialUserConfiguration: true,
-                },
-            })
-        }
+        user = await prisma.user.findUniqueOrThrow({
+            where: {
+                id: identifier,
+            },
+            include: {
+                userconfigurations: true,
+                partialUserConfiguration: true,
+            },
+        })
         return Result.ok(user)
     } catch (error) {
         return handleError(error, "in user get")

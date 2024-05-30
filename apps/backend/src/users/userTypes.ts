@@ -13,7 +13,7 @@ export type UserEdit = {
 // DTOS
 
 export type UserDTO = {
-    id: number
+    id: string
     username: string
     email: string
 }

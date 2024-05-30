@@ -48,7 +48,7 @@ async function getMany(query: ComponentQuery): DbResult<GPUWithComponent[]> {
     }
 }
 
-async function getSingle(id: number): DbResult<GPUWithComponent> {
+async function getSingle(id: string): DbResult<GPUWithComponent> {
     try {
         const gpu = await prisma.gPU.findUniqueOrThrow({
             where: { id },
@@ -60,7 +60,7 @@ async function getSingle(id: number): DbResult<GPUWithComponent> {
     }
 }
 
-async function update(id: number, updateObj: GPUEdit): DbResult<GPUWithComponent> {
+async function update(id: string, updateObj: GPUEdit): DbResult<GPUWithComponent> {
     try {
         const gpu = await prisma.gPU.update({
             where: { id },
@@ -75,7 +75,7 @@ async function update(id: number, updateObj: GPUEdit): DbResult<GPUWithComponent
     }
 }
 
-async function remove(id: number) {
+async function remove(id: string) {
     try {
         await prisma.$transaction(async () => {
             const gpu = await prisma.gPU.findUniqueOrThrow({

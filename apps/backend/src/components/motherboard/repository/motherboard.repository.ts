@@ -54,7 +54,7 @@ async function getMany(query: ComponentQuery): DbResult<MotherboardWithComponent
     }
 }
 
-async function getSingle(id: number): DbResult<MotherboardWithComponent> {
+async function getSingle(id: string): DbResult<MotherboardWithComponent> {
     try {
         const motherboard = await prisma.motherboard.findUniqueOrThrow({
             where: { id },
@@ -66,7 +66,7 @@ async function getSingle(id: number): DbResult<MotherboardWithComponent> {
     }
 }
 
-async function update(id: number, updateObj: MotherboardEdit): DbResult<MotherboardWithComponent> {
+async function update(id: string, updateObj: MotherboardEdit): DbResult<MotherboardWithComponent> {
     try {
         const motherboard = await prisma.motherboard.update({
             where: { id },
@@ -81,7 +81,7 @@ async function update(id: number, updateObj: MotherboardEdit): DbResult<Motherbo
     }
 }
 
-async function remove(id: number): DbResult<void> {
+async function remove(id: string): DbResult<void> {
     try {
         await prisma.$transaction(async () => {
             const motherboard = await prisma.motherboard.findUniqueOrThrow({
