@@ -19,7 +19,6 @@ type TableComponentsProps = {
 }
 
 const TableComponents: React.FC<TableComponentsProps> = ({ fetchedData }) => {
-
     const { getColumnSearchProps } = useSearch()
 
     const columns: TableColumnsType<DataType> = [
