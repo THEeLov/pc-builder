@@ -8,13 +8,14 @@ import type { FilterDropdownProps } from "antd/es/table/interface"
 import Highlighter from "react-highlight-words"
 
 type DataType = {
-    image: string
-    name: string
-    price: number
-    componentId: string
+    component: {
+        name: string
+        price: number
+        imageUrl: string
+    }
 }
 
-type DataIndex = keyof DataType
+type DataIndex = keyof DataType['component'];
 
 type TableComponentsProps = {
     fetchedData: DataType[]
@@ -89,7 +90,7 @@ const TableComponents: React.FC<TableComponentsProps> = ({ fetchedData }) => {
         ),
         filterIcon: (filtered: boolean) => <SearchOutlined style={{ color: filtered ? "#1677ff" : undefined }} />,
         onFilter: (value, record) =>
-            record[dataIndex]
+            record.component[dataIndex]
                 .toString()
                 .toLowerCase()
                 .includes((value as string).toLowerCase()),
@@ -114,23 +115,23 @@ const TableComponents: React.FC<TableComponentsProps> = ({ fetchedData }) => {
     const columns: TableColumnsType<DataType> = [
         {
             title: "Image",
-            dataIndex: "image",
-            key: "image",
+            dataIndex: ["component", "imageUrl"],
+            key: "component.image",
         },
         {
             title: "Name",
-            dataIndex: "name",
+            dataIndex: ["component", "name"],
             key: "name",
-            onFilter: (value, record) => record.name.indexOf(value as string) === 0,
-            sorter: (a, b) => a.name.length - b.name.length,
+            onFilter: (value, record) => record.component.name.indexOf(value as string) === 0,
+            sorter: (a, b) => a.component.name.length - b.component.name.length,
             sortDirections: ["descend"],
-            ...getColumnSearchProps("name"),
+            ...getColumnSearchProps("name" as DataIndex),
         },
         {
             title: "Price (€)",
-            dataIndex: "price",
+            dataIndex: ["component", "price"],
             key: "price",
-            sorter: (a, b) => a.price - b.price,
+            sorter: (a, b) => a.component.price - b.component.price,
         },
         {
             title: "Action",

@@ -4,12 +4,10 @@ import CustomButton from "../../components/CustomButton/CustomButton"
 import { PlusOutlined } from "@ant-design/icons"
 import { Link } from "react-router-dom"
 import { useState } from "react"
-import { fetchConfiguration } from "../../api/fetchConfiguration"
 
 const Build = () => {
     const components = ["Motherboard", "Processor", "RAM", "Storage", "GPU", "Power Supply", "Case"]
     const [totalPrice, setTotalPrice] = useState(0)
-    const configuration = fetchConfiguration()
 
     return (
         <div className="build">

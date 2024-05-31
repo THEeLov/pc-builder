@@ -6,10 +6,14 @@ const Components = () => {
     const mockData = []
     for (let i = 0; i < 100; i++) {
         mockData.push({
-            image: "PHOTO",
-            name: `Product ${i}`,
-            price: Math.floor(Math.random() * 400),
-            componentId: i.toString(),
+            component: {
+                name: `Product ${i}`,
+                price: Math.floor(Math.random() * 400),
+                imageUrl: "PHOTO",
+            },
+            id: "something",
+            formFactor: "something",
+            componentId: "something",
         })
     }
 
