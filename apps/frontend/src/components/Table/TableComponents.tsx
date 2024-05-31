@@ -142,7 +142,7 @@ const TableComponents: React.FC<TableComponentsProps> = ({ fetchedData }) => {
                 </div>
             ),
             align: "right",
-            width: "10%"
+            width: "10%",
         },
     ]
 
@@ -150,7 +150,7 @@ const TableComponents: React.FC<TableComponentsProps> = ({ fetchedData }) => {
         console.log(record)
     }
 
-    return <Table columns={columns} pagination={{ position: ['none', "bottomCenter"]}} dataSource={fetchedData} />
+    return <Table columns={columns} pagination={{ position: ["none", "bottomCenter"] }} dataSource={fetchedData} />
 }
 
 export default TableComponents

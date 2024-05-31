@@ -24,7 +24,7 @@ const Components = () => {
                 </div>
             </div>
             <div className="components-container">
-                <TableComponents fetchedData={mockData}/>
+                <TableComponents fetchedData={mockData} />
             </div>
         </div>
     )
