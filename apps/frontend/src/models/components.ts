@@ -6,5 +6,4 @@ export type Component = {
     }
 }
 
-export type ComponentTypes = "Motherboard" | "Processor" | "RAM" | "Storage" | "GPU" | "Power Supply" | "Case" | "";
-
+export type ComponentTypes = "Motherboard" | "Processor" | "RAM" | "Storage" | "GPU" | "Power Supply" | "Case" | ""

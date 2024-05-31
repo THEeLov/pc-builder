@@ -21,8 +21,8 @@ const Components = () => {
             componentId: "something",
         })
     }
-    const [searchParams] = useSearchParams();
-    const componentParam = searchParams.get('component');
+    const [searchParams] = useSearchParams()
+    const componentParam = searchParams.get("component")
 
     // const { data, isLoading } = useComponents(componentParam as ComponentTypes || "")
 
@@ -37,7 +37,9 @@ const Components = () => {
                     <PriceFilter />
                 </div>
             </div>
-            <div className="components-container">{false ? <Spin /> : <TableComponents fetchedData={mockData || []} />}</div>
+            <div className="components-container">
+                {false ? <Spin /> : <TableComponents fetchedData={mockData || []} />}
+            </div>
         </div>
     )
 }
