@@ -1,7 +1,6 @@
 import "./components.css"
 import PriceFilter from "./PriceFilter/PriceFilter"
-import OrderFilter from "./OrderFilter/OrderFilter"
-import ComponentCard from "./ComponentCard/ComponentCard"
+import TableComponents from "@/components/Table/TableComponents"
 
 const Components = () => {
     const mockData = []
@@ -22,21 +21,10 @@ const Components = () => {
                 </div>
                 <div className="filter--filters">
                     <PriceFilter />
-                    <hr className="filter--line" />
-                    <OrderFilter />
                 </div>
             </div>
             <div className="components-container">
-                {mockData.map((product) => {
-                    return (
-                        <ComponentCard
-                            image={product.image}
-                            name={product.name}
-                            price={product.price}
-                            componentId={product.componentId}
-                        />
-                    )
-                })}
+                <TableComponents fetchedData={mockData}/>
             </div>
         </div>
     )

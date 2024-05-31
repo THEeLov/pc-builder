@@ -1,6 +1,5 @@
 .components {
     background-color: white;
-    gap: var(--large-indent);
 }
 
 .filter--headline {
@@ -39,7 +38,6 @@
 }
 
 .components-container {
-    padding: var(--normal-indent);
     display: flex;
     flex-direction: column;
     background-color: white;
