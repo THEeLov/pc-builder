@@ -1,11 +1,11 @@
 export type Component = {
-  component: {
-    name: string,
-    price: number,
-    imageurl: string,
-  }
+    component: {
+        name: string
+        price: number
+        imageurl: string
+    }
 }
 
 export type ComponentTypes = {
-  name: "Motherboard" |"Processor" | "RAM" | "Storage" | "GPU" | "Power Supply" | "Case" | ""
+    name: "Motherboard" | "Processor" | "RAM" | "Storage" | "GPU" | "Power Supply" | "Case" | ""
 }

@@ -15,7 +15,7 @@ type DataType = {
     }
 }
 
-type DataIndex = keyof DataType['component'];
+type DataIndex = keyof DataType["component"]
 
 type TableComponentsProps = {
     fetchedData: DataType[]
