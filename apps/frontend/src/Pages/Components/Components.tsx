@@ -1,11 +1,8 @@
-import { Divider } from "antd"
 import "./components.css"
 import PriceFilter from "./PriceFilter/PriceFilter"
 import TableComponents from "@/components/Table/TableComponents"
-import { useComponents } from "@/hooks/useComponents"
 import { Spin } from "antd"
 import { useSearchParams } from "react-router-dom"
-import { ComponentTypes } from "@/models/components"
 
 const Components = () => {
     const mockData = []
