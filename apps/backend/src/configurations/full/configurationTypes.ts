@@ -13,4 +13,4 @@ export type ConfigurationCreate = {
     storages: { id: string }[]
 }
 
-export type ConfigurationWithComponent = Prisma.PCConfigurationGetPayload<{include: typeof includeQuery}>
+export type ConfigurationWithComponent = Prisma.PCConfigurationGetPayload<{ include: typeof includeQuery }>

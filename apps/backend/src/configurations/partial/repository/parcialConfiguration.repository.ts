@@ -6,7 +6,6 @@ import { DbResult } from "../../../../types"
 import includeQuery, { ParcialConfigEdit } from "../../configurationQuery"
 import { ParcialConfigWithComponent } from "../parcialConfigTypes"
 
-
 async function create(userId: string, type: ConfigurationType): DbResult<ParcialConfigWithComponent> {
     try {
         const newConfig = await prisma.parcialPCConfiguration.create({
@@ -14,7 +13,7 @@ async function create(userId: string, type: ConfigurationType): DbResult<Parcial
                 userId,
                 configurationType: type,
             },
-            include: includeQuery
+            include: includeQuery,
         })
         return Result.ok(newConfig)
     } catch (e) {
