@@ -27,8 +27,7 @@
         "react-router-dom": "6.11.2",
         "tslib": "^2.3.0",
         "zod": "^3.22.4",
-        "zod-validation-error": "^3.0.3",
-        "zod": "^3.22.4"
+        "zod-validation-error": "^3.0.3"
     },
     "devDependencies": {
         "@commitlint/cli": "^19.2.1",
