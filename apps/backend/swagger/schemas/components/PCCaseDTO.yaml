@@ -1,0 +1,6 @@
+type: object
+properties:
+    formFactor:
+        type: string
+required:
+    - formFactor

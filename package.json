@@ -5,14 +5,20 @@
     "scripts": {
         "format": "prettier --write .",
         "format:check": "prettier --check .",
-        "prepare": "husky"
+        "prepare": "husky",
+        "generate-backend": "openapi-generator-cli generate -i apps/backend/swagger/openapi.yaml -g typescript-node -o apps/backend/gen/",
+        "generate-frontend": "openapi-generator-cli generate -i apps/backend/swagger/openapi.yaml -g typescript-axios -o apps/frontend/gen/"
     },
     "private": true,
     "dependencies": {
         "@ant-design/icons": "^5.3.6",
         "@hookform/resolvers": "^3.3.4",
         "antd": "^5.16.0",
+        "@badrap/result": "^0.2.13",
+        "@prisma/client": "^5.13.0",
         "axios": "^1.6.0",
+        "bcryptjs": "^2.4.3",
+        "cors": "^2.8.5",
         "express": "^4.18.1",
         "next": "14.0.4",
         "react": "18.2.0",
@@ -20,6 +26,8 @@
         "react-hook-form": "^7.51.3",
         "react-router-dom": "6.11.2",
         "tslib": "^2.3.0",
+        "zod": "^3.22.4",
+        "zod-validation-error": "^3.0.3",
         "zod": "^3.22.4"
     },
     "devDependencies": {
@@ -45,6 +53,7 @@
         "@nx/web": "18.1.2",
         "@nx/webpack": "18.1.2",
         "@nx/workspace": "18.1.2",
+        "@openapitools/openapi-generator-cli": "^2.13.2",
         "@playwright/test": "^1.36.0",
         "@pmmmwh/react-refresh-webpack-plugin": "^0.5.7",
         "@svgr/webpack": "^8.0.1",
@@ -81,6 +90,7 @@
         "lint-staged": "^15.2.2",
         "nx": "18.1.2",
         "prettier": "^2.8.8",
+        "prisma": "^5.13.0",
         "react-refresh": "^0.10.0",
         "ts-jest": "^29.1.0",
         "ts-node": "10.9.1",

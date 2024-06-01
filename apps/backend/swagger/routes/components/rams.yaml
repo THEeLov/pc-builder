@@ -1,0 +1,134 @@
+rams:
+    get:
+        parameters:
+            - in: query
+              name: memoryType
+              description: Specific type of ram memory
+              required: false
+              schema:
+                  type: string
+                  example: "ddr4"
+        responses:
+            "200":
+                description: gets all rams
+                content:
+                    application/json:
+                        schema:
+                            type: array
+                            items:
+                                type: object
+                                properties:
+                                    id:
+                                        type: integer
+                                        description: ID of the RAM.
+                                    data:
+                                        $ref: "../../openapi.yaml#/components/schemas/RAMDTO"
+            "400":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+            "404":
+                $ref: "../../openapi.yaml#/components/responses/NotFoundErrorResponse"
+            "500":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+        security:
+            - sessionCookie: []
+    post:
+        requestBody:
+            required: true
+            content:
+                application/json:
+                    schema:
+                        $ref: "../../openapi.yaml#/components/schemas/RAMDTO"
+        responses:
+            "200":
+                $ref: "../../openapi.yaml#/components/responses/SuccessResponse"
+            "400":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+            "500":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+        security:
+            - sessionCookie: []
+ramsRamId:
+    get:
+        parameters:
+            - in: path
+              name: ramId
+              required: true
+              description: ID of RAM
+              schema:
+                  type: integer
+                  format: int64
+        responses:
+            "200":
+                description: gets a ram with ramId
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                id:
+                                    type: integer
+                                    description: ID of the RAM.
+                                data:
+                                    $ref: "../../openapi.yaml#/components/schemas/RAMDTO"
+            "400":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+            "404":
+                $ref: "../../openapi.yaml#/components/responses/NotFoundErrorResponse"
+            "500":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+    put:
+        parameters:
+            - in: path
+              name: ramId
+              required: true
+              description: ID of RAM
+              schema:
+                  type: integer
+                  format: int64
+        responses:
+            "200":
+                description: gets a ram with ramId
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                id:
+                                    type: integer
+                                    description: ID of the RAM.
+                                data:
+                                    $ref: "../../openapi.yaml#/components/schemas/RAMDTO"
+            "400":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+            "404":
+                $ref: "../../openapi.yaml#/components/responses/NotFoundErrorResponse"
+            "500":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+    delete:
+        parameters:
+            - in: path
+              name: ramId
+              required: true
+              description: ID of RAM
+              schema:
+                  type: integer
+                  format: int64
+        responses:
+            "200":
+                description: gets a ram with ramId
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                id:
+                                    type: integer
+                                    description: ID of the RAM.
+                                data:
+                                    $ref: "../../openapi.yaml#/components/schemas/RAMDTO"
+            "400":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"
+            "404":
+                $ref: "../../openapi.yaml#/components/responses/NotFoundErrorResponse"
+            "500":
+                $ref: "../../openapi.yaml#/components/responses/BadRequestErrorResponse"

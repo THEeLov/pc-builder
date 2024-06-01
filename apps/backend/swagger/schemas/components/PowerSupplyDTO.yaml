@@ -1,0 +1,12 @@
+type: object
+properties:
+    powerOutput:
+        type: integer
+    efficiency:
+        type: string
+    formFactor:
+        type: string
+required:
+    - powerOutput
+    - efficiency
+    - formFactor
