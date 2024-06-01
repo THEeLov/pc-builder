@@ -29,13 +29,13 @@ export function convertConfigurationToQueryType(configuration: FullPartialConfig
     if (configuration.motherboard) {
         query.socket = configuration.motherboard.socket
         query.formFactor = configuration.motherboard.formFactor
-        query.ramSlots = configuration.motherboard.ramSlots
         query.ramType = configuration.motherboard.ramType
         query.gpuInterface = configuration.motherboard.gpuInterface
         query.storageBusType = configuration.motherboard.stroageBusType
     }
     if (configuration.gpu) {
-        ;(query.gpuInterface = configuration.gpu.interface), (query.powerIO = configuration.gpu.power)
+        query.gpuInterface = configuration.gpu.interface
+        query.powerIO = configuration.gpu.power
     }
     if (configuration.pcCase) {
         query.formFactor = configuration.pcCase.formFactor
@@ -49,6 +49,7 @@ export function convertConfigurationToQueryType(configuration: FullPartialConfig
     }
     if (configuration.rams.length > 0) {
         query.ramType = configuration.rams[0].memoryType
+        query.ramSlots = {gte: configuration.rams.length}
     }
     if (configuration.storages.length > 0) {
         query.storageBusType = configuration.storages[0].busType

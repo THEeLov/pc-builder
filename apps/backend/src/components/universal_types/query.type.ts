@@ -8,7 +8,7 @@
 type ComponentQuery = {
     socket?: string
     formFactor?: string
-    ramSlots?: number
+    ramSlots?: {gte: number}
     ramType?: string
     gpuInterface?: string
     storageBusType?: string
