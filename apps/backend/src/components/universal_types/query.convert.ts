@@ -49,7 +49,7 @@ export function convertConfigurationToQueryType(configuration: FullPartialConfig
     }
     if (configuration.rams.length > 0) {
         query.ramType = configuration.rams[0].memoryType
-        query.ramSlots = {gte: configuration.rams.length}
+        query.ramSlots = { gte: configuration.rams.length }
     }
     if (configuration.storages.length > 0) {
         query.storageBusType = configuration.storages[0].busType
