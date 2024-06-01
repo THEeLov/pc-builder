@@ -27,14 +27,14 @@ type ObjectWithId = {
 //TOTO SA POSIELA:
 
 type updateObject = {
-    configurationType?: ConfigurationType,
-    motherboardId?: string,
-    processorId?: string,
-    gpuId?: string,
-    powerSupplyId?: string,
-    PCCaseId?: string,
-    rams?: ObjectWithId[],
-    storages?: ObjectWithId[],
+    configurationType?: ConfigurationType
+    motherboardId?: string
+    processorId?: string
+    gpuId?: string
+    powerSupplyId?: string
+    PCCaseId?: string
+    rams?: ObjectWithId[]
+    storages?: ObjectWithId[]
 }
 
 //TOTO PRIDE NASPAŤ:
