@@ -1,4 +1,3 @@
-import { PCConfiguration } from "@prisma/client"
 import { Response, Request } from "express"
 import { baseValidation } from "../../../base/validation/validation"
 import configurationRepository from "../repository/configuration.repository"
