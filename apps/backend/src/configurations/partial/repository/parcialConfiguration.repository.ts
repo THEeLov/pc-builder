@@ -1,17 +1,20 @@
 import { Result } from "@badrap/result"
 import { prisma } from "../../../client"
-import { ConfigurationType, ParcialPCConfiguration } from "@prisma/client"
+import { ConfigurationType } from "@prisma/client"
 import handleError from "../../../utils"
 import { DbResult } from "../../../../types"
 import includeQuery, { ParcialConfigEdit } from "../../configurationQuery"
+import { ParcialConfigWithComponent } from "../parcialConfigTypes"
 
-async function create(userId: string, type: ConfigurationType): DbResult<ParcialPCConfiguration> {
+
+async function create(userId: string, type: ConfigurationType): DbResult<ParcialConfigWithComponent> {
     try {
         const newConfig = await prisma.parcialPCConfiguration.create({
             data: {
                 userId,
                 configurationType: type,
             },
+            include: includeQuery
         })
         return Result.ok(newConfig)
     } catch (e) {
@@ -19,7 +22,7 @@ async function create(userId: string, type: ConfigurationType): DbResult<Parcial
     }
 }
 
-async function update(userId: string, data: ParcialConfigEdit): DbResult<ParcialPCConfiguration> {
+async function update(userId: string, data: ParcialConfigEdit): DbResult<ParcialConfigWithComponent> {
     try {
         const config = await prisma.parcialPCConfiguration.update({
             where: {
@@ -60,7 +63,7 @@ async function remove(userId: string): DbResult<void> {
     }
 }
 
-async function get(userId: string): DbResult<ParcialPCConfiguration> {
+async function get(userId: string): DbResult<ParcialConfigWithComponent> {
     try {
         const config = await prisma.parcialPCConfiguration.findFirstOrThrow({
             where: {

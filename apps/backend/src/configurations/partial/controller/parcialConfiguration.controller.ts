@@ -4,8 +4,9 @@ import { parcialConfigSchema } from "../validation/validation"
 import { baseValidation } from "../../../base/validation/validation"
 import { authorize } from "../../../utils"
 import { ParcialConfigurationRepository } from "../repository/parcialConfiguration.repository"
+import { ParcialConfigWithComponent } from "../parcialConfigTypes"
 
-async function get(req: Request, res: Response): Promise<Response<ParcialPCConfiguration>> {
+async function get(req: Request, res: Response): Promise<Response<ParcialConfigWithComponent>> {
     const validatedParams = baseValidation.IdRequestParams.safeParse(req.params)
     if (!validatedParams.success || !(await authorize(validatedParams.data.id, req.cookies.sessionId))) {
         return res.status(400).json(new Error("Bad request"))
@@ -20,7 +21,7 @@ async function get(req: Request, res: Response): Promise<Response<ParcialPCConfi
     return res.status(500).json(new Error("error on our side"))
 }
 
-async function update(req: Request, res: Response): Promise<Response<ParcialPCConfiguration>> {
+async function update(req: Request, res: Response): Promise<Response<ParcialConfigWithComponent>> {
     const validatedParams = baseValidation.IdRequestParams.safeParse(req.params)
     if (!validatedParams.success || !(await authorize(validatedParams.data.id, req.cookies.sessionId))) {
         return res.status(401).json(new Error("Unauthorized"))
@@ -37,7 +38,7 @@ async function update(req: Request, res: Response): Promise<Response<ParcialPCCo
     return res.status(200).json(updatedConfig.value)
 }
 
-async function create(req: Request, res: Response): Promise<Response<ParcialPCConfiguration>> {
+async function create(req: Request, res: Response): Promise<Response<ParcialConfigWithComponent>> {
     const validatedParams = baseValidation.IdRequestParams.safeParse(req.params)
     const validatedBody = parcialConfigSchema.createObject.safeParse(req.body)
     if (

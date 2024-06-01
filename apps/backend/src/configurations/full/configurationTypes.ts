@@ -1,4 +1,5 @@
-import { ConfigurationType } from "@prisma/client"
+import { ConfigurationType, Prisma } from "@prisma/client"
+import includeQuery from "../configurationQuery"
 
 //ZOD musi zvalidovat ze ci rams a storages maju aspon 1 položku.
 export type ConfigurationCreate = {
@@ -11,3 +12,5 @@ export type ConfigurationCreate = {
     rams: { id: string }[]
     storages: { id: string }[]
 }
+
+export type ConfigurationWithComponent = Prisma.PCConfigurationGetPayload<{include: typeof includeQuery}>

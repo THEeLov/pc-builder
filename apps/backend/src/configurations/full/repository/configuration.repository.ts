@@ -1,12 +1,12 @@
 import { prisma } from "../../../client"
-import { ConfigurationCreate } from "../configurationTypes"
+import { ConfigurationCreate, ConfigurationWithComponent } from "../configurationTypes"
 import { DbResult } from "../../../../types"
 import handleError from "../../../utils"
 import { PCConfiguration } from "@prisma/client"
 import { Result } from "@badrap/result"
 import includeQuery, { ParcialConfigEdit } from "../../configurationQuery"
 
-async function create(userId: string, data: ConfigurationCreate): DbResult<PCConfiguration> {
+async function create(userId: string, data: ConfigurationCreate): DbResult<ConfigurationWithComponent> {
     try {
         const config = await prisma.$transaction(async (prisma) => {
             const config = await prisma.pCConfiguration.create({
@@ -53,7 +53,7 @@ async function create(userId: string, data: ConfigurationCreate): DbResult<PCCon
     }
 }
 
-async function update(configId: string, data: ParcialConfigEdit): DbResult<PCConfiguration> {
+async function update(configId: string, data: ParcialConfigEdit): DbResult<ConfigurationWithComponent> {
     try {
         const config = await prisma.$transaction(async (prisma) => {
             const config = await prisma.pCConfiguration.update({
@@ -115,7 +115,7 @@ async function get(configId: string) {
     }
 }
 
-async function getMany(userId: string): DbResult<PCConfiguration[]> {
+async function getMany(userId: string): DbResult<ConfigurationWithComponent[]> {
     try {
         const configs = await prisma.pCConfiguration.findMany({
             where: {
