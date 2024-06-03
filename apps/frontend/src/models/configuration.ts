@@ -13,19 +13,19 @@ export type PartialConfig = {
 }
 
 export type PartialConfigCreate = {
-  configurationType: string,
+    configurationType: string
 }
 
 type ObjectWithId = {
-  id: "string"
+    id: "string"
 }
 
 export type PartialConfigEdit = {
-  motherboardId?: string
-  processorId?: string
-  gpuId?: string
-  powerSupplyId?: string
-  PCCaseId?: string
-  rams?: ObjectWithId[]
-  storages?: ObjectWithId[]
+    motherboardId?: string
+    processorId?: string
+    gpuId?: string
+    powerSupplyId?: string
+    PCCaseId?: string
+    rams?: ObjectWithId[]
+    storages?: ObjectWithId[]
 }

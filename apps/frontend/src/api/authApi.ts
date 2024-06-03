@@ -18,7 +18,7 @@ async function loginUser(data: LoginUser): Promise<User> {
 const AuthApi = {
     post: axiosInstance.post,
     registerUser,
-    loginUser    
+    loginUser,
 }
 
 export default AuthApi

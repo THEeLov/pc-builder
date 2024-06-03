@@ -12,25 +12,25 @@ export const usePartialConfig = (userId: string) => {
 }
 
 export const usePartialConfigCreate = (userId: string) => {
-  const { mutateAsync } = useMutation({
-    mutationFn: (payload: PartialConfigCreate) => PartialConfigApi.postConfig(userId, payload),
-  });
+    const { mutateAsync } = useMutation({
+        mutationFn: (payload: PartialConfigCreate) => PartialConfigApi.postConfig(userId, payload),
+    })
 
-  return { mutateAsync };
-};
+    return { mutateAsync }
+}
 
 export const usePartialConfigEdit = (userId: string) => {
-  const { mutateAsync } = useMutation({
-    mutationFn: (payload: PartialConfigEdit) => PartialConfigApi.putConfig(userId, payload),
-  });
+    const { mutateAsync } = useMutation({
+        mutationFn: (payload: PartialConfigEdit) => PartialConfigApi.putConfig(userId, payload),
+    })
 
-  return { mutateAsync };
-};
+    return { mutateAsync }
+}
 
 export const usePartialConfigDelete = (userId: string) => {
-  const { mutateAsync } = useMutation({
-    mutationFn: () => PartialConfigApi.deleteConfig(userId),
-  });
+    const { mutateAsync } = useMutation({
+        mutationFn: () => PartialConfigApi.deleteConfig(userId),
+    })
 
-  return { mutateAsync };
-};
+    return { mutateAsync }
+}

@@ -7,7 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { schema } from "./validation"
 import { Link, useNavigate } from "react-router-dom"
 import { useLogin } from "@/hooks/useAuth"
-import { useAuth } from '../../AuthProvider';
+import { useAuth } from "../../AuthProvider"
 
 type FormFields = z.infer<typeof schema>
 
@@ -19,10 +19,9 @@ const mockLogin = {
 }
 
 const Login = () => {
-
-    const { mutateAsync: LoginMutation } = useLogin();
-    const navigate = useNavigate();
-    const { login } = useAuth();
+    const { mutateAsync: LoginMutation } = useLogin()
+    const navigate = useNavigate()
+    const { login } = useAuth()
 
     const {
         register,
@@ -35,11 +34,11 @@ const Login = () => {
 
     const onSubmit: SubmitHandler<FormFields> = async (data) => {
         try {
-            console.log(data);
+            console.log(data)
             // const response = await LoginMutation(data);
-            const response = mockLogin;
+            const response = mockLogin
             login(response)
-            navigate(`/${(response.role === "ADMIN") ? "dashboard" : ""}`)
+            navigate(`/${response.role === "ADMIN" ? "dashboard" : ""}`)
         } catch (error) {
             setError("root", {
                 message: "Wrong username or password",

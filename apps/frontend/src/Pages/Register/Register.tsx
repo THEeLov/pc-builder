@@ -10,8 +10,7 @@ import { useRegister } from "@/hooks/useAuth"
 type FormFields = z.infer<typeof schema>
 
 const Register = () => {
-
-    const {mutateAsync: RegisterMutation } = useRegister();
+    const { mutateAsync: RegisterMutation } = useRegister()
 
     const {
         register,
@@ -28,8 +27,7 @@ const Register = () => {
             return
         }
         try {
-            const response = await RegisterMutation(data);
-            
+            const response = await RegisterMutation(data)
         } catch (error) {
             setError("root", {
                 message: "Something went wrong.",

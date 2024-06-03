@@ -43,8 +43,8 @@ const Build = () => {
     const [info, setInfo] = useState<Array<{ name: string; info: Component | null }>>([])
     const [totalPrice, setTotalPrice] = useState(0)
 
-    const componentInfo = useMemo(() => {    
-        const infoArray: Array<{ name: string, info: Component | null }> = [
+    const componentInfo = useMemo(() => {
+        const infoArray: Array<{ name: string; info: Component | null }> = [
             { name: "Motherboard", info: data.motherboard ?? null },
             { name: "Processor", info: data.processor ?? null },
             ...data.rams.map((ram: Component) => ({ name: "RAM", info: ram })),
@@ -52,21 +52,21 @@ const Build = () => {
             ...data.storages.map((storage: Component) => ({ name: "Storage", info: storage })),
             { name: "Power Supply", info: data.powerSupply ?? null },
             { name: "Case", info: data.pcCase ?? null },
-        ];
-    
-        return infoArray;
-    }, [data, isLoading]);
-    
+        ]
+
+        return infoArray
+    }, [data, isLoading])
+
     useEffect(() => {
-        setInfo(componentInfo);
-    
+        setInfo(componentInfo)
+
         const price = componentInfo.reduce(
             (acc, component) => acc + (component.info ? component.info.component.price : 0),
             0,
-        );
-    
-        setTotalPrice(price);
-    }, [componentInfo]);
+        )
+
+        setTotalPrice(price)
+    }, [componentInfo])
 
     return (
         <div className="build">
