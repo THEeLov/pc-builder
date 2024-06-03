@@ -37,3 +37,23 @@
     display: flex;
     justify-content: center;
 }
+
+.component__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.component__info > * {
+    flex: 1;
+}
+
+.component__info__button {
+    display: flex;
+    justify-content: end;
+}
+
+.component__info__price {
+    display: flex;
+    justify-content: center;
+}
