@@ -10,7 +10,7 @@ const ProtectedRoute = () => {
         notification.error({
             message: "Ooops!",
             description: "Please log in to continue",
-            duration: 2.5
+            duration: 2.5,
         })
         return <Navigate to="/login" />
     }

@@ -5,7 +5,7 @@ import { ToolOutlined } from "@ant-design/icons"
 import { Link, useNavigate } from "react-router-dom"
 
 const Main = () => {
-    const navigate = useNavigate();
+    const navigate = useNavigate()
 
     const handleClick = () => {
         navigate(`/options`)
