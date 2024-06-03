@@ -5,7 +5,7 @@ import "./globalStyles.css"
 import { RouterProvider } from "react-router-dom"
 import { router } from "./router/router"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
-import AuthProvider from "./AuthProvider"
+import AuthProvider from "./auth/AuthProvider"
 
 const queryClient = new QueryClient()
 

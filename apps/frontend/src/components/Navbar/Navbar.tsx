@@ -2,7 +2,7 @@ import "./navbar.css"
 import SignIn from "../../images/sign_in.svg"
 import CustomButton from "../CustomButton/CustomButton"
 import { Link } from "react-router-dom"
-import { useAuth } from "@/AuthProvider"
+import { useAuth } from "@/auth/AuthProvider"
 import { IoIosLogOut } from "react-icons/io"
 
 const Navbar = () => {

@@ -6,6 +6,7 @@ import Login from "../Pages/Login/Login"
 import Register from "../Pages/Register/Register"
 import Components from "../Pages/Components/Components"
 import OptionsPage from "../Pages/Options/OptionsPage"
+import ProtectedRoute from "@/auth/ProtectedRoute"
 
 export const router = createBrowserRouter([
     {
@@ -18,15 +19,18 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/options",
-                Component: OptionsPage,
+                Component: ProtectedRoute,
+                children: [{ path: "", Component: OptionsPage }],
             },
             {
                 path: "/components",
-                Component: Components,
+                Component: ProtectedRoute,
+                children: [{ path: "", Component: Components }],
             },
             {
                 path: "/build",
-                Component: Build,
+                Component: ProtectedRoute,
+                children: [{ path: "", Component: Build }],
             },
         ],
     },
