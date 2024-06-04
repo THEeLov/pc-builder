@@ -21,10 +21,12 @@ const port = env.PORT ?? 3000
 app.use(cookieParser())
 
 // CORS middleware
-app.use(cors({
-    origin: "http://localhost:4200",
-    credentials: true,
-}))
+app.use(
+    cors({
+        origin: "http://localhost:4200",
+        credentials: true,
+    }),
+)
 
 // JSON middleware
 app.use(express.json())

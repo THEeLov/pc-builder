@@ -28,7 +28,7 @@ const Login = () => {
     const onSubmit: SubmitHandler<FormFields> = async (data) => {
         try {
             console.log(data)
-            const response = await LoginMutation(data);
+            const response = await LoginMutation(data)
             login(response)
             navigate(`/${response.role === "ADMIN" ? "dashboard" : ""}`)
         } catch (error) {

@@ -7,14 +7,16 @@ import ConfigRouter from "./configurations/configurations.router"
 
 config()
 
-const app = express()   
+const app = express()
 const port = env.PORT ?? 3000
 
 // CORS middleware
-app.use(cors({
-    origin: "http://localhost:4200",
-    credentials: true,
-}))
+app.use(
+    cors({
+        origin: "http://localhost:4200",
+        credentials: true,
+    }),
+)
 
 // JSON middleware
 app.use(express.json())
