@@ -12,6 +12,6 @@ export type RegisterUser = {
 }
 
 export type LoginUser = {
-    username: string
+    email: string
     password: string
 }

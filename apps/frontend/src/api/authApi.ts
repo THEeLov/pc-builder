@@ -2,11 +2,11 @@ import axios from "axios"
 import { RegisterUser, User, LoginUser } from "../models/auth"
 
 const axiosInstance = axios.create({
-    baseURL: "http://localhost:3000/",
+    baseURL: "http://localhost:3000/users/",
 })
 
 async function registerUser(data: RegisterUser): Promise<User> {
-    const resp = await axiosInstance.post("register", data, { withCredentials: false })
+    const resp = await axiosInstance.post("register", data, { withCredentials: true })
     return resp.data
 }
 

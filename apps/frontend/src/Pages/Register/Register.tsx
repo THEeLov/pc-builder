@@ -10,13 +10,6 @@ import { useAuth } from "@/auth/AuthProvider"
 
 type FormFields = z.infer<typeof schema>
 
-const mockRegister = {
-    id: "123141421",
-    username: "Filipko",
-    email: "filipko@gmail.com",
-    role: "USER",
-}
-
 const Register = () => {
     const { mutateAsync: RegisterMutation } = useRegister()
     const { login } = useAuth()
@@ -37,8 +30,8 @@ const Register = () => {
             return
         }
         try {
-            // const response = await RegisterMutation(data)
-            const response = mockRegister
+            console.log(data)
+            const response = await RegisterMutation(data)
             login(response)
             navigate("/")
         } catch (error) {

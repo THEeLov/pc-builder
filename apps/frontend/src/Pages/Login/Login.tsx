@@ -11,13 +11,6 @@ import { useAuth } from "../../auth/AuthProvider"
 
 type FormFields = z.infer<typeof schema>
 
-const mockLogin = {
-    id: "123141421",
-    username: "Filipko",
-    email: "filipko@gmail.com",
-    role: "USER",
-}
-
 const Login = () => {
     const { mutateAsync: LoginMutation } = useLogin()
     const navigate = useNavigate()
@@ -35,8 +28,7 @@ const Login = () => {
     const onSubmit: SubmitHandler<FormFields> = async (data) => {
         try {
             console.log(data)
-            // const response = await LoginMutation(data);
-            const response = mockLogin
+            const response = await LoginMutation(data);
             login(response)
             navigate(`/${response.role === "ADMIN" ? "dashboard" : ""}`)
         } catch (error) {
@@ -57,7 +49,7 @@ const Login = () => {
                 <div className="login__form-container">
                     <h1 className="login__form-container__headline">Sign in</h1>
                     <form className="login__form" onSubmit={handleSubmit(onSubmit)}>
-                        <input {...register("username")} className="form-input" type="text" placeholder="username" />
+                        <input {...register("email")} className="form-input" type="text" placeholder="email" />
                         <input
                             {...register("password")}
                             className="form-input"
