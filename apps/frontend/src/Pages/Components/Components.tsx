@@ -23,7 +23,7 @@ const Components = () => {
     const [searchParams] = useSearchParams()
     const componentParam = searchParams.get("component")
 
-    const { data, isLoading } = useComponents(componentParam as ComponentTypes || "")
+    const { data, isLoading } = useComponents((componentParam as ComponentTypes) || "")
 
     // TODO: Replace mock data with real data
     return (

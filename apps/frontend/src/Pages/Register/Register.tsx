@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { schema } from "./validation"
 import { Link, useNavigate } from "react-router-dom"
 import { useRegister } from "@/hooks/useAuth"
-import useAuth  from "@/auth/authProvider"
+import useAuth from "@/auth/authProvider"
 
 type FormFields = z.infer<typeof schema>
 
