@@ -3,7 +3,7 @@ import { Component } from "./components"
 export type PartialConfig = {
     id: string
     configurationType: string
-    mothderboard?: Component
+    motherboard?: Component
     processor?: Component
     rams: Component[]
     gpu?: Component

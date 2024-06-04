@@ -2,26 +2,26 @@ import axios from "axios"
 import { PartialConfig, PartialConfigCreate, PartialConfigEdit } from "../models/configuration"
 
 const axiosInstance = axios.create({
-    baseURL: "http://localhost:3000/configuration/partial",
+    baseURL: "http://localhost:3000/configurations/partial",
 })
 
 async function getConfig(userId: string): Promise<PartialConfig> {
-    const resp = await axiosInstance.get(`${userId}`)
+    const resp = await axiosInstance.get(`${userId}`, { withCredentials: true })
     return resp.data
 }
 
-async function postConfig(userId: string, payload: unknown): Promise<PartialConfig> {
-    const resp = await axiosInstance.post(`${userId}`, payload)
+async function postConfig(userId: string, payload: PartialConfigCreate): Promise<PartialConfig> {
+    const resp = await axiosInstance.post(`${userId}`, payload, { withCredentials: true })
     return resp.data
 }
 
-async function putConfig(userId: string, payload: unknown): Promise<PartialConfig> {
-    const resp = await axiosInstance.put(`${userId}`, payload)
+async function putConfig(userId: string, payload: PartialConfigEdit): Promise<PartialConfig> {
+    const resp = await axiosInstance.put(`${userId}`, payload, { withCredentials: true })
     return resp.data
 }
 
 async function deleteConfig(userId: string) {
-    const resp = await axiosInstance.delete(`${userId}`)
+    const resp = await axiosInstance.delete(`${userId}`, { withCredentials: true })
     return resp.data
 }
 

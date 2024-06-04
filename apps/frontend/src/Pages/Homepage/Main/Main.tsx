@@ -3,11 +3,22 @@ import "./main.css"
 import CustomButton from "../../../components/CustomButton/CustomButton"
 import { ToolOutlined } from "@ant-design/icons"
 import { Link, useNavigate } from "react-router-dom"
+import useAuth from "@/auth/authProvider"
+import { notification } from "antd"
 
 const Main = () => {
     const navigate = useNavigate()
+    const { user } = useAuth()
 
     const handleClick = () => {
+        if (user === null) {
+            notification.error({
+                message: "Ooops!",
+                description: "Please log in to continue",
+                duration: 2.5,
+            })
+            return
+        }
         navigate(`/options`)
     }
 

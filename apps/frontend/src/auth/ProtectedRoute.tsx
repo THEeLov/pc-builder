@@ -1,6 +1,6 @@
 import React from "react"
 import { Navigate, Outlet } from "react-router-dom"
-import { useAuth } from "./AuthProvider"
+import useAuth from "./authProvider"
 import { notification } from "antd"
 
 const ProtectedRoute = () => {

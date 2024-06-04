@@ -37,6 +37,7 @@
     align-items: center;
     margin-right: var(--small-indent);
     cursor: pointer;
+    z-index: 1;
 }
 
 .icon-container img {

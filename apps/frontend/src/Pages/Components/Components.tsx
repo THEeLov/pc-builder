@@ -1,27 +1,29 @@
 import "./components.css"
 import PriceFilter from "./PriceFilter/PriceFilter"
 import TableComponents from "@/components/Table/TableComponents"
+import { useComponents } from "@/hooks/useComponents"
+import { ComponentTypes } from "@/models/components"
 import { Spin } from "antd"
 import { useSearchParams } from "react-router-dom"
 
 const Components = () => {
-    const mockData = []
-    for (let i = 0; i < 100; i++) {
-        mockData.push({
-            component: {
-                name: `Product ${i}`,
-                price: Math.floor(Math.random() * 400),
-                imageUrl: "PHOTO",
-            },
-            id: "something",
-            formFactor: "something",
-            componentId: "something",
-        })
-    }
+    // const mockData = []
+    // for (let i = 0; i < 100; i++) {
+    //     mockData.push({
+    //         component: {
+    //             name: `Product ${i}`,
+    //             price: Math.floor(Math.random() * 400),
+    //             imageUrl: "PHOTO",
+    //         },
+    //         id: "something",
+    //         formFactor: "something",
+    //         componentId: "something",
+    //     })
+    // }
     const [searchParams] = useSearchParams()
     const componentParam = searchParams.get("component")
 
-    // const { data, isLoading } = useComponents(componentParam as ComponentTypes || "")
+    const { data, isLoading } = useComponents(componentParam as ComponentTypes || "")
 
     // TODO: Replace mock data with real data
     return (
@@ -35,7 +37,7 @@ const Components = () => {
                 </div>
             </div>
             <div className="components-container">
-                {false ? <Spin /> : <TableComponents fetchedData={mockData || []} />}
+                {isLoading ? <Spin /> : <TableComponents fetchedData={data || []} />}
             </div>
         </div>
     )

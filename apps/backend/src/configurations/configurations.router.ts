@@ -4,7 +4,7 @@ import ConfigurationController from "./full/controller/configuration.controller"
 const router = express.Router()
 
 router
-    .route("/parital/:id")
+    .route("/partial/:id")
     .get(ParcialConfigurationController.get)
     .put(ParcialConfigurationController.update)
     .post(ParcialConfigurationController.create)

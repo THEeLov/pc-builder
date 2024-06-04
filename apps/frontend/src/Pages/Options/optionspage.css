@@ -19,6 +19,7 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 3.5rem;
+    cursor: pointer;
 }
 
 .options_container__link {

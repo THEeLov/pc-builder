@@ -7,16 +7,27 @@ import {
     TagsOutlined,
 } from "@ant-design/icons"
 import "./optionspage.css"
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
+import { usePartialConfigCreate } from "@/hooks/usePartialConfig"
+import useAuth from "@/auth/authProvider"
 
 // Issue to solve: big screens will have too big navbar.
 const OptionsPage = () => {
+    const { user } = useAuth()
+    const { mutateAsync: PartialCreate } = usePartialConfigCreate(user?.id || "")
+    const navigate = useNavigate()
+
+    const handleClick = async (configType: string) => {
+        await PartialCreate({ configurationType: configType })
+        navigate(`/build`)
+    }
+
     const cardData = [
-        { label: "Default", icon: AppstoreAddOutlined },
-        { label: "Office", icon: FundProjectionScreenOutlined },
-        { label: "Gaming", icon: CustomerServiceOutlined },
-        { label: "Work", icon: DesktopOutlined },
-        { label: "High-end", icon: TagsOutlined },
+        { label: "DEFAULT", icon: AppstoreAddOutlined },
+        { label: "OFFICE", icon: FundProjectionScreenOutlined },
+        { label: "GAMING", icon: CustomerServiceOutlined },
+        { label: "WORK", icon: DesktopOutlined },
+        { label: "HIGH-END", icon: TagsOutlined },
     ]
 
     return (
@@ -26,9 +37,9 @@ const OptionsPage = () => {
             </div>
             <div className="options__container">
                 {cardData.map((card, index) => (
-                    <Link to="/build" className="options_container__link">
+                    <div className="options_container__link" onClick={() => handleClick(card.label)}>
                         <OptionCard key={index} label={card.label} icon={<card.icon style={{ fontSize: "12rem" }} />} />
-                    </Link>
+                    </div>
                 ))}
             </div>
         </div>

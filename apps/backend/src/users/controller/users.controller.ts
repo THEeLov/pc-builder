@@ -26,7 +26,7 @@ async function register(req: Request, res: Response): Promise<Response<UserDTO>>
         }
         const formattedExpirationDate = session.value.expiresAt.toUTCString()
         res.set("Access-Control-Allow-Credentials", "true")
-        res.set("Set-Cookie", `sessionId=${session.value.id}; SameSite=Strict; Expires=${formattedExpirationDate}`)
+        res.set("Set-Cookie", `sessionId=${session.value.id}; Path=/; SameSite=Strict; Expires=${formattedExpirationDate}`)
         return res.status(200).json({
             id: result.value.id,
             username: result.value.username,
@@ -38,7 +38,6 @@ async function register(req: Request, res: Response): Promise<Response<UserDTO>>
 }
 
 async function login(req: Request, res: Response): Promise<Response<UserDTO | Error>> {
-    console.log(req.body)
     const login = UserSchema.Login.safeParse(req.body)
     if (!login.success) {
         return res.status(400).json(new Error(login.error.message))
@@ -56,7 +55,7 @@ async function login(req: Request, res: Response): Promise<Response<UserDTO | Er
             }
             const formattedExpirationDate = session.value.expiresAt.toUTCString()
             res.set("Access-Control-Allow-Credentials", "true")
-            res.set("Set-Cookie", `sessionId=${session.value.id}; SameSite=Strict; Expires=${formattedExpirationDate}`)
+            res.set("Set-Cookie", `sessionId=${session.value.id}; Path=/; SameSite=Strict; Expires=${formattedExpirationDate}`)
             return res.status(200).json({
                 id: user.value.id,
                 username: user.value.username,
