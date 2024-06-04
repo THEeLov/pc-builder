@@ -5,11 +5,24 @@ import { z } from "zod"
 import Bob from "../../images/sign_up_bob.png"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { schema } from "./validation"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import { useLogin } from "@/hooks/useAuth"
+import { useAuth } from "../../auth/AuthProvider"
 
 type FormFields = z.infer<typeof schema>
 
+const mockLogin = {
+    id: "123141421",
+    username: "Filipko",
+    email: "filipko@gmail.com",
+    role: "USER",
+}
+
 const Login = () => {
+    const { mutateAsync: LoginMutation } = useLogin()
+    const navigate = useNavigate()
+    const { login } = useAuth()
+
     const {
         register,
         handleSubmit,
@@ -20,9 +33,12 @@ const Login = () => {
     })
 
     const onSubmit: SubmitHandler<FormFields> = async (data) => {
-        // TODO not complete have to check if user is in the database
         try {
             console.log(data)
+            // const response = await LoginMutation(data);
+            const response = mockLogin
+            login(response)
+            navigate(`/${response.role === "ADMIN" ? "dashboard" : ""}`)
         } catch (error) {
             setError("root", {
                 message: "Wrong username or password",
@@ -53,7 +69,7 @@ const Login = () => {
                         </button>
 
                         {/* Show error if user doesnt exit */}
-                        {errors.root && <div>{errors.root.message}</div>}
+                        {errors.root && <div className="error-message">{errors.root.message}</div>}
                     </form>
                     <div className="login__form-container__questions">
                         <Link to="/register">Dont have an account ? Sign Up</Link>

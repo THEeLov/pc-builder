@@ -4,11 +4,24 @@ import { z } from "zod"
 import Bob from "../../images/sign_UP_bob.png"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { schema } from "./validation"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import { useRegister } from "@/hooks/useAuth"
+import { useAuth } from "@/auth/AuthProvider"
 
 type FormFields = z.infer<typeof schema>
 
+const mockRegister = {
+    id: "123141421",
+    username: "Filipko",
+    email: "filipko@gmail.com",
+    role: "USER",
+}
+
 const Register = () => {
+    const { mutateAsync: RegisterMutation } = useRegister()
+    const { login } = useAuth()
+    const navigate = useNavigate()
+
     const {
         register,
         handleSubmit,
@@ -23,12 +36,14 @@ const Register = () => {
             setError("root", { message: "Passwords are not matching" })
             return
         }
-
         try {
-            console.log(data)
+            // const response = await RegisterMutation(data)
+            const response = mockRegister
+            login(response)
+            navigate("/")
         } catch (error) {
             setError("root", {
-                message: "Wrong username or password",
+                message: "Something went wrong.",
             })
         }
     }

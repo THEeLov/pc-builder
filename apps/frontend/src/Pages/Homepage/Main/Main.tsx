@@ -2,9 +2,15 @@ import "./main.css"
 
 import CustomButton from "../../../components/CustomButton/CustomButton"
 import { ToolOutlined } from "@ant-design/icons"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 const Main = () => {
+    const navigate = useNavigate()
+
+    const handleClick = () => {
+        navigate(`/options`)
+    }
+
     return (
         <main className="main">
             <div className="main-content">
@@ -15,9 +21,9 @@ const Main = () => {
                     simple and enjoyable.
                 </p>
                 <div className="main-button">
-                    <Link to="/build">
+                    <div onClick={handleClick}>
                         <CustomButton label="Lets start" icon={<ToolOutlined />} btype="primary" />
-                    </Link>
+                    </div>
                 </div>
             </div>
         </main>
