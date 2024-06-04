@@ -31,6 +31,7 @@ async function register(req: Request, res: Response): Promise<Response<UserDTO>>
             id: result.value.id,
             username: result.value.username,
             email: result.value.email,
+            role: result.value.userType
         })
     }
     return res.status(500).json(new Error("Internal error"))
@@ -59,6 +60,7 @@ async function login(req: Request, res: Response): Promise<Response<UserDTO | Er
                 id: user.value.id,
                 username: user.value.username,
                 email: user.value.email,
+                role: user.value.userType
             })
         } else {
             return res.status(400).json(new Error("Invalid credentials"))
@@ -84,6 +86,7 @@ async function getSingle(req: Request, res: Response): Promise<Response<UserDTO 
             id: user.value.id,
             username: user.value.username,
             email: user.value.email,
+            role: user.value.userType
         })
     }
     return res.status(500).json(new Error("Internal error"))
@@ -124,7 +127,7 @@ async function updateSingle(req: Request, res: Response): Promise<Response<UserD
         return res.status(400).json(user.error)
     }
     if (user.isOk) {
-        return res.status(200).json(user)
+        return res.status(200).json(user.value)
     }
     return res.status(500).json(new Error("Internal error"))
 }
