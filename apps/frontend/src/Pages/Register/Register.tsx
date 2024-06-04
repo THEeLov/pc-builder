@@ -19,8 +19,8 @@ const mockRegister = {
 
 const Register = () => {
     const { mutateAsync: RegisterMutation } = useRegister()
-    const { login } = useAuth();
-    const navigate = useNavigate();
+    const { login } = useAuth()
+    const navigate = useNavigate()
 
     const {
         register,
@@ -38,8 +38,8 @@ const Register = () => {
         }
         try {
             // const response = await RegisterMutation(data)
-            const response = mockRegister;
-            login(response);
+            const response = mockRegister
+            login(response)
             navigate("/")
         } catch (error) {
             setError("root", {
