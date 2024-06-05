@@ -8,16 +8,18 @@ import {
 } from "@ant-design/icons"
 import "./optionspage.css"
 import { useNavigate } from "react-router-dom"
-import { usePartialConfigCreate } from "@/hooks/usePartialConfig"
+import { usePartialConfigCreate, usePartialConfigDelete } from "@/hooks/usePartialConfig"
 import useAuth from "@/auth/authProvider"
 
 // Issue to solve: big screens will have too big navbar.
 const OptionsPage = () => {
     const { user } = useAuth()
     const { mutateAsync: PartialCreate } = usePartialConfigCreate(user?.id || "")
+    const { mutateAsync: PartialDelete } = usePartialConfigDelete(user?.id || "")
     const navigate = useNavigate()
 
     const handleClick = async (configType: string) => {
+        await PartialDelete();
         await PartialCreate({ configurationType: configType })
         navigate(`/build`)
     }

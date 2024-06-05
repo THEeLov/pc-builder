@@ -25,7 +25,7 @@ const Build = () => {
             { name: "GPU", info: [data?.gpu ?? null] },
             { name: "Storages", info: [...data.storages, null] },
             { name: "Power Supply", info: [data?.powerSupply ?? null] },
-            { name: "Case", info: [data?.pcCase ?? null] },
+            { name: "Pc-Case", info: [data?.pcCase ?? null] },
         ]
 
         return infoArray
