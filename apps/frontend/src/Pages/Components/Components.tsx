@@ -25,7 +25,6 @@ const Components = () => {
 
     const { data, isLoading } = useComponents((componentParam as ComponentTypes) || "")
 
-    // TODO: Replace mock data with real data
     return (
         <div className="components">
             <div className="components__filter-container">
@@ -37,7 +36,7 @@ const Components = () => {
                 </div>
             </div>
             <div className="components-container">
-                {isLoading ? <Spin /> : <TableComponents fetchedData={data || []} />}
+                {isLoading ? <Spin /> : <TableComponents fetchedData={data || []} admin={false} />}
             </div>
         </div>
     )

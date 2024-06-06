@@ -1,8 +1,11 @@
 import CustomButton from "../CustomButton/CustomButton"
 import { TiPlus } from "react-icons/ti"
-import type { InputRef, TableColumnsType, TableColumnType } from "antd"
+import type { TableColumnsType } from "antd"
 import { Table } from "antd"
 import { useSearch } from "./useSearch"
+import { MdDelete } from "react-icons/md"
+import { FaEye } from "react-icons/fa"
+import "./table.css"
 
 type DataType = {
     component: {
@@ -16,9 +19,10 @@ type DataIndex = keyof DataType["component"]
 
 type TableComponentsProps = {
     fetchedData: DataType[]
+    admin: boolean
 }
 
-const TableComponents: React.FC<TableComponentsProps> = ({ fetchedData }) => {
+const TableComponents: React.FC<TableComponentsProps> = ({ fetchedData, admin }) => {
     const { getColumnSearchProps } = useSearch()
 
     const columns: TableColumnsType<DataType> = [
@@ -46,17 +50,35 @@ const TableComponents: React.FC<TableComponentsProps> = ({ fetchedData }) => {
             title: "Action",
             dataIndex: "",
             key: "add",
-            render: (record) => (
-                <div onClick={() => onAdd(record)}>
-                    <CustomButton label="Add" btype="secondary" icon={<TiPlus />} />
-                </div>
-            ),
+            render: (record) =>
+                admin ? (
+                    <div className="table-buttons">
+                        <span onClick={() => handleView(record)}>
+                            <CustomButton label="" btype="secondary" icon={<FaEye />} />
+                        </span>
+                        <span onClick={() => handleDelete(record)}>
+                            <CustomButton label="" btype="primary" icon={<MdDelete />}></CustomButton>
+                        </span>
+                    </div>
+                ) : (
+                    <div onClick={() => handleAdd(record)}>
+                        <CustomButton label="Add" btype="secondary" icon={<TiPlus />} />
+                    </div>
+                ),
             align: "right",
             width: "10%",
         },
     ]
 
-    const onAdd = (record: DataType) => {
+    const handleAdd = (record: DataType) => {
+        console.log(record)
+    }
+
+    const handleDelete = (record: DataType) => {
+        console.log(record)
+    }
+
+    const handleView = (record: DataType) => {
         console.log(record)
     }
 

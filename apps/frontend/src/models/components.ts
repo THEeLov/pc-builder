@@ -7,4 +7,4 @@ export type Component = {
     id: string
 }
 
-export type ComponentTypes = "Motherboard" | "Processor" | "RAM" | "Storage" | "GPU" | "Power Supply" | "Case" | ""
+export type ComponentTypes = "motherboards" | "processors" | "rams" | "storages" | "gpus" | "power-supplies" | "pc-cases" | ""

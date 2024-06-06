@@ -24,7 +24,7 @@ const Build = () => {
             { name: "Rams", info: [...data.rams, null] },
             { name: "GPU", info: [data?.gpu ?? null] },
             { name: "Storages", info: [...data.storages, null] },
-            { name: "Power Supply", info: [data?.powerSupply ?? null] },
+            { name: "Power-Supplie", info: [data?.powerSupply ?? null] },
             { name: "Pc-Case", info: [data?.pcCase ?? null] },
         ]
 
