@@ -5,8 +5,7 @@ import { Outlet, useNavigate } from "react-router-dom"
 const components = ["Motherboards", "Processors", "Rams", "GPUs", "Storages", "Power-Supplies", "Pc-Cases"]
 
 const Dashboard = () => {
-
-    const navigate = useNavigate();
+    const navigate = useNavigate()
     const handleClick = (component: string) => {
         navigate(`/dashboard/${component.toLocaleLowerCase()}`)
     }

@@ -1,4 +1,4 @@
 .table-buttons {
-  display:inline-flex;
-  gap: var(--small-indent)
+    display: inline-flex;
+    gap: var(--small-indent);
 }

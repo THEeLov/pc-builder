@@ -12,26 +12,26 @@ export const useComponents = (name: ComponentTypes) => {
 }
 
 export const useComponentsCreate = (name: ComponentTypes) => {
-  const { mutateAsync } = useMutation({
-    mutationFn: (payload: unknown) => ComponentsApi.postSingle(name, payload),
-  });
+    const { mutateAsync } = useMutation({
+        mutationFn: (payload: unknown) => ComponentsApi.postSingle(name, payload),
+    })
 
-  return { mutateAsync };
-};
+    return { mutateAsync }
+}
 
 export const useProductEdit = (id: string) => {
-  const queryClient = useQueryClient();
-  const { mutateAsync } = useMutation({
-    mutationFn: (payload: unknown) => ComponentsApi.putSingle(id, payload),
-  });
+    const queryClient = useQueryClient()
+    const { mutateAsync } = useMutation({
+        mutationFn: (payload: unknown) => ComponentsApi.putSingle(id, payload),
+    })
 
-  return { mutateAsync };
-};
+    return { mutateAsync }
+}
 
 export const useProductDelete = (id: string) => {
-  const { mutateAsync } = useMutation({
-    mutationFn: () => ComponentsApi.deleteSingle(id),
-  });
+    const { mutateAsync } = useMutation({
+        mutationFn: () => ComponentsApi.deleteSingle(id),
+    })
 
-  return { mutateAsync };
-};
+    return { mutateAsync }
+}

@@ -30,7 +30,7 @@ const PcCases = () => {
     const { data, isLoading } = useComponents("motherboards")
 
     if (isLoading) {
-      <Spin />
+        ;<Spin />
     }
 
     return (
@@ -38,7 +38,7 @@ const PcCases = () => {
             <div className="dashboard-components__add-button">
                 <CustomButton label="" btype="primary" icon={<FaPlus />}></CustomButton>
             </div>
-            <TableComponents fetchedData={mockData} admin={true}/>
+            <TableComponents fetchedData={mockData} admin={true} />
         </div>
     )
 }
