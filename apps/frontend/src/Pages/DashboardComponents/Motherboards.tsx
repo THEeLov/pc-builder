@@ -28,7 +28,7 @@ const mockData = [
 ]
 
 const Motherboards = () => {
-    const { isDialogOpen, openDialog, closeDialog } = useDialog();
+    const { isDialogOpen, openDialog, closeDialog } = useDialog()
     const { data, isLoading } = useComponents("motherboards")
 
     if (isLoading) {
@@ -40,7 +40,7 @@ const Motherboards = () => {
             <div className="dashboard-components__add-button" onClick={openDialog}>
                 <CustomButton label="" btype="primary" icon={<FaPlus />}></CustomButton>
             </div>
-            {isDialogOpen && <MotherboardCreateDialog handleClose={closeDialog}/>}
+            {isDialogOpen && <MotherboardCreateDialog handleClose={closeDialog} />}
             <TableComponents fetchedData={mockData} admin={true} handleView={() => null} />
         </div>
     )

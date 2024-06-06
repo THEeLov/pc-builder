@@ -1,5 +1,5 @@
-import React from 'react';
-import FormField from './FormField';
+import React from "react"
+import FormField from "./FormField"
 
 const BaseForm: React.FC<any> = ({ register, errors }) => {
     return (
@@ -13,15 +13,9 @@ const BaseForm: React.FC<any> = ({ register, errors }) => {
                 placeholder="manufacturer"
                 error={errors.manufacturer}
             />
-            <FormField
-                name="imageUrl"
-                register={register}
-                type="file"
-                placeholder="image"
-                error={errors.imageUrl}
-            />
+            <FormField name="imageUrl" register={register} type="file" placeholder="image" error={errors.imageUrl} />
         </div>
-    );
-};
+    )
+}
 
-export default BaseForm;
+export default BaseForm
