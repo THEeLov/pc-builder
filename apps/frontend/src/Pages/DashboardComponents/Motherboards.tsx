@@ -47,7 +47,7 @@ const Motherboards = () => {
             <div className="dashboard-components__add-button" onClick={handleOpen}>
                 <CustomButton label="" btype="primary" icon={<FaPlus />}></CustomButton>
             </div>
-            {dialogOpen && <MotherboardCreateDialog handleClose={handleClose}/>}
+            {dialogOpen && <MotherboardCreateDialog handleClose={handleClose} />}
             <TableComponents fetchedData={mockData} admin={true} handleView={() => null} />
         </div>
     )

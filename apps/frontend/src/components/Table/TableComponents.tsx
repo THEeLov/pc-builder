@@ -10,12 +10,12 @@ import { useComponentsDelete } from "@/hooks/useComponents"
 import { Component } from "../../models/components"
 import { useState } from "react"
 
-type DataIndex = keyof Component["component"];
+type DataIndex = keyof Component["component"]
 
 type TableComponentsProps = {
     fetchedData: Component[]
-    admin: boolean,
-    handleView: (() => void), 
+    admin: boolean
+    handleView: () => void
 }
 
 const TableComponents: React.FC<TableComponentsProps> = ({ fetchedData, admin, handleView }) => {
@@ -71,7 +71,7 @@ const TableComponents: React.FC<TableComponentsProps> = ({ fetchedData, admin, h
 
     const handleDelete = async (record: Component) => {
         setComponentId(record.id)
-        await DeleteComponent();
+        await DeleteComponent()
     }
 
     const handleAdd = () => {
