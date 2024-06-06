@@ -27,7 +27,7 @@ const mockData = [
 
 const Gpus = () => {
     const [dialogOpen, setDialogOpen] = useState(false)
-    const { data, isLoading } = useComponents("motherboards")
+    const { data, isLoading } = useComponents("gpus")
 
     if (isLoading) {
         ;<Spin />

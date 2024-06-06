@@ -27,7 +27,7 @@ const mockData = [
 
 const PcCases = () => {
     const [dialogOpen, setDialogOpen] = useState(false)
-    const { data, isLoading } = useComponents("motherboards")
+    const { data, isLoading } = useComponents("pc-cases")
 
     if (isLoading) {
         ;<Spin />

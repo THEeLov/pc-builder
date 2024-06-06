@@ -4,16 +4,9 @@ import { Button, Input, Space } from "antd"
 import type { InputRef, TableColumnType } from "antd"
 import type { FilterDropdownProps } from "antd/es/table/interface"
 import Highlighter from "react-highlight-words"
+import { Component } from "../../models/components"
 
-type DataType = {
-    component: {
-        name: string
-        price: number
-        imageUrl: string
-    }
-}
-
-type DataIndex = keyof DataType["component"]
+type DataIndex = keyof Component["component"]
 
 export const useSearch = () => {
     const [searchText, setSearchText] = useState("")
@@ -31,7 +24,7 @@ export const useSearch = () => {
         setSearchText("")
     }
 
-    const getColumnSearchProps = (dataIndex: DataIndex): TableColumnType<DataType> => ({
+    const getColumnSearchProps = (dataIndex: DataIndex): TableColumnType<Component> => ({
         filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => (
             <div style={{ padding: 8 }} onKeyDown={(e) => e.stopPropagation()}>
                 <Input

@@ -20,7 +20,7 @@ async function putSingle(id: string, payload: unknown) {
     return resp.data
 }
 
-async function deleteSingle(id: string) {
+async function deleteSingle(id: string): Promise<Component> {
     const resp = await axiosInstance.delete(`${id}`, { withCredentials: true })
     return resp.data
 }

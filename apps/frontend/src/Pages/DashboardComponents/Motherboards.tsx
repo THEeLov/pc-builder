@@ -5,6 +5,7 @@ import { FaPlus } from "react-icons/fa"
 import "./outlet.css"
 import { useComponents } from "@/hooks/useComponents"
 import { Spin } from "antd"
+import MotherboardCreateDialog from "../../components/Dialogs/MotherboardCreateDialog"
 
 const mockData = [
     {
@@ -29,16 +30,25 @@ const Motherboards = () => {
     const [dialogOpen, setDialogOpen] = useState(false)
     const { data, isLoading } = useComponents("motherboards")
 
+    const handleOpen = () => {
+        setDialogOpen(true)
+    }
+
+    const handleClose = () => {
+        setDialogOpen(false)
+    }
+
     if (isLoading) {
         ;<Spin />
     }
 
     return (
         <div className="dashboard-components">
-            <div className="dashboard-components__add-button">
+            <div className="dashboard-components__add-button" onClick={handleOpen}>
                 <CustomButton label="" btype="primary" icon={<FaPlus />}></CustomButton>
             </div>
-            <TableComponents fetchedData={mockData} admin={true} />
+            {dialogOpen && <MotherboardCreateDialog handleClose={handleClose}/>}
+            <TableComponents fetchedData={mockData} admin={true} handleView={() => null} />
         </div>
     )
 }

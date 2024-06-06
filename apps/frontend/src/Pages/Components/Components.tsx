@@ -36,7 +36,15 @@ const Components = () => {
                 </div>
             </div>
             <div className="components-container">
-                {isLoading ? <Spin /> : <TableComponents fetchedData={data || []} admin={false} />}
+                {isLoading ? (
+                    <Spin />
+                ) : (
+                    <TableComponents
+                        fetchedData={data || []}
+                        admin={false}
+                        handleView={() => null}
+                    />
+                )}
             </div>
         </div>
     )

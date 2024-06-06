@@ -6,26 +6,25 @@ import { useSearch } from "./useSearch"
 import { MdDelete } from "react-icons/md"
 import { FaEye } from "react-icons/fa"
 import "./table.css"
+import { useComponentsDelete } from "@/hooks/useComponents"
+import { Component } from "../../models/components"
+import { useState } from "react"
 
-type DataType = {
-    component: {
-        name: string
-        price: number
-        imageUrl: string
-    }
-}
-
-type DataIndex = keyof DataType["component"]
+type DataIndex = keyof Component["component"];
 
 type TableComponentsProps = {
-    fetchedData: DataType[]
-    admin: boolean
+    fetchedData: Component[]
+    admin: boolean,
+    handleView: (() => void), 
 }
 
-const TableComponents: React.FC<TableComponentsProps> = ({ fetchedData, admin }) => {
+const TableComponents: React.FC<TableComponentsProps> = ({ fetchedData, admin, handleView }) => {
+    const [componentId, setComponentId] = useState("")
+    const { mutateAsync: DeleteComponent } = useComponentsDelete(componentId)
+
     const { getColumnSearchProps } = useSearch()
 
-    const columns: TableColumnsType<DataType> = [
+    const columns: TableColumnsType<Component> = [
         {
             title: "Image",
             dataIndex: ["component", "imageUrl"],
@@ -34,7 +33,7 @@ const TableComponents: React.FC<TableComponentsProps> = ({ fetchedData, admin })
         {
             title: "Name",
             dataIndex: ["component", "name"],
-            key: "name",
+            key: "component.name",
             onFilter: (value, record) => record.component.name.indexOf(value as string) === 0,
             sorter: (a, b) => a.component.name.length - b.component.name.length,
             sortDirections: ["descend"],
@@ -43,17 +42,17 @@ const TableComponents: React.FC<TableComponentsProps> = ({ fetchedData, admin })
         {
             title: "Price (€)",
             dataIndex: ["component", "price"],
-            key: "price",
+            key: "component.price",
             sorter: (a, b) => a.component.price - b.component.price,
         },
         {
             title: "Action",
             dataIndex: "",
             key: "add",
-            render: (record) =>
+            render: (record: Component) =>
                 admin ? (
                     <div className="table-buttons">
-                        <span onClick={() => handleView(record)}>
+                        <span onClick={handleView}>
                             <CustomButton label="" btype="secondary" icon={<FaEye />} />
                         </span>
                         <span onClick={() => handleDelete(record)}>
@@ -61,7 +60,7 @@ const TableComponents: React.FC<TableComponentsProps> = ({ fetchedData, admin })
                         </span>
                     </div>
                 ) : (
-                    <div onClick={() => handleAdd(record)}>
+                    <div onClick={handleAdd}>
                         <CustomButton label="Add" btype="secondary" icon={<TiPlus />} />
                     </div>
                 ),
@@ -70,16 +69,13 @@ const TableComponents: React.FC<TableComponentsProps> = ({ fetchedData, admin })
         },
     ]
 
-    const handleAdd = (record: DataType) => {
-        console.log(record)
+    const handleDelete = async (record: Component) => {
+        setComponentId(record.id)
+        await DeleteComponent();
     }
 
-    const handleDelete = (record: DataType) => {
-        console.log(record)
-    }
-
-    const handleView = (record: DataType) => {
-        console.log(record)
+    const handleAdd = () => {
+        console.log("working")
     }
 
     return <Table columns={columns} pagination={{ position: ["none", "bottomCenter"] }} dataSource={fetchedData} />

@@ -19,18 +19,18 @@ export const useComponentsCreate = (name: ComponentTypes) => {
     return { mutateAsync }
 }
 
-export const useProductEdit = (id: string) => {
+export const useComponentsEdit = (componentId: string) => {
     const queryClient = useQueryClient()
     const { mutateAsync } = useMutation({
-        mutationFn: (payload: unknown) => ComponentsApi.putSingle(id, payload),
+        mutationFn: (payload: unknown) => ComponentsApi.putSingle(componentId, payload),
     })
 
     return { mutateAsync }
 }
 
-export const useProductDelete = (id: string) => {
+export const useComponentsDelete = (componentId: string) => {
     const { mutateAsync } = useMutation({
-        mutationFn: () => ComponentsApi.deleteSingle(id),
+        mutationFn: () => ComponentsApi.deleteSingle(componentId),
     })
 
     return { mutateAsync }
