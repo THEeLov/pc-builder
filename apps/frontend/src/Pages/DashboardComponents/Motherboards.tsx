@@ -6,6 +6,7 @@ import "./outlet.css"
 import { useComponents } from "@/hooks/useComponents"
 import { Spin } from "antd"
 import MotherboardCreateDialog from "../../components/Dialogs/MotherboardCreateDialog"
+import { useDialog } from "../Dashboard/DialogContext"
 
 const mockData = [
     {
@@ -27,16 +28,8 @@ const mockData = [
 ]
 
 const Motherboards = () => {
-    const [dialogOpen, setDialogOpen] = useState(false)
+    const { isDialogOpen, openDialog, closeDialog } = useDialog();
     const { data, isLoading } = useComponents("motherboards")
-
-    const handleOpen = () => {
-        setDialogOpen(true)
-    }
-
-    const handleClose = () => {
-        setDialogOpen(false)
-    }
 
     if (isLoading) {
         ;<Spin />
@@ -44,10 +37,10 @@ const Motherboards = () => {
 
     return (
         <div className="dashboard-components">
-            <div className="dashboard-components__add-button" onClick={handleOpen}>
+            <div className="dashboard-components__add-button" onClick={openDialog}>
                 <CustomButton label="" btype="primary" icon={<FaPlus />}></CustomButton>
             </div>
-            {dialogOpen && <MotherboardCreateDialog handleClose={handleClose} />}
+            {isDialogOpen && <MotherboardCreateDialog handleClose={closeDialog}/>}
             <TableComponents fetchedData={mockData} admin={true} handleView={() => null} />
         </div>
     )

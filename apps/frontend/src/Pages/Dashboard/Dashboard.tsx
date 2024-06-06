@@ -1,6 +1,7 @@
 import CustomButton from "@/components/CustomButton/CustomButton"
 import "./dashboard.css"
 import { Outlet, useNavigate } from "react-router-dom"
+import { DialogProvider } from "./DialogContext"
 
 const components = ["Motherboards", "Processors", "Rams", "GPUs", "Storages", "Power-Supplies", "Pc-Cases"]
 
@@ -25,7 +26,10 @@ const Dashboard = () => {
                     )
                 })}
             </div>
-            <Outlet />
+
+            <DialogProvider>
+                <Outlet />
+            </DialogProvider>
         </div>
     )
 }
