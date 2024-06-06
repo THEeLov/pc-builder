@@ -26,7 +26,10 @@ async function register(req: Request, res: Response): Promise<Response<UserDTO>>
         }
         const formattedExpirationDate = session.value.expiresAt.toUTCString()
         res.set("Access-Control-Allow-Credentials", "true")
-        res.set("Set-Cookie", `sessionId=${session.value.id}; Path=/; SameSite=Strict; Expires=${formattedExpirationDate}`)
+        res.set(
+            "Set-Cookie",
+            `sessionId=${session.value.id}; Path=/; SameSite=Strict; Expires=${formattedExpirationDate}`,
+        )
         return res.status(200).json({
             id: result.value.id,
             username: result.value.username,
@@ -55,7 +58,10 @@ async function login(req: Request, res: Response): Promise<Response<UserDTO | Er
             }
             const formattedExpirationDate = session.value.expiresAt.toUTCString()
             res.set("Access-Control-Allow-Credentials", "true")
-            res.set("Set-Cookie", `sessionId=${session.value.id}; Path=/; SameSite=Strict; Expires=${formattedExpirationDate}`)
+            res.set(
+                "Set-Cookie",
+                `sessionId=${session.value.id}; Path=/; SameSite=Strict; Expires=${formattedExpirationDate}`,
+            )
             return res.status(200).json({
                 id: user.value.id,
                 username: user.value.username,
@@ -134,13 +140,13 @@ async function updateSingle(req: Request, res: Response): Promise<Response<UserD
 
 async function logout(req: Request, res: Response): Promise<Response<void>> {
     const params = UserSchema.getParams.safeParse(req.body)
-    if (!params.success || !await authorize(params.data.id, req.cookies.sessionId)) {
+    if (!params.success || !(await authorize(params.data.id, req.cookies.sessionId))) {
         return res.status(401).json()
     }
-    res.set("Access-Control-Allow-Credentials", "true");
-    res.set("Set-Cookie", "session=; Path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT");
-    SessionsRepository.remove(req.cookies.sessionId);
-    return res.status(200).json();
+    res.set("Access-Control-Allow-Credentials", "true")
+    res.set("Set-Cookie", "session=; Path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT")
+    SessionsRepository.remove(req.cookies.sessionId)
+    return res.status(200).json()
 }
 
 export const UsersController = {

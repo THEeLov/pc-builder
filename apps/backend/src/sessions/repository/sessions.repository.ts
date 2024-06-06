@@ -79,15 +79,13 @@ async function remove(id: string): DbResult<void> {
     try {
         await prisma.session.delete({
             where: {
-                id
-            }
+                id,
+            },
         })
         return Result.ok(undefined)
+    } catch (e) {
+        return handleError(e, "session delete")
     }
-    catch (e) {
-        return handleError(e, "session delete");
-    }
-    
 }
 
 export const SessionsRepository = {
