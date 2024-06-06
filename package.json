@@ -11,6 +11,9 @@
     },
     "private": true,
     "dependencies": {
+        "@ant-design/icons": "^5.3.6",
+        "@hookform/resolvers": "^3.3.4",
+        "antd": "^5.16.0",
         "@badrap/result": "^0.2.13",
         "@prisma/client": "^5.13.0",
         "axios": "^1.6.0",
@@ -22,6 +25,7 @@
         "next": "^14.2.3",
         "react": "18.2.0",
         "react-dom": "18.2.0",
+        "react-hook-form": "^7.51.3",
         "react-router-dom": "6.11.2",
         "tslib": "^2.3.0",
         "zod": "^3.22.4",
