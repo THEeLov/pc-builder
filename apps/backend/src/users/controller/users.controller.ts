@@ -26,7 +26,7 @@ async function register(req: Request, res: Response): Promise<Response<UserDTO>>
         }
         const formattedExpirationDate = session.value.expiresAt.toUTCString()
         res.set("Access-Control-Allow-Credentials", "true")
-        res.set("Set-Cookie", `sessionId=${session.value.id}; SameSite=Strict; Expires=${formattedExpirationDate}`)
+        res.set("Set-Cookie", `sessionId=${session.value.id}; Path=/; SameSite=Strict; Expires=${formattedExpirationDate}`)
         return res.status(200).json({
             id: result.value.id,
             username: result.value.username,
@@ -42,7 +42,7 @@ async function login(req: Request, res: Response): Promise<Response<UserDTO | Er
     if (!login.success) {
         return res.status(400).json(new Error(login.error.message))
     }
-    const user = await UsersRepository.get(login.data.email)
+    const user = await UsersRepository.getByEmail(login.data.email)
     if (user.isErr) {
         return res.status(400).json(user.error)
     }
@@ -55,7 +55,7 @@ async function login(req: Request, res: Response): Promise<Response<UserDTO | Er
             }
             const formattedExpirationDate = session.value.expiresAt.toUTCString()
             res.set("Access-Control-Allow-Credentials", "true")
-            res.set("Set-Cookie", `sessionId=${session.value.id}; SameSite=Strict; Expires=${formattedExpirationDate}`)
+            res.set("Set-Cookie", `sessionId=${session.value.id}; Path=/; SameSite=Strict; Expires=${formattedExpirationDate}`)
             return res.status(200).json({
                 id: user.value.id,
                 username: user.value.username,
@@ -132,9 +132,21 @@ async function updateSingle(req: Request, res: Response): Promise<Response<UserD
     return res.status(500).json(new Error("Internal error"))
 }
 
+async function logout(req: Request, res: Response): Promise<Response<void>> {
+    const params = UserSchema.getParams.safeParse(req.body)
+    if (!params.success || !await authorize(params.data.id, req.cookies.sessionId)) {
+        return res.status(401).json()
+    }
+    res.set("Access-Control-Allow-Credentials", "true");
+    res.set("Set-Cookie", "session=; Path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT");
+    SessionsRepository.remove(req.cookies.sessionId);
+    return res.status(200).json();
+}
+
 export const UsersController = {
     register,
     login,
+    logout,
     getSingle,
     deleteSingle,
     updateSingle,

@@ -75,8 +75,24 @@ async function getFull(sessionId: string): DbResult<SessionWithFullUser> {
     }
 }
 
+async function remove(id: string): DbResult<void> {
+    try {
+        await prisma.session.delete({
+            where: {
+                id
+            }
+        })
+        return Result.ok(undefined)
+    }
+    catch (e) {
+        return handleError(e, "session delete");
+    }
+    
+}
+
 export const SessionsRepository = {
     create,
     get,
     getFull,
+    remove,
 }

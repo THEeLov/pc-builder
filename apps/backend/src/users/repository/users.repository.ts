@@ -61,6 +61,23 @@ async function remove(id: string): DbResult<void> {
     }
 }
 
+async function getByEmail(email: string): DbResult<UserWithEverything> {
+    try {
+        const user = await prisma.user.findUniqueOrThrow({
+            where: {
+                email: email,
+            },
+            include: {
+                userconfigurations: true,
+                partialUserConfiguration: true,
+            },
+        })
+        return Result.ok(user)
+    } catch (error) {
+        return handleError(error, "in user getByEmail")
+    }
+}
+
 async function get(identifier: string): DbResult<UserWithEverything> {
     try {
         let user
@@ -84,4 +101,5 @@ export const UsersRepository = {
     update,
     remove,
     get,
+    getByEmail,
 }
