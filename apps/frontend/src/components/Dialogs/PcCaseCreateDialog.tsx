@@ -1,16 +1,16 @@
 import { Card } from "antd"
 import "./dialog.css"
 import { useForm, SubmitHandler } from "react-hook-form"
-import { RamSchema } from "./validation"
+import { PcCaseSchema } from "./validation"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import FormField from "../FormField"
 import BaseForm from "../BaseForm"
 import { useDialog } from "@/Pages/Dashboard/DialogContext"
 
-type FormFields = z.infer<typeof RamSchema>
+type FormFields = z.infer<typeof PcCaseSchema>
 
-const RamCreateDialog = () => {
+const PcCaseCreateDialog = () => {
     const { closeDialog } = useDialog()
 
     const {
@@ -18,7 +18,7 @@ const RamCreateDialog = () => {
         handleSubmit,
         formState: { errors },
     } = useForm<FormFields>({
-        resolver: zodResolver(RamSchema),
+        resolver: zodResolver(PcCaseSchema),
     })
 
     const onSubmit: SubmitHandler<FormFields> = (data: FormFields) => {
@@ -27,7 +27,7 @@ const RamCreateDialog = () => {
 
     return (
         <Card
-            title="Create RAM"
+            title="Create Pc-Case"
             style={{ width: "fit-content" }}
             extra={
                 <div onClick={closeDialog} className="dialog__close-button">
@@ -40,32 +40,18 @@ const RamCreateDialog = () => {
                     <BaseForm register={register} errors={errors} />
                     <div className="dialog-form__grid--second">
                         <FormField
-                            name="computerType"
+                            name="formFactor"
                             register={register}
                             type="text"
-                            placeholder="computer type"
-                            error={errors.computerType}
-                        />
-                        <FormField
-                            name="memoryType"
-                            register={register}
-                            type="text"
-                            placeholder="memory type"
-                            error={errors.memoryType}
-                        />
-                        <FormField
-                            name="capacity"
-                            register={register}
-                            type="number"
-                            placeholder="capacity"
-                            error={errors.capacity}
+                            placeholder="form factor"
+                            error={errors.formFactor}
                         />
                     </div>
                 </div>
-                <button type="submit" className="form-button">Create RAM</button>
+                <button type="submit" className="form-button">Create Pc-Case</button>
             </form>
         </Card>
     )
 }
 
-export default RamCreateDialog
+export default PcCaseCreateDialog

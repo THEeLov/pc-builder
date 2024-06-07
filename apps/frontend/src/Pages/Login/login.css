@@ -85,6 +85,7 @@
     cursor: url(../../images/screw-driver.png), auto;
     background-color: black;
     color: white;
+    margin-top: var(--small-indent);
 }
 
 .form-button:hover {

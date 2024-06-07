@@ -1,16 +1,16 @@
 import { Card } from "antd"
 import "./dialog.css"
 import { useForm, SubmitHandler } from "react-hook-form"
-import { ProcessorSchema } from "./validation"
+import { PowerSupplySchema } from "./validation"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import FormField from "../FormField"
 import BaseForm from "../BaseForm"
 import { useDialog } from "@/Pages/Dashboard/DialogContext"
 
-type FormFields = z.infer<typeof ProcessorSchema>
+type FormFields = z.infer<typeof PowerSupplySchema>
 
-const ProcessorCreateDialog = () => {
+const PowerSupplyCreateDialog = () => {
     const { closeDialog } = useDialog()
 
     const {
@@ -18,7 +18,7 @@ const ProcessorCreateDialog = () => {
         handleSubmit,
         formState: { errors },
     } = useForm<FormFields>({
-        resolver: zodResolver(ProcessorSchema),
+        resolver: zodResolver(PowerSupplySchema),
     })
 
     const onSubmit: SubmitHandler<FormFields> = (data: FormFields) => {
@@ -27,7 +27,7 @@ const ProcessorCreateDialog = () => {
 
     return (
         <Card
-            title="Create Processor"
+            title="Create Power-Supply"
             style={{ width: "fit-content" }}
             extra={
                 <div onClick={closeDialog} className="dialog__close-button">
@@ -40,46 +40,32 @@ const ProcessorCreateDialog = () => {
                     <BaseForm register={register} errors={errors} />
                     <div className="dialog-form__grid--second">
                         <FormField
-                            name="architecture"
-                            register={register}
-                            type="text"
-                            placeholder="architecture"
-                            error={errors.architecture}
-                        />
-                        <FormField
-                            name="cores"
+                            name="powerOutput"
                             register={register}
                             type="number"
-                            placeholder="cores"
-                            error={errors.cores}
-                        />
-                        <FormField
-                            name="threads"
-                            register={register}
-                            type="number"
-                            placeholder="threads"
-                            error={errors.threads}
-                        />
-                        <FormField
-                            name="bits"
-                            register={register}
-                            type="number"
-                            placeholder="bits"
-                            error={errors.bits}
-                        />
-                        <FormField
-                            name="socket"
-                            register={register}
-                            type="text"
                             placeholder="socket"
-                            error={errors.socket}
+                            error={errors.powerOutput}
+                        />
+                        <FormField
+                            name="efficiency"
+                            register={register}
+                            type="text"
+                            placeholder="efficiency"
+                            error={errors.efficiency}
+                        />
+                        <FormField
+                            name="formFactor"
+                            register={register}
+                            type="string"
+                            placeholder="form factor"
+                            error={errors.formFactor}
                         />
                     </div>
                 </div>
-                <button type="submit" className="form-button">Create Processor</button>
+                <button type="submit" className="form-button">Create Power-Supply</button>
             </form>
         </Card>
     )
 }
 
-export default ProcessorCreateDialog
+export default PowerSupplyCreateDialog

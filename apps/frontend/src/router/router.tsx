@@ -8,13 +8,6 @@ import Components from "../Pages/Components/Components"
 import OptionsPage from "../Pages/Options/OptionsPage"
 import ProtectedRoute from "@/auth/ProtectedRoute"
 import Dashboard from "@/Pages/Dashboard/Dashboard"
-import Motherboards from "../Pages/DashboardComponents/Motherboards"
-import Processors from "../Pages/DashboardComponents/Processors"
-import Rams from "../Pages/DashboardComponents/Rams"
-import Gpus from "@/Pages/DashboardComponents/Gpus"
-import Storages from "@/Pages/DashboardComponents/Storages"
-import PowerSupplies from "@/Pages/DashboardComponents/PowerSupplies"
-import PcCases from "@/Pages/DashboardComponents/PcCases"
 
 export const router = createBrowserRouter([
     {
@@ -43,15 +36,6 @@ export const router = createBrowserRouter([
             {
                 path: "/dashboard",
                 Component: Dashboard,
-                children: [
-                    { path: "motherboards", Component: Motherboards },
-                    { path: "processors", Component: Processors },
-                    { path: "rams", Component: Rams },
-                    { path: "gpus", Component: Gpus },
-                    { path: "storages", Component: Storages },
-                    { path: "power-supplies", Component: PowerSupplies },
-                    { path: "pc-cases", Component: PcCases },
-                ],
             },
         ],
     },

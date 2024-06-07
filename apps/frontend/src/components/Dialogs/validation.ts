@@ -49,3 +49,30 @@ export const RamSchema = z.object({
     memoryType: z.string().min(1),
     capacity: z.coerce.number().min(1),
 })
+
+export const PowerSupplySchema = z.object({
+    component: ComponentSchema,
+    powerOutput: z.coerce.number().min(1),
+    efficiency: z.string().min(1),
+    formFactor: z.string().min(1),
+})
+
+export const PcCaseSchema = z.object({
+    component: ComponentSchema,
+    formFactor: z.string().min(1),
+})
+
+export const StorageSchema = z.object({
+    component: ComponentSchema,
+    storageType: z.string().min(1),
+    capacity: z.coerce.number().min(1),
+    busType: z.string().min(1),
+})
+
+export const GpuSchema = z.object({
+    component: ComponentSchema,
+    memory: z.coerce.number().min(1),
+    powerConnector: z.string().min(1) ,
+    interface: z.string().min(1),
+    power: z.coerce.number().min(1),
+})

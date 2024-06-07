@@ -1,16 +1,16 @@
 import { Card } from "antd"
 import "./dialog.css"
 import { useForm, SubmitHandler } from "react-hook-form"
-import { MotherboardSchema } from "./validation"
+import { GpuSchema } from "./validation"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import FormField from "../FormField"
 import BaseForm from "../BaseForm"
 import { useDialog } from "@/Pages/Dashboard/DialogContext"
 
-type FormFields = z.infer<typeof MotherboardSchema>
+type FormFields = z.infer<typeof GpuSchema>
 
-const MotherboardCreateDialog = () => {
+const GpuCreateDialog = () => {
     const { closeDialog } = useDialog()
 
     const {
@@ -18,7 +18,7 @@ const MotherboardCreateDialog = () => {
         handleSubmit,
         formState: { errors },
     } = useForm<FormFields>({
-        resolver: zodResolver(MotherboardSchema),
+        resolver: zodResolver(GpuSchema),
     })
 
     const onSubmit: SubmitHandler<FormFields> = (data: FormFields) => {
@@ -27,7 +27,7 @@ const MotherboardCreateDialog = () => {
 
     return (
         <Card
-            title="Create Motherboard"
+            title="Create GPU"
             style={{ width: "fit-content" }}
             extra={
                 <div onClick={closeDialog} className="dialog__close-button">
@@ -40,53 +40,39 @@ const MotherboardCreateDialog = () => {
                     <BaseForm register={register} errors={errors} />
                     <div className="dialog-form__grid--second">
                         <FormField
-                            name="socket"
-                            register={register}
-                            type="text"
-                            placeholder="socket"
-                            error={errors.socket}
-                        />
-                        <FormField
-                            name="formFactor"
-                            register={register}
-                            type="text"
-                            placeholder="form factor"
-                            error={errors.formFactor}
-                        />
-                        <FormField
-                            name="ramSlots"
+                            name="memory"
                             register={register}
                             type="number"
-                            placeholder="ram slots"
-                            error={errors.ramSlots}
+                            placeholder="memory"
+                            error={errors.memory}
                         />
                         <FormField
-                            name="ramType"
+                            name="powerConnector"
                             register={register}
                             type="string"
-                            placeholder="ram type"
-                            error={errors.ramType}
+                            placeholder="power connecter"
+                            error={errors.powerConnector}
                         />
                         <FormField
-                            name="gpuInterface"
+                            name="interface"
                             register={register}
-                            type="string"
-                            placeholder="gpu interface"
-                            error={errors.gpuInterface}
+                            type="text"
+                            placeholder="interface"
+                            error={errors.interface}
                         />
                         <FormField
-                            name="storageBusType"
+                            name="power"
                             register={register}
-                            type="string"
-                            placeholder="storage bus type"
-                            error={errors.storageBusType}
+                            type="number"
+                            placeholder="power"
+                            error={errors.power}
                         />
                     </div>
                 </div>
-                <button type="submit" className="form-button">Create Motherbaord</button>
+                <button type="submit" className="form-button">Create GPU</button>
             </form>
         </Card>
     )
 }
 
-export default MotherboardCreateDialog
+export default GpuCreateDialog

@@ -1,5 +1,0 @@
-.dashboard-components {
-    display: flex;
-    flex-direction: column;
-    gap: var(--normal-indent);
-}
