@@ -71,7 +71,7 @@ const TableComponents: React.FC<TableComponentsProps> = ({ fetchedData, admin, h
     ]
 
     const handleDelete = async (record: Component) => {
-        setComponentId(record.id)
+        setComponentId(record.component.id)
         await DeleteComponent()
     }
 

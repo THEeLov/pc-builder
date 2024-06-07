@@ -81,11 +81,11 @@ async function remove(id: string) {
             const gpu = await prisma.gPU.findUniqueOrThrow({
                 where: { id },
             })
-            await prisma.component.delete({
-                where: { id: gpu.componentId },
-            })
             await prisma.gPU.delete({
                 where: { id },
+            })
+            await prisma.component.delete({
+                where: { id: gpu.componentId },
             })
         })
         return Result.ok(undefined)

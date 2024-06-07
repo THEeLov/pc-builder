@@ -78,13 +78,13 @@ async function remove(id: string): DbResult<void> {
             const powerSupply = await prisma.powerSupply.findUniqueOrThrow({
                 where: { id },
             })
+            await prisma.powerSupply.delete({
+                where: { id },
+            })
             await prisma.component.delete({
                 where: {
                     id: powerSupply.componentId,
                 },
-            })
-            await prisma.powerSupply.delete({
-                where: { id },
             })
         })
         return Result.ok(undefined)

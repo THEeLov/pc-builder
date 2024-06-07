@@ -1,5 +1,6 @@
 export type Component = {
     component: {
+        id: string
         name: string
         price: number
         imageUrl: string

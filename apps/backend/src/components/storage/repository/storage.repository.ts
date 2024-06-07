@@ -79,11 +79,11 @@ async function remove(id: string): DbResult<void> {
             const storage = await prisma.storage.findUniqueOrThrow({
                 where: { id },
             })
-            await prisma.component.delete({
-                where: { id: storage.componentId },
-            })
             await prisma.storage.delete({
                 where: { id },
+            })
+            await prisma.component.delete({
+                where: { id: storage.componentId },
             })
         })
         return Result.ok(undefined)

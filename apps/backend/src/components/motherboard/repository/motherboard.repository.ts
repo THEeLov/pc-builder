@@ -87,13 +87,13 @@ async function remove(id: string): DbResult<void> {
             const motherboard = await prisma.motherboard.findUniqueOrThrow({
                 where: { id },
             })
+            await prisma.motherboard.delete({
+                where: { id },
+            })
             await prisma.component.delete({
                 where: {
                     id: motherboard.componentId,
                 },
-            })
-            await prisma.motherboard.delete({
-                where: { id },
             })
         })
         return Result.ok(undefined)

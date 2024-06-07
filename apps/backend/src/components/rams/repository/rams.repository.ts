@@ -85,14 +85,14 @@ async function remove(id: string): DbResult<void> {
             const ram = await prisma.rAM.findUniqueOrThrow({
                 where: { id },
             })
-            await prisma.component.delete({
-                where: {
-                    id: ram.componentId,
-                },
-            })
             await prisma.rAM.delete({
                 where: {
                     id,
+                },
+            })
+            await prisma.component.delete({
+                where: {
+                    id: ram.componentId,
                 },
             })
         })
