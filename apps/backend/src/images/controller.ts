@@ -1,5 +1,5 @@
-import { Request, Response } from "express";
-import path from "path";
+import { Request, Response } from "express"
+import path from "path"
 
 function urlToPath(url: string) {
     return __dirname + "/../../../../../../../docs/images/" + url
