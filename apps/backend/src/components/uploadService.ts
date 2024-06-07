@@ -10,13 +10,13 @@ const ensureDirExists = (dir: string) => {
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        const date = new Date().toISOString().split("T")[0] // Get current date in YYYY-MM-DD format
-        const uploadPath = path.join(__dirname, "images", date)
+        const uploadPath = path.join(__dirname, "images")
         ensureDirExists(uploadPath)
         cb(null, uploadPath)
     },
     filename: (req, file, cb) => {
-        cb(null, file.originalname)
+        const date = new Date().toISOString().split("T")[0]
+        cb(null, date + "-" + file.originalname)
     },
 })
 
