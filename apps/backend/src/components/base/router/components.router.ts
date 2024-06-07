@@ -1,5 +1,5 @@
-import express from 'express'
-import { remove } from '../controller/just.components.controller'
+import express from "express"
+import { remove } from "../controller/just.components.controller"
 
 const componentRouter = express.Router()
 

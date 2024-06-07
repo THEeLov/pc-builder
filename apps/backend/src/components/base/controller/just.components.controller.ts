@@ -1,17 +1,17 @@
-import { Request, Response } from "express";
-import { baseValidation } from "../../../base/validation/validation";
-import ComponentRepo from "../repository/components.repository";
-import InternalError from "../../../errors/InternalError";
-import BadRequest from "../../../errors/BadRequest";
-import { authorizeAdmin } from "../../../utils";
-import Unauthorized from "../../../errors/Unauthorized";
+import { Request, Response } from "express"
+import { baseValidation } from "../../../base/validation/validation"
+import ComponentRepo from "../repository/components.repository"
+import InternalError from "../../../errors/InternalError"
+import BadRequest from "../../../errors/BadRequest"
+import { authorizeAdmin } from "../../../utils"
+import Unauthorized from "../../../errors/Unauthorized"
 
 export async function remove(req: Request, res: Response): Promise<Response<void>> {
     const id = baseValidation.IdRequestParams.safeParse(req.params)
     if (!id.success) {
         return res.status(400).json(BadRequest)
     }
-    if (!await authorizeAdmin(req.cookies.sessionId)) {
+    if (!(await authorizeAdmin(req.cookies.sessionId))) {
         return res.status(401).json(Unauthorized)
     }
     const result = await ComponentRepo.remove(id.data.id)

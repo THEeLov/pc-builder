@@ -27,7 +27,7 @@ async function getMany(type: ComponentType | undefined): DbResult<Component[]> {
 async function remove(id: string) {
     try {
         const component = await prisma.component.findUniqueOrThrow({
-            where: {id},
+            where: { id },
             include: {
                 motherboard: true,
                 processor: true,
@@ -35,33 +35,26 @@ async function remove(id: string) {
                 ram: true,
                 storage: true,
                 powerSupply: true,
-                pcCase: true
-            }
+                pcCase: true,
+            },
         })
         if (component.motherboard) {
             await MotherboardRepo.remove(component.motherboard.id)
-        }
-        else if (component.processor) {
+        } else if (component.processor) {
             await ProcessorRepo.remove(component.processor.id)
-        }
-        else if (component.gpu) {
+        } else if (component.gpu) {
             await GPURepo.remove(component.gpu.id)
-        }
-        else if (component.ram) {
+        } else if (component.ram) {
             await RAMRepo.remove(component.ram.id)
-        }
-        else if (component.storage) {
+        } else if (component.storage) {
             await StorageRepo.remove(component.storage.id)
-        }
-        else if (component.powerSupply) {
+        } else if (component.powerSupply) {
             await PowerSupplyRepo.remove(component.powerSupply.id)
-        }
-        else if (component.pcCase) {
+        } else if (component.pcCase) {
             await PCCaseRepo.remove(component.pcCase.id)
         }
         return Result.ok(undefined)
-    }
-    catch (e) {
+    } catch (e) {
         return handleError(e, "in component delete")
     }
 }
