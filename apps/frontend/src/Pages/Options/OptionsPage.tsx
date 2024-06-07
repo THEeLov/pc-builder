@@ -19,10 +19,9 @@ const OptionsPage = () => {
     const navigate = useNavigate()
 
     const handleClick = async (configType: string) => {
-        try{
+        try {
             await PartialDelete()
-        }
-        catch (err) {
+        } catch (err) {
             // Caught but ignored
         }
         await PartialCreate({ configurationType: configType })

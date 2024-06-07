@@ -12,8 +12,7 @@ import { useDialog } from "@/Pages/Dashboard/DialogContext"
 type FormFields = z.infer<typeof MotherboardSchema>
 
 const ProcessorCreateDialog = () => {
-
-    const { closeDialog } = useDialog();
+    const { closeDialog } = useDialog()
 
     const {
         register,

@@ -24,7 +24,6 @@ const ComponentSchema = z.object({
         ),
 })
 
-
 export const MotherboardSchema = z.object({
     component: ComponentSchema,
     socket: z.string().min(1),
@@ -35,6 +34,4 @@ export const MotherboardSchema = z.object({
     storageBusType: z.string().min(1),
 })
 
-export const ProcessorSchema = {
-
-}
+export const ProcessorSchema = {}
