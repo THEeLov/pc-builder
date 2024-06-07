@@ -20,7 +20,6 @@ export const useComponentsCreate = (name: ComponentTypes) => {
 }
 
 export const useComponentsEdit = (componentId: string) => {
-    const queryClient = useQueryClient()
     const { mutateAsync } = useMutation({
         mutationFn: (payload: unknown) => ComponentsApi.putSingle(componentId, payload),
     })

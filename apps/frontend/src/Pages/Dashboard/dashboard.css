@@ -18,3 +18,9 @@
 .dashboard__component-selectors > div > * {
     width: 100%;
 }
+
+.dashboard-components {
+    display: flex;
+    flex-direction: column;
+    gap: var(--normal-indent)
+}

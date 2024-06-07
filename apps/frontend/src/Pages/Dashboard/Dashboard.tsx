@@ -1,7 +1,6 @@
 import CustomButton from "@/components/CustomButton/CustomButton"
 import "./dashboard.css"
-import { Outlet, useNavigate } from "react-router-dom"
-import { DialogProvider, useDialog } from "./DialogContext"
+import { useDialog } from "./DialogContext"
 import { useState } from "react"
 import { ComponentTypes } from "@/models/components"
 import { useComponents } from "@/hooks/useComponents"
@@ -47,13 +46,13 @@ const Dashboard = () => {
     }
 
     const componentMapping: { [key in ComponentTypes]?: React.ComponentType } = {
-        motherboards: MotherboardCreateDialog,
-        processors: ProcessorCreateDialog,
-        rams: RamCreateDialog,
-        storages: StorageCreateDialog,
+        "motherboards": MotherboardCreateDialog,
+        "processors": ProcessorCreateDialog,
+        "rams": RamCreateDialog,
+        "storages": StorageCreateDialog,
         "power-supplies": PowerSupplyCreateDialog,
         "pc-cases": PcCaseCreateDialog,
-        gpus: GpuCreateDialog,
+        "gpus": GpuCreateDialog,
     }
 
     const CurrentDialog = componentMapping[currentComponent]

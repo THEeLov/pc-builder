@@ -7,11 +7,13 @@ import { z } from "zod"
 import FormField from "../FormField"
 import BaseForm from "../BaseForm"
 import { useDialog } from "@/Pages/Dashboard/DialogContext"
+import { useComponentsCreate } from "@/hooks/useComponents"
 
 type FormFields = z.infer<typeof MotherboardSchema>
 
 const MotherboardCreateDialog = () => {
     const { closeDialog } = useDialog()
+    const { mutateAsync: CreateMotherboard } = useComponentsCreate("motherboards")
 
     const {
         register,
@@ -21,8 +23,21 @@ const MotherboardCreateDialog = () => {
         resolver: zodResolver(MotherboardSchema),
     })
 
-    const onSubmit: SubmitHandler<FormFields> = (data: FormFields) => {
-        console.log(data)
+    const onSubmit: SubmitHandler<FormFields> = async (data: FormFields) => {
+        const formData = new FormData()
+
+        formData.append("component[name]", data.component.name)
+        formData.append("component[price]", data.component.price.toString())
+        formData.append("component[manufacturer]", data.component.manufacturer)
+        formData.append("file", data.image[0])
+        formData.append("socket", data.socket)
+        formData.append("formFactor", data.formFactor)
+        formData.append("ramSlots", data.ramSlots.toString())
+        formData.append("ramType", data.ramType)
+        formData.append("gpuInterface", data.gpuInterface)
+        formData.append("storageBusType", data.storageBusType)
+
+        await CreateMotherboard(formData)
     }
 
     return (

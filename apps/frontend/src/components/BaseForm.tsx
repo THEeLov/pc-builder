@@ -26,11 +26,11 @@ const BaseForm: React.FC<any> = ({ register, errors }) => {
                 error={errors?.component?.manufacturer}
             />
             <FormField
-                name="component.imageUrl"
+                name="image"
                 register={register}
                 type="file"
                 placeholder="image"
-                error={errors?.component?.imageUrl}
+                error={errors?.image}
             />
         </div>
     )
