@@ -5,6 +5,8 @@ import { FaPlus } from "react-icons/fa"
 import "./outlet.css"
 import { useComponents } from "@/hooks/useComponents"
 import { Spin } from "antd"
+import { useDialog } from "../Dashboard/DialogContext"
+import RamCreateDialog from "@/components/Dialogs/RamCreateDialog"
 
 const mockData = [
     {
@@ -26,7 +28,7 @@ const mockData = [
 ]
 
 const Rams = () => {
-    const [dialogOpen, setDialogOpen] = useState(false)
+    const { isDialogOpen, openDialog } = useDialog()
     const { data, isLoading } = useComponents("rams")
 
     if (isLoading) {
@@ -35,10 +37,11 @@ const Rams = () => {
 
     return (
         <div className="dashboard-components">
-            <div className="dashboard-components__add-button">
+            <div className="dashboard-components__add-button" onClick={openDialog}>
                 <CustomButton label="" btype="primary" icon={<FaPlus />}></CustomButton>
             </div>
-            <TableComponents fetchedData={mockData} admin={true} />
+            {isDialogOpen && <RamCreateDialog/>}
+            <TableComponents fetchedData={mockData} admin={true} handleView={() => null} />
         </div>
     )
 }

@@ -42,3 +42,10 @@ export const ProcessorSchema = z.object({
     bits: z.coerce.number().min(1),
     socket: z.string().min(1),
 })
+
+export const RamSchema = z.object({
+    component: ComponentSchema,
+    computerType: z.string().min(1),
+    memoryType: z.string().min(1),
+    capacity: z.coerce.number().min(1),
+})

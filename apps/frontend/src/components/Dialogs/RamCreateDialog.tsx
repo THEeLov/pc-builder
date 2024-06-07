@@ -1,16 +1,16 @@
 import { Card } from "antd"
 import "./dialog.css"
 import { useForm, SubmitHandler } from "react-hook-form"
-import { ProcessorSchema } from "./validation"
+import { RamSchema } from "./validation"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import FormField from "../FormField"
 import BaseForm from "../BaseForm"
 import { useDialog } from "@/Pages/Dashboard/DialogContext"
 
-type FormFields = z.infer<typeof ProcessorSchema>
+type FormFields = z.infer<typeof RamSchema>
 
-const ProcessorCreateDialog = () => {
+const RamCreateDialog = () => {
     const { closeDialog } = useDialog()
 
     const {
@@ -18,7 +18,7 @@ const ProcessorCreateDialog = () => {
         handleSubmit,
         formState: { errors },
     } = useForm<FormFields>({
-        resolver: zodResolver(ProcessorSchema),
+        resolver: zodResolver(RamSchema),
     })
 
     const onSubmit: SubmitHandler<FormFields> = (data: FormFields) => {
@@ -27,7 +27,7 @@ const ProcessorCreateDialog = () => {
 
     return (
         <Card
-            title="Create Processor"
+            title="Create RAM"
             style={{ width: "fit-content" }}
             extra={
                 <div onClick={closeDialog} className="dialog__close-button">
@@ -40,46 +40,32 @@ const ProcessorCreateDialog = () => {
                     <BaseForm register={register} errors={errors} />
                     <div className="dialog-form__grid--second">
                         <FormField
-                            name="architecture"
+                            name="computerType"
                             register={register}
                             type="text"
-                            placeholder="architecture"
-                            error={errors.architecture}
+                            placeholder="computer type"
+                            error={errors.computerType}
                         />
                         <FormField
-                            name="cores"
-                            register={register}
-                            type="number"
-                            placeholder="cores"
-                            error={errors.cores}
-                        />
-                        <FormField
-                            name="threads"
-                            register={register}
-                            type="number"
-                            placeholder="threads"
-                            error={errors.threads}
-                        />
-                        <FormField
-                            name="bits"
-                            register={register}
-                            type="number"
-                            placeholder="bits"
-                            error={errors.bits}
-                        />
-                        <FormField
-                            name="socket"
+                            name="memoryType"
                             register={register}
                             type="text"
-                            placeholder="socket"
-                            error={errors.socket}
+                            placeholder="memory type"
+                            error={errors.memoryType}
+                        />
+                        <FormField
+                            name="capacity"
+                            register={register}
+                            type="number"
+                            placeholder="capacity"
+                            error={errors.capacity}
                         />
                     </div>
                 </div>
-                <button type="submit">Create Processor</button>
+                <button type="submit">Create RAM</button>
             </form>
         </Card>
     )
 }
 
-export default ProcessorCreateDialog
+export default RamCreateDialog
