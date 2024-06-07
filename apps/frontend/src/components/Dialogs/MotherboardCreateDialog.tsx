@@ -4,7 +4,6 @@ import { useForm, SubmitHandler } from "react-hook-form"
 import { MotherboardSchema } from "./validation"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
-import { FieldError } from "react-hook-form"
 import FormField from "../FormField"
 import BaseForm from "../BaseForm"
 import { useDialog } from "@/Pages/Dashboard/DialogContext"
@@ -17,7 +16,6 @@ const MotherboardCreateDialog = () => {
     const {
         register,
         handleSubmit,
-        setError,
         formState: { errors },
     } = useForm<FormFields>({
         resolver: zodResolver(MotherboardSchema),

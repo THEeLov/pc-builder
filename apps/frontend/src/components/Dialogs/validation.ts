@@ -12,7 +12,7 @@ const ACCEPTED_IMAGE_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/web
 const ComponentSchema = z.object({
     name: z.string().min(1),
     price: z.coerce.number().min(1),
-    manufacturer: z.string(),
+    manufacturer: z.string().min(1),
     imageUrl: z
         .any()
         .refine((files) => {
@@ -34,4 +34,11 @@ export const MotherboardSchema = z.object({
     storageBusType: z.string().min(1),
 })
 
-export const ProcessorSchema = {}
+export const ProcessorSchema = z.object({
+    component: ComponentSchema,
+    architecture: z.string().min(1),
+    cores: z.coerce.number().min(1),
+    threads: z.coerce.number().min(1),
+    bits: z.coerce.number().min(1),
+    socket: z.string().min(1),
+})
