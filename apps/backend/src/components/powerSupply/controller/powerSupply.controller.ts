@@ -9,6 +9,10 @@ async function getMany(req: Request, res: Response): Promise<Response<PowerSuppl
 }
 
 async function create(req: Request, res: Response): Promise<Response<PowerSupplyWithComponent>> {
+    if (!req.body.powerOutput) {
+        return res.status(400)
+    }
+    req.body.powerOutput = parseInt(req.body.powerOutput)
     return await baseComponentController.create(PowerSupplySchema.PowerSupplyCreate, PowerSupplyRepo, req, res)
 }
 

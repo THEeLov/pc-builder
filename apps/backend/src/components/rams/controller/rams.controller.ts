@@ -9,6 +9,10 @@ async function getMany(req: Request, res: Response): Promise<Response<RAMWithCom
 }
 
 async function create(req: Request, res: Response): Promise<Response<RAMWithComponent>> {
+    if (!req.body.capacity) {
+        return res.status(400)
+    }
+    req.body.capacity = parseInt(req.body.capacity)
     return await baseComponentController.create(RamCreate, RAMRepo, req, res)
 }
 

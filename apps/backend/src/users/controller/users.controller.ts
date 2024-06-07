@@ -138,9 +138,21 @@ async function updateSingle(req: Request, res: Response): Promise<Response<UserD
     return res.status(500).json(new Error("Internal error"))
 }
 
+async function logout(req: Request, res: Response): Promise<Response<void>> {
+    const params = UserSchema.getParams.safeParse(req.body)
+    if (!params.success || !(await authorize(params.data.id, req.cookies.sessionId))) {
+        return res.status(401).json()
+    }
+    res.set("Access-Control-Allow-Credentials", "true")
+    res.set("Set-Cookie", "session=; Path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT")
+    SessionsRepository.remove(req.cookies.sessionId)
+    return res.status(200).json()
+}
+
 export const UsersController = {
     register,
     login,
+    logout,
     getSingle,
     deleteSingle,
     updateSingle,

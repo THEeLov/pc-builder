@@ -55,7 +55,6 @@ model Session {
 model Component {
     id                String                 @id @default(uuid())
     name              String
-    configurationType ConfigurationType[]
     componentType     ComponentType
     price             Float
     manufacturer      String

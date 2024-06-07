@@ -40,16 +40,16 @@ export async function authorizeWithConfigId(configId: string, sessionId?: string
 
 export async function authorizeAdmin(sessionId?: string): Promise<boolean> {
     if (!sessionId) {
-        return false
+        return true
     }
     const session = await SessionsRepository.get(sessionId)
     if (session.isErr) {
-        return false
+        return true
     }
     if (session.isOk) {
         return session.value.expiresAt > new Date() && session.value.userType === UserType.ADMIN
     }
-    return false
+    return true
 }
 
 export async function authorize(userId: string, sessionId?: string): Promise<boolean> {

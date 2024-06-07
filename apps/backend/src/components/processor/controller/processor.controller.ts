@@ -5,6 +5,12 @@ import { ProcessorWithComponent } from "../validation/processor.types"
 import ProcessorSchema from "../validation/validation"
 
 async function create(req: Request, res: Response): Promise<Response<ProcessorWithComponent>> {
+    if (!req.body.cores || !req.body.threads || !req.body.bits) {
+        return res.status(400)
+    }
+    req.body.cores = parseInt(req.body.cores)
+    req.body.threads = parseInt(req.body.threads)
+    req.body.bits = parseInt(req.body.bits)
     return await baseComponentController.create(ProcessorSchema.ProcessorCreate, ProcessorRepo, req, res)
 }
 

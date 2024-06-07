@@ -19,6 +19,23 @@ type Repository<T> = {
     update: (id: string, updateObj: any) => DbResult<T>
 }
 
+function getImageUrl(url: string | undefined) {
+    if (!url) {
+        return undefined
+    }
+    const parts = url.split("/images/")
+    const result = parts.length > 1 ? parts[1] : url
+    return result
+}
+
+function convertComponent(component?: any) {
+    if (!component) {
+        return undefined
+    }
+    component.price = parseFloat(component.price)
+    return component
+}
+
 async function getMany<T>(repo: Repository<T>, req: Request, res: Response): Promise<Response<T[]>> {
     const validSessionCookie = baseValidation.cookieSchema.safeParse(req.cookies)
     if (!validSessionCookie.success) {
@@ -58,6 +75,11 @@ async function create<T>(
     req: Request,
     res: Response,
 ): Promise<Response<T>> {
+    req.body.component = convertComponent(req.body.component)
+    if (!req.body.component) {
+        return res.status(400).json(BadRequest)
+    }
+    req.body.component.imageUrl = "http://localhost:3000/images/" + getImageUrl(req.file?.path)
     const validatedBody = Create.safeParse(req.body)
     if (!validatedBody.success) {
         return res.status(400).json(BadRequest)
