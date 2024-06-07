@@ -46,13 +46,13 @@ const Dashboard = () => {
     }
 
     const componentMapping: { [key in ComponentTypes]?: React.ComponentType } = {
-        "motherboards": MotherboardCreateDialog,
-        "processors": ProcessorCreateDialog,
-        "rams": RamCreateDialog,
-        "storages": StorageCreateDialog,
+        motherboards: MotherboardCreateDialog,
+        processors: ProcessorCreateDialog,
+        rams: RamCreateDialog,
+        storages: StorageCreateDialog,
         "power-supplies": PowerSupplyCreateDialog,
         "pc-cases": PcCaseCreateDialog,
-        "gpus": GpuCreateDialog,
+        gpus: GpuCreateDialog,
     }
 
     const CurrentDialog = componentMapping[currentComponent]
