@@ -1,3 +1,5 @@
+import { UserType } from "@prisma/client"
+
 export type UserCreate = {
     username: string
     email: string
@@ -13,7 +15,8 @@ export type UserEdit = {
 // DTOS
 
 export type UserDTO = {
-    id: number
+    id: string
     username: string
     email: string
+    role: UserType
 }
