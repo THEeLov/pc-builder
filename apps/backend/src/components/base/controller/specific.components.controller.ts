@@ -42,14 +42,13 @@ async function getMany<T>(repo: Repository<T>, req: Request, res: Response): Pro
         return res.status(401).json(Unauthorized)
     }
     const sessionResult = await SessionsRepository.getFull(validSessionCookie.data.sessionId)
-    if (!sessionResult.isOk) {
-        return res.status(401).json(Unauthorized)
+    let query
+    if (sessionResult.isOk && sessionResult.value.user.partialUserConfiguration) {
+        const configuration: FullPartialConfig = convertConfig(sessionResult.value.user.partialUserConfiguration)
+        query = convertConfigurationToQueryType(configuration)
+    } else {
+        query = {}
     }
-    if (!sessionResult.value.user.partialUserConfiguration) {
-        return res.status(400).json(BadRequest)
-    }
-    const configuration: FullPartialConfig = convertConfig(sessionResult.value.user.partialUserConfiguration)
-    const query = convertConfigurationToQueryType(configuration)
     const ramsResult = await repo.getMany(query)
     if (!ramsResult.isOk) {
         return res.status(500).json(InternalError)
@@ -84,9 +83,9 @@ async function create<T>(
     if (!validatedBody.success) {
         return res.status(400).json(BadRequest)
     }
-    // if (!(await authorizeAdmin(req.cookies.sessionId))) {
-    //     return res.status(401).json(Unauthorized)
-    // }
+    if (!(await authorizeAdmin(req.cookies.sessionId))) {
+        return res.status(401).json(Unauthorized)
+    }
     const component = await repo.create(validatedBody.data)
     if (!component.isOk) {
         return res.status(500).json(InternalError)

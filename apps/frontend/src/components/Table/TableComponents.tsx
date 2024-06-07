@@ -29,6 +29,7 @@ const TableComponents: React.FC<TableComponentsProps> = ({ fetchedData, admin, h
             title: "Image",
             dataIndex: ["component", "imageUrl"],
             key: "component.image",
+            render: (imageUrl) => <img src={imageUrl} alt="Component" style={{ width: "70px", height: "auto" }} />,
         },
         {
             title: "Name",
