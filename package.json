@@ -13,7 +13,6 @@
     "dependencies": {
         "@ant-design/icons": "^5.3.6",
         "@badrap/result": "^0.2.13",
-        "@badrap/result": "^0.2.13",
         "@hookform/resolvers": "^3.3.4",
         "@prisma/client": "^5.13.0",
         "@tanstack/react-query": "^5.32.0",

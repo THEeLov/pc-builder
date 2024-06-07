@@ -29,7 +29,7 @@ const ProcessorCreateDialog = () => {
         formData.append("component[name]", data.component.name)
         formData.append("component[price]", data.component.price.toString())
         formData.append("component[manufacturer]", data.component.manufacturer)
-        formData.append("component[componentType]", "PRCESSOR")
+        formData.append("component[componentType]", "PROCESSOR")
         formData.append("image", data.image[0])
         formData.append("architecture", data.architecture)
         formData.append("cores", data.cores.toString())
