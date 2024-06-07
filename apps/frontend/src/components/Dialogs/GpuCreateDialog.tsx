@@ -35,12 +35,11 @@ const GpuCreateDialog = () => {
         formData.append("powerConnector", data.powerConnector)
         formData.append("interface", data.interface)
         formData.append("power", data.power.toString())
-        
-        console.log(formData);
+
+        console.log(formData)
         try {
             await CreateGpu(formData)
-        }
-        catch (err) {
+        } catch (err) {
             // ignored for now maybe forever who knows
         }
     }

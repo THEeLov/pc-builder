@@ -38,12 +38,11 @@ const MotherboardCreateDialog = () => {
         formData.append("ramType", data.ramType)
         formData.append("gpuInterface", data.gpuInterface)
         formData.append("storageBusType", data.storageBusType)
-        
-        console.log(formData);
+
+        console.log(formData)
         try {
             await CreateMotherboard(formData)
-        }
-        catch (err) {
+        } catch (err) {
             // ignored for now maybe forever who knows
         }
     }
