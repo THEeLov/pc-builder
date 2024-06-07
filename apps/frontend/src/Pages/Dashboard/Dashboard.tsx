@@ -38,7 +38,7 @@ const mockData = [
 ]
 
 const Dashboard = () => {
-    const { isDialogOpen, openDialog } = useDialog();
+    const { isDialogOpen, openDialog } = useDialog()
     const [currentComponent, setCurrentComponent] = useState<ComponentTypes>("motherboards")
     const { data, isLoading } = useComponents(currentComponent)
 
@@ -47,17 +47,16 @@ const Dashboard = () => {
     }
 
     const componentMapping: { [key in ComponentTypes]?: React.ComponentType } = {
-        "motherboards": MotherboardCreateDialog,
-        "processors": ProcessorCreateDialog,
-        "rams": RamCreateDialog,
-        "storages": StorageCreateDialog,
+        motherboards: MotherboardCreateDialog,
+        processors: ProcessorCreateDialog,
+        rams: RamCreateDialog,
+        storages: StorageCreateDialog,
         "power-supplies": PowerSupplyCreateDialog,
         "pc-cases": PcCaseCreateDialog,
-        "gpus": GpuCreateDialog,
-        
-    };
+        gpus: GpuCreateDialog,
+    }
 
-    const CurrentDialog = componentMapping[currentComponent];
+    const CurrentDialog = componentMapping[currentComponent]
 
     return (
         <div className="dashboard">

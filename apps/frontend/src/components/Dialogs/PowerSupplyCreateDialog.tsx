@@ -62,7 +62,9 @@ const PowerSupplyCreateDialog = () => {
                         />
                     </div>
                 </div>
-                <button type="submit" className="form-button">Create Power-Supply</button>
+                <button type="submit" className="form-button">
+                    Create Power-Supply
+                </button>
             </form>
         </Card>
     )

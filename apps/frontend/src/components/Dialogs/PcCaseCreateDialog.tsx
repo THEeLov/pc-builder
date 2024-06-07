@@ -48,7 +48,9 @@ const PcCaseCreateDialog = () => {
                         />
                     </div>
                 </div>
-                <button type="submit" className="form-button">Create Pc-Case</button>
+                <button type="submit" className="form-button">
+                    Create Pc-Case
+                </button>
             </form>
         </Card>
     )

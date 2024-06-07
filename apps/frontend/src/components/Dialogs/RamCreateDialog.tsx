@@ -62,7 +62,9 @@ const RamCreateDialog = () => {
                         />
                     </div>
                 </div>
-                <button type="submit" className="form-button">Create RAM</button>
+                <button type="submit" className="form-button">
+                    Create RAM
+                </button>
             </form>
         </Card>
     )

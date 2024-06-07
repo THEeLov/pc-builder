@@ -83,7 +83,9 @@ const MotherboardCreateDialog = () => {
                         />
                     </div>
                 </div>
-                <button type="submit" className="form-button">Create Motherbaord</button>
+                <button type="submit" className="form-button">
+                    Create Motherbaord
+                </button>
             </form>
         </Card>
     )

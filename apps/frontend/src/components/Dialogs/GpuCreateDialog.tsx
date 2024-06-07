@@ -69,7 +69,9 @@ const GpuCreateDialog = () => {
                         />
                     </div>
                 </div>
-                <button type="submit" className="form-button">Create GPU</button>
+                <button type="submit" className="form-button">
+                    Create GPU
+                </button>
             </form>
         </Card>
     )

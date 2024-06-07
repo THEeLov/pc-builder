@@ -76,7 +76,9 @@ const ProcessorCreateDialog = () => {
                         />
                     </div>
                 </div>
-                <button type="submit" className="form-button">Create Processor</button>
+                <button type="submit" className="form-button">
+                    Create Processor
+                </button>
             </form>
         </Card>
     )

@@ -72,7 +72,7 @@ export const StorageSchema = z.object({
 export const GpuSchema = z.object({
     component: ComponentSchema,
     memory: z.coerce.number().min(1),
-    powerConnector: z.string().min(1) ,
+    powerConnector: z.string().min(1),
     interface: z.string().min(1),
     power: z.coerce.number().min(1),
 })

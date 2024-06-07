@@ -62,7 +62,9 @@ const StorageCreateDialog = () => {
                         />
                     </div>
                 </div>
-                <button type="submit" className="form-button">Create Storage</button>
+                <button type="submit" className="form-button">
+                    Create Storage
+                </button>
             </form>
         </Card>
     )
