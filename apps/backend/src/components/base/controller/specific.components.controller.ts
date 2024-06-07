@@ -23,7 +23,7 @@ function getImageUrl(url: string | undefined) {
     if (!url) {
         return undefined
     }
-    const parts = url.split('/images/')
+    const parts = url.split("/images/")
     const result = parts.length > 1 ? parts[1] : url
     return result
 }

@@ -1,9 +1,10 @@
 import express from "express"
 import PowerSupplyController from "../controller/powerSupply.controller"
+import upload from "../../uploadService"
 
 const router = express.Router()
 
-router.route("/").post(PowerSupplyController.create).get(PowerSupplyController.getMany)
+router.route("/").post(upload.single("image"),PowerSupplyController.create).get(PowerSupplyController.getMany)
 
 router
     .route("/:id")

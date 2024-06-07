@@ -1,9 +1,10 @@
 import express from "express"
 import MotherboardController from "../controller/motherboard.controller"
+import upload from "../../uploadService"
 
 const router = express.Router()
 
-router.route("/").post(MotherboardController.create).get(MotherboardController.getMany)
+router.route("/").post(upload.single("image"),MotherboardController.create).get(MotherboardController.getMany)
 
 router
     .route("/:id")
