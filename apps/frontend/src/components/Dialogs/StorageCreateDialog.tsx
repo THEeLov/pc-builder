@@ -7,10 +7,12 @@ import { z } from "zod"
 import FormField from "../FormField"
 import BaseForm from "../BaseForm"
 import { useDialog } from "@/Pages/Dashboard/DialogContext"
+import { useComponentsCreate } from "@/hooks/useComponents"
 
 type FormFields = z.infer<typeof StorageSchema>
 
 const StorageCreateDialog = () => {
+    const { mutateAsync: CreateStorage } = useComponentsCreate("storages")
     const { closeDialog } = useDialog()
 
     const {
@@ -21,8 +23,24 @@ const StorageCreateDialog = () => {
         resolver: zodResolver(StorageSchema),
     })
 
-    const onSubmit: SubmitHandler<FormFields> = (data: FormFields) => {
-        console.log(data)
+    const onSubmit: SubmitHandler<FormFields> = async (data: FormFields) => {
+        const formData = new FormData()
+
+        formData.append("component[name]", data.component.name)
+        formData.append("component[price]", data.component.price.toString())
+        formData.append("component[manufacturer]", data.component.manufacturer)
+        formData.append("component[componentType]", "STORAGE")
+        formData.append("image", data.image[0])
+        formData.append("storageType", data.storageType)
+        formData.append("capacity", data.capacity.toString())
+        formData.append("busType", data.busType)
+
+        console.log(formData)
+        try {
+            await CreateStorage(formData)
+        } catch (err) {
+            // ignored for now maybe forever who knows
+        }
     }
 
     return (

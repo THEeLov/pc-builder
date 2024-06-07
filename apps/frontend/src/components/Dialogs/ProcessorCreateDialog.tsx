@@ -7,10 +7,12 @@ import { z } from "zod"
 import FormField from "../FormField"
 import BaseForm from "../BaseForm"
 import { useDialog } from "@/Pages/Dashboard/DialogContext"
+import { useComponentsCreate } from "@/hooks/useComponents"
 
 type FormFields = z.infer<typeof ProcessorSchema>
 
 const ProcessorCreateDialog = () => {
+    const { mutateAsync: CreateProcessor } = useComponentsCreate("processors")
     const { closeDialog } = useDialog()
 
     const {
@@ -21,8 +23,26 @@ const ProcessorCreateDialog = () => {
         resolver: zodResolver(ProcessorSchema),
     })
 
-    const onSubmit: SubmitHandler<FormFields> = (data: FormFields) => {
-        console.log(data)
+    const onSubmit: SubmitHandler<FormFields> = async (data: FormFields) => {
+        const formData = new FormData()
+
+        formData.append("component[name]", data.component.name)
+        formData.append("component[price]", data.component.price.toString())
+        formData.append("component[manufacturer]", data.component.manufacturer)
+        formData.append("component[componentType]", "PRCESSOR")
+        formData.append("image", data.image[0])
+        formData.append("architecture", data.architecture)
+        formData.append("cores", data.cores.toString())
+        formData.append("threads", data.threads.toString())
+        formData.append("bits", data.bits.toString())
+        formData.append("socket", data.socket)
+
+        console.log(formData)
+        try {
+            await CreateProcessor(formData)
+        } catch (err) {
+            // ignored for now maybe forever who knows
+        }
     }
 
     return (

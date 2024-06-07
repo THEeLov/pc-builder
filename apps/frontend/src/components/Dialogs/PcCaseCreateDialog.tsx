@@ -7,10 +7,12 @@ import { z } from "zod"
 import FormField from "../FormField"
 import BaseForm from "../BaseForm"
 import { useDialog } from "@/Pages/Dashboard/DialogContext"
+import { useComponentsCreate } from "@/hooks/useComponents"
 
 type FormFields = z.infer<typeof PcCaseSchema>
 
 const PcCaseCreateDialog = () => {
+    const { mutateAsync: CreatePcCase } = useComponentsCreate("pc-cases")
     const { closeDialog } = useDialog()
 
     const {
@@ -21,8 +23,22 @@ const PcCaseCreateDialog = () => {
         resolver: zodResolver(PcCaseSchema),
     })
 
-    const onSubmit: SubmitHandler<FormFields> = (data: FormFields) => {
-        console.log(data)
+    const onSubmit: SubmitHandler<FormFields> = async (data: FormFields) => {
+        const formData = new FormData()
+
+        formData.append("component[name]", data.component.name)
+        formData.append("component[price]", data.component.price.toString())
+        formData.append("component[manufacturer]", data.component.manufacturer)
+        formData.append("component[componentType]", "PCCASE")
+        formData.append("image", data.image[0])
+        formData.append("formFactor", data.formFactor)
+
+        console.log(formData)
+        try {
+            await CreatePcCase(formData)
+        } catch (err) {
+            // ignored for now maybe forever who knows
+        }
     }
 
     return (

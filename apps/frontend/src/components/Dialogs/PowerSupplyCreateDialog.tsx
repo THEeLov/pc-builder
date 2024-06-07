@@ -7,10 +7,12 @@ import { z } from "zod"
 import FormField from "../FormField"
 import BaseForm from "../BaseForm"
 import { useDialog } from "@/Pages/Dashboard/DialogContext"
+import { useComponentsCreate } from "@/hooks/useComponents"
 
 type FormFields = z.infer<typeof PowerSupplySchema>
 
 const PowerSupplyCreateDialog = () => {
+    const { mutateAsync: CreatePowerSupply } = useComponentsCreate("power-supplies")
     const { closeDialog } = useDialog()
 
     const {
@@ -21,8 +23,24 @@ const PowerSupplyCreateDialog = () => {
         resolver: zodResolver(PowerSupplySchema),
     })
 
-    const onSubmit: SubmitHandler<FormFields> = (data: FormFields) => {
-        console.log(data)
+    const onSubmit: SubmitHandler<FormFields> = async (data: FormFields) => {
+        const formData = new FormData()
+
+        formData.append("component[name]", data.component.name)
+        formData.append("component[price]", data.component.price.toString())
+        formData.append("component[manufacturer]", data.component.manufacturer)
+        formData.append("component[componentType]", "POWERSUPPLY")
+        formData.append("image", data.image[0])
+        formData.append("powerOutput", data.powerOutput.toString())
+        formData.append("efficiency", data.efficiency)
+        formData.append("formFactor", data.formFactor)
+
+        console.log(formData)
+        try {
+            await CreatePowerSupply(formData)
+        } catch (err) {
+            // ignored for now maybe forever who knows
+        }
     }
 
     return (

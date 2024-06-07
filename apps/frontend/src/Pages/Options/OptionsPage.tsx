@@ -33,7 +33,7 @@ const OptionsPage = () => {
         { label: "OFFICE", icon: FundProjectionScreenOutlined },
         { label: "GAMING", icon: CustomerServiceOutlined },
         { label: "WORK", icon: DesktopOutlined },
-        { label: "HIGH-END", icon: TagsOutlined },
+        { label: "HIGH_END", icon: TagsOutlined },
     ]
 
     return (

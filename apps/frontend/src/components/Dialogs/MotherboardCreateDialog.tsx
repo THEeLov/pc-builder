@@ -23,21 +23,29 @@ const MotherboardCreateDialog = () => {
         resolver: zodResolver(MotherboardSchema),
     })
 
+    // Looks like shit and i dont know how to make it cleaner
     const onSubmit: SubmitHandler<FormFields> = async (data: FormFields) => {
         const formData = new FormData()
 
         formData.append("component[name]", data.component.name)
         formData.append("component[price]", data.component.price.toString())
         formData.append("component[manufacturer]", data.component.manufacturer)
-        formData.append("file", data.image[0])
+        formData.append("component[componentType]", "MOTHERBOARD")
+        formData.append("image", data.image[0])
         formData.append("socket", data.socket)
         formData.append("formFactor", data.formFactor)
         formData.append("ramSlots", data.ramSlots.toString())
         formData.append("ramType", data.ramType)
         formData.append("gpuInterface", data.gpuInterface)
         formData.append("storageBusType", data.storageBusType)
-
-        await CreateMotherboard(formData)
+        
+        console.log(formData);
+        try {
+            await CreateMotherboard(formData)
+        }
+        catch (err) {
+            // ignored for now maybe forever who knows
+        }
     }
 
     return (
