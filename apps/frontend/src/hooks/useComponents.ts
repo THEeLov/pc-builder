@@ -4,7 +4,7 @@ import ComponentsApi from "../api/componentsApi"
 
 export const useComponents = (name: ComponentTypes) => {
     const { data, isLoading } = useQuery({
-        queryKey: ["components"],
+        queryKey: ["components", name],
         queryFn: () => ComponentsApi.getAll(name),
     })
 

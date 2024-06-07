@@ -4,7 +4,7 @@ import PartialConfigApi from "../api/configurationApi"
 
 export const usePartialConfig = (userId: string) => {
     const { data, isLoading } = useQuery({
-        queryKey: ["partial-config"],
+        queryKey: ["partial-config", userId],
         queryFn: () => PartialConfigApi.getConfig(userId),
     })
 
