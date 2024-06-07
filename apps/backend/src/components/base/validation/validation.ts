@@ -17,5 +17,5 @@ export const componentCreate = z.object({
     componentType: componentType,
     price: z.number(),
     manufacturer: z.string(),
-    imageUrl: z.string()
+    imageUrl: z.string(),
 })

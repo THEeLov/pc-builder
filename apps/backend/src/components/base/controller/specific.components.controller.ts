@@ -60,7 +60,7 @@ async function create<T>(
 ): Promise<Response<T>> {
     console.log(req.file?.path)
     if (!req.body.component) {
-        return res.status(400).json(BadRequest);
+        return res.status(400).json(BadRequest)
     }
     req.body.component.imageUrl = req.file?.path
     const validatedBody = Create.safeParse(req.body)
