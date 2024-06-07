@@ -29,7 +29,7 @@ const Dashboard = () => {
                     )
                 })}
             </div>
-            <DashboardTable name={currentComponent}/>
+            <DashboardTable name={currentComponent} />
         </div>
     )
 }
