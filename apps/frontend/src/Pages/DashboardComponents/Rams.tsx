@@ -40,7 +40,7 @@ const Rams = () => {
             <div className="dashboard-components__add-button" onClick={openDialog}>
                 <CustomButton label="" btype="primary" icon={<FaPlus />}></CustomButton>
             </div>
-            {isDialogOpen && <RamCreateDialog/>}
+            {isDialogOpen && <RamCreateDialog />}
             <TableComponents fetchedData={mockData} admin={true} handleView={() => null} />
         </div>
     )
