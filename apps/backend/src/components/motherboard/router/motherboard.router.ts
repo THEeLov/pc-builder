@@ -4,7 +4,7 @@ import upload from "../../uploadService"
 
 const router = express.Router()
 
-router.route("/").post(upload.single("image"),MotherboardController.create).get(MotherboardController.getMany)
+router.route("/").post(upload.single("image"), MotherboardController.create).get(MotherboardController.getMany)
 
 router
     .route("/:id")

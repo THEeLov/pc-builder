@@ -4,7 +4,7 @@ import upload from "../../uploadService"
 
 const router = express.Router()
 
-router.route("/").post(upload.single("image"),PowerSupplyController.create).get(PowerSupplyController.getMany)
+router.route("/").post(upload.single("image"), PowerSupplyController.create).get(PowerSupplyController.getMany)
 
 router
     .route("/:id")
