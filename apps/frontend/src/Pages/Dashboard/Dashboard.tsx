@@ -17,25 +17,6 @@ import GpuCreateDialog from "@/components/Dialogs/GpuCreateDialog"
 
 const components = ["Motherboards", "Processors", "Rams", "GPUs", "Storages", "Power-Supplies", "Pc-Cases"]
 
-const mockData = [
-    {
-        component: {
-            name: "GPU ultra",
-            price: 145,
-            imageUrl: "PHOTO",
-        },
-        id: "1984",
-    },
-    {
-        component: {
-            name: "GPU light",
-            price: 135,
-            imageUrl: "PHOTO",
-        },
-        id: "1985",
-    },
-]
-
 const Dashboard = () => {
     const { isDialogOpen, openDialog } = useDialog()
     const [currentComponent, setCurrentComponent] = useState<ComponentTypes>("motherboards")
@@ -81,7 +62,7 @@ const Dashboard = () => {
                         <CustomButton label="" btype="primary" icon={<FaPlus />}></CustomButton>
                     </div>
                     {isDialogOpen && CurrentDialog && <CurrentDialog />}
-                    <TableComponents fetchedData={mockData} admin={true} handleView={() => null} />
+                    {data && <TableComponents fetchedData={data} admin={true} handleView={() => null} />}
                 </div>
             )}
         </div>
