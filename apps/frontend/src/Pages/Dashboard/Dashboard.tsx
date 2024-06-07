@@ -1,43 +1,19 @@
 import CustomButton from "@/components/CustomButton/CustomButton"
 import "./dashboard.css"
-import { useDialog } from "./DialogContext"
 import { useState } from "react"
 import { ComponentTypes } from "@/models/components"
-import { useComponents } from "@/hooks/useComponents"
-import { Spin } from "antd"
-import TableComponents from "@/components/Table/TableComponents"
-import { FaPlus } from "react-icons/fa"
-import MotherboardCreateDialog from "@/components/Dialogs/MotherboardCreateDialog"
-import ProcessorCreateDialog from "@/components/Dialogs/ProcessorCreateDialog"
-import RamCreateDialog from "@/components/Dialogs/RamCreateDialog"
-import StorageCreateDialog from "@/components/Dialogs/StorageCreateDialog"
-import PowerSupplyCreateDialog from "@/components/Dialogs/PowerSupplyCreateDialog"
-import PcCaseCreateDialog from "@/components/Dialogs/PcCaseCreateDialog"
-import GpuCreateDialog from "@/components/Dialogs/GpuCreateDialog"
+import DashboardTable from "./DashboardTable"
 
 const components = ["Motherboards", "Processors", "Rams", "GPUs", "Storages", "Power-Supplies", "Pc-Cases"]
 
 const Dashboard = () => {
-    const { isDialogOpen, openDialog } = useDialog()
     const [currentComponent, setCurrentComponent] = useState<ComponentTypes>("motherboards")
-    const { data, isLoading } = useComponents(currentComponent)
 
     const handleClick = (component: string) => {
         setCurrentComponent(component as ComponentTypes)
     }
 
-    const componentMapping: { [key in ComponentTypes]?: React.ComponentType } = {
-        motherboards: MotherboardCreateDialog,
-        processors: ProcessorCreateDialog,
-        rams: RamCreateDialog,
-        storages: StorageCreateDialog,
-        "power-supplies": PowerSupplyCreateDialog,
-        "pc-cases": PcCaseCreateDialog,
-        gpus: GpuCreateDialog,
-    }
-
-    const CurrentDialog = componentMapping[currentComponent]
-
+    console.log(currentComponent)
     return (
         <div className="dashboard">
             <div className="dashboard__headline">
@@ -53,18 +29,7 @@ const Dashboard = () => {
                     )
                 })}
             </div>
-
-            {isLoading ? (
-                <Spin />
-            ) : (
-                <div className="dashboard-components">
-                    <div className="dashboard-components__add-button" onClick={openDialog}>
-                        <CustomButton label="" btype="primary" icon={<FaPlus />}></CustomButton>
-                    </div>
-                    {isDialogOpen && CurrentDialog && <CurrentDialog />}
-                    {data && <TableComponents fetchedData={data} admin={true} handleView={() => null} />}
-                </div>
-            )}
+            <DashboardTable name={currentComponent} />
         </div>
     )
 }
