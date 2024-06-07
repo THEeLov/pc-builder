@@ -7,10 +7,14 @@ import { z } from "zod"
 import { FieldError } from "react-hook-form"
 import FormField from "../FormField"
 import BaseForm from "../BaseForm"
+import { useDialog } from "@/Pages/Dashboard/DialogContext"
 
 type FormFields = z.infer<typeof MotherboardSchema>
 
-const MotherboardCreateDialog = ({ handleClose }: { handleClose: () => void }) => {
+const MotherboardCreateDialog = () => {
+
+    const { closeDialog } = useDialog();
+
     const {
         register,
         handleSubmit,
@@ -29,7 +33,7 @@ const MotherboardCreateDialog = ({ handleClose }: { handleClose: () => void }) =
             title="Create Motherboard"
             style={{ width: "fit-content" }}
             extra={
-                <div onClick={handleClose} className="dialog__close-button">
+                <div onClick={closeDialog} className="dialog__close-button">
                     <b>X</b>
                 </div>
             }

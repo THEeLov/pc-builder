@@ -19,7 +19,12 @@ const OptionsPage = () => {
     const navigate = useNavigate()
 
     const handleClick = async (configType: string) => {
-        await PartialDelete()
+        try{
+            await PartialDelete()
+        }
+        catch (err) {
+            // Caught but ignored
+        }
         await PartialCreate({ configurationType: configType })
         navigate(`/build`)
     }
