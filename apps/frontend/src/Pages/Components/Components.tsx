@@ -39,7 +39,7 @@ const Components = () => {
                 {isLoading ? (
                     <Spin />
                 ) : (
-                    <TableComponents fetchedData={data || []} admin={false} name={componentParam as ComponentTypes}/>
+                    <TableComponents fetchedData={data || []} admin={false} name={componentParam as ComponentTypes} />
                 )}
             </div>
         </div>

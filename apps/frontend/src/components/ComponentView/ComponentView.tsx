@@ -46,7 +46,11 @@ const ComponentView = ({ data, handleClose }: { data: Component; handleClose: ()
                 <div className="component-view__info-container">
                     {data.component?.imageUrl && (
                         <div className="component-view__image-container">
-                            <img alt={data.component.name} src={data.component.imageUrl} className="component-view__image"/>
+                            <img
+                                alt={data.component.name}
+                                src={data.component.imageUrl}
+                                className="component-view__image"
+                            />
                         </div>
                     )}
                     <div className="component-view__data">{renderProperties(data)}</div>

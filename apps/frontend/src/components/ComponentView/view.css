@@ -1,12 +1,12 @@
 .component-view {
-  position: fixed;
-  top: 50%; 
-  left: 50%; 
-  transform: translate(-50%, -50%);
-  z-index: 2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .component-view__image-container {
@@ -20,6 +20,6 @@
 }
 
 .component-view__info-container {
-  display: flex;
-  gap: var(--normal-indent)
+    display: flex;
+    gap: var(--normal-indent);
 }
