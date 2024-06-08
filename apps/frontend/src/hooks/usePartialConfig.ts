@@ -12,36 +12,36 @@ export const usePartialConfig = (userId: string) => {
 }
 
 export const usePartialConfigCreate = (userId: string) => {
-    const queryClient = useQueryClient();
+    const queryClient = useQueryClient()
     const { mutateAsync } = useMutation({
         mutationFn: (payload: PartialConfigCreate) => PartialConfigApi.postConfig(userId, payload),
         onSuccess: () => {
-            queryClient.invalidateQueries({queryKey: ["partial-config"]});
-          },
+            queryClient.invalidateQueries({ queryKey: ["partial-config"] })
+        },
     })
 
     return { mutateAsync }
 }
 
 export const usePartialConfigEdit = (userId: string) => {
-    const queryClient = useQueryClient();
+    const queryClient = useQueryClient()
     const { mutateAsync } = useMutation({
         mutationFn: (payload: PartialConfigEdit) => PartialConfigApi.putConfig(userId, payload),
         onSuccess: () => {
-            queryClient.invalidateQueries({queryKey: ["partial-config"]});
-          },
+            queryClient.invalidateQueries({ queryKey: ["partial-config"] })
+        },
     })
 
     return { mutateAsync }
 }
 
 export const usePartialConfigDelete = (userId: string) => {
-    const queryClient = useQueryClient();
+    const queryClient = useQueryClient()
     const { mutateAsync } = useMutation({
         mutationFn: () => PartialConfigApi.deleteConfig(userId),
         onSuccess: () => {
-            queryClient.invalidateQueries({queryKey: ["partial-config"]});
-          },
+            queryClient.invalidateQueries({ queryKey: ["partial-config"] })
+        },
     })
 
     return { mutateAsync }

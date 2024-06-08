@@ -39,6 +39,7 @@ const GpuCreateDialog = () => {
         console.log(formData)
         try {
             await CreateGpu(formData)
+            closeDialog()
         } catch (err) {
             // ignored for now maybe forever who knows
         }

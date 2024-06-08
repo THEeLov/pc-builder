@@ -5,6 +5,11 @@ const axiosInstance = axios.create({
     baseURL: "http://localhost:3000/components",
 })
 
+async function getSingle(name: ComponentTypes, componentId: string): Promise<Component> {
+    const resp = await axiosInstance.get(`${name}/${componentId}`, { withCredentials: true })
+    return resp.data
+}
+
 async function getAll(component: ComponentTypes): Promise<Component[]> {
     const resp = await axiosInstance.get(`${component}`, { withCredentials: true })
     return resp.data
@@ -27,6 +32,7 @@ async function deleteSingle(id: string): Promise<Component> {
 
 const ComponentsApi = {
     get: axiosInstance.get,
+    getSingle,
     getAll,
     post: axiosInstance.post,
     postSingle,

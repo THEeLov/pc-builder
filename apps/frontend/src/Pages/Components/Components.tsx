@@ -39,7 +39,7 @@ const Components = () => {
                 {isLoading ? (
                     <Spin />
                 ) : (
-                    <TableComponents fetchedData={data || []} admin={false} handleView={() => null} />
+                    <TableComponents fetchedData={data || []} admin={false} name={componentParam as ComponentTypes}/>
                 )}
             </div>
         </div>

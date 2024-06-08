@@ -42,6 +42,7 @@ const MotherboardCreateDialog = () => {
         console.log(formData)
         try {
             await CreateMotherboard(formData)
+            closeDialog()
         } catch (err) {
             // ignored for now maybe forever who knows
         }

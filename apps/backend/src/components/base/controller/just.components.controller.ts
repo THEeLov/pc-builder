@@ -11,9 +11,9 @@ export async function remove(req: Request, res: Response): Promise<Response<void
     if (!id.success) {
         return res.status(400).json(BadRequest)
     }
-    if (!(await authorizeAdmin(req.cookies.sessionId))) {
-        return res.status(401).json(Unauthorized)
-    }
+    // if (!(await authorizeAdmin(req.cookies.sessionId))) {
+    //     return res.status(401).json(Unauthorized)
+    // }
     const result = await ComponentRepo.remove(id.data.id)
     if (!result.isOk) {
         console.log(result.error)

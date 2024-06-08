@@ -15,10 +15,9 @@ import { FaPlus } from "react-icons/fa"
 
 const DashboardTable = ({ name }: { name: ComponentTypes }) => {
     const { isDialogOpen, openDialog } = useDialog()
-
+    
     const { data, isLoading } = useComponents(name)
-    console.log(data)
-
+    
     const componentMapping: { [key in ComponentTypes]?: React.ComponentType } = {
         motherboards: MotherboardCreateDialog,
         processors: ProcessorCreateDialog,
@@ -42,7 +41,7 @@ const DashboardTable = ({ name }: { name: ComponentTypes }) => {
                     </div>
                     {isDialogOpen && CurrentDialog && <CurrentDialog />}
                     <h2>{name.toLocaleUpperCase()}</h2>
-                    {data && <TableComponents fetchedData={data} admin={true} handleView={() => null} />}
+                    {data && <TableComponents fetchedData={data} admin={true} name={name}/>}
                 </div>
             )}
         </>

@@ -6,21 +6,25 @@ import { useSearch } from "./useSearch"
 import { MdDelete } from "react-icons/md"
 import { FaEye } from "react-icons/fa"
 import "./table.css"
-import { useComponentsDelete } from "@/hooks/useComponents"
-import { Component } from "../../models/components"
+import { useComponent, useComponentsDelete } from "@/hooks/useComponents"
+import { Component, ComponentTypes } from "../../models/components"
 import { useState } from "react"
+import ComponentView from "../ComponentView/ComponentView"
 
 type DataIndex = keyof Component["component"]
 
 type TableComponentsProps = {
     fetchedData: Component[]
     admin: boolean
-    handleView: () => void
+    name: ComponentTypes
 }
 
-const TableComponents: React.FC<TableComponentsProps> = ({ fetchedData, admin, handleView }) => {
+const TableComponents: React.FC<TableComponentsProps> = ({ fetchedData, admin, name }) => {
+    const [openView, setOpenView] = useState(false)
     const [componentId, setComponentId] = useState("")
     const { mutateAsync: DeleteComponent } = useComponentsDelete(componentId)
+    const { data } = useComponent(name, componentId)
+    console.log(componentId)
 
     const { getColumnSearchProps } = useSearch()
 
@@ -50,21 +54,24 @@ const TableComponents: React.FC<TableComponentsProps> = ({ fetchedData, admin, h
             title: "Action",
             dataIndex: "",
             key: "add",
-            render: (record: Component) =>
-                admin ? (
-                    <div className="table-buttons">
-                        <span onClick={handleView}>
-                            <CustomButton label="" btype="secondary" icon={<FaEye />} />
-                        </span>
+            render: (record: Component) => (
+                <div className="table-buttons">
+                    <span onClick={() => handleView(record)}>
+                        <CustomButton label="" btype="secondary" icon={<FaEye />} />
+                    </span>
+                    {admin && (
                         <span onClick={() => handleDelete(record)}>
-                            <CustomButton label="" btype="primary" icon={<MdDelete />}></CustomButton>
+                            <CustomButton label="" btype="primary" icon={<MdDelete />} />
                         </span>
-                    </div>
-                ) : (
-                    <div onClick={handleAdd}>
-                        <CustomButton label="Add" btype="secondary" icon={<TiPlus />} />
-                    </div>
-                ),
+                    )}
+                    {!admin && (
+                        <div onClick={handleAdd}>
+                            <CustomButton label="Add" btype="secondary" icon={<TiPlus />} />
+                        </div>
+                    )}
+                </div>
+            ),
+
             align: "right",
             width: "10%",
         },
@@ -79,7 +86,21 @@ const TableComponents: React.FC<TableComponentsProps> = ({ fetchedData, admin, h
         console.log("working")
     }
 
-    return <Table columns={columns} pagination={{ position: ["none", "bottomCenter"] }} dataSource={fetchedData} />
+    const handleView = (record: Component) => {
+        setComponentId(record.id)
+        setOpenView(true)
+    }
+
+    const handleCloseView = () => {
+        setOpenView(false)
+    }
+
+    return (
+        <>
+            <Table columns={columns} pagination={{ position: ["none", "bottomCenter"] }} dataSource={fetchedData} />
+            {openView && data && <ComponentView data={data} handleClose={handleCloseView} />}
+        </>
+    )
 }
 
 export default TableComponents

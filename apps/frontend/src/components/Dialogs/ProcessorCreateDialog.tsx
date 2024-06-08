@@ -40,6 +40,7 @@ const ProcessorCreateDialog = () => {
         console.log(formData)
         try {
             await CreateProcessor(formData)
+            closeDialog()
         } catch (err) {
             // ignored for now maybe forever who knows
         }

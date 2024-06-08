@@ -38,6 +38,7 @@ const RamCreateDialog = () => {
         console.log(formData)
         try {
             await CreateRam(formData)
+            closeDialog()
         } catch (err) {
             // ignored for now maybe forever who knows
         }
