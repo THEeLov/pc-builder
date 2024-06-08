@@ -12,24 +12,37 @@ export const useComponents = (name: ComponentTypes) => {
 }
 
 export const useComponentsCreate = (name: ComponentTypes) => {
+    const queryClient = useQueryClient();
     const { mutateAsync } = useMutation({
         mutationFn: (payload: unknown) => ComponentsApi.postSingle(name, payload),
+        onSuccess: () => {
+            queryClient.invalidateQueries({queryKey: ["components"]});
+          },
+      
     })
 
     return { mutateAsync }
 }
 
 export const useComponentsEdit = (componentId: string) => {
+    const queryClient = useQueryClient();
     const { mutateAsync } = useMutation({
         mutationFn: (payload: unknown) => ComponentsApi.putSingle(componentId, payload),
+        onSuccess: () => {
+            queryClient.invalidateQueries({queryKey: ["components"]});
+          },
     })
 
     return { mutateAsync }
 }
 
 export const useComponentsDelete = (componentId: string) => {
+    const queryClient = useQueryClient();
     const { mutateAsync } = useMutation({
         mutationFn: () => ComponentsApi.deleteSingle(componentId),
+        onSuccess: () => {
+            queryClient.invalidateQueries({queryKey: ["components"]});
+          },
     })
 
     return { mutateAsync }
