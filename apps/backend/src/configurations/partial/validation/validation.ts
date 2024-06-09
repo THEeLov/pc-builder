@@ -12,8 +12,8 @@ const updateObject = z.object({
     gpuId: z.string().uuid().optional(),
     powerSupplyId: z.string().uuid().optional(),
     PCCaseId: z.string().uuid().optional(),
-    rams: z.optional(z.array(z.object({ id: z.string().uuid() }))),
-    storages: z.optional(z.array(z.object({ id: z.string().uuid() }))),
+    ramId: z.string().ulid().optional(),
+    storageId: z.string().ulid().optional(),
 })
 
 export const parcialConfigSchema = {

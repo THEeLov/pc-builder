@@ -10,6 +10,8 @@ router
     .post(ParcialConfigurationController.create)
     .delete(ParcialConfigurationController.remove)
 
+router.route("/partial/ram-storage/:id").delete(ParcialConfigurationController.removeRamOrStorage)
+
 router.route("/").get(ConfigurationController.getMany)
 router
     .route("/:id")

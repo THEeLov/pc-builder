@@ -38,6 +38,22 @@ async function update(req: Request, res: Response): Promise<Response<ParcialConf
     return res.status(200).json(updatedConfig.value)
 }
 
+async function removeRamOrStorage(req: Request, res: Response) {
+    const validatedParams = baseValidation.IdRequestParams.safeParse(req.params)
+    if (!validatedParams.success || !(await authorize(validatedParams.data.id, req.cookies.sessionId))) {
+        return res.status(401).json(new Error("Unauthorized"))
+    }
+    const validatedBody = parcialConfigSchema.updateObject.safeParse(req.body)
+    if (!validatedBody.success) {
+        return res.status(400).json(new Error("Bad request"))
+    }
+    const updatedConfig = await ParcialConfigurationRepository.removeRamOrStorage(validatedParams.data.id, validatedBody.data)
+    if (!updatedConfig.isOk) {
+        return res.status(500).json(updatedConfig.isErr ? updatedConfig.error : new Error("Internal error"))
+    }
+    return res.status(200).json(updatedConfig.value)
+}
+
 async function create(req: Request, res: Response): Promise<Response<ParcialConfigWithComponent>> {
     const validatedParams = baseValidation.IdRequestParams.safeParse(req.params)
     const validatedBody = parcialConfigSchema.createObject.safeParse(req.body)
@@ -77,4 +93,5 @@ export const ParcialConfigurationController = {
     update,
     create,
     remove,
+    removeRamOrStorage,
 }

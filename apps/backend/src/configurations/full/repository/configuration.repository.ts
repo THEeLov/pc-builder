@@ -2,9 +2,8 @@ import { prisma } from "../../../client"
 import { ConfigurationCreate, ConfigurationWithComponent } from "../configurationTypes"
 import { DbResult } from "../../../../types"
 import handleError from "../../../utils"
-import { PCConfiguration } from "@prisma/client"
 import { Result } from "@badrap/result"
-import includeQuery, { ParcialConfigEdit } from "../../configurationQuery"
+import includeQuery, { ConfigEdit, ParcialConfigEdit } from "../../configurationQuery"
 
 async function create(userId: string, data: ConfigurationCreate): DbResult<ConfigurationWithComponent> {
     try {
@@ -53,7 +52,7 @@ async function create(userId: string, data: ConfigurationCreate): DbResult<Confi
     }
 }
 
-async function update(configId: string, data: ParcialConfigEdit): DbResult<ConfigurationWithComponent> {
+async function update(configId: string, data: ConfigEdit): DbResult<ConfigurationWithComponent> {
     try {
         const config = await prisma.$transaction(async (prisma) => {
             const config = await prisma.pCConfiguration.update({

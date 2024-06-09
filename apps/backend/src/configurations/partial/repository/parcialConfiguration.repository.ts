@@ -35,10 +35,10 @@ async function update(userId: string, data: ParcialConfigEdit): DbResult<Parcial
                 pcCaseId: data.PCCaseId,
                 powerSupplyId: data.powerSupplyId,
                 storages: {
-                    set: data.storages,
+                    connect: {id:data.storageId},
                 },
                 rams: {
-                    set: data.rams,
+                    connect: {id: data.ramId},
                 },
             },
             include: includeQuery,
@@ -46,6 +46,29 @@ async function update(userId: string, data: ParcialConfigEdit): DbResult<Parcial
         return Result.ok(config)
     } catch (e) {
         return handleError(e, "at update partial config")
+    }
+}
+
+async function removeRamOrStorage(userId: string, data: ParcialConfigEdit): DbResult<ParcialConfigWithComponent> {
+    try {
+        const config = await prisma.parcialPCConfiguration.update({
+            where: {
+                userId
+            },
+            data: {
+                storages: {
+                    disconnect: {id: data.storageId}
+                },
+                rams: {
+                    disconnect: {id: data.ramId}
+                },
+            },
+            include: includeQuery
+        })
+        return Result.ok(config)
+    }
+    catch (e) {
+        return handleError(e, "in rams or storage cparcialconfig delete")
     }
 }
 
@@ -81,4 +104,5 @@ export const ParcialConfigurationRepository = {
     update,
     remove,
     get,
+    removeRamOrStorage,
 }
