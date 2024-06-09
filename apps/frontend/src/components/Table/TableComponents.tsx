@@ -22,7 +22,7 @@ type TableComponentsProps = {
     name: ComponentTypes
 }
 
-// This component should be better decomposed, doesnt have single responsibility 
+// This component should be better decomposed, doesnt have single responsibility
 const TableComponents: React.FC<TableComponentsProps> = ({ fetchedData, admin, name }) => {
     const { user } = useAuth()
     const [openView, setOpenView] = useState(false)
@@ -91,31 +91,31 @@ const TableComponents: React.FC<TableComponentsProps> = ({ fetchedData, admin, n
 
     const handleAdd = async (record: Component) => {
         setComponentId(record.component.id)
-        let body;
-        switch (name){
+        let body
+        switch (name) {
             case "motherboards":
                 body = { motherboardId: record.component.id }
-                break;
+                break
             case "processors":
                 body = { processorId: record.component.id }
-                break;
+                break
             case "gpus":
                 body = { gpuId: record.component.id }
-                break;
+                break
             case "storages":
                 body = { storageId: record.component.id }
-                break;
+                break
             case "rams":
                 body = { ramId: record.component.id }
-                break;
+                break
             case "power-supplies":
                 body = { powerSupplyId: record.component.id }
-                break;
+                break
             default:
                 body = { PCCaseId: record.component.id }
-                break;
-        }        
-        await AddComponent(body);
+                break
+        }
+        await AddComponent(body)
         navigate("/build")
     }
 
