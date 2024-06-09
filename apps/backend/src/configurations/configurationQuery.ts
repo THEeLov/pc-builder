@@ -45,7 +45,7 @@ export type ParcialConfigEdit = {
     gpuId?: string
     powerSupplyId?: string
     PCCaseId?: string
-    ramId?: string 
+    ramId?: string
     storageId?: string
 }
 
@@ -56,8 +56,8 @@ export type ConfigEdit = {
     gpuId?: string
     powerSupplyId?: string
     PCCaseId?: string
-    rams?: {id: string}[] 
-    storages?: {id: string}[]
+    rams?: { id: string }[]
+    storages?: { id: string }[]
 }
 
 export default includeQuery

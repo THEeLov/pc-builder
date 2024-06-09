@@ -47,7 +47,10 @@ async function removeRamOrStorage(req: Request, res: Response) {
     if (!validatedBody.success) {
         return res.status(400).json(new Error("Bad request"))
     }
-    const updatedConfig = await ParcialConfigurationRepository.removeRamOrStorage(validatedParams.data.id, validatedBody.data)
+    const updatedConfig = await ParcialConfigurationRepository.removeRamOrStorage(
+        validatedParams.data.id,
+        validatedBody.data,
+    )
     if (!updatedConfig.isOk) {
         return res.status(500).json(updatedConfig.isErr ? updatedConfig.error : new Error("Internal error"))
     }
