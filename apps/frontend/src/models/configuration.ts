@@ -24,4 +24,5 @@ export type PartialConfigEdit = {
     PCCaseId?: string
     ramId?: string
     storageId?: string
+    delete: boolean
 }
