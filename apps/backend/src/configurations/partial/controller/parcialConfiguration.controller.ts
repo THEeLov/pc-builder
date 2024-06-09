@@ -42,16 +42,12 @@ async function update(req: Request, res: Response): Promise<Response<ParcialConf
 }
 
 async function removeComponentFromConfig(res: Response, userId: string, body: ParcialConfigEdit) {
-    
-    body.motherboardId = (body.motherboardId) ? null : undefined
+    body.motherboardId = body.motherboardId ? null : undefined
     body.processorId = body.processorId ? null : undefined
     body.gpuId = body.gpuId ? null : undefined
     body.PCCaseId = body.PCCaseId ? null : undefined
     body.powerSupplyId = body.powerSupplyId ? null : undefined
-    const updatedConfig = await ParcialConfigurationRepository.removeComponent(
-        userId,
-        body,
-    )
+    const updatedConfig = await ParcialConfigurationRepository.removeComponent(userId, body)
     if (!updatedConfig.isOk) {
         return res.status(500).json(updatedConfig.isErr ? updatedConfig.error : new Error("Internal error"))
     }

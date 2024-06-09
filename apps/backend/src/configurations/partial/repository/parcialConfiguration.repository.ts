@@ -65,7 +65,7 @@ async function removeComponent(userId: string, data: ParcialConfigEdit): DbResul
                     disconnect: { id: data.storageId },
                 },
                 rams: {
-                    disconnect: { id: data.ramId  },
+                    disconnect: { id: data.ramId },
                 },
             },
             include: includeQuery,
