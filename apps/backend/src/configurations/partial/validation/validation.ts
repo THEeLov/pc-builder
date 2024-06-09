@@ -12,8 +12,8 @@ const fullUpdateObject = z.object({
     gpuId: z.string().uuid().optional().nullable(),
     powerSupplyId: z.string().uuid().optional().nullable(),
     PCCaseId: z.string().uuid().optional().nullable(),
-    rams: z.array(z.object({id: z.string()})).optional(),
-    storages: z.array(z.object({id: z.string()})).optional(),
+    rams: z.array(z.object({ id: z.string() })).optional(),
+    storages: z.array(z.object({ id: z.string() })).optional(),
 })
 
 const updateObject = z.object({
@@ -33,5 +33,5 @@ export type inputPConfigData = z.infer<typeof updateObject>
 export const parcialConfigSchema = {
     updateObject,
     createObject,
-    fullUpdateObject
+    fullUpdateObject,
 }
