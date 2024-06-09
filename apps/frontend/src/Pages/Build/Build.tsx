@@ -23,7 +23,7 @@ const Build = () => {
             { name: "Processor", info: [data?.processor ?? null] },
             { name: "Rams", info: [...data.rams, null] },
             { name: "GPU", info: [data?.gpu ?? null] },
-            { name: "Storages", info: [...data.storages, null] },
+            { name: "Storage", info: [...data.storages, null] },
             { name: "Power-Supplie", info: [data?.powerSupply ?? null] },
             { name: "Pc-Case", info: [data?.pcCase ?? null] },
         ]

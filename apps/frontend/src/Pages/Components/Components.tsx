@@ -7,19 +7,6 @@ import { Spin } from "antd"
 import { useSearchParams } from "react-router-dom"
 
 const Components = () => {
-    // const mockData = []
-    // for (let i = 0; i < 100; i++) {
-    //     mockData.push({
-    //         component: {
-    //             name: `Product ${i}`,
-    //             price: Math.floor(Math.random() * 400),
-    //             imageUrl: "PHOTO",
-    //         },
-    //         id: "something",
-    //         formFactor: "something",
-    //         componentId: "something",
-    //     })
-    // }
     const [searchParams] = useSearchParams()
     const componentParam = searchParams.get("component")
 

@@ -1,8 +1,8 @@
 export type User = {
-    id: string | null
-    username: string | null
-    email: string | null
-    role: string | null
+    id: string
+    username: string
+    email: string
+    role: string
 }
 
 export type RegisterUser = {

@@ -10,6 +10,9 @@ import { useComponent, useComponentsDelete } from "@/hooks/useComponents"
 import { Component, ComponentTypes } from "../../models/components"
 import { useState } from "react"
 import ComponentView from "../ComponentView/ComponentView"
+import { usePartialConfigEdit } from "@/hooks/usePartialConfig"
+import useAuth from "@/auth/authProvider"
+import { useNavigate } from "react-router-dom"
 
 type DataIndex = keyof Component["component"]
 
@@ -19,12 +22,17 @@ type TableComponentsProps = {
     name: ComponentTypes
 }
 
+// This component should be better decomposed, doesnt have single responsibility 
 const TableComponents: React.FC<TableComponentsProps> = ({ fetchedData, admin, name }) => {
+    const { user } = useAuth()
     const [openView, setOpenView] = useState(false)
     const [componentId, setComponentId] = useState("")
+    const navigate = useNavigate()
+
     const { mutateAsync: DeleteComponent } = useComponentsDelete(componentId)
+    const { mutateAsync: AddComponent } = usePartialConfigEdit(user?.id ?? "")
+
     const { data } = useComponent(name, componentId)
-    console.log(componentId)
 
     const { getColumnSearchProps } = useSearch()
 
@@ -33,7 +41,7 @@ const TableComponents: React.FC<TableComponentsProps> = ({ fetchedData, admin, n
             title: "Image",
             dataIndex: ["component", "imageUrl"],
             key: "component.image",
-            render: (imageUrl) => <img src={imageUrl} alt="Component" style={{ width: "70px", height: "auto" }} />,
+            render: (imageUrl) => <img src={imageUrl} alt="Component" style={{ width: "70px", height: "70px" }} />,
         },
         {
             title: "Name",
@@ -59,14 +67,13 @@ const TableComponents: React.FC<TableComponentsProps> = ({ fetchedData, admin, n
                     <span onClick={() => handleView(record)}>
                         <CustomButton label="" btype="secondary" icon={<FaEye />} />
                     </span>
-                    {admin && (
+                    {admin ? (
                         <span onClick={() => handleDelete(record)}>
                             <CustomButton label="" btype="primary" icon={<MdDelete />} />
                         </span>
-                    )}
-                    {!admin && (
-                        <div onClick={handleAdd}>
-                            <CustomButton label="Add" btype="secondary" icon={<TiPlus />} />
+                    ) : (
+                        <div onClick={() => handleAdd(record)}>
+                            <CustomButton label="Add" btype="primary" icon={<TiPlus />} />
                         </div>
                     )}
                 </div>
@@ -82,8 +89,34 @@ const TableComponents: React.FC<TableComponentsProps> = ({ fetchedData, admin, n
         await DeleteComponent()
     }
 
-    const handleAdd = () => {
-        console.log("working")
+    const handleAdd = async (record: Component) => {
+        setComponentId(record.component.id)
+        let body;
+        switch (name){
+            case "motherboards":
+                body = { motherboardId: record.component.id }
+                break;
+            case "processors":
+                body = { processorId: record.component.id }
+                break;
+            case "gpus":
+                body = { gpuId: record.component.id }
+                break;
+            case "storages":
+                body = { storageId: record.component.id }
+                break;
+            case "rams":
+                body = { ramId: record.component.id }
+                break;
+            case "power-supplies":
+                body = { powerSupplyId: record.component.id }
+                break;
+            default:
+                body = { PCCaseId: record.component.id }
+                break;
+        }        
+        await AddComponent(body);
+        navigate("/build")
     }
 
     const handleView = (record: Component) => {
