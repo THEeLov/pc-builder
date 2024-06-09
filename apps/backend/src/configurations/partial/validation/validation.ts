@@ -5,6 +5,17 @@ const createObject = z.object({
     configurationType: configType,
 })
 
+const fullUpdateObject = z.object({
+    configurationType: configType.optional(),
+    motherboardId: z.string().uuid().optional(),
+    processorId: z.string().uuid().optional(),
+    gpuId: z.string().uuid().optional(),
+    powerSupplyId: z.string().uuid().optional(),
+    PCCaseId: z.string().uuid().optional(),
+    rams: z.array(z.object({ id: z.string() })).optional(),
+    storages: z.array(z.object({ id: z.string() })).optional(),
+})
+
 const updateObject = z.object({
     delete: z.boolean(),
     configurationType: configType.optional(),
@@ -22,4 +33,5 @@ export type inputPConfigData = z.infer<typeof updateObject>
 export const parcialConfigSchema = {
     updateObject,
     createObject,
+    fullUpdateObject,
 }

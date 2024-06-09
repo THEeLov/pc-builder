@@ -20,7 +20,7 @@ async function getMany(req: Request, res: Response): Promise<Response<Configurat
 
 async function update(req: Request, res: Response): Promise<Response<ConfigurationWithComponent>> {
     const validatedParams = configValidation.configIdSchema.safeParse(req.params)
-    const validatedBody = parcialConfigSchema.updateObject.safeParse(req.body)
+    const validatedBody = parcialConfigSchema.fullUpdateObject.safeParse(req.body)
 
     if (
         !validatedParams.success ||
