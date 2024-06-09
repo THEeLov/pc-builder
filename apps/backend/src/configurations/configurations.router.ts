@@ -8,9 +8,7 @@ router
     .get(ParcialConfigurationController.get)
     .put(ParcialConfigurationController.update)
     .post(ParcialConfigurationController.create)
-    .delete(ParcialConfigurationController.removeComponentFromConfig)
-
-router.route("/partial/usr/:id").delete(ParcialConfigurationController.remove)
+    .delete(ParcialConfigurationController.remove)
 
 router.route("/").get(ConfigurationController.getMany)
 router

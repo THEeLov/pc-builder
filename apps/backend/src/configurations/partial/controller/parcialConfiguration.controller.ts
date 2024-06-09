@@ -5,6 +5,7 @@ import { baseValidation } from "../../../base/validation/validation"
 import { authorize } from "../../../utils"
 import { ParcialConfigurationRepository } from "../repository/parcialConfiguration.repository"
 import { ParcialConfigWithComponent } from "../parcialConfigTypes"
+import { ParcialConfigEdit } from "../../configurationQuery"
 
 async function get(req: Request, res: Response): Promise<Response<ParcialConfigWithComponent>> {
     const validatedParams = baseValidation.IdRequestParams.safeParse(req.params)
@@ -30,7 +31,9 @@ async function update(req: Request, res: Response): Promise<Response<ParcialConf
     if (!validatedBody.success) {
         return res.status(400).json(new Error("Bad request"))
     }
-
+    if (validatedBody.data.delete) {
+        return removeComponentFromConfig(res, validatedParams.data.id, validatedBody.data)
+    }
     const updatedConfig = await ParcialConfigurationRepository.update(validatedParams.data.id, validatedBody.data)
     if (!updatedConfig.isOk) {
         return res.status(500).json(updatedConfig.isErr ? updatedConfig.error : new Error("Internal error"))
@@ -38,23 +41,16 @@ async function update(req: Request, res: Response): Promise<Response<ParcialConf
     return res.status(200).json(updatedConfig.value)
 }
 
-async function removeComponentFromConfig(req: Request, res: Response) {
-    const validatedParams = baseValidation.IdRequestParams.safeParse(req.params)
-    if (!validatedParams.success || !(await authorize(validatedParams.data.id, req.cookies.sessionId))) {
-        return res.status(401).json(new Error("Unauthorized"))
-    }
-    const validatedBody = parcialConfigSchema.updateObject.safeParse(req.body)
-    if (!validatedBody.success) {
-        return res.status(400).json(new Error("Bad request"))
-    }
-    validatedBody.data.motherboardId = (validatedBody.data.motherboardId) ? null : undefined
-    validatedBody.data.processorId = validatedBody.data.processorId ? null : undefined
-    validatedBody.data.gpuId = validatedBody.data.gpuId ? null : undefined
-    validatedBody.data.PCCaseId = validatedBody.data.PCCaseId ? null : undefined
-    validatedBody.data.powerSupplyId = validatedBody.data.powerSupplyId ? null : undefined
-    const updatedConfig = await ParcialConfigurationRepository.removeRamOrStorage(
-        validatedParams.data.id,
-        validatedBody.data,
+async function removeComponentFromConfig(res: Response, userId: string, body: ParcialConfigEdit) {
+    
+    body.motherboardId = (body.motherboardId) ? null : undefined
+    body.processorId = body.processorId ? null : undefined
+    body.gpuId = body.gpuId ? null : undefined
+    body.PCCaseId = body.PCCaseId ? null : undefined
+    body.powerSupplyId = body.powerSupplyId ? null : undefined
+    const updatedConfig = await ParcialConfigurationRepository.removeComponent(
+        userId,
+        body,
     )
     if (!updatedConfig.isOk) {
         return res.status(500).json(updatedConfig.isErr ? updatedConfig.error : new Error("Internal error"))

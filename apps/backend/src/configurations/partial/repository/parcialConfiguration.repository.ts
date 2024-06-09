@@ -49,18 +49,23 @@ async function update(userId: string, data: ParcialConfigEdit): DbResult<Parcial
     }
 }
 
-async function removeRamOrStorage(userId: string, data: ParcialConfigEdit): DbResult<ParcialConfigWithComponent> {
+async function removeComponent(userId: string, data: ParcialConfigEdit): DbResult<ParcialConfigWithComponent> {
     try {
         const config = await prisma.parcialPCConfiguration.update({
             where: {
                 userId,
             },
             data: {
+                motherboardId: data.motherboardId,
+                processorId: data.processorId,
+                powerSupplyId: data.powerSupplyId,
+                pcCaseId: data.PCCaseId,
+                gpuId: data.gpuId,
                 storages: {
                     disconnect: { id: data.storageId },
                 },
                 rams: {
-                    disconnect: { id: data.ramId },
+                    disconnect: { id: data.ramId  },
                 },
             },
             include: includeQuery,
@@ -103,5 +108,5 @@ export const ParcialConfigurationRepository = {
     update,
     remove,
     get,
-    removeRamOrStorage,
+    removeComponent,
 }

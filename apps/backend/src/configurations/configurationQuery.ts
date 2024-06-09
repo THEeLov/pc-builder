@@ -45,8 +45,8 @@ export type ParcialConfigEdit = {
     gpuId?: string | null
     powerSupplyId?: string | null
     PCCaseId?: string | null
-    ramId?: string | null
-    storageId?: string | null
+    ramId?: string
+    storageId?: string
 }
 
 export type ConfigEdit = {
