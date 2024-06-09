@@ -7,11 +7,11 @@ const createObject = z.object({
 
 const fullUpdateObject = z.object({
     configurationType: configType.optional(),
-    motherboardId: z.string().uuid().optional().nullable(),
-    processorId: z.string().uuid().optional().nullable(),
-    gpuId: z.string().uuid().optional().nullable(),
-    powerSupplyId: z.string().uuid().optional().nullable(),
-    PCCaseId: z.string().uuid().optional().nullable(),
+    motherboardId: z.string().uuid().optional(),
+    processorId: z.string().uuid().optional(),
+    gpuId: z.string().uuid().optional(),
+    powerSupplyId: z.string().uuid().optional(),
+    PCCaseId: z.string().uuid().optional(),
     rams: z.array(z.object({ id: z.string() })).optional(),
     storages: z.array(z.object({ id: z.string() })).optional(),
 })
