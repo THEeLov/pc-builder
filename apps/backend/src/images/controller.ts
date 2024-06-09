@@ -7,7 +7,7 @@ function urlToPath(url: string) {
 
 async function get(req: Request, res: Response) {
     const Fpath = urlToPath(req.params.url)
-    return res.sendFile(path.join(Fpath))
+    return res.status(200).sendFile(path.join(Fpath))
 }
 
 export default get

@@ -90,29 +90,29 @@ const TableComponents: React.FC<TableComponentsProps> = ({ fetchedData, admin, n
     }
 
     const handleAdd = async (record: Component) => {
-        setComponentId(record.component.id)
+        setComponentId(record.id)
         let body
         switch (name) {
             case "motherboards":
-                body = { motherboardId: record.component.id, delete: false }
+                body = { motherboardId: record.id, delete: false }
                 break
             case "processors":
-                body = { processorId: record.component.id, delete: false }
+                body = { processorId: record.id, delete: false }
                 break
             case "gpus":
-                body = { gpuId: record.component.id, delete: false }
+                body = { gpuId: record.id, delete: false }
                 break
             case "storages":
-                body = { storageId: record.component.id, delete: false }
+                body = { storageId: record.id, delete: false }
                 break
             case "rams":
-                body = { ramId: record.component.id, delete: false }
+                body = { ramId: record.id, delete: false }
                 break
             case "power-supplies":
-                body = { powerSupplyId: record.component.id, delete: false }
+                body = { powerSupplyId: record.id, delete: false }
                 break
             default:
-                body = { PCCaseId: record.component.id, delete: false }
+                body = { PCCaseId: record.id, delete: false }
                 break
         }
         await AddComponent(body)

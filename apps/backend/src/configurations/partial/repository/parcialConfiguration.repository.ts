@@ -35,16 +35,17 @@ async function update(userId: string, data: ParcialConfigEdit): DbResult<Parcial
                 pcCaseId: data.PCCaseId,
                 powerSupplyId: data.powerSupplyId,
                 storages: {
-                    connect: { id: data.storageId },
+                    connect: (data.storageId) ? { id: data.storageId } : undefined,
                 },
                 rams: {
-                    connect: { id: data.ramId },
+                    connect: (data.storageId) ? { id: data.ramId } : undefined,
                 },
             },
             include: includeQuery,
         })
         return Result.ok(config)
     } catch (e) {
+        console.log(e)
         return handleError(e, "at update partial config")
     }
 }
