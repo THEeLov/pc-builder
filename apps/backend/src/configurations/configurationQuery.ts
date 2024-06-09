@@ -40,13 +40,13 @@ const includeQuery = {
 
 export type ParcialConfigEdit = {
     configurationType?: ConfigurationType
-    motherboardId?: string
-    processorId?: string
-    gpuId?: string
-    powerSupplyId?: string
-    PCCaseId?: string
-    ramId?: string
-    storageId?: string
+    motherboardId?: string | null
+    processorId?: string | null
+    gpuId?: string | null
+    powerSupplyId?: string | null
+    PCCaseId?: string | null
+    ramId?: string | null
+    storageId?: string | null
 }
 
 export type ConfigEdit = {
