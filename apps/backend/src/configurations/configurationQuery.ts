@@ -51,11 +51,11 @@ export type ParcialConfigEdit = {
 
 export type ConfigEdit = {
     configurationType?: ConfigurationType
-    motherboardId?: string
-    processorId?: string
-    gpuId?: string
-    powerSupplyId?: string
-    PCCaseId?: string
+    motherboardId?: string | null
+    processorId?: string | null
+    gpuId?: string | null
+    powerSupplyId?: string | null
+    PCCaseId?: string | null
     rams?: { id: string }[]
     storages?: { id: string }[]
 }
