@@ -35,10 +35,10 @@ async function update(userId: string, data: ParcialConfigEdit): DbResult<Parcial
                 pcCaseId: data.PCCaseId,
                 powerSupplyId: data.powerSupplyId,
                 storages: {
-                    connect: (data.storageId) ? { id: data.storageId } : undefined,
+                    connect: data.storageId ? { id: data.storageId } : undefined,
                 },
                 rams: {
-                    connect: (data.storageId) ? { id: data.ramId } : undefined,
+                    connect: data.storageId ? { id: data.ramId } : undefined,
                 },
             },
             include: includeQuery,
