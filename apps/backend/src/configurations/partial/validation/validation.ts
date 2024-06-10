@@ -24,8 +24,8 @@ const updateObject = z.object({
     gpuId: z.string().uuid().optional().nullable(),
     powerSupplyId: z.string().uuid().optional().nullable(),
     PCCaseId: z.string().uuid().optional().nullable(),
-    ramId: z.string().ulid().optional(),
-    storageId: z.string().ulid().optional(),
+    ramId: z.string().uuid().optional(),
+    storageId: z.string().uuid().optional(),
 })
 
 export type inputPConfigData = z.infer<typeof updateObject>
