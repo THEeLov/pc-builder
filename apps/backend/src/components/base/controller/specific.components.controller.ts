@@ -55,7 +55,7 @@ async function getMany<T>(repo: Repository<T>, req: Request, res: Response): Pro
         query = {}
     }
     query.maxPrice = priceQuery.data.maxPrice ? parseInt(priceQuery.data.maxPrice) : undefined
-    query.minPrice = priceQuery.data.minPrice? parseInt(priceQuery.data.minPrice) : undefined
+    query.minPrice = priceQuery.data.minPrice ? parseInt(priceQuery.data.minPrice) : undefined
     const result = await repo.getMany(query)
     if (!result.isOk) {
         return res.status(500).json(InternalError)

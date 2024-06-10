@@ -47,8 +47,8 @@ async function getMany(query: ComponentQuery): DbResult<MotherboardWithComponent
                     price: {
                         gte: query.minPrice,
                         lte: query.maxPrice,
-                    }
-                }
+                    },
+                },
             },
             include: {
                 component: true,

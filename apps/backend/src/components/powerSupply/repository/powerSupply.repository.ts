@@ -40,8 +40,8 @@ async function getMany(query: ComponentQuery): DbResult<PowerSupplyWithComponent
                     price: {
                         gte: query.minPrice,
                         lte: query.maxPrice,
-                    }
-                }
+                    },
+                },
             },
             include: {
                 component: true,

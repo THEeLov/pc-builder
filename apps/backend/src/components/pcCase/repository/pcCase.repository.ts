@@ -37,8 +37,8 @@ async function getMany(query: ComponentQuery): DbResult<PCCaseWithComponent[]> {
                     price: {
                         gte: query.minPrice,
                         lte: query.maxPrice,
-                    }
-                }
+                    },
+                },
             },
             include: {
                 component: true,

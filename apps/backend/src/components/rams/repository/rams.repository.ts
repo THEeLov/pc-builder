@@ -14,7 +14,7 @@ async function getMany(query: ComponentQuery): DbResult<RAMWithComponent[]> {
                     price: {
                         gte: query.minPrice,
                         lte: query.maxPrice,
-                    }
+                    },
                 },
             },
             include: {

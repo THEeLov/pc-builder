@@ -39,7 +39,7 @@ async function getMany(query: ComponentQuery): DbResult<StorageWithComponent[]> 
                     price: {
                         gte: query.minPrice,
                         lte: query.maxPrice,
-                    }
+                    },
                 },
             },
             include: {
