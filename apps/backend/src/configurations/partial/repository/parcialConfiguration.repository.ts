@@ -38,7 +38,7 @@ async function update(userId: string, data: ParcialConfigEdit): DbResult<Parcial
                     connect: data.storageId ? { id: data.storageId } : undefined,
                 },
                 rams: {
-                    connect: data.storageId ? { id: data.ramId } : undefined,
+                    connect: data.ramId ? { id: data.ramId } : undefined,
                 },
             },
             include: includeQuery,
@@ -66,7 +66,7 @@ async function removeComponent(userId: string, data: ParcialConfigEdit): DbResul
                     disconnect: data.storageId ? { id: data.storageId } : undefined,
                 },
                 rams: {
-                    disconnect: data.storageId ? { id: data.ramId } : undefined,
+                    disconnect: data.ramId ? { id: data.ramId } : undefined,
                 },
             },
             include: includeQuery,
