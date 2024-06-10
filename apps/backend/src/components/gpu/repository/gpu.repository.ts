@@ -37,6 +37,12 @@ async function getMany(query: ComponentQuery): DbResult<GPUWithComponent[]> {
             where: {
                 interface: query.gpuInterface,
                 power: query.powerIO,
+                component: {
+                    price: {
+                        gte: query.minPrice,
+                        lte: query.maxPrice,
+                    }
+                }
             },
             include: {
                 component: true,

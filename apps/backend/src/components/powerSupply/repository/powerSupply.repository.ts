@@ -36,6 +36,12 @@ async function getMany(query: ComponentQuery): DbResult<PowerSupplyWithComponent
             where: {
                 powerOutput: query.powerIO,
                 formFactor: query.formFactor,
+                component: {
+                    price: {
+                        gte: query.minPrice,
+                        lte: query.maxPrice,
+                    }
+                }
             },
             include: {
                 component: true,

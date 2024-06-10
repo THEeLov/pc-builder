@@ -37,6 +37,12 @@ async function getMany(query: ComponentQuery): DbResult<ProcessorWithComponent[]
         const processors = await prisma.processor.findMany({
             where: {
                 socket: query.socket,
+                component: {
+                    price: {
+                        gte: query.minPrice,
+                        lte: query.maxPrice,
+                    }
+                }
             },
             include: {
                 component: true,

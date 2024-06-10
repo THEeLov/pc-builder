@@ -35,6 +35,12 @@ async function getMany(query: ComponentQuery): DbResult<StorageWithComponent[]> 
         const storages = await prisma.storage.findMany({
             where: {
                 busType: query.storageBusType,
+                component: {
+                    price: {
+                        gte: query.minPrice,
+                        lte: query.maxPrice,
+                    }
+                },
             },
             include: {
                 component: true,

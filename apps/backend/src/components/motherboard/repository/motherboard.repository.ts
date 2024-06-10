@@ -43,6 +43,12 @@ async function getMany(query: ComponentQuery): DbResult<MotherboardWithComponent
                 ramType: query.ramType,
                 gpuInterface: query.gpuInterface,
                 stroageBusType: query.storageBusType,
+                component: {
+                    price: {
+                        gte: query.minPrice,
+                        lte: query.maxPrice,
+                    }
+                }
             },
             include: {
                 component: true,

@@ -33,6 +33,12 @@ async function getMany(query: ComponentQuery): DbResult<PCCaseWithComponent[]> {
         const pcCases = await prisma.pCCase.findMany({
             where: {
                 formFactor: query.formFactor,
+                component: {
+                    price: {
+                        gte: query.minPrice,
+                        lte: query.maxPrice,
+                    }
+                }
             },
             include: {
                 component: true,

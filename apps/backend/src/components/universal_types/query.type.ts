@@ -13,6 +13,8 @@ type ComponentQuery = {
     gpuInterface?: string
     storageBusType?: string
     powerIO?: number
+    minPrice?: number
+    maxPrice?: number
 }
 
 export default ComponentQuery
