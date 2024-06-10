@@ -1,7 +1,7 @@
 import { Card } from "antd"
 import "./dialog.css"
 import { useForm, SubmitHandler } from "react-hook-form"
-import { GpuSchema } from "./validation"
+import { GpuSchema } from "../../validationSchemas/dialogs"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import FormField from "../FormField"

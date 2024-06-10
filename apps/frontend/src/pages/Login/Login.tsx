@@ -1,15 +1,14 @@
-import { error } from "console"
 import "./login.css"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { z } from "zod"
 import Bob from "../../images/sign_up_bob.png"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { schema } from "./validation"
+import { loginSchema } from "../../validationSchemas/auth"
 import { Link, useNavigate } from "react-router-dom"
 import { useLogin } from "@/hooks/useAuth"
 import useAuth from "../../auth/authProvider"
 
-type FormFields = z.infer<typeof schema>
+type FormFields = z.infer<typeof loginSchema>
 
 const Login = () => {
     const { mutateAsync: LoginMutation } = useLogin()
@@ -22,12 +21,11 @@ const Login = () => {
         setError,
         formState: { errors },
     } = useForm<FormFields>({
-        resolver: zodResolver(schema),
+        resolver: zodResolver(loginSchema),
     })
 
     const onSubmit: SubmitHandler<FormFields> = async (data) => {
         try {
-            console.log(data)
             const response = await LoginMutation(data)
             login(response)
             navigate(`/${response.role === "ADMIN" ? "dashboard" : ""}`)
@@ -60,7 +58,6 @@ const Login = () => {
                             Sign In
                         </button>
 
-                        {/* Show error if user doesnt exit */}
                         {errors.root && <div className="error-message">{errors.root.message}</div>}
                     </form>
                     <div className="login__form-container__questions">

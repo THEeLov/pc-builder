@@ -1,11 +1,5 @@
 import { z } from "zod"
 
-// export const ComponentSchema = z.object({
-//   name: z.string().min(1),
-//   price: z.coerce.number().min(1),
-//   manufacturer: z.string().min(1),
-//   imageUrl: z.string().min(1),
-// })
 const MAX_FILE_SIZE = 5000000
 const ACCEPTED_IMAGE_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/webp"]
 

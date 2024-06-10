@@ -22,4 +22,5 @@
 .component-view__info-container {
     display: flex;
     gap: var(--normal-indent);
+    flex-wrap: wrap;
 }

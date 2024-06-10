@@ -3,11 +3,11 @@ import { Navigate, Outlet } from "react-router-dom"
 import useAuth from "./authProvider"
 import { notification } from "antd"
 
-const ProtectedRoute = ({admin} : {admin: boolean}) => {
+const ProtectedRoute = ({ admin }: { admin: boolean }) => {
     const { user } = useAuth()
-    
+
     if (admin && (user === null || user.role !== "ADMIN")) {
-        return <Navigate to="/"/>
+        return <Navigate to="/" />
     }
 
     if (user === null) {

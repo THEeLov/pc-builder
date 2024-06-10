@@ -1,27 +1,23 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState } from "react"
 
 export interface DialogContextType {
-    isDialogOpen: boolean;
-    openDialog: () => void;
-    closeDialog: () => void;
+    isDialogOpen: boolean
+    openDialog: () => void
+    closeDialog: () => void
 }
 
-export const DialogContext = createContext<DialogContextType | undefined>(undefined);
+export const DialogContext = createContext<DialogContextType | undefined>(undefined)
 
 export const DialogProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const [isDialogOpen, setIsDialogOpen] = useState(false);
+    const [isDialogOpen, setIsDialogOpen] = useState(false)
 
     const openDialog = () => {
-        setIsDialogOpen(true);
-    };
+        setIsDialogOpen(true)
+    }
 
     const closeDialog = () => {
-        setIsDialogOpen(false);
-    };
+        setIsDialogOpen(false)
+    }
 
-    return (
-        <DialogContext.Provider value={{ isDialogOpen, openDialog, closeDialog }}>
-            {children}
-        </DialogContext.Provider>
-    );
-};
+    return <DialogContext.Provider value={{ isDialogOpen, openDialog, closeDialog }}>{children}</DialogContext.Provider>
+}

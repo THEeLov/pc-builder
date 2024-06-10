@@ -2,7 +2,7 @@ import "./main.css"
 
 import CustomButton from "../../../components/CustomButton/CustomButton"
 import { ToolOutlined } from "@ant-design/icons"
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import useAuth from "@/auth/authProvider"
 import { notification } from "antd"
 

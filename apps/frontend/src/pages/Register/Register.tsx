@@ -1,14 +1,14 @@
-import "./register.css"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { z } from "zod"
-import Bob from "../../images/sign_UP_bob.png"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { schema } from "./validation"
+import { registerSchema } from "../../validationSchemas/auth"
 import { Link, useNavigate } from "react-router-dom"
 import { useRegister } from "@/hooks/useAuth"
 import useAuth from "@/auth/authProvider"
+import Bob from "../../images/sign_UP_bob.png"
+import "./register.css"
 
-type FormFields = z.infer<typeof schema>
+type FormFields = z.infer<typeof registerSchema>
 
 const Register = () => {
     const { mutateAsync: RegisterMutation } = useRegister()
@@ -21,7 +21,7 @@ const Register = () => {
         setError,
         formState: { errors },
     } = useForm<FormFields>({
-        resolver: zodResolver(schema),
+        resolver: zodResolver(registerSchema),
     })
 
     const onSubmit: SubmitHandler<FormFields> = async (data) => {
@@ -30,7 +30,6 @@ const Register = () => {
             return
         }
         try {
-            console.log(data)
             const response = await RegisterMutation(data)
             login(response)
             navigate("/")
@@ -80,7 +79,6 @@ const Register = () => {
                             Sign Up
                         </button>
 
-                        {/* Show error if user doesnt exit */}
                         {errors.root && <div className="error-message">{errors.root.message}</div>}
                     </form>
                     <div className="register__form-container__questions">

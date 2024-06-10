@@ -11,8 +11,9 @@ import notification from "antd/es/notification"
 
 const Build = () => {
     const navigate = useNavigate()
-
     const { user } = useAuth()
+    
+    // It's guranteed that user is logged in
     const { data, isLoading } = usePartialConfig(user?.id ?? "")
 
     const [info, setInfo] = useState<Array<{ name: string; info: Array<Component | null> }>>([])

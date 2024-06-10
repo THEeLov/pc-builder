@@ -1,4 +1,4 @@
-import OptionCard from "./OptionCard/OptionCard"
+import OptionCard from "../../components/OptionCard/OptionCard"
 import {
     AppstoreAddOutlined,
     DesktopOutlined,
@@ -11,7 +11,14 @@ import { useNavigate } from "react-router-dom"
 import { usePartialConfigCreate, usePartialConfigDelete } from "@/hooks/usePartialConfig"
 import useAuth from "@/auth/authProvider"
 
-// Issue to solve: big screens will have too big navbar.
+const cardData = [
+    { label: "DEFAULT", icon: AppstoreAddOutlined },
+    { label: "OFFICE", icon: FundProjectionScreenOutlined },
+    { label: "GAMING", icon: CustomerServiceOutlined },
+    { label: "WORK", icon: DesktopOutlined },
+    { label: "HIGH_END", icon: TagsOutlined },
+]
+
 const OptionsPage = () => {
     const { user } = useAuth()
     const { mutateAsync: PartialCreate } = usePartialConfigCreate(user?.id || "")
@@ -27,14 +34,6 @@ const OptionsPage = () => {
         await PartialCreate({ configurationType: configType })
         navigate(`/build`)
     }
-
-    const cardData = [
-        { label: "DEFAULT", icon: AppstoreAddOutlined },
-        { label: "OFFICE", icon: FundProjectionScreenOutlined },
-        { label: "GAMING", icon: CustomerServiceOutlined },
-        { label: "WORK", icon: DesktopOutlined },
-        { label: "HIGH_END", icon: TagsOutlined },
-    ]
 
     return (
         <div className="options">

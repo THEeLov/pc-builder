@@ -1,7 +1,7 @@
 import { Card } from "antd"
 import "./dialog.css"
 import { useForm, SubmitHandler } from "react-hook-form"
-import { StorageSchema } from "./validation"
+import { StorageSchema } from "../../validationSchemas/dialogs"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import FormField from "../FormField"
@@ -76,7 +76,7 @@ const StorageCreateDialog = () => {
                             name="busType"
                             register={register}
                             type="string"
-                            placeholder="form factor"
+                            placeholder="bus type"
                             error={errors.busType}
                         />
                     </div>
