@@ -9,7 +9,7 @@ import { useSearchParams } from "react-router-dom"
 const Components = () => {
     const [searchParams] = useSearchParams()
     const componentParam = searchParams.get("component")
-    const queryParams = new URLSearchParams(searchParams).toString();
+    const queryParams = new URLSearchParams(searchParams).toString()
 
     const { data, isLoading } = useComponents((componentParam as ComponentTypes) || "", queryParams)
 

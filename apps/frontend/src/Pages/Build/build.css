@@ -42,10 +42,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .component__info > * {
     flex: 1;
+    padding: var(--small-indent);
 }
 
 .component__info__button {

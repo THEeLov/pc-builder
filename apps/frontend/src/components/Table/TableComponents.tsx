@@ -49,8 +49,7 @@ const TableComponents: React.FC<TableComponentsProps> = ({ fetchedData, admin, n
             dataIndex: ["component", "name"],
             key: "component.name",
             onFilter: (value, record) => record.component.name.indexOf(value as string) === 0,
-            sorter: (a, b) => a.component.name.length - b.component.name.length,
-            sortDirections: ["descend"],
+            sorter: (a, b) => a.component.name.toLocaleLowerCase().localeCompare(b.component.name.toLocaleLowerCase()),
             ...getColumnSearchProps("name" as DataIndex),
         },
         {
