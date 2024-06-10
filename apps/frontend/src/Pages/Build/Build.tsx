@@ -1,17 +1,20 @@
 import "./build.css"
 import CustomButton from "../../components/CustomButton/CustomButton"
 import { PlusOutlined } from "@ant-design/icons"
-import { Link } from "react-router-dom"
-import { ComponentType, useEffect, useMemo, useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
+import { useEffect, useMemo, useState } from "react"
 import { usePartialConfig } from "@/hooks/usePartialConfig"
-import { Component, ComponentTypes } from "../../models/components"
-import { MdDelete } from "react-icons/md"
+import { Component } from "../../models/components"
 import useAuth from "@/auth/authProvider"
 import ComponentInfo from "./ComponentInfo"
+import notification from "antd/es/notification"
 
 const Build = () => {
+    const navigate = useNavigate()
+
     const { user } = useAuth()
     const { data, isLoading } = usePartialConfig(user?.id ?? "")
+
     const [info, setInfo] = useState<Array<{ name: string; info: Array<Component | null> }>>([])
     const [totalPrice, setTotalPrice] = useState(0)
 
@@ -46,7 +49,14 @@ const Build = () => {
         setTotalPrice(price)
     }, [componentInfo])
 
-    const handleDelete = () => {}
+    if (data === null) {
+        notification.error({
+            message: "Ooops!",
+            description: "Please select configuration first!",
+            duration: 2,
+        })
+        navigate("/options")
+    }
 
     return (
         <div className="build">

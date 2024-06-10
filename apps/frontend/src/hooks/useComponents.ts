@@ -11,10 +11,10 @@ export const useComponent = (name: ComponentTypes, componentId: string) => {
     return { data, isLoading }
 }
 
-export const useComponents = (name: ComponentTypes) => {
+export const useComponents = (name: ComponentTypes, queryParams: string) => {
     const { data, isLoading } = useQuery({
-        queryKey: ["components", name],
-        queryFn: () => ComponentsApi.getAll(name),
+        queryKey: ["components", name, queryParams],
+        queryFn: () => ComponentsApi.getAll(name, queryParams),
     })
 
     return { data, isLoading }

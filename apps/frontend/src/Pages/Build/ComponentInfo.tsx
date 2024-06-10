@@ -1,6 +1,5 @@
 import CustomButton from "@/components/CustomButton/CustomButton"
-import { Component, ComponentTypes } from "@/models/components"
-import React from "react"
+import { Component } from "@/models/components"
 import { MdDelete } from "react-icons/md"
 import "./build.css"
 import useAuth from "@/auth/authProvider"

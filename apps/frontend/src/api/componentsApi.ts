@@ -10,8 +10,8 @@ async function getSingle(name: ComponentTypes, componentId: string): Promise<Com
     return resp.data
 }
 
-async function getAll(component: ComponentTypes): Promise<Component[]> {
-    const resp = await axiosInstance.get(`${component}`, { withCredentials: true })
+async function getAll(component: ComponentTypes, queryParams: string): Promise<Component[]> {
+    const resp = await axiosInstance.get(`${component}?${queryParams}`, { withCredentials: true })
     return resp.data
 }
 
