@@ -30,6 +30,7 @@ const PriceFilter = () => {
                 min={0}
                 max={1000}
                 onChangeComplete={handlePriceChange}
+                step={10}
             />
             <div className="filter--price__range">
                 <h2>{rangeValues[0]}€</h2>

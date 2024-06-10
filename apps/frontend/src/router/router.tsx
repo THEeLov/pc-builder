@@ -8,6 +8,7 @@ import Components from "../Pages/Components/Components"
 import OptionsPage from "../Pages/Options/OptionsPage"
 import ProtectedRoute from "@/auth/ProtectedRoute"
 import Dashboard from "@/Pages/Dashboard/Dashboard"
+import { DialogProvider } from "@/providers/DialogProvider"
 
 export const router = createBrowserRouter([
     {
@@ -20,22 +21,27 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/options",
-                Component: ProtectedRoute,
+                element: <ProtectedRoute admin={false} />,
                 children: [{ path: "", Component: OptionsPage }],
             },
             {
                 path: "/components",
-                Component: ProtectedRoute,
+                element: <ProtectedRoute admin={false} />,
                 children: [{ path: "", Component: Components }],
             },
             {
                 path: "/build",
-                Component: ProtectedRoute,
+                element: <ProtectedRoute admin={false} />,
                 children: [{ path: "", Component: Build }],
             },
             {
                 path: "/dashboard",
-                Component: Dashboard,
+                element: (
+                    <DialogProvider>
+                        <ProtectedRoute admin={true} />
+                    </DialogProvider>
+                ),
+                children: [{ path: "", Component: Dashboard }],
             },
         ],
     },

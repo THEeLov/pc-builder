@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import FormField from "../FormField"
 import BaseForm from "../BaseForm"
-import { useDialog } from "@/Pages/Dashboard/DialogContext"
+import { useDialog } from "../../hooks/useDialog"
 import { useComponentsCreate } from "@/hooks/useComponents"
 
 type FormFields = z.infer<typeof GpuSchema>
