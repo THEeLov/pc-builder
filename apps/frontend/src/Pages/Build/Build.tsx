@@ -46,9 +46,7 @@ const Build = () => {
         setTotalPrice(price)
     }, [componentInfo])
 
-    const handleDelete =() => {
-        
-    }
+    const handleDelete = () => {}
 
     return (
         <div className="build">
@@ -68,7 +66,10 @@ const Build = () => {
                                 {component.info.map((componentInfo, subIndex) => (
                                     <div key={subIndex} className="component__info">
                                         {componentInfo ? (
-                                            <ComponentInfo componentInfo={componentInfo} name={component.name.toLocaleLowerCase() + "s"}/>
+                                            <ComponentInfo
+                                                componentInfo={componentInfo}
+                                                name={component.name.toLocaleLowerCase() + "s"}
+                                            />
                                         ) : (
                                             <Link to={`/components?component=${component.name.toLocaleLowerCase()}s`}>
                                                 <CustomButton label="Add" btype="primary" icon={<PlusOutlined />} />

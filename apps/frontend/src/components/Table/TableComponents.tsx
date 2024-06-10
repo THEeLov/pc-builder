@@ -92,7 +92,7 @@ const TableComponents: React.FC<TableComponentsProps> = ({ fetchedData, admin, n
 
     const handleAdd = async (record: Component) => {
         setComponentId(record.id)
-        let body = mapComponentToBody(name, record, false);
+        let body = mapComponentToBody(name, record, false)
         await AddComponent(body)
         navigate("/build")
     }
