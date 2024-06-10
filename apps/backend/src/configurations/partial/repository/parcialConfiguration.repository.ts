@@ -63,16 +63,17 @@ async function removeComponent(userId: string, data: ParcialConfigEdit): DbResul
                 pcCaseId: data.PCCaseId,
                 gpuId: data.gpuId,
                 storages: {
-                    disconnect: { id: data.storageId },
+                    disconnect: data.storageId ? { id: data.storageId } : undefined,
                 },
                 rams: {
-                    disconnect: { id: data.ramId },
+                    disconnect: data.storageId ? { id: data.ramId } : undefined,
                 },
             },
             include: includeQuery,
         })
         return Result.ok(config)
     } catch (e) {
+        console.log(e)
         return handleError(e, "in rams or storage cparcialconfig delete")
     }
 }
