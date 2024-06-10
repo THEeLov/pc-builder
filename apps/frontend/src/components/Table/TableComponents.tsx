@@ -13,6 +13,7 @@ import ComponentView from "../ComponentView/ComponentView"
 import { usePartialConfigEdit } from "@/hooks/usePartialConfig"
 import useAuth from "@/auth/authProvider"
 import { useNavigate } from "react-router-dom"
+import { mapComponentToBody } from "@/utils/mapComponentToBody"
 
 type DataIndex = keyof Component["component"]
 
@@ -91,30 +92,7 @@ const TableComponents: React.FC<TableComponentsProps> = ({ fetchedData, admin, n
 
     const handleAdd = async (record: Component) => {
         setComponentId(record.id)
-        let body
-        switch (name) {
-            case "motherboards":
-                body = { motherboardId: record.id, delete: false }
-                break
-            case "processors":
-                body = { processorId: record.id, delete: false }
-                break
-            case "gpus":
-                body = { gpuId: record.id, delete: false }
-                break
-            case "storages":
-                body = { storageId: record.id, delete: false }
-                break
-            case "rams":
-                body = { ramId: record.id, delete: false }
-                break
-            case "power-supplies":
-                body = { powerSupplyId: record.id, delete: false }
-                break
-            default:
-                body = { PCCaseId: record.id, delete: false }
-                break
-        }
+        let body = mapComponentToBody(name, record, false);
         await AddComponent(body)
         navigate("/build")
     }

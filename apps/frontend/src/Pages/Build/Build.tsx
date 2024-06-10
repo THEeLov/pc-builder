@@ -2,11 +2,12 @@ import "./build.css"
 import CustomButton from "../../components/CustomButton/CustomButton"
 import { PlusOutlined } from "@ant-design/icons"
 import { Link } from "react-router-dom"
-import { useEffect, useMemo, useState } from "react"
+import { ComponentType, useEffect, useMemo, useState } from "react"
 import { usePartialConfig } from "@/hooks/usePartialConfig"
-import { Component } from "../../models/components"
+import { Component, ComponentTypes } from "../../models/components"
 import { MdDelete } from "react-icons/md"
 import useAuth from "@/auth/authProvider"
+import ComponentInfo from "./ComponentInfo"
 
 const Build = () => {
     const { user } = useAuth()
@@ -21,7 +22,7 @@ const Build = () => {
         const infoArray: Array<{ name: string; info: Array<Component | null> }> = [
             { name: "Motherboard", info: [data?.motherboard ?? null] },
             { name: "Processor", info: [data?.processor ?? null] },
-            { name: "Rams", info: [...data.rams, null] },
+            { name: "Ram", info: [...data.rams, null] },
             { name: "GPU", info: [data?.gpu ?? null] },
             { name: "Storage", info: [...data.storages, null] },
             { name: "Power-Supplie", info: [data?.powerSupply ?? null] },
@@ -45,6 +46,10 @@ const Build = () => {
         setTotalPrice(price)
     }, [componentInfo])
 
+    const handleDelete =() => {
+        
+    }
+
     return (
         <div className="build">
             <div className="build__headline">
@@ -63,16 +68,7 @@ const Build = () => {
                                 {component.info.map((componentInfo, subIndex) => (
                                     <div key={subIndex} className="component__info">
                                         {componentInfo ? (
-                                            <>
-                                                <img src={componentInfo.component.imageUrl} alt="PHOTO" />
-                                                <h3>{componentInfo.component.name}</h3>
-                                                <h3 className="component__info__price">
-                                                    {componentInfo.component.price} €
-                                                </h3>
-                                                <div className="component__info__button">
-                                                    <CustomButton label="" btype="secondary" icon={<MdDelete />} />
-                                                </div>
-                                            </>
+                                            <ComponentInfo componentInfo={componentInfo} name={component.name.toLocaleLowerCase() + "s"}/>
                                         ) : (
                                             <Link to={`/components?component=${component.name.toLocaleLowerCase()}s`}>
                                                 <CustomButton label="Add" btype="primary" icon={<PlusOutlined />} />
