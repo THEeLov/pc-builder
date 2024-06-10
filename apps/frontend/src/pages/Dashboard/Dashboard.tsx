@@ -1,8 +1,8 @@
 import CustomButton from "@/components/CustomButton/CustomButton"
-import "./dashboard.css"
 import { useState } from "react"
 import { ComponentTypes } from "@/models/components"
 import DashboardTable from "./DashboardTable"
+import "./dashboard.css"
 
 const components = ["Motherboards", "Processors", "Rams", "GPUs", "Storages", "Power-Supplies", "Pc-Cases"]
 

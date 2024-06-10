@@ -5,7 +5,7 @@ import { User } from "@/models/auth"
 const AUTH_DATA_STORAGE_KEY = "authData"
 const AUTH_DATA_DEFAULT = null
 
-const useAuth = () => {
+const useAuthData = () => {
     const [user, setUserData] = useLocalStorageState<User | null>(AUTH_DATA_STORAGE_KEY, {
         defaultValue: AUTH_DATA_DEFAULT,
     })
@@ -25,4 +25,4 @@ const useAuth = () => {
     }
 }
 
-export default useAuth
+export default useAuthData

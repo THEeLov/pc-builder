@@ -3,12 +3,12 @@ import "./main.css"
 import CustomButton from "../../../components/CustomButton/CustomButton"
 import { ToolOutlined } from "@ant-design/icons"
 import { useNavigate } from "react-router-dom"
-import useAuth from "@/auth/authProvider"
+import useAuthData from "../../../hooks/useAuthData"
 import { notification } from "antd"
 
 const Main = () => {
     const navigate = useNavigate()
-    const { user } = useAuth()
+    const { user } = useAuthData()
 
     const handleClick = () => {
         if (user === null) {

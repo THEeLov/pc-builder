@@ -9,7 +9,7 @@ import {
 import "./optionspage.css"
 import { useNavigate } from "react-router-dom"
 import { usePartialConfigCreate, usePartialConfigDelete } from "@/hooks/usePartialConfig"
-import useAuth from "@/auth/authProvider"
+import useAuthData from "../../hooks/useAuthData"
 
 const cardData = [
     { label: "DEFAULT", icon: AppstoreAddOutlined },
@@ -20,7 +20,7 @@ const cardData = [
 ]
 
 const OptionsPage = () => {
-    const { user } = useAuth()
+    const { user } = useAuthData()
     const { mutateAsync: PartialCreate } = usePartialConfigCreate(user?.id || "")
     const { mutateAsync: PartialDelete } = usePartialConfigDelete(user?.id || "")
     const navigate = useNavigate()

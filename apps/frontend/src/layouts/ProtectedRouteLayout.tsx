@@ -1,10 +1,9 @@
-import React from "react"
 import { Navigate, Outlet } from "react-router-dom"
-import useAuth from "./authProvider"
+import useAuthData from "../hooks/useAuthData"
 import { notification } from "antd"
 
-const ProtectedRoute = ({ admin }: { admin: boolean }) => {
-    const { user } = useAuth()
+const ProtectedRouteLayout = ({ admin }: { admin: boolean }) => {
+    const { user } = useAuthData()
 
     if (admin && (user === null || user.role !== "ADMIN")) {
         return <Navigate to="/" />
@@ -22,4 +21,4 @@ const ProtectedRoute = ({ admin }: { admin: boolean }) => {
     return <Outlet />
 }
 
-export default ProtectedRoute
+export default ProtectedRouteLayout

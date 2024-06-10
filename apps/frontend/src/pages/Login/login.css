@@ -1,9 +1,3 @@
-:root {
-    --input-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.315);
-    --input-border: 2px solid rgba(0, 0, 0, 0.075);
-    --button-hovor-color: rgba(0, 0, 0, 0.842);
-}
-
 .login {
     height: 100vh;
     width: 100%;

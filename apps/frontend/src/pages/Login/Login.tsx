@@ -6,14 +6,15 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { loginSchema } from "../../validationSchemas/auth"
 import { Link, useNavigate } from "react-router-dom"
 import { useLogin } from "@/hooks/useAuth"
-import useAuth from "../../auth/authProvider"
+import useAuthData from "../../hooks/useAuthData"
+import FormField from "@/components/FormField"
 
 type FormFields = z.infer<typeof loginSchema>
 
 const Login = () => {
     const { mutateAsync: LoginMutation } = useLogin()
     const navigate = useNavigate()
-    const { login } = useAuth()
+    const { login } = useAuthData()
 
     const {
         register,
@@ -47,12 +48,19 @@ const Login = () => {
                 <div className="login__form-container">
                     <h1 className="login__form-container__headline">Sign in</h1>
                     <form className="login__form" onSubmit={handleSubmit(onSubmit)}>
-                        <input {...register("email")} className="form-input" type="text" placeholder="email" />
-                        <input
-                            {...register("password")}
-                            className="form-input"
+                        <FormField
+                            name="email"
+                            register={register}
+                            type="text"
+                            placeholder="email"
+                            error={errors.email}
+                        />
+                        <FormField
+                            name="password"
+                            register={register}
                             type="password"
                             placeholder="password"
+                            error={errors.password}
                         />
                         <button className="form-button" type="submit">
                             Sign In

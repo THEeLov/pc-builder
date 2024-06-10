@@ -2,12 +2,12 @@ import CustomButton from "@/components/CustomButton/CustomButton"
 import { Component } from "@/models/components"
 import { MdDelete } from "react-icons/md"
 import "./build.css"
-import useAuth from "@/auth/authProvider"
+import useAuthData from "../../hooks/useAuthData"
 import { usePartialConfigEdit } from "@/hooks/usePartialConfig"
 import { mapComponentToBody } from "@/utils/mapComponentToBody"
 
 const ComponentInfo = ({ componentInfo, name }: { componentInfo: Component; name: string }) => {
-    const { user } = useAuth()
+    const { user } = useAuthData()
     const { mutateAsync: DeleteFromPartial } = usePartialConfigEdit(user?.id ?? "")
 
     const handleDelete = async () => {

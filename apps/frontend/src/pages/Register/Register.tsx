@@ -4,15 +4,16 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { registerSchema } from "../../validationSchemas/auth"
 import { Link, useNavigate } from "react-router-dom"
 import { useRegister } from "@/hooks/useAuth"
-import useAuth from "@/auth/authProvider"
+import useAuthData from "../../hooks/useAuthData"
 import Bob from "../../images/sign_UP_bob.png"
 import "./register.css"
+import FormField from "@/components/FormField"
 
 type FormFields = z.infer<typeof registerSchema>
 
 const Register = () => {
     const { mutateAsync: RegisterMutation } = useRegister()
-    const { login } = useAuth()
+    const { login } = useAuthData()
     const navigate = useNavigate()
 
     const {
@@ -51,29 +52,34 @@ const Register = () => {
                 <div className="register__form-container">
                     <h1 className="register__form-container__headline">Sign Up</h1>
                     <form className="register__form" onSubmit={handleSubmit(onSubmit)}>
-                        <input {...register("username")} className="form-input" type="text" placeholder="username" />
-                        {errors.username && <div className="error-message">{errors.username.message}</div>}
-
-                        <input {...register("email")} className="form-input" type="email" placeholder="email" />
-                        {errors.email && <div className="error-message">{errors.email.message}</div>}
-
-                        <input
-                            {...register("password")}
-                            className="form-input"
+                        <FormField
+                            name="username"
+                            register={register}
+                            type="text"
+                            placeholder="username"
+                            error={errors.username}
+                        />
+                        <FormField
+                            name="email"
+                            register={register}
+                            type="email"
+                            placeholder="email"
+                            error={errors.email}
+                        />
+                        <FormField
+                            name="password"
+                            register={register}
                             type="password"
                             placeholder="password"
+                            error={errors.password}
                         />
-                        {errors.password && <div className="error-message">{errors.password.message}</div>}
-
-                        <input
-                            {...register("confirmPassword")}
-                            className="form-input"
+                        <FormField
+                            name="confirmPassword"
+                            register={register}
                             type="password"
                             placeholder="confirm password"
+                            error={errors.confirmPassword}
                         />
-                        {errors.confirmPassword && (
-                            <div className="error-message">{errors.confirmPassword.message}</div>
-                        )}
 
                         <button className="form-button" type="submit">
                             Sign Up

@@ -1,17 +1,17 @@
-import "./build.css"
 import CustomButton from "../../components/CustomButton/CustomButton"
 import { PlusOutlined } from "@ant-design/icons"
 import { Link, useNavigate } from "react-router-dom"
 import { useEffect, useMemo, useState } from "react"
 import { usePartialConfig } from "@/hooks/usePartialConfig"
 import { Component } from "../../models/components"
-import useAuth from "@/auth/authProvider"
+import useAuthData from "../../hooks/useAuthData"
 import ComponentInfo from "./ComponentInfo"
 import notification from "antd/es/notification"
+import "./build.css"
 
 const Build = () => {
     const navigate = useNavigate()
-    const { user } = useAuth()
+    const { user } = useAuthData()
 
     // It's guranteed that user is logged in
     const { data, isLoading } = usePartialConfig(user?.id ?? "")

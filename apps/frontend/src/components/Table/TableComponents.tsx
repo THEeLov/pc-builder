@@ -11,7 +11,7 @@ import { Component, ComponentTypes } from "../../models/components"
 import { useState } from "react"
 import ComponentView from "../ComponentView/ComponentView"
 import { usePartialConfigEdit } from "@/hooks/usePartialConfig"
-import useAuth from "@/auth/authProvider"
+import useAuthData from "../../hooks/useAuthData"
 import { useNavigate } from "react-router-dom"
 import { mapComponentToBody } from "@/utils/mapComponentToBody"
 
@@ -25,7 +25,7 @@ type TableComponentsProps = {
 
 // This component should be better decomposed, doesnt have single responsibility
 const TableComponents: React.FC<TableComponentsProps> = ({ fetchedData, admin, name }) => {
-    const { user } = useAuth()
+    const { user } = useAuthData()
     const [openView, setOpenView] = useState(false)
     const [componentId, setComponentId] = useState("")
     const navigate = useNavigate()
