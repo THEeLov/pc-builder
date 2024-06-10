@@ -10,6 +10,12 @@ async function getMany(query: ComponentQuery): DbResult<RAMWithComponent[]> {
         const rams = await prisma.rAM.findMany({
             where: {
                 memoryType: query.ramType,
+                component: {
+                    price: {
+                        gte: query.minPrice,
+                        lte: query.maxPrice,
+                    },
+                },
             },
             include: {
                 component: true,

@@ -9,6 +9,7 @@ import { convertConfig, convertConfigurationToQueryType } from "../../universal_
 import { FullPartialConfig } from "../../../configurations/partial/parcialConfigTypes"
 import InternalError from "../../../errors/InternalError"
 import z from "zod"
+import { PriceQuery } from "../validation/validation"
 import { authorizeAdmin } from "../../../utils"
 
 type Repository<T> = {
@@ -41,6 +42,10 @@ async function getMany<T>(repo: Repository<T>, req: Request, res: Response): Pro
     if (!validSessionCookie.success) {
         return res.status(401).json(Unauthorized)
     }
+    const priceQuery = PriceQuery.safeParse(req.query)
+    if (!priceQuery.success) {
+        return res.status(400).json(BadRequest)
+    }
     const sessionResult = await SessionsRepository.getFull(validSessionCookie.data.sessionId)
     let query
     if (sessionResult.isOk && sessionResult.value.user.partialUserConfiguration) {
@@ -49,11 +54,13 @@ async function getMany<T>(repo: Repository<T>, req: Request, res: Response): Pro
     } else {
         query = {}
     }
-    const ramsResult = await repo.getMany(query)
-    if (!ramsResult.isOk) {
+    query.maxPrice = priceQuery.data.maxPrice ? parseInt(priceQuery.data.maxPrice) : undefined
+    query.minPrice = priceQuery.data.minPrice ? parseInt(priceQuery.data.minPrice) : undefined
+    const result = await repo.getMany(query)
+    if (!result.isOk) {
         return res.status(500).json(InternalError)
     }
-    return res.status(200).json(ramsResult.value)
+    return res.status(200).json(result.value)
 }
 
 async function getSingle<T>(repo: Repository<T>, req: Request, res: Response): Promise<Response<T>> {
