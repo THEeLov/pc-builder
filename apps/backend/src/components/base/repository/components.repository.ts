@@ -11,11 +11,20 @@ import RAMRepo from "../../rams/repository/rams.repository"
 import PCCaseRepo from "../../pcCase/repository/pcCase.repository"
 import PowerSupplyRepo from "../../powerSupply/repository/powerSupply.repository"
 
-async function getMany(type: ComponentType | undefined): DbResult<Component[]> {
+type PriceQuery = {
+    maxPrice?: string
+    minPrice?: string
+}
+
+async function getMany(query: PriceQuery, type?: ComponentType): DbResult<Component[]> {
     try {
         const components = await prisma.component.findMany({
             where: {
                 componentType: type,
+                price: {
+                    gte: query.minPrice? parseInt(query.minPrice) : undefined,
+                    lte: query.maxPrice? parseInt(query.maxPrice) : undefined,
+                },
             },
         })
         return Result.ok(components)

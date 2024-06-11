@@ -5,6 +5,7 @@ import InternalError from "../../../errors/InternalError"
 import BadRequest from "../../../errors/BadRequest"
 import { authorizeAdmin } from "../../../utils"
 import Unauthorized from "../../../errors/Unauthorized"
+import { Component } from "@prisma/client"
 
 export async function remove(req: Request, res: Response): Promise<Response<void>> {
     const id = baseValidation.IdRequestParams.safeParse(req.params)
@@ -20,4 +21,14 @@ export async function remove(req: Request, res: Response): Promise<Response<void
         return res.status(500).json(InternalError)
     }
     return res.status(200).json()
+}
+
+export async function getMany(req: Request, res: Response): Promise<Response<Component[]>> {
+    const result = await ComponentRepo.getMany(req.query)
+    if (!result.isOk) {
+        return res.status(500).json(InternalError)
+    }
+    return res.status(200).json(result.value.map(component => {
+        return {component}
+    }))
 }
