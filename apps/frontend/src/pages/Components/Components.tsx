@@ -1,10 +1,10 @@
-import "./components.css"
 import PriceFilter from "./PriceFilter/PriceFilter"
 import TableComponents from "@/components/Table/TableComponents"
 import { useComponents } from "@/hooks/useComponents"
 import { ComponentTypes } from "@/models/components"
 import { Spin } from "antd"
 import { useSearchParams } from "react-router-dom"
+import "./components.css"
 
 const Components = () => {
     const [searchParams] = useSearchParams()

@@ -4,7 +4,7 @@ import { Button, Input, Space } from "antd"
 import type { InputRef, TableColumnType } from "antd"
 import type { FilterDropdownProps } from "antd/es/table/interface"
 import Highlighter from "react-highlight-words"
-import { Component } from "../../models/components"
+import { Component } from "../models/components"
 
 type DataIndex = keyof Component["component"]
 

@@ -1,19 +1,12 @@
-import CustomButton from "../CustomButton/CustomButton"
-import { TiPlus } from "react-icons/ti"
 import type { TableColumnsType } from "antd"
 import { Table } from "antd"
-import { useSearch } from "./useSearch"
-import { MdDelete } from "react-icons/md"
-import { FaEye } from "react-icons/fa"
-import "./table.css"
-import { useComponent, useComponentsDelete } from "@/hooks/useComponents"
+import { useSearch } from "../../hooks/useSearch"
+import { useComponent } from "@/hooks/useComponents"
 import { Component, ComponentTypes } from "../../models/components"
 import { useState } from "react"
 import ComponentView from "../ComponentView/ComponentView"
-import { usePartialConfigEdit } from "@/hooks/usePartialConfig"
-import useAuthData from "../../hooks/useAuthData"
-import { useNavigate } from "react-router-dom"
-import { mapComponentToBody } from "@/utils/mapComponentToBody"
+import TableActions from "./TableActions"
+import "./table.css"
 
 type DataIndex = keyof Component["component"]
 
@@ -23,15 +16,9 @@ type TableComponentsProps = {
     name: ComponentTypes
 }
 
-// This component should be better decomposed, doesnt have single responsibility
 const TableComponents: React.FC<TableComponentsProps> = ({ fetchedData, admin, name }) => {
-    const { user } = useAuthData()
     const [openView, setOpenView] = useState(false)
     const [componentId, setComponentId] = useState("")
-    const navigate = useNavigate()
-
-    const { mutateAsync: DeleteComponent } = useComponentsDelete(componentId)
-    const { mutateAsync: AddComponent } = usePartialConfigEdit(user?.id ?? "")
 
     const { data } = useComponent(name, componentId)
 
@@ -63,20 +50,13 @@ const TableComponents: React.FC<TableComponentsProps> = ({ fetchedData, admin, n
             dataIndex: "",
             key: "add",
             render: (record: Component) => (
-                <div className="table-buttons">
-                    <span onClick={() => handleView(record)}>
-                        <CustomButton label="" btype="secondary" icon={<FaEye />} />
-                    </span>
-                    {admin ? (
-                        <span onClick={() => handleDelete(record)}>
-                            <CustomButton label="" btype="primary" icon={<MdDelete />} />
-                        </span>
-                    ) : (
-                        <div onClick={() => handleAdd(record)}>
-                            <CustomButton label="Add" btype="primary" icon={<TiPlus />} />
-                        </div>
-                    )}
-                </div>
+                <TableActions
+                    record={record}
+                    admin={admin}
+                    name={name}
+                    setOpenView={setOpenView}
+                    setComponentId={setComponentId}
+                />
             ),
 
             align: "right",
@@ -84,30 +64,13 @@ const TableComponents: React.FC<TableComponentsProps> = ({ fetchedData, admin, n
         },
     ]
 
-    const handleDelete = async (record: Component) => {
-        setComponentId(record.component.id)
-        await DeleteComponent()
-    }
-
-    const handleAdd = async (record: Component) => {
-        setComponentId(record.id)
-        let body = mapComponentToBody(name, record, false)
-        await AddComponent(body)
-        navigate("/build")
-    }
-
-    const handleView = (record: Component) => {
-        setComponentId(record.id)
-        setOpenView(true)
-    }
-
     const handleCloseView = () => {
         setOpenView(false)
     }
 
     return (
         <>
-            <Table columns={columns} pagination={{ position: ["none", "bottomCenter"] }} dataSource={fetchedData} />
+            <Table columns={columns} scroll={{ x: 480 }} pagination={{ position: ["none", "bottomCenter"] }} dataSource={fetchedData} />
             {openView && data && <ComponentView data={data} handleClose={handleCloseView} />}
         </>
     )
