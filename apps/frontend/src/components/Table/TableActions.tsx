@@ -1,14 +1,14 @@
-import React from 'react'
-import { FaEye } from 'react-icons/fa'
-import { MdDelete } from 'react-icons/md'
-import { TiPlus } from 'react-icons/ti'
-import { mapComponentToBody } from '@/utils/mapComponentToBody'
-import { Component } from '@/models/components'
-import useAuthData from '@/hooks/useAuthData'
-import { useNavigate } from 'react-router-dom'
-import { useComponentsDelete } from '@/hooks/useComponents'
-import { usePartialConfigEdit } from '@/hooks/usePartialConfig'
-import CustomButton from '../CustomButton/CustomButton'
+import React from "react"
+import { FaEye } from "react-icons/fa"
+import { MdDelete } from "react-icons/md"
+import { TiPlus } from "react-icons/ti"
+import { mapComponentToBody } from "@/utils/mapComponentToBody"
+import { Component } from "@/models/components"
+import useAuthData from "@/hooks/useAuthData"
+import { useNavigate } from "react-router-dom"
+import { useComponentsDelete } from "@/hooks/useComponents"
+import { usePartialConfigEdit } from "@/hooks/usePartialConfig"
+import CustomButton from "../CustomButton/CustomButton"
 
 interface TableActionsProps {
     record: Component
@@ -21,7 +21,7 @@ interface TableActionsProps {
 const TableActions: React.FC<TableActionsProps> = ({ record, admin, name, setOpenView, setComponentId }) => {
     const { user } = useAuthData()
     const navigate = useNavigate()
-    
+
     const { mutateAsync: DeleteComponent } = useComponentsDelete(record.component.id)
     const { mutateAsync: AddComponent } = usePartialConfigEdit(user?.id ?? "")
 

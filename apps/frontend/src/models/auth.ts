@@ -4,10 +4,10 @@ export type User = {
     email: string
     role: string
 }
-export type RegisterUser = Omit<User, 'id' | 'role'> & {
+export type RegisterUser = Omit<User, "id" | "role"> & {
     password: string
 }
 
-export type LoginUser = Pick<User, 'email'> & {
+export type LoginUser = Pick<User, "email"> & {
     password: string
 }

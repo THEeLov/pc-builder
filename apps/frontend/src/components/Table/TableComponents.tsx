@@ -70,7 +70,12 @@ const TableComponents: React.FC<TableComponentsProps> = ({ fetchedData, admin, n
 
     return (
         <>
-            <Table columns={columns} scroll={{ x: 480 }} pagination={{ position: ["none", "bottomCenter"] }} dataSource={fetchedData} />
+            <Table
+                columns={columns}
+                scroll={{ x: 480 }}
+                pagination={{ position: ["none", "bottomCenter"] }}
+                dataSource={fetchedData}
+            />
             {openView && data && <ComponentView data={data} handleClose={handleCloseView} />}
         </>
     )
