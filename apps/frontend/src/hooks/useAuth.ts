@@ -1,4 +1,4 @@
-import { useQuery, useMutation, Register } from "@tanstack/react-query"
+import { useMutation } from "@tanstack/react-query"
 import { LoginUser, RegisterUser } from "@/models/auth"
 
 import AuthApi from "../api/authApi"

@@ -34,7 +34,7 @@ const Build = () => {
         ]
 
         return infoArray
-    }, [data, isLoading])
+    }, [data])
 
     useEffect(() => {
         setInfo(componentInfo)

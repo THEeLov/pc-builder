@@ -1,6 +1,5 @@
 import React from "react"
 
-// Any types should be changed
 interface FormFieldProps {
     name: string
     register: any

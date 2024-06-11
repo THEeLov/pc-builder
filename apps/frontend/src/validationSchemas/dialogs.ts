@@ -19,6 +19,11 @@ const ComponentSchema = z.object({
     manufacturer: z.string().min(1),
 })
 
+export const BaseSchema = z.object({
+    component: ComponentSchema,
+    image: imageUrlSchema
+})
+
 export const MotherboardSchema = z.object({
     component: ComponentSchema,
     image: imageUrlSchema,

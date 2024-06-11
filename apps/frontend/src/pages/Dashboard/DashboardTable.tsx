@@ -30,21 +30,19 @@ const DashboardTable = ({ name }: { name: ComponentTypes }) => {
 
     const CurrentDialog = componentMapping[name]
 
+    if (isLoading) {
+        return <Spin />
+    }
+
     return (
-        <>
-            {isLoading ? (
-                <Spin />
-            ) : (
-                <div className="dashboard-components">
-                    <div className="dashboard-components__add-button" onClick={openDialog}>
-                        <CustomButton label="" btype="primary" icon={<FaPlus />}></CustomButton>
-                    </div>
-                    {isDialogOpen && CurrentDialog && <CurrentDialog />}
-                    <h2>{name.toLocaleUpperCase()}</h2>
-                    {data && <TableComponents fetchedData={data} admin={true} name={name} />}
-                </div>
-            )}
-        </>
+        <div className="dashboard-components">
+            <div className="dashboard-components__add-button" onClick={openDialog}>
+                <CustomButton label="" btype="primary" icon={<FaPlus />} />
+            </div>
+            {isDialogOpen && CurrentDialog && <CurrentDialog />}
+            <h2>{name.toLocaleUpperCase()}</h2>
+            {data && <TableComponents fetchedData={data} admin={true} name={name} />}
+        </div>
     )
 }
 

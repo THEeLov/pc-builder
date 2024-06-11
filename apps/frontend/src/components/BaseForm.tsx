@@ -1,7 +1,7 @@
 import React from "react"
 import FormField from "./FormField"
 
-// Any type in params should be changed
+// Any type in params should be changed but i dont know how
 const BaseForm: React.FC<any> = ({ register, errors }) => {
     return (
         <div className="dialog-form__grid--first">

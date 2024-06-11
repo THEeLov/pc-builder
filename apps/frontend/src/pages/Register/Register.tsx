@@ -26,7 +26,7 @@ const Register = () => {
     })
 
     const onSubmit: SubmitHandler<FormFields> = async (data) => {
-        if (data.password != data.confirmPassword) {
+        if (data.password !== data.confirmPassword) {
             setError("root", { message: "Passwords are not matching" })
             return
         }

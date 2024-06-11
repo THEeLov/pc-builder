@@ -11,7 +11,7 @@ const ComponentInfo = ({ componentInfo, name }: { componentInfo: Component; name
     const { mutateAsync: DeleteFromPartial } = usePartialConfigEdit(user?.id ?? "")
 
     const handleDelete = async () => {
-        let data = mapComponentToBody(name, componentInfo, true)
+        const data = mapComponentToBody(name, componentInfo, true)
         await DeleteFromPartial(data)
     }
 
@@ -19,7 +19,7 @@ const ComponentInfo = ({ componentInfo, name }: { componentInfo: Component; name
         <>
             <div>
                 <div className="component__info__image-container">
-                    <img src={componentInfo.component.imageUrl} alt="PHOTO" className="component__info__image" />
+                    <img src={componentInfo.component.imageUrl} alt="not working" className="component__info__image" />
                 </div>
             </div>
             <h3>{componentInfo.component.name}</h3>
