@@ -22,8 +22,8 @@ async function getMany(query: PriceQuery, type?: ComponentType): DbResult<Compon
             where: {
                 componentType: type,
                 price: {
-                    gte: query.minPrice? parseInt(query.minPrice) : undefined,
-                    lte: query.maxPrice? parseInt(query.maxPrice) : undefined,
+                    gte: query.minPrice ? parseInt(query.minPrice) : undefined,
+                    lte: query.maxPrice ? parseInt(query.maxPrice) : undefined,
                 },
             },
         })

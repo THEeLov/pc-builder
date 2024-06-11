@@ -28,7 +28,9 @@ export async function getMany(req: Request, res: Response): Promise<Response<Com
     if (!result.isOk) {
         return res.status(500).json(InternalError)
     }
-    return res.status(200).json(result.value.map(component => {
-        return {component}
-    }))
+    return res.status(200).json(
+        result.value.map((component) => {
+            return { component }
+        }),
+    )
 }
