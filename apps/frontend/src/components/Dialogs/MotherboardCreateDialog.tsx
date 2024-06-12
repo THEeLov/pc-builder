@@ -7,6 +7,7 @@ import FormField from "../FormField"
 import BaseForm from "../BaseForm"
 import { useDialog } from "../../hooks/useDialog"
 import { useComponentsCreate } from "@/hooks/useComponents"
+import { showSuccessNotification } from "@/utils/showNotfication"
 import "./dialog.css"
 
 type FormFields = z.infer<typeof MotherboardSchema>
@@ -42,6 +43,7 @@ const MotherboardCreateDialog = () => {
         console.log(formData)
         try {
             await CreateMotherboard(formData)
+            showSuccessNotification("Motherboard created successfully")
             closeDialog()
         } catch (err) {
             // ignored for now maybe forever who knows

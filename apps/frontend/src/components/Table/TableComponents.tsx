@@ -7,6 +7,7 @@ import { useState } from "react"
 import ComponentView from "../ComponentView/ComponentView"
 import TableActions from "./TableActions"
 import "./table.css"
+import useAuthData from "@/hooks/useAuthData"
 
 type DataIndex = keyof Component["component"]
 
@@ -17,6 +18,7 @@ type TableComponentsProps = {
 }
 
 const TableComponents: React.FC<TableComponentsProps> = ({ fetchedData, admin, name }) => {
+    const { user } = useAuthData();
     const [openView, setOpenView] = useState(false)
     const [componentId, setComponentId] = useState("")
 
@@ -56,6 +58,7 @@ const TableComponents: React.FC<TableComponentsProps> = ({ fetchedData, admin, n
                     name={name}
                     setOpenView={setOpenView}
                     setComponentId={setComponentId}
+                    loggedIn={user !== null}
                 />
             ),
 

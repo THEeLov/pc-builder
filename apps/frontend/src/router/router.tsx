@@ -26,8 +26,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/components",
-                element: <ProtectedRouteLayout admin={false} />,
-                children: [{ path: "", Component: Components }],
+                Component: Components
             },
             {
                 path: "/build",

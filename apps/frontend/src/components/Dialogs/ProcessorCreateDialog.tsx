@@ -1,5 +1,4 @@
 import { Card } from "antd"
-import "./dialog.css"
 import { useForm, SubmitHandler } from "react-hook-form"
 import { ProcessorSchema } from "../../validationSchemas/dialogs"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -8,6 +7,8 @@ import FormField from "../FormField"
 import BaseForm from "../BaseForm"
 import { useDialog } from "../../hooks/useDialog"
 import { useComponentsCreate } from "@/hooks/useComponents"
+import { showSuccessNotification } from "@/utils/showNotfication"
+import "./dialog.css"
 
 type FormFields = z.infer<typeof ProcessorSchema>
 
@@ -40,6 +41,7 @@ const ProcessorCreateDialog = () => {
         console.log(formData)
         try {
             await CreateProcessor(formData)
+            showSuccessNotification("Processor created successfully")
             closeDialog()
         } catch (err) {
             // ignored for now maybe forever who knows

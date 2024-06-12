@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom"
 import { useComponentsDelete } from "@/hooks/useComponents"
 import { usePartialConfigEdit } from "@/hooks/usePartialConfig"
 import CustomButton from "../CustomButton/CustomButton"
+import { showLoginNotification } from "@/utils/showNotfication"  
 
 interface TableActionsProps {
     record: Component
@@ -16,9 +17,10 @@ interface TableActionsProps {
     name: string
     setOpenView: React.Dispatch<React.SetStateAction<boolean>>
     setComponentId: React.Dispatch<React.SetStateAction<string>>
+    loggedIn: boolean
 }
 
-const TableActions: React.FC<TableActionsProps> = ({ record, admin, name, setOpenView, setComponentId }) => {
+const TableActions: React.FC<TableActionsProps> = ({ record, admin, name, setOpenView, setComponentId, loggedIn }) => {
     const { user } = useAuthData()
     const navigate = useNavigate()
 
@@ -31,6 +33,10 @@ const TableActions: React.FC<TableActionsProps> = ({ record, admin, name, setOpe
     }
 
     const handleAdd = async () => {
+        if (!loggedIn) {
+            showLoginNotification("Please login in to add component")
+            return
+        }
         setComponentId(record.id)
         const body = mapComponentToBody(name, record, false)
         await AddComponent(body)
@@ -38,6 +44,10 @@ const TableActions: React.FC<TableActionsProps> = ({ record, admin, name, setOpe
     }
 
     const handleView = () => {
+        if (!loggedIn) {
+            showLoginNotification("Please log in to view component details")
+            return
+        }
         setComponentId(record.id)
         setOpenView(true)
     }

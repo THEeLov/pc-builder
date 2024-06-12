@@ -1,6 +1,6 @@
 import { Navigate, Outlet } from "react-router-dom"
 import useAuthData from "../hooks/useAuthData"
-import { notification } from "antd"
+import { showLoginNotification } from "@/utils/showNotfication"
 
 const ProtectedRouteLayout = ({ admin }: { admin: boolean }) => {
     const { user } = useAuthData()
@@ -10,11 +10,7 @@ const ProtectedRouteLayout = ({ admin }: { admin: boolean }) => {
     }
 
     if (user === null) {
-        notification.error({
-            message: "Ooops!",
-            description: "Please log in to continue",
-            duration: 2.5,
-        })
+        showLoginNotification("Please log in to continue.")
         return <Navigate to="/login" />
     }
 
