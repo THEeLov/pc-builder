@@ -9,9 +9,9 @@ export const showLoginNotification = (message: string) => {
 }
 
 export const showSuccessNotification = (message: string) => {
-  notification.success({
-    message: "Success!",
-    description: `${message}`,
-    duration: 3,
-})
+    notification.success({
+        message: "Success!",
+        description: `${message}`,
+        duration: 3,
+    })
 }

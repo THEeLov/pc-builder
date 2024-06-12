@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom"
 import { useComponentsDelete } from "@/hooks/useComponents"
 import { usePartialConfigEdit } from "@/hooks/usePartialConfig"
 import CustomButton from "../CustomButton/CustomButton"
-import { showLoginNotification } from "@/utils/showNotfication"  
+import { showLoginNotification } from "@/utils/showNotfication"
 
 interface TableActionsProps {
     record: Component

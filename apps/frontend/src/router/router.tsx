@@ -26,7 +26,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/components",
-                Component: Components
+                Component: Components,
             },
             {
                 path: "/build",

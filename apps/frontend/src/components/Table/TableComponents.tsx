@@ -18,7 +18,7 @@ type TableComponentsProps = {
 }
 
 const TableComponents: React.FC<TableComponentsProps> = ({ fetchedData, admin, name }) => {
-    const { user } = useAuthData();
+    const { user } = useAuthData()
     const [openView, setOpenView] = useState(false)
     const [componentId, setComponentId] = useState("")
 

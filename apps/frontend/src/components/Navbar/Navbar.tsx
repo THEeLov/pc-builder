@@ -42,6 +42,11 @@ const Navbar = () => {
                 </Link>
             </div>
             <div className="nav__login">
+                {user !== null && user.role === "ADMIN" && (
+                    <Link to="/dashboard">
+                        <CustomButton label="Dashboard" btype="primary" />
+                    </Link>
+                )}
                 <div className="nav-mobile">{renderMobileLogin()}</div>
                 <div className="nav-desktop">{renderDesktopLogin()}</div>
             </div>
