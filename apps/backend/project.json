@@ -50,7 +50,7 @@
                 "production": {
                     "buildTarget": "backend:build:production"
                 }
-          },
+            },
             "dependsOn": [
                 {
                     "target": "db-init",
