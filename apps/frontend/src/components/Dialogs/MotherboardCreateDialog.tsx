@@ -3,8 +3,8 @@ import { useForm, SubmitHandler } from "react-hook-form"
 import { MotherboardSchema } from "../../validationSchemas/dialogs"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
-import FormField from "../FormField"
-import BaseForm from "../BaseForm"
+import FormField from "../Form/FormField"
+import BaseForm from "../Form/BaseForm"
 import { useDialog } from "../../hooks/useDialog"
 import { useComponentsCreate } from "@/hooks/useComponents"
 import { showSuccessNotification } from "@/utils/showNotfication"
@@ -68,43 +68,49 @@ const MotherboardCreateDialog = () => {
                             name="socket"
                             register={register}
                             type="text"
-                            placeholder="socket"
+                            placeholder="LGA 1200"
                             error={errors.socket}
+                            label="Socket"
                         />
                         <FormField
                             name="formFactor"
                             register={register}
                             type="text"
-                            placeholder="form factor"
+                            placeholder="ATX"
                             error={errors.formFactor}
+                            label="Form Factor"
                         />
                         <FormField
                             name="ramSlots"
                             register={register}
                             type="number"
-                            placeholder="ram slots"
+                            placeholder="3"
                             error={errors.ramSlots}
+                            label="Ram Slots"
                         />
                         <FormField
                             name="ramType"
                             register={register}
-                            type="string"
-                            placeholder="ram type"
+                            type="text"
+                            placeholder="VRAM"
                             error={errors.ramType}
+                            label="Ram Type"
                         />
                         <FormField
                             name="gpuInterface"
                             register={register}
-                            type="string"
-                            placeholder="gpu interface"
+                            type="text"
+                            placeholder="AGP"
                             error={errors.gpuInterface}
+                            label="GPU Interface"
                         />
                         <FormField
                             name="storageBusType"
                             register={register}
-                            type="string"
-                            placeholder="storage bus type"
+                            type="text"
+                            placeholder="SATA"
                             error={errors.storageBusType}
+                            label="Storage Bus Type"
                         />
                     </div>
                 </div>

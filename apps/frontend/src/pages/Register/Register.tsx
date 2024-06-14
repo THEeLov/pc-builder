@@ -7,7 +7,7 @@ import { useRegister } from "@/hooks/useAuth"
 import useAuthData from "../../hooks/useAuthData"
 import Bob from "../../images/sign_UP_bob.png"
 import "./register.css"
-import FormField from "@/components/FormField"
+import FormField from "@/components/Form/FormField"
 
 type FormFields = z.infer<typeof registerSchema>
 
@@ -56,15 +56,17 @@ const Register = () => {
                             name="username"
                             register={register}
                             type="text"
-                            placeholder="username"
+                            placeholder="mornrise"
                             error={errors.username}
+                            label="Username"
                         />
                         <FormField
                             name="email"
                             register={register}
                             type="email"
-                            placeholder="email"
+                            placeholder="user@example.com"
                             error={errors.email}
+                            label="Email"
                         />
                         <FormField
                             name="password"
@@ -72,6 +74,7 @@ const Register = () => {
                             type="password"
                             placeholder="password"
                             error={errors.password}
+                            label="Password"
                         />
                         <FormField
                             name="confirmPassword"
@@ -79,6 +82,7 @@ const Register = () => {
                             type="password"
                             placeholder="confirm password"
                             error={errors.confirmPassword}
+                            label="Confirm Password"
                         />
 
                         <button className="form-button" type="submit">

@@ -3,8 +3,8 @@ import { useForm, SubmitHandler } from "react-hook-form"
 import { RamSchema } from "../../validationSchemas/dialogs"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
-import FormField from "../FormField"
-import BaseForm from "../BaseForm"
+import FormField from "../Form/FormField"
+import BaseForm from "../Form/BaseForm"
 import { useDialog } from "../../hooks/useDialog"
 import { useComponentsCreate } from "@/hooks/useComponents"
 import { showSuccessNotification } from "@/utils/showNotfication"
@@ -64,22 +64,25 @@ const RamCreateDialog = () => {
                             name="computerType"
                             register={register}
                             type="text"
-                            placeholder="computer type"
+                            placeholder="DESKTOP"
                             error={errors.computerType}
+                            label="Computer Type"
                         />
                         <FormField
                             name="memoryType"
                             register={register}
                             type="text"
-                            placeholder="memory type"
+                            placeholder="DDR2"
                             error={errors.memoryType}
+                            label="Memory Type"
                         />
                         <FormField
                             name="capacity"
                             register={register}
                             type="number"
-                            placeholder="capacity"
+                            placeholder="128"
                             error={errors.capacity}
+                            label="Capacity"
                         />
                     </div>
                 </div>

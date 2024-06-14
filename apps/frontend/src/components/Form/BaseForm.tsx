@@ -9,24 +9,34 @@ const BaseForm: React.FC<any> = ({ register, errors }) => {
                 name="component.name"
                 register={register}
                 type="text"
-                placeholder="name"
+                placeholder="HyperX XC450"
                 error={errors?.component?.name}
+                label="Name"
             />
             <FormField
                 name="component.price"
                 register={register}
                 type="number"
-                placeholder="price"
+                placeholder="999"
                 error={errors?.component?.price}
+                label="Price"
             />
             <FormField
                 name="component.manufacturer"
                 register={register}
                 type="string"
-                placeholder="manufacturer"
+                placeholder="Bob's company"
                 error={errors?.component?.manufacturer}
+                label="Manufacturer"
             />
-            <FormField name="image" register={register} type="file" placeholder="image" error={errors?.image} />
+            <FormField
+                name="image"
+                register={register}
+                type="file"
+                placeholder="image"
+                error={errors?.image}
+                label="Image"
+            />
         </div>
     )
 }

@@ -3,8 +3,8 @@ import { useForm, SubmitHandler } from "react-hook-form"
 import { StorageSchema } from "../../validationSchemas/dialogs"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
-import FormField from "../FormField"
-import BaseForm from "../BaseForm"
+import FormField from "../Form/FormField"
+import BaseForm from "../Form/BaseForm"
 import { useDialog } from "../../hooks/useDialog"
 import { useComponentsCreate } from "@/hooks/useComponents"
 import { showSuccessNotification } from "@/utils/showNotfication"
@@ -64,22 +64,25 @@ const StorageCreateDialog = () => {
                             name="storageType"
                             register={register}
                             type="string"
-                            placeholder="storage type"
+                            placeholder="SSD"
                             error={errors.storageType}
+                            label="Storage Type"
                         />
                         <FormField
                             name="capacity"
                             register={register}
                             type="number"
-                            placeholder="efficiency"
+                            placeholder="512"
                             error={errors.capacity}
+                            label="Capacity"
                         />
                         <FormField
                             name="busType"
                             register={register}
                             type="string"
-                            placeholder="bus type"
+                            placeholder="SATA"
                             error={errors.busType}
+                            label="Bus Type"
                         />
                     </div>
                 </div>

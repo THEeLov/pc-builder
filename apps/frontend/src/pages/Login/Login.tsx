@@ -7,7 +7,7 @@ import { loginSchema } from "../../validationSchemas/auth"
 import { Link, useNavigate } from "react-router-dom"
 import { useLogin } from "@/hooks/useAuth"
 import useAuthData from "../../hooks/useAuthData"
-import FormField from "@/components/FormField"
+import FormField from "@/components/Form/FormField"
 
 type FormFields = z.infer<typeof loginSchema>
 
@@ -52,8 +52,9 @@ const Login = () => {
                             name="email"
                             register={register}
                             type="text"
-                            placeholder="email"
+                            placeholder="user@example.com"
                             error={errors.email}
+                            label="Email"
                         />
                         <FormField
                             name="password"
@@ -61,6 +62,7 @@ const Login = () => {
                             type="password"
                             placeholder="password"
                             error={errors.password}
+                            label="Password"
                         />
                         <button className="form-button" type="submit">
                             Sign In
