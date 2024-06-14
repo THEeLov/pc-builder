@@ -50,11 +50,31 @@
                 "production": {
                     "buildTarget": "backend:build:production"
                 }
-            }
+          },
+            "dependsOn": [
+                {
+                    "target": "db-init",
+                    "projects": "self"
+                }
+            ]
         },
         "docker-build": {
             "dependsOn": ["build"],
             "command": "docker build -f apps/backend/Dockerfile . -t backend"
+        },
+        "db-init": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "./database.sh",
+                "cwd": "apps/backend"
+            }
+        },
+        "db-reset": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "./stop-and-reset.sh",
+                "cwd": "apps/backend"
+            }
         }
     },
     "tags": []
