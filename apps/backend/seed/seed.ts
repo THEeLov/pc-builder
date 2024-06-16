@@ -21,10 +21,7 @@ dotenv.config()
 const client = new PrismaClient()
 
 const deleteAll = async () => {
-    await client.$transaction([
-        client.component.deleteMany(),
-        client.user.deleteMany(),
-    ])
+    await client.$transaction([client.component.deleteMany(), client.user.deleteMany()])
     console.log("All data cleared.")
 }
 
@@ -93,7 +90,7 @@ const seedStorages = async () => {
 
 const main = async (): Promise<any> => {
     await client.$connect()
-    await deleteAll();
+    await deleteAll()
     await seedGPUs()
     await seedMotherboards()
     await seedPcCases()
