@@ -1,10 +1,9 @@
-import { CreateRAM } from "../../src/components/rams/validation/validation"
+import { RamCreate } from "../../src/components/rams/validation/ram.types"
 
-const ramData: CreateRAM[] = [
+const ramData: RamCreate[] = [
     {
         component: {
             name: "Corsair Vengeance LPX 16GB",
-            configurationType: [],
             componentType: "RAM",
             price: 89.99,
             manufacturer: "Corsair",
@@ -17,7 +16,6 @@ const ramData: CreateRAM[] = [
     {
         component: {
             name: "G.SKILL Ripjaws V Series 32GB",
-            configurationType: [],
             componentType: "RAM",
             price: 159.99,
             manufacturer: "G.SKILL",
@@ -30,7 +28,6 @@ const ramData: CreateRAM[] = [
     {
         component: {
             name: "Crucial 8GB Single",
-            configurationType: [],
             componentType: "RAM",
             price: 39.99,
             manufacturer: "Crucial",
@@ -43,7 +40,6 @@ const ramData: CreateRAM[] = [
     {
         component: {
             name: "Kingston HyperX Fury 16GB",
-            configurationType: [],
             componentType: "RAM",
             price: 79.99,
             manufacturer: "Kingston",
@@ -56,7 +52,6 @@ const ramData: CreateRAM[] = [
     {
         component: {
             name: "Corsair Vengeance RGB Pro 32GB",
-            configurationType: [],
             componentType: "RAM",
             price: 199.99,
             manufacturer: "Corsair",
@@ -69,7 +64,6 @@ const ramData: CreateRAM[] = [
     {
         component: {
             name: "G.SKILL Trident Z Royal Series 64GB",
-            configurationType: [],
             componentType: "RAM",
             price: 399.99,
             manufacturer: "G.SKILL",
@@ -82,7 +76,6 @@ const ramData: CreateRAM[] = [
     {
         component: {
             name: "Patriot Viper Steel 16GB",
-            configurationType: [],
             componentType: "RAM",
             price: 89.99,
             manufacturer: "Patriot",
@@ -95,7 +88,6 @@ const ramData: CreateRAM[] = [
     {
         component: {
             name: "Team T-Force Delta RGB 16GB",
-            configurationType: [],
             componentType: "RAM",
             price: 99.99,
             manufacturer: "TeamGroup",
@@ -108,7 +100,6 @@ const ramData: CreateRAM[] = [
     {
         component: {
             name: "Samsung 16GB",
-            configurationType: [],
             componentType: "RAM",
             price: 149.99,
             manufacturer: "Samsung",
@@ -121,7 +112,6 @@ const ramData: CreateRAM[] = [
     {
         component: {
             name: "Crucial Ballistix 32GB",
-            configurationType: [],
             componentType: "RAM",
             price: 179.99,
             manufacturer: "Crucial",
@@ -134,7 +124,6 @@ const ramData: CreateRAM[] = [
     {
         component: {
             name: "ADATA XPG Z1 16GB",
-            configurationType: [],
             componentType: "RAM",
             price: 79.99,
             manufacturer: "ADATA",
@@ -147,7 +136,6 @@ const ramData: CreateRAM[] = [
     {
         component: {
             name: "Corsair Dominator Platinum 32GB",
-            configurationType: [],
             componentType: "RAM",
             price: 249.99,
             manufacturer: "Corsair",
@@ -160,7 +148,6 @@ const ramData: CreateRAM[] = [
     {
         component: {
             name: "G.SKILL Ripjaws SODIMM 16GB",
-            configurationType: [],
             componentType: "RAM",
             price: 99.99,
             manufacturer: "G.SKILL",
@@ -173,7 +160,6 @@ const ramData: CreateRAM[] = [
     {
         component: {
             name: "Samsung 32GB SODIMM",
-            configurationType: [],
             componentType: "RAM",
             price: 149.99,
             manufacturer: "Samsung",
@@ -186,7 +172,6 @@ const ramData: CreateRAM[] = [
     {
         component: {
             name: "Corsair Vengeance LPX 64GB",
-            configurationType: [],
             componentType: "RAM",
             price: 349.99,
             manufacturer: "Corsair",
@@ -199,7 +184,6 @@ const ramData: CreateRAM[] = [
     {
         component: {
             name: "G.SKILL Ripjaws V 16GB",
-            configurationType: [],
             componentType: "RAM",
             price: 89.99,
             manufacturer: "G.SKILL",
@@ -212,7 +196,6 @@ const ramData: CreateRAM[] = [
     {
         component: {
             name: "Crucial Ballistix Sport LT 8GB",
-            configurationType: [],
             componentType: "RAM",
             price: 44.99,
             manufacturer: "Crucial",
@@ -225,7 +208,6 @@ const ramData: CreateRAM[] = [
     {
         component: {
             name: "Team Elite 16GB",
-            configurationType: [],
             componentType: "RAM",
             price: 69.99,
             manufacturer: "TeamGroup",
@@ -238,7 +220,6 @@ const ramData: CreateRAM[] = [
     {
         component: {
             name: "Patriot Signature Line 8GB",
-            configurationType: [],
             componentType: "RAM",
             price: 39.99,
             manufacturer: "Patriot",
@@ -251,7 +232,6 @@ const ramData: CreateRAM[] = [
     {
         component: {
             name: "G.SKILL Ripjaws V 64GB",
-            configurationType: [],
             componentType: "RAM",
             price: 399.99,
             manufacturer: "G.SKILL",
@@ -260,45 +240,6 @@ const ramData: CreateRAM[] = [
         memoryType: "DDR4",
         capacity: 64,
         computerType: "DESKTOP",
-    },
-    {
-        component: {
-            name: "Corsair Vengeance RGB Pro 16GB",
-            configurationType: [],
-            componentType: "RAM",
-            price: 109.99,
-            manufacturer: "Corsair",
-            imageUrl: "https://example.com/vengeancergbpro16gb.jpg",
-        },
-        memoryType: "DDR4",
-        capacity: 16,
-        computerType: "DESKTOP",
-    },
-    {
-        component: {
-            name: "Crucial 32GB Single SODIMM",
-            configurationType: [],
-            componentType: "RAM",
-            price: 129.99,
-            manufacturer: "Crucial",
-            imageUrl: "https://example.com/crucial32gbsingle.jpg",
-        },
-        memoryType: "DDR4",
-        capacity: 32,
-        computerType: "LAPTOP",
-    },
-    {
-        component: {
-            name: "HyperX Fury 16GB SODIMM",
-            configurationType: [],
-            componentType: "RAM",
-            price: 89.99,
-            manufacturer: "HyperX",
-            imageUrl: "https://example.com/hyperxfury16gbsodimm.jpg",
-        },
-        memoryType: "DDR4",
-        capacity: 16,
-        computerType: "LAPTOP",
     },
 ]
 

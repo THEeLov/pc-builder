@@ -3,9 +3,9 @@ import { prisma } from "../../../client"
 import { DbResult } from "../../../../types"
 import handleError from "../../../utils"
 import { Result } from "@badrap/result"
-import { CreateRAM, UpdateRAM, RAMWithComponent } from "../validation/validation"
+import { RamCreate, RamEdit, RamWithComponent } from "../validation/ram.types"
 
-async function getMany(query: ComponentQuery): DbResult<RAMWithComponent[]> {
+async function getMany(query: ComponentQuery): DbResult<RamWithComponent[]> {
     try {
         const rams = await prisma.rAM.findMany({
             where: {
@@ -27,7 +27,7 @@ async function getMany(query: ComponentQuery): DbResult<RAMWithComponent[]> {
     }
 }
 
-async function create(createObj: CreateRAM): DbResult<RAMWithComponent> {
+async function create(createObj: RamCreate): DbResult<RamWithComponent> {
     try {
         const ram = await prisma.$transaction(async () => {
             const component = await prisma.component.create({
@@ -48,11 +48,12 @@ async function create(createObj: CreateRAM): DbResult<RAMWithComponent> {
         })
         return Result.ok(ram)
     } catch (e) {
+        console.log(e)
         return handleError(e, "Ram create")
     }
 }
 
-async function getSingle(id: string): DbResult<RAMWithComponent> {
+async function getSingle(id: string): DbResult<RamWithComponent> {
     try {
         const ram = await prisma.rAM.findUniqueOrThrow({
             where: {
@@ -68,7 +69,7 @@ async function getSingle(id: string): DbResult<RAMWithComponent> {
     }
 }
 
-async function update(id: string, updateObj: UpdateRAM): DbResult<RAMWithComponent> {
+async function update(id: string, updateObj: RamEdit): DbResult<RamWithComponent> {
     try {
         const ram = await prisma.rAM.update({
             where: {
