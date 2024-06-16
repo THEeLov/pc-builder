@@ -3,8 +3,8 @@ import { z } from "zod"
 const MAX_FILE_SIZE = 5000000
 const ACCEPTED_IMAGE_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/webp"]
 
-const nonEmptyString = z.string().min(1, { message: "This field is required" });
-const positiveNumber = z.coerce.number().min(1, { message: "Value must be a positive number" });
+const nonEmptyString = z.string().min(1, { message: "This field is required" })
+const positiveNumber = z.coerce.number().min(1, { message: "Value must be a positive number" })
 
 const imageUrlSchema = z
     .any()
@@ -19,7 +19,7 @@ const imageUrlSchema = z
 const ComponentSchema = z.object({
     name: nonEmptyString,
     price: positiveNumber,
-    manufacturer: nonEmptyString
+    manufacturer: nonEmptyString,
 })
 
 export const MotherboardSchema = z.object({
