@@ -3,6 +3,9 @@ import { z } from "zod"
 const MAX_FILE_SIZE = 5000000
 const ACCEPTED_IMAGE_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/webp"]
 
+const nonEmptyString = z.string().min(1, { message: "This field is required" });
+const positiveNumber = z.coerce.number().min(1, { message: "Value must be a positive number" });
+
 const imageUrlSchema = z
     .any()
     .refine((files) => {
@@ -14,67 +17,67 @@ const imageUrlSchema = z
     )
 
 const ComponentSchema = z.object({
-    name: z.string().min(1),
-    price: z.coerce.number().min(1),
-    manufacturer: z.string().min(1),
+    name: nonEmptyString,
+    price: positiveNumber,
+    manufacturer: nonEmptyString
 })
 
 export const MotherboardSchema = z.object({
     component: ComponentSchema,
     image: imageUrlSchema,
-    socket: z.string().min(1),
-    formFactor: z.string().min(1),
-    ramSlots: z.coerce.number().min(1),
-    ramType: z.string().min(1),
-    gpuInterface: z.string().min(1),
-    storageBusType: z.string().min(1),
+    socket: nonEmptyString,
+    formFactor: nonEmptyString,
+    ramSlots: positiveNumber,
+    ramType: nonEmptyString,
+    gpuInterface: nonEmptyString,
+    storageBusType: nonEmptyString,
 })
 
 export const ProcessorSchema = z.object({
     component: ComponentSchema,
     image: imageUrlSchema,
-    architecture: z.string().min(1),
-    cores: z.coerce.number().min(1),
-    threads: z.coerce.number().min(1),
-    bits: z.coerce.number().min(1),
-    socket: z.string().min(1),
+    architecture: nonEmptyString,
+    cores: positiveNumber,
+    threads: positiveNumber,
+    bits: positiveNumber,
+    socket: nonEmptyString,
 })
 
 export const RamSchema = z.object({
     component: ComponentSchema,
     image: imageUrlSchema,
-    computerType: z.string().min(1),
-    memoryType: z.string().min(1),
-    capacity: z.coerce.number().min(1),
+    computerType: nonEmptyString,
+    memoryType: nonEmptyString,
+    capacity: positiveNumber,
 })
 
 export const PowerSupplySchema = z.object({
     component: ComponentSchema,
     image: imageUrlSchema,
-    powerOutput: z.coerce.number().min(1),
-    efficiency: z.string().min(1),
-    formFactor: z.string().min(1),
+    powerOutput: positiveNumber,
+    efficiency: nonEmptyString,
+    formFactor: nonEmptyString,
 })
 
 export const PcCaseSchema = z.object({
     component: ComponentSchema,
     image: imageUrlSchema,
-    formFactor: z.string().min(1),
+    formFactor: nonEmptyString,
 })
 
 export const StorageSchema = z.object({
     component: ComponentSchema,
     image: imageUrlSchema,
-    storageType: z.string().min(1),
-    capacity: z.coerce.number().min(1),
-    busType: z.string().min(1),
+    storageType: nonEmptyString,
+    capacity: positiveNumber,
+    busType: nonEmptyString,
 })
 
 export const GpuSchema = z.object({
     component: ComponentSchema,
     image: imageUrlSchema,
-    memory: z.coerce.number().min(1),
-    powerConnector: z.string().min(1),
-    interface: z.string().min(1),
-    power: z.coerce.number().min(1),
+    memory: positiveNumber,
+    powerConnector: nonEmptyString,
+    interface: nonEmptyString,
+    power: positiveNumber,
 })

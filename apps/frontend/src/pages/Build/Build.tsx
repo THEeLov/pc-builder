@@ -93,7 +93,7 @@ const Build = () => {
                     )}
                 </div>
                 <div className="build__amount">
-                    <h2>Total price: {totalPrice}</h2>
+                    <h2>Total price: {totalPrice} €</h2>
                 </div>
             </div>
         </div>
