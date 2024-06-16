@@ -36,7 +36,9 @@ async function getMany(query: ComponentQuery): DbResult<GPUWithComponent[]> {
         const gpus = await prisma.gPU.findMany({
             where: {
                 interface: query.gpuInterface,
-                power: query.powerIO,
+                power: {
+                    lte: query.powerIO,
+                },
                 component: {
                     price: {
                         gte: query.minPrice,

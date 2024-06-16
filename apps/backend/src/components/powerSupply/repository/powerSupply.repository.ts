@@ -34,7 +34,9 @@ async function getMany(query: ComponentQuery): DbResult<PowerSupplyWithComponent
     try {
         const powerSupplies = await prisma.powerSupply.findMany({
             where: {
-                powerOutput: query.powerIO,
+                powerOutput: {
+                    gte: query.powerIO,
+                },
                 formFactor: query.formFactor,
                 component: {
                     price: {
