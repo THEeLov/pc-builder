@@ -1,4 +1,4 @@
-import { UsersRepository } from "../../users/repository/users.repository";
+import { UsersRepository } from "../../users/repository/users.repository"
 
 async function main() {
     await UsersRepository.create({

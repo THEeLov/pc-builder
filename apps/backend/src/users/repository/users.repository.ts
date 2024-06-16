@@ -21,7 +21,7 @@ async function create(data: UserCreate): DbResult<User> {
                 username: data.username,
                 email: data.email,
                 password: hashed,
-                userType: data.userRole
+                userType: data.userRole,
             },
         })
         return Result.ok(newUser)
