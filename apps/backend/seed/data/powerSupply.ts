@@ -10,7 +10,7 @@ const powerSupplyData: PowerSupplyCreate[] = [
             componentType: "POWERSUPPLY",
             price: 129.99,
             manufacturer: "Corsair",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/00/01/55/1000_F_200015523_fByXctzk77JTL70bW0z0eIga72pUMF6r.jpg" // "https://example.com/rm750x.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/00/01/55/1000_F_200015523_fByXctzk77JTL70bW0z0eIga72pUMF6r.jpg", // "https://example.com/rm750x.jpg",
         },
     },
     {
@@ -22,7 +22,7 @@ const powerSupplyData: PowerSupplyCreate[] = [
             componentType: "POWERSUPPLY",
             price: 74.99,
             manufacturer: "EVGA",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/00/01/55/1000_F_200015523_fByXctzk77JTL70bW0z0eIga72pUMF6r.jpg" // "https://example.com/650bq.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/00/01/55/1000_F_200015523_fByXctzk77JTL70bW0z0eIga72pUMF6r.jpg", // "https://example.com/650bq.jpg",
         },
     },
     {
@@ -34,7 +34,7 @@ const powerSupplyData: PowerSupplyCreate[] = [
             componentType: "POWERSUPPLY",
             price: 229.99,
             manufacturer: "Seasonic",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/00/01/55/1000_F_200015523_fByXctzk77JTL70bW0z0eIga72pUMF6r.jpg" // "https://example.com/primetx850.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/00/01/55/1000_F_200015523_fByXctzk77JTL70bW0z0eIga72pUMF6r.jpg", // "https://example.com/primetx850.jpg",
         },
     },
     {
@@ -46,7 +46,7 @@ const powerSupplyData: PowerSupplyCreate[] = [
             componentType: "POWERSUPPLY",
             price: 54.99,
             manufacturer: "Cooler Master",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/00/01/55/1000_F_200015523_fByXctzk77JTL70bW0z0eIga72pUMF6r.jpg" // "https://example.com/mwe500.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/00/01/55/1000_F_200015523_fByXctzk77JTL70bW0z0eIga72pUMF6r.jpg", // "https://example.com/mwe500.jpg",
         },
     },
     {
@@ -58,7 +58,7 @@ const powerSupplyData: PowerSupplyCreate[] = [
             componentType: "POWERSUPPLY",
             price: 139.99,
             manufacturer: "SilverStone",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/00/01/55/1000_F_200015523_fByXctzk77JTL70bW0z0eIga72pUMF6r.jpg" // "https://example.com/sx600g.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/00/01/55/1000_F_200015523_fByXctzk77JTL70bW0z0eIga72pUMF6r.jpg", // "https://example.com/sx600g.jpg",
         },
     },
     {
@@ -70,7 +70,7 @@ const powerSupplyData: PowerSupplyCreate[] = [
             componentType: "POWERSUPPLY",
             price: 299.99,
             manufacturer: "EVGA",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/00/01/55/1000_F_200015523_fByXctzk77JTL70bW0z0eIga72pUMF6r.jpg" // "https://example.com/supernova1000t2.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/00/01/55/1000_F_200015523_fByXctzk77JTL70bW0z0eIga72pUMF6r.jpg", // "https://example.com/supernova1000t2.jpg",
         },
     },
     {
@@ -82,7 +82,7 @@ const powerSupplyData: PowerSupplyCreate[] = [
             componentType: "POWERSUPPLY",
             price: 39.99,
             manufacturer: "Thermaltake",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/00/01/55/1000_F_200015523_fByXctzk77JTL70bW0z0eIga72pUMF6r.jpg" // "https://example.com/smart450w.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/00/01/55/1000_F_200015523_fByXctzk77JTL70bW0z0eIga72pUMF6r.jpg", // "https://example.com/smart450w.jpg",
         },
     },
     {
@@ -94,7 +94,7 @@ const powerSupplyData: PowerSupplyCreate[] = [
             componentType: "POWERSUPPLY",
             price: 99.99,
             manufacturer: "Antec",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/00/01/55/1000_F_200015523_fByXctzk77JTL70bW0z0eIga72pUMF6r.jpg" // "https://example.com/earthwatts700.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/00/01/55/1000_F_200015523_fByXctzk77JTL70bW0z0eIga72pUMF6r.jpg", // "https://example.com/earthwatts700.jpg",
         },
     },
     {
@@ -106,7 +106,7 @@ const powerSupplyData: PowerSupplyCreate[] = [
             componentType: "POWERSUPPLY",
             price: 84.99,
             manufacturer: "Corsair",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/00/01/55/1000_F_200015523_fByXctzk77JTL70bW0z0eIga72pUMF6r.jpg" // "https://example.com/tx550m.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/00/01/55/1000_F_200015523_fByXctzk77JTL70bW0z0eIga72pUMF6r.jpg", // "https://example.com/tx550m.jpg",
         },
     },
     {
@@ -118,7 +118,7 @@ const powerSupplyData: PowerSupplyCreate[] = [
             componentType: "POWERSUPPLY",
             price: 139.99,
             manufacturer: "Seasonic",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/00/01/55/1000_F_200015523_fByXctzk77JTL70bW0z0eIga72pUMF6r.jpg" // "https://example.com/focuspx750.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/00/01/55/1000_F_200015523_fByXctzk77JTL70bW0z0eIga72pUMF6r.jpg", // "https://example.com/focuspx750.jpg",
         },
     },
     {
@@ -130,7 +130,7 @@ const powerSupplyData: PowerSupplyCreate[] = [
             componentType: "POWERSUPPLY",
             price: 149.99,
             manufacturer: "Corsair",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/00/01/55/1000_F_200015523_fByXctzk77JTL70bW0z0eIga72pUMF6r.jpg" // "https://example.com/rm850x.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/00/01/55/1000_F_200015523_fByXctzk77JTL70bW0z0eIga72pUMF6r.jpg", // "https://example.com/rm850x.jpg",
         },
     },
     {
@@ -142,7 +142,7 @@ const powerSupplyData: PowerSupplyCreate[] = [
             componentType: "POWERSUPPLY",
             price: 149.99,
             manufacturer: "SilverStone",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/00/01/55/1000_F_200015523_fByXctzk77JTL70bW0z0eIga72pUMF6r.jpg" // "https://example.com/sx650g.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/00/01/55/1000_F_200015523_fByXctzk77JTL70bW0z0eIga72pUMF6r.jpg", // "https://example.com/sx650g.jpg",
         },
     },
     {
@@ -154,7 +154,7 @@ const powerSupplyData: PowerSupplyCreate[] = [
             componentType: "POWERSUPPLY",
             price: 179.99,
             manufacturer: "Thermaltake",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/00/01/55/1000_F_200015523_fByXctzk77JTL70bW0z0eIga72pUMF6r.jpg" // "https://example.com/toughpower1000w.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/00/01/55/1000_F_200015523_fByXctzk77JTL70bW0z0eIga72pUMF6r.jpg", // "https://example.com/toughpower1000w.jpg",
         },
     },
     {
@@ -166,7 +166,7 @@ const powerSupplyData: PowerSupplyCreate[] = [
             componentType: "POWERSUPPLY",
             price: 99.99,
             manufacturer: "EVGA",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/00/01/55/1000_F_200015523_fByXctzk77JTL70bW0z0eIga72pUMF6r.jpg" // "https://example.com/supernova550p2.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/00/01/55/1000_F_200015523_fByXctzk77JTL70bW0z0eIga72pUMF6r.jpg", // "https://example.com/supernova550p2.jpg",
         },
     },
     {
@@ -178,7 +178,7 @@ const powerSupplyData: PowerSupplyCreate[] = [
             componentType: "POWERSUPPLY",
             price: 79.99,
             manufacturer: "Cooler Master",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/00/01/55/1000_F_200015523_fByXctzk77JTL70bW0z0eIga72pUMF6r.jpg" // "https://example.com/mwe750bronze.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/00/01/55/1000_F_200015523_fByXctzk77JTL70bW0z0eIga72pUMF6r.jpg", // "https://example.com/mwe750bronze.jpg",
         },
     },
     {
@@ -190,7 +190,7 @@ const powerSupplyData: PowerSupplyCreate[] = [
             componentType: "POWERSUPPLY",
             price: 89.99,
             manufacturer: "Antec",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/00/01/55/1000_F_200015523_fByXctzk77JTL70bW0z0eIga72pUMF6r.jpg" // "https://example.com/earthwatts650.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/00/01/55/1000_F_200015523_fByXctzk77JTL70bW0z0eIga72pUMF6r.jpg", // "https://example.com/earthwatts650.jpg",
         },
     },
     {
@@ -202,7 +202,7 @@ const powerSupplyData: PowerSupplyCreate[] = [
             componentType: "POWERSUPPLY",
             price: 229.99,
             manufacturer: "Seasonic",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/00/01/55/1000_F_200015523_fByXctzk77JTL70bW0z0eIga72pUMF6r.jpg" // "https://example.com/primetx850.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/00/01/55/1000_F_200015523_fByXctzk77JTL70bW0z0eIga72pUMF6r.jpg", // "https://example.com/primetx850.jpg",
         },
     },
     {
@@ -214,7 +214,7 @@ const powerSupplyData: PowerSupplyCreate[] = [
             componentType: "POWERSUPPLY",
             price: 159.99,
             manufacturer: "EVGA",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/00/01/55/1000_F_200015523_fByXctzk77JTL70bW0z0eIga72pUMF6r.jpg" // "https://example.com/supernova750p2.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/00/01/55/1000_F_200015523_fByXctzk77JTL70bW0z0eIga72pUMF6r.jpg", // "https://example.com/supernova750p2.jpg",
         },
     },
     {
@@ -226,7 +226,7 @@ const powerSupplyData: PowerSupplyCreate[] = [
             componentType: "POWERSUPPLY",
             price: 49.99,
             manufacturer: "Thermaltake",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/00/01/55/1000_F_200015523_fByXctzk77JTL70bW0z0eIga72pUMF6r.jpg" // "https://example.com/smart600w.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/00/01/55/1000_F_200015523_fByXctzk77JTL70bW0z0eIga72pUMF6r.jpg", // "https://example.com/smart600w.jpg",
         },
     },
     {
@@ -238,7 +238,7 @@ const powerSupplyData: PowerSupplyCreate[] = [
             componentType: "POWERSUPPLY",
             price: 119.99,
             manufacturer: "SilverStone",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/00/01/55/1000_F_200015523_fByXctzk77JTL70bW0z0eIga72pUMF6r.jpg" // "https://example.com/sx500lg.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/00/01/55/1000_F_200015523_fByXctzk77JTL70bW0z0eIga72pUMF6r.jpg", // "https://example.com/sx500lg.jpg",
         },
     },
 ]

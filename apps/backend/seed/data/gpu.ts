@@ -11,7 +11,7 @@ const gpuData: GPUCreate[] = [
             componentType: "GPU",
             price: 499.99,
             manufacturer: "NVIDIA",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/24/26/93/1000_F_224269375_rKISh3JzXlHqGJbhm2q4PHYQz1AObwxJ.jpg" // "https://example.com/rtx3070.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/24/26/93/1000_F_224269375_rKISh3JzXlHqGJbhm2q4PHYQz1AObwxJ.jpg", // "https://example.com/rtx3070.jpg",
         },
     },
     {
@@ -24,7 +24,7 @@ const gpuData: GPUCreate[] = [
             componentType: "GPU",
             price: 699.99,
             manufacturer: "NVIDIA",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/24/26/93/1000_F_224269375_rKISh3JzXlHqGJbhm2q4PHYQz1AObwxJ.jpg" // "https://example.com/rtx3080.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/24/26/93/1000_F_224269375_rKISh3JzXlHqGJbhm2q4PHYQz1AObwxJ.jpg", // "https://example.com/rtx3080.jpg",
         },
     },
     {
@@ -37,7 +37,7 @@ const gpuData: GPUCreate[] = [
             componentType: "GPU",
             price: 1499.99,
             manufacturer: "NVIDIA",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/24/26/93/1000_F_224269375_rKISh3JzXlHqGJbhm2q4PHYQz1AObwxJ.jpg" // "https://example.com/rtx3090.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/24/26/93/1000_F_224269375_rKISh3JzXlHqGJbhm2q4PHYQz1AObwxJ.jpg", // "https://example.com/rtx3090.jpg",
         },
     },
     {
@@ -50,7 +50,7 @@ const gpuData: GPUCreate[] = [
             componentType: "GPU",
             price: 649.99,
             manufacturer: "AMD",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/24/26/93/1000_F_224269375_rKISh3JzXlHqGJbhm2q4PHYQz1AObwxJ.jpg" // "https://example.com/rx6800xt.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/24/26/93/1000_F_224269375_rKISh3JzXlHqGJbhm2q4PHYQz1AObwxJ.jpg", // "https://example.com/rx6800xt.jpg",
         },
     },
     {
@@ -63,7 +63,7 @@ const gpuData: GPUCreate[] = [
             componentType: "GPU",
             price: 479.99,
             manufacturer: "AMD",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/24/26/93/1000_F_224269375_rKISh3JzXlHqGJbhm2q4PHYQz1AObwxJ.jpg" // "https://example.com/rx6700xt.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/24/26/93/1000_F_224269375_rKISh3JzXlHqGJbhm2q4PHYQz1AObwxJ.jpg", // "https://example.com/rx6700xt.jpg",
         },
     },
     {
@@ -76,7 +76,7 @@ const gpuData: GPUCreate[] = [
             componentType: "GPU",
             price: 229.99,
             manufacturer: "NVIDIA",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/24/26/93/1000_F_224269375_rKISh3JzXlHqGJbhm2q4PHYQz1AObwxJ.jpg" // "https://example.com/gtx1660super.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/24/26/93/1000_F_224269375_rKISh3JzXlHqGJbhm2q4PHYQz1AObwxJ.jpg", // "https://example.com/gtx1660super.jpg",
         },
     },
     {
@@ -89,7 +89,7 @@ const gpuData: GPUCreate[] = [
             componentType: "GPU",
             price: 399.99,
             manufacturer: "NVIDIA",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/24/26/93/1000_F_224269375_rKISh3JzXlHqGJbhm2q4PHYQz1AObwxJ.jpg" // "https://example.com/gtx1070.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/24/26/93/1000_F_224269375_rKISh3JzXlHqGJbhm2q4PHYQz1AObwxJ.jpg", // "https://example.com/gtx1070.jpg",
         },
     },
     {
@@ -102,7 +102,7 @@ const gpuData: GPUCreate[] = [
             componentType: "GPU",
             price: 399.99,
             manufacturer: "AMD",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/24/26/93/1000_F_224269375_rKISh3JzXlHqGJbhm2q4PHYQz1AObwxJ.jpg" // "https://example.com/rx5700xt.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/24/26/93/1000_F_224269375_rKISh3JzXlHqGJbhm2q4PHYQz1AObwxJ.jpg", // "https://example.com/rx5700xt.jpg",
         },
     },
     {
@@ -115,7 +115,7 @@ const gpuData: GPUCreate[] = [
             componentType: "GPU",
             price: 279.99,
             manufacturer: "AMD",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/24/26/93/1000_F_224269375_rKISh3JzXlHqGJbhm2q4PHYQz1AObwxJ.jpg" // "https://example.com/rx5600xt.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/24/26/93/1000_F_224269375_rKISh3JzXlHqGJbhm2q4PHYQz1AObwxJ.jpg", // "https://example.com/rx5600xt.jpg",
         },
     },
     {
@@ -128,7 +128,7 @@ const gpuData: GPUCreate[] = [
             componentType: "GPU",
             price: 249.99,
             manufacturer: "NVIDIA",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/24/26/93/1000_F_224269375_rKISh3JzXlHqGJbhm2q4PHYQz1AObwxJ.jpg" // "https://example.com/gtx1060.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/24/26/93/1000_F_224269375_rKISh3JzXlHqGJbhm2q4PHYQz1AObwxJ.jpg", // "https://example.com/gtx1060.jpg",
         },
     },
     {
@@ -141,7 +141,7 @@ const gpuData: GPUCreate[] = [
             componentType: "GPU",
             price: 699.99,
             manufacturer: "NVIDIA",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/24/26/93/1000_F_224269375_rKISh3JzXlHqGJbhm2q4PHYQz1AObwxJ.jpg" // "https://example.com/gtx1080ti.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/24/26/93/1000_F_224269375_rKISh3JzXlHqGJbhm2q4PHYQz1AObwxJ.jpg", // "https://example.com/gtx1080ti.jpg",
         },
     },
     {
@@ -154,7 +154,7 @@ const gpuData: GPUCreate[] = [
             componentType: "GPU",
             price: 579.99,
             manufacturer: "AMD",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/24/26/93/1000_F_224269375_rKISh3JzXlHqGJbhm2q4PHYQz1AObwxJ.jpg" // "https://example.com/rx6800.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/24/26/93/1000_F_224269375_rKISh3JzXlHqGJbhm2q4PHYQz1AObwxJ.jpg", // "https://example.com/rx6800.jpg",
         },
     },
     {
@@ -167,7 +167,7 @@ const gpuData: GPUCreate[] = [
             componentType: "GPU",
             price: 119.99,
             manufacturer: "AMD",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/24/26/93/1000_F_224269375_rKISh3JzXlHqGJbhm2q4PHYQz1AObwxJ.jpg" // "https://example.com/rx550.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/24/26/93/1000_F_224269375_rKISh3JzXlHqGJbhm2q4PHYQz1AObwxJ.jpg", // "https://example.com/rx550.jpg",
         },
     },
     {
@@ -180,7 +180,7 @@ const gpuData: GPUCreate[] = [
             componentType: "GPU",
             price: 219.99,
             manufacturer: "NVIDIA",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/24/26/93/1000_F_224269375_rKISh3JzXlHqGJbhm2q4PHYQz1AObwxJ.jpg" // "https://example.com/gtx1660.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/24/26/93/1000_F_224269375_rKISh3JzXlHqGJbhm2q4PHYQz1AObwxJ.jpg", // "https://example.com/gtx1660.jpg",
         },
     },
     {
@@ -193,7 +193,7 @@ const gpuData: GPUCreate[] = [
             componentType: "GPU",
             price: 1199.99,
             manufacturer: "NVIDIA",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/24/26/93/1000_F_224269375_rKISh3JzXlHqGJbhm2q4PHYQz1AObwxJ.jpg" // "https://example.com/rtx2080ti.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/24/26/93/1000_F_224269375_rKISh3JzXlHqGJbhm2q4PHYQz1AObwxJ.jpg", // "https://example.com/rtx2080ti.jpg",
         },
     },
     {
@@ -206,7 +206,7 @@ const gpuData: GPUCreate[] = [
             componentType: "GPU",
             price: 449.99,
             manufacturer: "NVIDIA",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/24/26/93/1000_F_224269375_rKISh3JzXlHqGJbhm2q4PHYQz1AObwxJ.jpg" // "https://example.com/gtx1070ti.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/24/26/93/1000_F_224269375_rKISh3JzXlHqGJbhm2q4PHYQz1AObwxJ.jpg", // "https://example.com/gtx1070ti.jpg",
         },
     },
     {
@@ -219,7 +219,7 @@ const gpuData: GPUCreate[] = [
             componentType: "GPU",
             price: 749.99,
             manufacturer: "NVIDIA",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/24/26/93/1000_F_224269375_rKISh3JzXlHqGJbhm2q4PHYQz1AObwxJ.jpg" // "https://example.com/rtx4070.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/24/26/93/1000_F_224269375_rKISh3JzXlHqGJbhm2q4PHYQz1AObwxJ.jpg", // "https://example.com/rtx4070.jpg",
         },
     },
     {
@@ -232,7 +232,7 @@ const gpuData: GPUCreate[] = [
             componentType: "GPU",
             price: 229.99,
             manufacturer: "AMD",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/24/26/93/1000_F_224269375_rKISh3JzXlHqGJbhm2q4PHYQz1AObwxJ.jpg" // "https://example.com/rx480.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/24/26/93/1000_F_224269375_rKISh3JzXlHqGJbhm2q4PHYQz1AObwxJ.jpg", // "https://example.com/rx480.jpg",
         },
     },
     {
@@ -245,7 +245,7 @@ const gpuData: GPUCreate[] = [
             componentType: "GPU",
             price: 649.99,
             manufacturer: "NVIDIA",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/24/26/93/1000_F_224269375_rKISh3JzXlHqGJbhm2q4PHYQz1AObwxJ.jpg" // "https://example.com/gtx980ti.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/24/26/93/1000_F_224269375_rKISh3JzXlHqGJbhm2q4PHYQz1AObwxJ.jpg", // "https://example.com/gtx980ti.jpg",
         },
     },
     {
@@ -258,7 +258,7 @@ const gpuData: GPUCreate[] = [
             componentType: "GPU",
             price: 139.99,
             manufacturer: "AMD",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/24/26/93/1000_F_224269375_rKISh3JzXlHqGJbhm2q4PHYQz1AObwxJ.jpg" // "https://example.com/rx460.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/02/24/26/93/1000_F_224269375_rKISh3JzXlHqGJbhm2q4PHYQz1AObwxJ.jpg", // "https://example.com/rx460.jpg",
         },
     },
 ]

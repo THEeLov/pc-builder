@@ -12,7 +12,7 @@ const processorData: ProcessorCreate[] = [
             componentType: "PROCESSOR",
             price: 449.99,
             manufacturer: "AMD",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/01/25/49/01/1000_F_125490128_q9AervSfJ42LggMN7IUqDaLhgpe6Wg0C.jpg" // "https://example.com/ryzen75800x.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/01/25/49/01/1000_F_125490128_q9AervSfJ42LggMN7IUqDaLhgpe6Wg0C.jpg", // "https://example.com/ryzen75800x.jpg",
         },
     },
     {
@@ -26,7 +26,7 @@ const processorData: ProcessorCreate[] = [
             componentType: "PROCESSOR",
             price: 499.99,
             manufacturer: "Intel",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/01/25/49/01/1000_F_125490128_q9AervSfJ42LggMN7IUqDaLhgpe6Wg0C.jpg" // "https://example.com/i910900k.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/01/25/49/01/1000_F_125490128_q9AervSfJ42LggMN7IUqDaLhgpe6Wg0C.jpg", // "https://example.com/i910900k.jpg",
         },
     },
     {
@@ -40,7 +40,7 @@ const processorData: ProcessorCreate[] = [
             componentType: "PROCESSOR",
             price: 199.99,
             manufacturer: "AMD",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/01/25/49/01/1000_F_125490128_q9AervSfJ42LggMN7IUqDaLhgpe6Wg0C.jpg" // "https://example.com/ryzen53600.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/01/25/49/01/1000_F_125490128_q9AervSfJ42LggMN7IUqDaLhgpe6Wg0C.jpg", // "https://example.com/ryzen53600.jpg",
         },
     },
     {
@@ -54,7 +54,7 @@ const processorData: ProcessorCreate[] = [
             componentType: "PROCESSOR",
             price: 279.99,
             manufacturer: "Intel",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/01/25/49/01/1000_F_125490128_q9AervSfJ42LggMN7IUqDaLhgpe6Wg0C.jpg" // "https://example.com/i510600k.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/01/25/49/01/1000_F_125490128_q9AervSfJ42LggMN7IUqDaLhgpe6Wg0C.jpg", // "https://example.com/i510600k.jpg",
         },
     },
     {
@@ -68,7 +68,7 @@ const processorData: ProcessorCreate[] = [
             componentType: "PROCESSOR",
             price: 549.99,
             manufacturer: "AMD",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/01/25/49/01/1000_F_125490128_q9AervSfJ42LggMN7IUqDaLhgpe6Wg0C.jpg" // "https://example.com/ryzen95900x.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/01/25/49/01/1000_F_125490128_q9AervSfJ42LggMN7IUqDaLhgpe6Wg0C.jpg", // "https://example.com/ryzen95900x.jpg",
         },
     },
     {
@@ -82,7 +82,7 @@ const processorData: ProcessorCreate[] = [
             componentType: "PROCESSOR",
             price: 399.99,
             manufacturer: "Intel",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/01/25/49/01/1000_F_125490128_q9AervSfJ42LggMN7IUqDaLhgpe6Wg0C.jpg" // "https://example.com/i711700k.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/01/25/49/01/1000_F_125490128_q9AervSfJ42LggMN7IUqDaLhgpe6Wg0C.jpg", // "https://example.com/i711700k.jpg",
         },
     },
     {
@@ -96,7 +96,7 @@ const processorData: ProcessorCreate[] = [
             componentType: "PROCESSOR",
             price: 329.99,
             manufacturer: "AMD",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/01/25/49/01/1000_F_125490128_q9AervSfJ42LggMN7IUqDaLhgpe6Wg0C.jpg" // "https://example.com/ryzen73700x.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/01/25/49/01/1000_F_125490128_q9AervSfJ42LggMN7IUqDaLhgpe6Wg0C.jpg", // "https://example.com/ryzen73700x.jpg",
         },
     },
     {
@@ -110,7 +110,7 @@ const processorData: ProcessorCreate[] = [
             componentType: "PROCESSOR",
             price: 499.99,
             manufacturer: "Intel",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/01/25/49/01/1000_F_125490128_q9AervSfJ42LggMN7IUqDaLhgpe6Wg0C.jpg" // "https://example.com/i99900k.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/01/25/49/01/1000_F_125490128_q9AervSfJ42LggMN7IUqDaLhgpe6Wg0C.jpg", // "https://example.com/i99900k.jpg",
         },
     },
     {
@@ -124,7 +124,7 @@ const processorData: ProcessorCreate[] = [
             componentType: "PROCESSOR",
             price: 299.99,
             manufacturer: "AMD",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/01/25/49/01/1000_F_125490128_q9AervSfJ42LggMN7IUqDaLhgpe6Wg0C.jpg" // "https://example.com/ryzen55600x.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/01/25/49/01/1000_F_125490128_q9AervSfJ42LggMN7IUqDaLhgpe6Wg0C.jpg", // "https://example.com/ryzen55600x.jpg",
         },
     },
     {
@@ -138,7 +138,7 @@ const processorData: ProcessorCreate[] = [
             componentType: "PROCESSOR",
             price: 279.99,
             manufacturer: "Intel",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/01/25/49/01/1000_F_125490128_q9AervSfJ42LggMN7IUqDaLhgpe6Wg0C.jpg" // "https://example.com/i511600k.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/01/25/49/01/1000_F_125490128_q9AervSfJ42LggMN7IUqDaLhgpe6Wg0C.jpg", // "https://example.com/i511600k.jpg",
         },
     },
     {
@@ -152,7 +152,7 @@ const processorData: ProcessorCreate[] = [
             componentType: "PROCESSOR",
             price: 1999.99,
             manufacturer: "AMD",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/01/25/49/01/1000_F_125490128_q9AervSfJ42LggMN7IUqDaLhgpe6Wg0C.jpg" // "https://example.com/threadripper3970x.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/01/25/49/01/1000_F_125490128_q9AervSfJ42LggMN7IUqDaLhgpe6Wg0C.jpg", // "https://example.com/threadripper3970x.jpg",
         },
     },
     {
@@ -166,7 +166,7 @@ const processorData: ProcessorCreate[] = [
             componentType: "PROCESSOR",
             price: 129.99,
             manufacturer: "Intel",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/01/25/49/01/1000_F_125490128_q9AervSfJ42LggMN7IUqDaLhgpe6Wg0C.jpg" // "https://example.com/i310100.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/01/25/49/01/1000_F_125490128_q9AervSfJ42LggMN7IUqDaLhgpe6Wg0C.jpg", // "https://example.com/i310100.jpg",
         },
     },
     {
@@ -180,7 +180,7 @@ const processorData: ProcessorCreate[] = [
             componentType: "PROCESSOR",
             price: 479.99,
             manufacturer: "AMD",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/01/25/49/01/1000_F_125490128_q9AervSfJ42LggMN7IUqDaLhgpe6Wg0C.jpg" // "https://example.com/ryzen75800x3d.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/01/25/49/01/1000_F_125490128_q9AervSfJ42LggMN7IUqDaLhgpe6Wg0C.jpg", // "https://example.com/ryzen75800x3d.jpg",
         },
     },
     {
@@ -194,7 +194,7 @@ const processorData: ProcessorCreate[] = [
             componentType: "PROCESSOR",
             price: 359.99,
             manufacturer: "Intel",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/01/25/49/01/1000_F_125490128_q9AervSfJ42LggMN7IUqDaLhgpe6Wg0C.jpg" // "https://example.com/i78700k.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/01/25/49/01/1000_F_125490128_q9AervSfJ42LggMN7IUqDaLhgpe6Wg0C.jpg", // "https://example.com/i78700k.jpg",
         },
     },
     {
@@ -208,7 +208,7 @@ const processorData: ProcessorCreate[] = [
             componentType: "PROCESSOR",
             price: 1399.99,
             manufacturer: "AMD",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/01/25/49/01/1000_F_125490128_q9AervSfJ42LggMN7IUqDaLhgpe6Wg0C.jpg" // "https://example.com/threadripper3960x.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/01/25/49/01/1000_F_125490128_q9AervSfJ42LggMN7IUqDaLhgpe6Wg0C.jpg", // "https://example.com/threadripper3960x.jpg",
         },
     },
     {
@@ -222,7 +222,7 @@ const processorData: ProcessorCreate[] = [
             componentType: "PROCESSOR",
             price: 549.99,
             manufacturer: "Intel",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/01/25/49/01/1000_F_125490128_q9AervSfJ42LggMN7IUqDaLhgpe6Wg0C.jpg" // "https://example.com/i711900k.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/01/25/49/01/1000_F_125490128_q9AervSfJ42LggMN7IUqDaLhgpe6Wg0C.jpg", // "https://example.com/i711900k.jpg",
         },
     },
     {
@@ -236,7 +236,7 @@ const processorData: ProcessorCreate[] = [
             componentType: "PROCESSOR",
             price: 499.99,
             manufacturer: "AMD",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/01/25/49/01/1000_F_125490128_q9AervSfJ42LggMN7IUqDaLhgpe6Wg0C.jpg" // "https://example.com/ryzen93900x.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/01/25/49/01/1000_F_125490128_q9AervSfJ42LggMN7IUqDaLhgpe6Wg0C.jpg", // "https://example.com/ryzen93900x.jpg",
         },
     },
     {
@@ -250,7 +250,7 @@ const processorData: ProcessorCreate[] = [
             componentType: "PROCESSOR",
             price: 182.99,
             manufacturer: "Intel",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/01/25/49/01/1000_F_125490128_q9AervSfJ42LggMN7IUqDaLhgpe6Wg0C.jpg" // "https://example.com/i510400.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/01/25/49/01/1000_F_125490128_q9AervSfJ42LggMN7IUqDaLhgpe6Wg0C.jpg", // "https://example.com/i510400.jpg",
         },
     },
     {
@@ -264,7 +264,7 @@ const processorData: ProcessorCreate[] = [
             componentType: "PROCESSOR",
             price: 799.99,
             manufacturer: "AMD",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/01/25/49/01/1000_F_125490128_q9AervSfJ42LggMN7IUqDaLhgpe6Wg0C.jpg" // "https://example.com/ryzen95950x.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/01/25/49/01/1000_F_125490128_q9AervSfJ42LggMN7IUqDaLhgpe6Wg0C.jpg", // "https://example.com/ryzen95950x.jpg",
         },
     },
     {
@@ -278,7 +278,7 @@ const processorData: ProcessorCreate[] = [
             componentType: "PROCESSOR",
             price: 129.99,
             manufacturer: "Intel",
-            imageUrl: "https://as2.ftcdn.net/v2/jpg/01/25/49/01/1000_F_125490128_q9AervSfJ42LggMN7IUqDaLhgpe6Wg0C.jpg" // "https://example.com/i38100.jpg",
+            imageUrl: "https://as2.ftcdn.net/v2/jpg/01/25/49/01/1000_F_125490128_q9AervSfJ42LggMN7IUqDaLhgpe6Wg0C.jpg", // "https://example.com/i38100.jpg",
         },
     },
 ]

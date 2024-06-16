@@ -8,7 +8,8 @@ const pcCaseData: PCCaseCreate[] = [
             componentType: "PCCASE",
             price: 69.99,
             manufacturer: "NZXT",
-            imageUrl: "https://thumbs.dreamstime.com/b/pc-case-icon-element-computer-parts-name-mobile-concept-web-apps-filled-outline-can-be-used-fo-gray-background-120503731.jpg" // "https://example.com/nzxth510.jpg",
+            imageUrl:
+                "https://thumbs.dreamstime.com/b/pc-case-icon-element-computer-parts-name-mobile-concept-web-apps-filled-outline-can-be-used-fo-gray-background-120503731.jpg", // "https://example.com/nzxth510.jpg",
         },
     },
     {
@@ -18,7 +19,8 @@ const pcCaseData: PCCaseCreate[] = [
             componentType: "PCCASE",
             price: 49.99,
             manufacturer: "Cooler Master",
-            imageUrl: "https://thumbs.dreamstime.com/b/pc-case-icon-element-computer-parts-name-mobile-concept-web-apps-filled-outline-can-be-used-fo-gray-background-120503731.jpg" // "https://example.com/masterboxq300l.jpg",
+            imageUrl:
+                "https://thumbs.dreamstime.com/b/pc-case-icon-element-computer-parts-name-mobile-concept-web-apps-filled-outline-can-be-used-fo-gray-background-120503731.jpg", // "https://example.com/masterboxq300l.jpg",
         },
     },
     {
@@ -28,7 +30,8 @@ const pcCaseData: PCCaseCreate[] = [
             componentType: "PCCASE",
             price: 79.99,
             manufacturer: "Corsair",
-            imageUrl: "https://thumbs.dreamstime.com/b/pc-case-icon-element-computer-parts-name-mobile-concept-web-apps-filled-outline-can-be-used-fo-gray-background-120503731.jpg" // "https://example.com/corsair4000d.jpg",
+            imageUrl:
+                "https://thumbs.dreamstime.com/b/pc-case-icon-element-computer-parts-name-mobile-concept-web-apps-filled-outline-can-be-used-fo-gray-background-120503731.jpg", // "https://example.com/corsair4000d.jpg",
         },
     },
     {
@@ -38,7 +41,8 @@ const pcCaseData: PCCaseCreate[] = [
             componentType: "PCCASE",
             price: 89.99,
             manufacturer: "NZXT",
-            imageUrl: "https://thumbs.dreamstime.com/b/pc-case-icon-element-computer-parts-name-mobile-concept-web-apps-filled-outline-can-be-used-fo-gray-background-120503731.jpg" // "https://example.com/nzxth210.jpg",
+            imageUrl:
+                "https://thumbs.dreamstime.com/b/pc-case-icon-element-computer-parts-name-mobile-concept-web-apps-filled-outline-can-be-used-fo-gray-background-120503731.jpg", // "https://example.com/nzxth210.jpg",
         },
     },
     {
@@ -48,7 +52,8 @@ const pcCaseData: PCCaseCreate[] = [
             componentType: "PCCASE",
             price: 99.99,
             manufacturer: "Fractal Design",
-            imageUrl: "https://thumbs.dreamstime.com/b/pc-case-icon-element-computer-parts-name-mobile-concept-web-apps-filled-outline-can-be-used-fo-gray-background-120503731.jpg" // "https://example.com/meshifyc.jpg",
+            imageUrl:
+                "https://thumbs.dreamstime.com/b/pc-case-icon-element-computer-parts-name-mobile-concept-web-apps-filled-outline-can-be-used-fo-gray-background-120503731.jpg", // "https://example.com/meshifyc.jpg",
         },
     },
     {
@@ -58,7 +63,8 @@ const pcCaseData: PCCaseCreate[] = [
             componentType: "PCCASE",
             price: 69.99,
             manufacturer: "Thermaltake",
-            imageUrl: "https://thumbs.dreamstime.com/b/pc-case-icon-element-computer-parts-name-mobile-concept-web-apps-filled-outline-can-be-used-fo-gray-background-120503731.jpg" // "https://example.com/corev21.jpg",
+            imageUrl:
+                "https://thumbs.dreamstime.com/b/pc-case-icon-element-computer-parts-name-mobile-concept-web-apps-filled-outline-can-be-used-fo-gray-background-120503731.jpg", // "https://example.com/corev21.jpg",
         },
     },
     {
@@ -68,7 +74,8 @@ const pcCaseData: PCCaseCreate[] = [
             componentType: "PCCASE",
             price: 89.99,
             manufacturer: "Phanteks",
-            imageUrl: "https://thumbs.dreamstime.com/b/pc-case-icon-element-computer-parts-name-mobile-concept-web-apps-filled-outline-can-be-used-fo-gray-background-120503731.jpg" // "https://example.com/eclipsep400a.jpg",
+            imageUrl:
+                "https://thumbs.dreamstime.com/b/pc-case-icon-element-computer-parts-name-mobile-concept-web-apps-filled-outline-can-be-used-fo-gray-background-120503731.jpg", // "https://example.com/eclipsep400a.jpg",
         },
     },
     {
@@ -78,7 +85,8 @@ const pcCaseData: PCCaseCreate[] = [
             componentType: "PCCASE",
             price: 129.99,
             manufacturer: "Lian Li",
-            imageUrl: "https://thumbs.dreamstime.com/b/pc-case-icon-element-computer-parts-name-mobile-concept-web-apps-filled-outline-can-be-used-fo-gray-background-120503731.jpg" // "https://example.com/pco11mini.jpg",
+            imageUrl:
+                "https://thumbs.dreamstime.com/b/pc-case-icon-element-computer-parts-name-mobile-concept-web-apps-filled-outline-can-be-used-fo-gray-background-120503731.jpg", // "https://example.com/pco11mini.jpg",
         },
     },
     {
@@ -88,7 +96,8 @@ const pcCaseData: PCCaseCreate[] = [
             componentType: "PCCASE",
             price: 149.99,
             manufacturer: "Cooler Master",
-            imageUrl: "https://thumbs.dreamstime.com/b/pc-case-icon-element-computer-parts-name-mobile-concept-web-apps-filled-outline-can-be-used-fo-gray-background-120503731.jpg" // "https://example.com/mastercaseh500.jpg",
+            imageUrl:
+                "https://thumbs.dreamstime.com/b/pc-case-icon-element-computer-parts-name-mobile-concept-web-apps-filled-outline-can-be-used-fo-gray-background-120503731.jpg", // "https://example.com/mastercaseh500.jpg",
         },
     },
     {
@@ -98,7 +107,8 @@ const pcCaseData: PCCaseCreate[] = [
             componentType: "PCCASE",
             price: 159.99,
             manufacturer: "Corsair",
-            imageUrl: "https://thumbs.dreamstime.com/b/pc-case-icon-element-computer-parts-name-mobile-concept-web-apps-filled-outline-can-be-used-fo-gray-background-120503731.jpg" // "https://example.com/crystal280x.jpg",
+            imageUrl:
+                "https://thumbs.dreamstime.com/b/pc-case-icon-element-computer-parts-name-mobile-concept-web-apps-filled-outline-can-be-used-fo-gray-background-120503731.jpg", // "https://example.com/crystal280x.jpg",
         },
     },
     {
@@ -108,7 +118,8 @@ const pcCaseData: PCCaseCreate[] = [
             componentType: "PCCASE",
             price: 99.99,
             manufacturer: "Be Quiet!",
-            imageUrl: "https://thumbs.dreamstime.com/b/pc-case-icon-element-computer-parts-name-mobile-concept-web-apps-filled-outline-can-be-used-fo-gray-background-120503731.jpg" // "https://example.com/purebase500dx.jpg",
+            imageUrl:
+                "https://thumbs.dreamstime.com/b/pc-case-icon-element-computer-parts-name-mobile-concept-web-apps-filled-outline-can-be-used-fo-gray-background-120503731.jpg", // "https://example.com/purebase500dx.jpg",
         },
     },
     {
@@ -118,7 +129,8 @@ const pcCaseData: PCCaseCreate[] = [
             componentType: "PCCASE",
             price: 49.99,
             manufacturer: "SilverStone",
-            imageUrl: "https://thumbs.dreamstime.com/b/pc-case-icon-element-computer-parts-name-mobile-concept-web-apps-filled-outline-can-be-used-fo-gray-background-120503731.jpg" // "https://example.com/sg13.jpg",
+            imageUrl:
+                "https://thumbs.dreamstime.com/b/pc-case-icon-element-computer-parts-name-mobile-concept-web-apps-filled-outline-can-be-used-fo-gray-background-120503731.jpg", // "https://example.com/sg13.jpg",
         },
     },
     {
@@ -128,7 +140,8 @@ const pcCaseData: PCCaseCreate[] = [
             componentType: "PCCASE",
             price: 89.99,
             manufacturer: "Lian Li",
-            imageUrl: "https://thumbs.dreamstime.com/b/pc-case-icon-element-computer-parts-name-mobile-concept-web-apps-filled-outline-can-be-used-fo-gray-background-120503731.jpg" // "https://example.com/lancooliimesh.jpg",
+            imageUrl:
+                "https://thumbs.dreamstime.com/b/pc-case-icon-element-computer-parts-name-mobile-concept-web-apps-filled-outline-can-be-used-fo-gray-background-120503731.jpg", // "https://example.com/lancooliimesh.jpg",
         },
     },
     {
@@ -138,7 +151,8 @@ const pcCaseData: PCCaseCreate[] = [
             componentType: "PCCASE",
             price: 109.99,
             manufacturer: "Fractal Design",
-            imageUrl: "https://thumbs.dreamstime.com/b/pc-case-icon-element-computer-parts-name-mobile-concept-web-apps-filled-outline-can-be-used-fo-gray-background-120503731.jpg" // "https://example.com/node804.jpg",
+            imageUrl:
+                "https://thumbs.dreamstime.com/b/pc-case-icon-element-computer-parts-name-mobile-concept-web-apps-filled-outline-can-be-used-fo-gray-background-120503731.jpg", // "https://example.com/node804.jpg",
         },
     },
     {
@@ -148,7 +162,8 @@ const pcCaseData: PCCaseCreate[] = [
             componentType: "PCCASE",
             price: 139.99,
             manufacturer: "Phanteks",
-            imageUrl: "https://thumbs.dreamstime.com/b/pc-case-icon-element-computer-parts-name-mobile-concept-web-apps-filled-outline-can-be-used-fo-gray-background-120503731.jpg" // "https://example.com/enthoopro2.jpg",
+            imageUrl:
+                "https://thumbs.dreamstime.com/b/pc-case-icon-element-computer-parts-name-mobile-concept-web-apps-filled-outline-can-be-used-fo-gray-background-120503731.jpg", // "https://example.com/enthoopro2.jpg",
         },
     },
     {
@@ -158,7 +173,8 @@ const pcCaseData: PCCaseCreate[] = [
             componentType: "PCCASE",
             price: 99.99,
             manufacturer: "Cooler Master",
-            imageUrl: "https://thumbs.dreamstime.com/b/pc-case-icon-element-computer-parts-name-mobile-concept-web-apps-filled-outline-can-be-used-fo-gray-background-120503731.jpg" // "https://example.com/nr200p.jpg",
+            imageUrl:
+                "https://thumbs.dreamstime.com/b/pc-case-icon-element-computer-parts-name-mobile-concept-web-apps-filled-outline-can-be-used-fo-gray-background-120503731.jpg", // "https://example.com/nr200p.jpg",
         },
     },
     {
@@ -168,7 +184,8 @@ const pcCaseData: PCCaseCreate[] = [
             componentType: "PCCASE",
             price: 149.99,
             manufacturer: "Corsair",
-            imageUrl: "https://thumbs.dreamstime.com/b/pc-case-icon-element-computer-parts-name-mobile-concept-web-apps-filled-outline-can-be-used-fo-gray-background-120503731.jpg" // "https://example.com/corsair5000d.jpg",
+            imageUrl:
+                "https://thumbs.dreamstime.com/b/pc-case-icon-element-computer-parts-name-mobile-concept-web-apps-filled-outline-can-be-used-fo-gray-background-120503731.jpg", // "https://example.com/corsair5000d.jpg",
         },
     },
     {
@@ -178,7 +195,8 @@ const pcCaseData: PCCaseCreate[] = [
             componentType: "PCCASE",
             price: 149.99,
             manufacturer: "NZXT",
-            imageUrl: "https://thumbs.dreamstime.com/b/pc-case-icon-element-computer-parts-name-mobile-concept-web-apps-filled-outline-can-be-used-fo-gray-background-120503731.jpg" // "https://example.com/nzxth510elite.jpg",
+            imageUrl:
+                "https://thumbs.dreamstime.com/b/pc-case-icon-element-computer-parts-name-mobile-concept-web-apps-filled-outline-can-be-used-fo-gray-background-120503731.jpg", // "https://example.com/nzxth510elite.jpg",
         },
     },
     {
@@ -188,7 +206,8 @@ const pcCaseData: PCCaseCreate[] = [
             componentType: "PCCASE",
             price: 109.99,
             manufacturer: "Thermaltake",
-            imageUrl: "https://thumbs.dreamstime.com/b/pc-case-icon-element-computer-parts-name-mobile-concept-web-apps-filled-outline-can-be-used-fo-gray-background-120503731.jpg" // "https://example.com/level20mt.jpg",
+            imageUrl:
+                "https://thumbs.dreamstime.com/b/pc-case-icon-element-computer-parts-name-mobile-concept-web-apps-filled-outline-can-be-used-fo-gray-background-120503731.jpg", // "https://example.com/level20mt.jpg",
         },
     },
     {
@@ -198,7 +217,8 @@ const pcCaseData: PCCaseCreate[] = [
             componentType: "PCCASE",
             price: 349.99,
             manufacturer: "NZXT",
-            imageUrl: "https://thumbs.dreamstime.com/b/pc-case-icon-element-computer-parts-name-mobile-concept-web-apps-filled-outline-can-be-used-fo-gray-background-120503731.jpg" // "https://example.com/nzxth1.jpg",
+            imageUrl:
+                "https://thumbs.dreamstime.com/b/pc-case-icon-element-computer-parts-name-mobile-concept-web-apps-filled-outline-can-be-used-fo-gray-background-120503731.jpg", // "https://example.com/nzxth1.jpg",
         },
     },
 ]

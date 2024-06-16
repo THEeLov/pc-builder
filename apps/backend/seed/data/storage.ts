@@ -10,7 +10,7 @@ const storageData: StorageCreate[] = [
             componentType: "STORAGE",
             price: 79.99,
             manufacturer: "Samsung",
-            imageUrl: "https://as1.ftcdn.net/v2/jpg/02/43/20/36/1000_F_243203621_Za9BiTP1zEsWSoztiGXnIggcrrjHZBNy.jpg" // "https://example.com/samsung860evo500gb.jpg",
+            imageUrl: "https://as1.ftcdn.net/v2/jpg/02/43/20/36/1000_F_243203621_Za9BiTP1zEsWSoztiGXnIggcrrjHZBNy.jpg", // "https://example.com/samsung860evo500gb.jpg",
         },
     },
     {
@@ -22,7 +22,7 @@ const storageData: StorageCreate[] = [
             componentType: "STORAGE",
             price: 129.99,
             manufacturer: "Western Digital",
-            imageUrl: "https://as1.ftcdn.net/v2/jpg/02/43/20/36/1000_F_243203621_Za9BiTP1zEsWSoztiGXnIggcrrjHZBNy.jpg" // "https://example.com/wdblacksn7501tb.jpg",
+            imageUrl: "https://as1.ftcdn.net/v2/jpg/02/43/20/36/1000_F_243203621_Za9BiTP1zEsWSoztiGXnIggcrrjHZBNy.jpg", // "https://example.com/wdblacksn7501tb.jpg",
         },
     },
     {
@@ -34,7 +34,7 @@ const storageData: StorageCreate[] = [
             componentType: "STORAGE",
             price: 54.99,
             manufacturer: "Seagate",
-            imageUrl: "https://as1.ftcdn.net/v2/jpg/02/43/20/36/1000_F_243203621_Za9BiTP1zEsWSoztiGXnIggcrrjHZBNy.jpg" // "https://example.com/seagatebarracuda2tb.jpg",
+            imageUrl: "https://as1.ftcdn.net/v2/jpg/02/43/20/36/1000_F_243203621_Za9BiTP1zEsWSoztiGXnIggcrrjHZBNy.jpg", // "https://example.com/seagatebarracuda2tb.jpg",
         },
     },
     {
@@ -46,7 +46,7 @@ const storageData: StorageCreate[] = [
             componentType: "STORAGE",
             price: 44.99,
             manufacturer: "Kingston",
-            imageUrl: "https://as1.ftcdn.net/v2/jpg/02/43/20/36/1000_F_243203621_Za9BiTP1zEsWSoztiGXnIggcrrjHZBNy.jpg" // "https://example.com/kingstona2000256gb.jpg",
+            imageUrl: "https://as1.ftcdn.net/v2/jpg/02/43/20/36/1000_F_243203621_Za9BiTP1zEsWSoztiGXnIggcrrjHZBNy.jpg", // "https://example.com/kingstona2000256gb.jpg",
         },
     },
     {
@@ -58,7 +58,7 @@ const storageData: StorageCreate[] = [
             componentType: "STORAGE",
             price: 99.99,
             manufacturer: "Western Digital",
-            imageUrl: "https://as1.ftcdn.net/v2/jpg/02/43/20/36/1000_F_243203621_Za9BiTP1zEsWSoztiGXnIggcrrjHZBNy.jpg" // "https://example.com/wdblue4tb.jpg",
+            imageUrl: "https://as1.ftcdn.net/v2/jpg/02/43/20/36/1000_F_243203621_Za9BiTP1zEsWSoztiGXnIggcrrjHZBNy.jpg", // "https://example.com/wdblue4tb.jpg",
         },
     },
     {
@@ -70,7 +70,7 @@ const storageData: StorageCreate[] = [
             componentType: "STORAGE",
             price: 349.99,
             manufacturer: "Samsung",
-            imageUrl: "https://as1.ftcdn.net/v2/jpg/02/43/20/36/1000_F_243203621_Za9BiTP1zEsWSoztiGXnIggcrrjHZBNy.jpg" // "https://example.com/samsung970evo2tb.jpg",
+            imageUrl: "https://as1.ftcdn.net/v2/jpg/02/43/20/36/1000_F_243203621_Za9BiTP1zEsWSoztiGXnIggcrrjHZBNy.jpg", // "https://example.com/samsung970evo2tb.jpg",
         },
     },
     {
@@ -82,7 +82,7 @@ const storageData: StorageCreate[] = [
             componentType: "STORAGE",
             price: 39.99,
             manufacturer: "Toshiba",
-            imageUrl: "https://as1.ftcdn.net/v2/jpg/02/43/20/36/1000_F_243203621_Za9BiTP1zEsWSoztiGXnIggcrrjHZBNy.jpg" // "https://example.com/toshibap3001tb.jpg",
+            imageUrl: "https://as1.ftcdn.net/v2/jpg/02/43/20/36/1000_F_243203621_Za9BiTP1zEsWSoztiGXnIggcrrjHZBNy.jpg", // "https://example.com/toshibap3001tb.jpg",
         },
     },
     {
@@ -94,7 +94,7 @@ const storageData: StorageCreate[] = [
             componentType: "STORAGE",
             price: 64.99,
             manufacturer: "Crucial",
-            imageUrl: "https://as1.ftcdn.net/v2/jpg/02/43/20/36/1000_F_243203621_Za9BiTP1zEsWSoztiGXnIggcrrjHZBNy.jpg" // "https://example.com/crucialmx500512gb.jpg",
+            imageUrl: "https://as1.ftcdn.net/v2/jpg/02/43/20/36/1000_F_243203621_Za9BiTP1zEsWSoztiGXnIggcrrjHZBNy.jpg", // "https://example.com/crucialmx500512gb.jpg",
         },
     },
     {
@@ -106,7 +106,7 @@ const storageData: StorageCreate[] = [
             componentType: "STORAGE",
             price: 124.99,
             manufacturer: "ADATA",
-            imageUrl: "https://as1.ftcdn.net/v2/jpg/02/43/20/36/1000_F_243203621_Za9BiTP1zEsWSoztiGXnIggcrrjHZBNy.jpg" // "https://example.com/xpgsx8200pro1tb.jpg",
+            imageUrl: "https://as1.ftcdn.net/v2/jpg/02/43/20/36/1000_F_243203621_Za9BiTP1zEsWSoztiGXnIggcrrjHZBNy.jpg", // "https://example.com/xpgsx8200pro1tb.jpg",
         },
     },
     {
@@ -118,7 +118,7 @@ const storageData: StorageCreate[] = [
             componentType: "STORAGE",
             price: 229.99,
             manufacturer: "Seagate",
-            imageUrl: "https://as1.ftcdn.net/v2/jpg/02/43/20/36/1000_F_243203621_Za9BiTP1zEsWSoztiGXnIggcrrjHZBNy.jpg" // "https://example.com/seagateironwolf8tb.jpg",
+            imageUrl: "https://as1.ftcdn.net/v2/jpg/02/43/20/36/1000_F_243203621_Za9BiTP1zEsWSoztiGXnIggcrrjHZBNy.jpg", // "https://example.com/seagateironwolf8tb.jpg",
         },
     },
     {
@@ -130,7 +130,7 @@ const storageData: StorageCreate[] = [
             componentType: "STORAGE",
             price: 299.99,
             manufacturer: "Sabrent",
-            imageUrl: "https://as1.ftcdn.net/v2/jpg/02/43/20/36/1000_F_243203621_Za9BiTP1zEsWSoztiGXnIggcrrjHZBNy.jpg" // "https://example.com/sabrentrocket2tb.jpg",
+            imageUrl: "https://as1.ftcdn.net/v2/jpg/02/43/20/36/1000_F_243203621_Za9BiTP1zEsWSoztiGXnIggcrrjHZBNy.jpg", // "https://example.com/sabrentrocket2tb.jpg",
         },
     },
     {
@@ -142,7 +142,7 @@ const storageData: StorageCreate[] = [
             componentType: "STORAGE",
             price: 89.99,
             manufacturer: "Toshiba",
-            imageUrl: "https://as1.ftcdn.net/v2/jpg/02/43/20/36/1000_F_243203621_Za9BiTP1zEsWSoztiGXnIggcrrjHZBNy.jpg" // "https://example.com/toshibax3003tb.jpg",
+            imageUrl: "https://as1.ftcdn.net/v2/jpg/02/43/20/36/1000_F_243203621_Za9BiTP1zEsWSoztiGXnIggcrrjHZBNy.jpg", // "https://example.com/toshibax3003tb.jpg",
         },
     },
     {
@@ -154,7 +154,7 @@ const storageData: StorageCreate[] = [
             componentType: "STORAGE",
             price: 49.99,
             manufacturer: "Western Digital",
-            imageUrl: "https://as1.ftcdn.net/v2/jpg/02/43/20/36/1000_F_243203621_Za9BiTP1zEsWSoztiGXnIggcrrjHZBNy.jpg" // "https://example.com/wdblue250gb.jpg",
+            imageUrl: "https://as1.ftcdn.net/v2/jpg/02/43/20/36/1000_F_243203621_Za9BiTP1zEsWSoztiGXnIggcrrjHZBNy.jpg", // "https://example.com/wdblue250gb.jpg",
         },
     },
     {
@@ -166,7 +166,7 @@ const storageData: StorageCreate[] = [
             componentType: "STORAGE",
             price: 139.99,
             manufacturer: "Seagate",
-            imageUrl: "https://as1.ftcdn.net/v2/jpg/02/43/20/36/1000_F_243203621_Za9BiTP1zEsWSoztiGXnIggcrrjHZBNy.jpg" // "https://example.com/seagatebarracuda5tb.jpg",
+            imageUrl: "https://as1.ftcdn.net/v2/jpg/02/43/20/36/1000_F_243203621_Za9BiTP1zEsWSoztiGXnIggcrrjHZBNy.jpg", // "https://example.com/seagatebarracuda5tb.jpg",
         },
     },
     {
@@ -178,7 +178,7 @@ const storageData: StorageCreate[] = [
             componentType: "STORAGE",
             price: 99.99,
             manufacturer: "Crucial",
-            imageUrl: "https://as1.ftcdn.net/v2/jpg/02/43/20/36/1000_F_243203621_Za9BiTP1zEsWSoztiGXnIggcrrjHZBNy.jpg" // "https://example.com/crucialp11tb.jpg",
+            imageUrl: "https://as1.ftcdn.net/v2/jpg/02/43/20/36/1000_F_243203621_Za9BiTP1zEsWSoztiGXnIggcrrjHZBNy.jpg", // "https://example.com/crucialp11tb.jpg",
         },
     },
     {
@@ -190,7 +190,7 @@ const storageData: StorageCreate[] = [
             componentType: "STORAGE",
             price: 249.99,
             manufacturer: "Western Digital",
-            imageUrl: "https://as1.ftcdn.net/v2/jpg/02/43/20/36/1000_F_243203621_Za9BiTP1zEsWSoztiGXnIggcrrjHZBNy.jpg" // "https://example.com/wdblack6tb.jpg",
+            imageUrl: "https://as1.ftcdn.net/v2/jpg/02/43/20/36/1000_F_243203621_Za9BiTP1zEsWSoztiGXnIggcrrjHZBNy.jpg", // "https://example.com/wdblack6tb.jpg",
         },
     },
     {
@@ -202,7 +202,7 @@ const storageData: StorageCreate[] = [
             componentType: "STORAGE",
             price: 59.99,
             manufacturer: "Intel",
-            imageUrl: "https://as1.ftcdn.net/v2/jpg/02/43/20/36/1000_F_243203621_Za9BiTP1zEsWSoztiGXnIggcrrjHZBNy.jpg" // "https://example.com/intel660p512gb.jpg",
+            imageUrl: "https://as1.ftcdn.net/v2/jpg/02/43/20/36/1000_F_243203621_Za9BiTP1zEsWSoztiGXnIggcrrjHZBNy.jpg", // "https://example.com/intel660p512gb.jpg",
         },
     },
     {
@@ -214,7 +214,7 @@ const storageData: StorageCreate[] = [
             componentType: "STORAGE",
             price: 339.99,
             manufacturer: "Seagate",
-            imageUrl: "https://as1.ftcdn.net/v2/jpg/02/43/20/36/1000_F_243203621_Za9BiTP1zEsWSoztiGXnIggcrrjHZBNy.jpg" // "https://example.com/seagateexos10tb.jpg",
+            imageUrl: "https://as1.ftcdn.net/v2/jpg/02/43/20/36/1000_F_243203621_Za9BiTP1zEsWSoztiGXnIggcrrjHZBNy.jpg", // "https://example.com/seagateexos10tb.jpg",
         },
     },
     {
@@ -226,7 +226,7 @@ const storageData: StorageCreate[] = [
             componentType: "STORAGE",
             price: 299.99,
             manufacturer: "Corsair",
-            imageUrl: "https://as1.ftcdn.net/v2/jpg/02/43/20/36/1000_F_243203621_Za9BiTP1zEsWSoztiGXnIggcrrjHZBNy.jpg" // "https://example.com/mp6002tb.jpg",
+            imageUrl: "https://as1.ftcdn.net/v2/jpg/02/43/20/36/1000_F_243203621_Za9BiTP1zEsWSoztiGXnIggcrrjHZBNy.jpg", // "https://example.com/mp6002tb.jpg",
         },
     },
     {
@@ -238,7 +238,7 @@ const storageData: StorageCreate[] = [
             componentType: "STORAGE",
             price: 549.99,
             manufacturer: "Seagate",
-            imageUrl: "https://as1.ftcdn.net/v2/jpg/02/43/20/36/1000_F_243203621_Za9BiTP1zEsWSoztiGXnIggcrrjHZBNy.jpg" // "https://example.com/ironwolfpro16tb.jpg",
+            imageUrl: "https://as1.ftcdn.net/v2/jpg/02/43/20/36/1000_F_243203621_Za9BiTP1zEsWSoztiGXnIggcrrjHZBNy.jpg", // "https://example.com/ironwolfpro16tb.jpg",
         },
     },
 ]
