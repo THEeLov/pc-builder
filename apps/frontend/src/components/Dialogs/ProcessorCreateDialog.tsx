@@ -3,8 +3,8 @@ import { useForm, SubmitHandler } from "react-hook-form"
 import { ProcessorSchema } from "../../validationSchemas/dialogs"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
-import FormField from "../FormField"
-import BaseForm from "../BaseForm"
+import FormField from "../Form/FormField"
+import BaseForm from "../Form/BaseForm"
 import { useDialog } from "../../hooks/useDialog"
 import { useComponentsCreate } from "@/hooks/useComponents"
 import { showSuccessNotification } from "@/utils/showNotfication"
@@ -66,36 +66,41 @@ const ProcessorCreateDialog = () => {
                             name="architecture"
                             register={register}
                             type="text"
-                            placeholder="architecture"
+                            placeholder="ARM"
                             error={errors.architecture}
+                            label="Architecture"
                         />
                         <FormField
                             name="cores"
                             register={register}
                             type="number"
-                            placeholder="cores"
+                            placeholder="4"
                             error={errors.cores}
+                            label="Cores"
                         />
                         <FormField
                             name="threads"
                             register={register}
                             type="number"
-                            placeholder="threads"
+                            placeholder="12"
                             error={errors.threads}
+                            label="Threads"
                         />
                         <FormField
                             name="bits"
                             register={register}
                             type="number"
-                            placeholder="bits"
+                            placeholder="64"
                             error={errors.bits}
+                            label="Bits"
                         />
                         <FormField
                             name="socket"
                             register={register}
                             type="text"
-                            placeholder="socket"
+                            placeholder="LGA 1200"
                             error={errors.socket}
+                            label="Socket"
                         />
                     </div>
                 </div>

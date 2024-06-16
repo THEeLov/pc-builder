@@ -40,6 +40,7 @@
     "devDependencies": {
         "@commitlint/cli": "^19.2.1",
         "@commitlint/config-conventional": "^19.1.0",
+        "@faker-js/faker": "^8.4.1",
         "@nrwl/express": "^18.1.2",
         "@nrwl/jest": "^18.1.2",
         "@nrwl/node": "^18.1.2",

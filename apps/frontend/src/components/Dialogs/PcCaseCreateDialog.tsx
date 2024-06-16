@@ -3,8 +3,8 @@ import { useForm, SubmitHandler } from "react-hook-form"
 import { PcCaseSchema } from "../../validationSchemas/dialogs"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
-import FormField from "../FormField"
-import BaseForm from "../BaseForm"
+import FormField from "../Form/FormField"
+import BaseForm from "../Form/BaseForm"
 import { useDialog } from "../../hooks/useDialog"
 import { useComponentsCreate } from "@/hooks/useComponents"
 import { showSuccessNotification } from "@/utils/showNotfication"
@@ -62,8 +62,9 @@ const PcCaseCreateDialog = () => {
                             name="formFactor"
                             register={register}
                             type="text"
-                            placeholder="form factor"
+                            placeholder="ATX"
                             error={errors.formFactor}
+                            label="Form Factor"
                         />
                     </div>
                 </div>

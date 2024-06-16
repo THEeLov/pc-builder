@@ -3,8 +3,8 @@ import { useForm, SubmitHandler } from "react-hook-form"
 import { PowerSupplySchema } from "../../validationSchemas/dialogs"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
-import FormField from "../FormField"
-import BaseForm from "../BaseForm"
+import FormField from "../Form/FormField"
+import BaseForm from "../Form/BaseForm"
 import { useDialog } from "../../hooks/useDialog"
 import { useComponentsCreate } from "@/hooks/useComponents"
 import { showSuccessNotification } from "@/utils/showNotfication"
@@ -64,22 +64,25 @@ const PowerSupplyCreateDialog = () => {
                             name="powerOutput"
                             register={register}
                             type="number"
-                            placeholder="socket"
+                            placeholder="125"
                             error={errors.powerOutput}
+                            label="Power Output"
                         />
                         <FormField
                             name="efficiency"
                             register={register}
                             type="text"
-                            placeholder="efficiency"
+                            placeholder="80 PLUS Platinum"
                             error={errors.efficiency}
+                            label="Efficiency"
                         />
                         <FormField
                             name="formFactor"
                             register={register}
-                            type="string"
-                            placeholder="form factor"
+                            type="text"
+                            placeholder="ATX"
                             error={errors.formFactor}
+                            label="Form Factor"
                         />
                     </div>
                 </div>
