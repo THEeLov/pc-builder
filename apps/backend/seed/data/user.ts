@@ -1,9 +1,8 @@
-import { User } from "../../src/users/userTypes"
+import { UserCreate } from "../../src/users/userTypes"
 import faker from "../seed"
 import { DATA_AMOUNT } from "../seed"
 
-const userData: User[] = Array.from({ length: DATA_AMOUNT }).map((_, index) => ({
-    id: index + 1,
+const userData: UserCreate[] = Array.from({ length: DATA_AMOUNT }).map((_, index) => ({
     username: faker.internet.userName() + (index + 1),
     email: faker.internet.email(),
     password: faker.internet.password(),
