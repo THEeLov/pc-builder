@@ -1,7 +1,7 @@
 import RAMRepo from "../repository/rams.repository"
 import { Request, Response } from "express"
 import { RAMWithComponent } from "../validation/validation"
-import { RamCreate, RamUpdate } from "../validation/validation"
+import { RamCreate, RamEdit } from "../validation/validation"
 import baseComponentController from "../../base/controller/specific.components.controller"
 
 async function getMany(req: Request, res: Response): Promise<Response<RAMWithComponent[]>> {
@@ -21,7 +21,7 @@ async function remove(req: Request, res: Response): Promise<Response<void>> {
 }
 
 async function update(req: Request, res: Response): Promise<Response<RAMWithComponent>> {
-    return await baseComponentController.update(RamUpdate, RAMRepo, req, res)
+    return await baseComponentController.update(RamEdit, RAMRepo, req, res)
 }
 
 async function getSingle(req: Request, res: Response) {

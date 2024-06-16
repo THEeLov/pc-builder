@@ -75,7 +75,14 @@
                 "command": "./stop-and-reset.sh",
                 "cwd": "apps/backend"
             }
-        }
+        },
+        "seed": {
+          "executor": "nx:run-commands",
+          "options": {
+            "command": "npx ts-node seed/seed.ts",
+            "cwd": "apps/backend"
+          }
+      }
     },
     "tags": []
 }
