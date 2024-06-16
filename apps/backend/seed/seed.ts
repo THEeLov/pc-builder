@@ -14,6 +14,7 @@ import RAMRepo from "../src/components/rams/repository/rams.repository"
 import ramData from "./data/ram"
 import StorageRepo from "../src/components/storage/repository/storage.repository"
 import storageData from "./data/storage"
+import { seedUsers } from "./data/user"
 
 dotenv.config()
 
@@ -107,6 +108,7 @@ const main = async (): Promise<any> => {
         await seedProcessors()
         await seedRams()
         await seedStorages()
+        await seedUsers()
     })
 }
 
