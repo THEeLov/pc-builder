@@ -9,6 +9,8 @@ import { useDialog } from "../../hooks/useDialog"
 import { useComponentsCreate } from "@/hooks/useComponents"
 import { showSuccessNotification } from "@/utils/showNotfication"
 import "./dialog.css"
+import { formFactors, powerSupplyEfficiencies } from "./configTypes"
+import SelectField from "../Form/SelectField"
 
 type FormFields = z.infer<typeof PowerSupplySchema>
 
@@ -68,19 +70,19 @@ const PowerSupplyCreateDialog = () => {
                             error={errors.powerOutput}
                             label="Power Output"
                         />
-                        <FormField
+                        <SelectField
                             name="efficiency"
                             register={register}
-                            type="text"
-                            placeholder="80 PLUS Platinum"
+                            options={powerSupplyEfficiencies}
+                            placeholder="Select..."
                             error={errors.efficiency}
                             label="Efficiency"
                         />
-                        <FormField
+                        <SelectField
                             name="formFactor"
                             register={register}
-                            type="text"
-                            placeholder="ATX"
+                            options={formFactors}
+                            placeholder="Select..."
                             error={errors.formFactor}
                             label="Form Factor"
                         />

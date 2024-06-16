@@ -9,6 +9,8 @@ import { useDialog } from "../../hooks/useDialog"
 import { useComponentsCreate } from "@/hooks/useComponents"
 import { showSuccessNotification } from "@/utils/showNotfication"
 import "./dialog.css"
+import SelectField from "../Form/SelectField"
+import { processorArchitectures, sockets } from "./configTypes"
 
 type FormFields = z.infer<typeof ProcessorSchema>
 
@@ -62,11 +64,11 @@ const ProcessorCreateDialog = () => {
                 <div className="dialog-form">
                     <BaseForm register={register} errors={errors} />
                     <div className="dialog-form__grid--second">
-                        <FormField
+                        <SelectField
                             name="architecture"
                             register={register}
-                            type="text"
-                            placeholder="ARM"
+                            options={processorArchitectures}
+                            placeholder="Select..."
                             error={errors.architecture}
                             label="Architecture"
                         />
@@ -94,11 +96,11 @@ const ProcessorCreateDialog = () => {
                             error={errors.bits}
                             label="Bits"
                         />
-                        <FormField
+                        <SelectField
                             name="socket"
                             register={register}
-                            type="text"
-                            placeholder="LGA 1200"
+                            options={sockets}
+                            placeholder="Select..."
                             error={errors.socket}
                             label="Socket"
                         />

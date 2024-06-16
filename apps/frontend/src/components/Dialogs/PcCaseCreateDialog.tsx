@@ -9,6 +9,8 @@ import { useDialog } from "../../hooks/useDialog"
 import { useComponentsCreate } from "@/hooks/useComponents"
 import { showSuccessNotification } from "@/utils/showNotfication"
 import "./dialog.css"
+import { formFactors } from "./configTypes"
+import SelectField from "../Form/SelectField"
 
 type FormFields = z.infer<typeof PcCaseSchema>
 
@@ -58,11 +60,11 @@ const PcCaseCreateDialog = () => {
                 <div className="dialog-form">
                     <BaseForm register={register} errors={errors} />
                     <div className="dialog-form__grid--second">
-                        <FormField
+                        <SelectField
                             name="formFactor"
                             register={register}
-                            type="text"
-                            placeholder="ATX"
+                            options={formFactors}
+                            placeholder="Select..."
                             error={errors.formFactor}
                             label="Form Factor"
                         />

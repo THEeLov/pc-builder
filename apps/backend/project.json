@@ -65,7 +65,7 @@
         "db-init": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "./database.sh",
+                "command": "sudo ./database.sh",
                 "cwd": "apps/backend"
             }
         },

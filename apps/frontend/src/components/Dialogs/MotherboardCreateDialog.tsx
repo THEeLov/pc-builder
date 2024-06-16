@@ -9,6 +9,8 @@ import { useDialog } from "../../hooks/useDialog"
 import { useComponentsCreate } from "@/hooks/useComponents"
 import { showSuccessNotification } from "@/utils/showNotfication"
 import "./dialog.css"
+import SelectField from "../Form/SelectField"
+import { formFactors, gpuInterfaces, ramTypes, sockets, storageBusTypes } from "./configTypes"
 
 type FormFields = z.infer<typeof MotherboardSchema>
 
@@ -64,19 +66,19 @@ const MotherboardCreateDialog = () => {
                 <div className="dialog-form">
                     <BaseForm register={register} errors={errors} />
                     <div className="dialog-form__grid--second">
-                        <FormField
+                        <SelectField
                             name="socket"
                             register={register}
-                            type="text"
-                            placeholder="LGA 1200"
+                            options={sockets}
+                            placeholder="Select..."
                             error={errors.socket}
                             label="Socket"
                         />
-                        <FormField
+                        <SelectField
                             name="formFactor"
                             register={register}
-                            type="text"
-                            placeholder="ATX"
+                            options={formFactors}
+                            placeholder="Select..."
                             error={errors.formFactor}
                             label="Form Factor"
                         />
@@ -88,27 +90,27 @@ const MotherboardCreateDialog = () => {
                             error={errors.ramSlots}
                             label="Ram Slots"
                         />
-                        <FormField
+                        <SelectField
                             name="ramType"
                             register={register}
-                            type="text"
-                            placeholder="VRAM"
+                            options={ramTypes}
+                            placeholder="Select..."
                             error={errors.ramType}
                             label="Ram Type"
                         />
-                        <FormField
+                        <SelectField
                             name="gpuInterface"
                             register={register}
-                            type="text"
-                            placeholder="AGP"
+                            options={gpuInterfaces}
+                            placeholder="Select..."
                             error={errors.gpuInterface}
                             label="GPU Interface"
                         />
-                        <FormField
+                        <SelectField
                             name="storageBusType"
                             register={register}
-                            type="text"
-                            placeholder="SATA"
+                            options={storageBusTypes}
+                            placeholder="Select..."
                             error={errors.storageBusType}
                             label="Storage Bus Type"
                         />

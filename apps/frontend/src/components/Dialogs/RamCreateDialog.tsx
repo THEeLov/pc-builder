@@ -9,6 +9,8 @@ import { useDialog } from "../../hooks/useDialog"
 import { useComponentsCreate } from "@/hooks/useComponents"
 import { showSuccessNotification } from "@/utils/showNotfication"
 import "./dialog.css"
+import SelectField from "../Form/SelectField"
+import { computerTypes, ramTypes } from "./configTypes"
 
 type FormFields = z.infer<typeof RamSchema>
 
@@ -60,21 +62,21 @@ const RamCreateDialog = () => {
                 <div className="dialog-form">
                     <BaseForm register={register} errors={errors} />
                     <div className="dialog-form__grid--second">
-                        <FormField
+                        <SelectField
                             name="computerType"
                             register={register}
-                            type="text"
-                            placeholder="DESKTOP"
+                            options={computerTypes}
+                            placeholder="Select..."
                             error={errors.computerType}
                             label="Computer Type"
                         />
-                        <FormField
+                        <SelectField
                             name="memoryType"
                             register={register}
-                            type="text"
-                            placeholder="DDR2"
+                            options={ramTypes}
+                            placeholder="Select..."
                             error={errors.memoryType}
-                            label="Memory Type"
+                            label="RAM Type"
                         />
                         <FormField
                             name="capacity"

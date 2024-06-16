@@ -9,6 +9,8 @@ import { useDialog } from "../../hooks/useDialog"
 import { useComponentsCreate } from "@/hooks/useComponents"
 import { showSuccessNotification } from "@/utils/showNotfication"
 import "./dialog.css"
+import SelectField from "../Form/SelectField"
+import { storageBusTypes, storageTypes } from "./configTypes"
 
 type FormFields = z.infer<typeof StorageSchema>
 
@@ -60,11 +62,11 @@ const StorageCreateDialog = () => {
                 <div className="dialog-form">
                     <BaseForm register={register} errors={errors} />
                     <div className="dialog-form__grid--second">
-                        <FormField
+                        <SelectField
                             name="storageType"
                             register={register}
-                            type="string"
-                            placeholder="SSD"
+                            options={storageTypes}
+                            placeholder="Select..."
                             error={errors.storageType}
                             label="Storage Type"
                         />
@@ -76,10 +78,10 @@ const StorageCreateDialog = () => {
                             error={errors.capacity}
                             label="Capacity"
                         />
-                        <FormField
+                        <SelectField
                             name="busType"
                             register={register}
-                            type="string"
+                            options={storageBusTypes}
                             placeholder="SATA"
                             error={errors.busType}
                             label="Bus Type"

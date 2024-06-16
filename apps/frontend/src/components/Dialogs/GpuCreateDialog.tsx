@@ -9,6 +9,8 @@ import { useDialog } from "../../hooks/useDialog"
 import { useComponentsCreate } from "@/hooks/useComponents"
 import { showSuccessNotification } from "@/utils/showNotfication"
 import "./dialog.css"
+import { gpuPowerConnectors, gpuInterfaces } from "./configTypes"
+import SelectField from "../Form/SelectField"
 
 type FormFields = z.infer<typeof GpuSchema>
 
@@ -65,22 +67,25 @@ const GpuCreateDialog = () => {
                             name="memory"
                             register={register}
                             type="number"
-                            placeholder="memory"
+                            placeholder="124"
                             error={errors.memory}
+                            label="Memory"
                         />
-                        <FormField
+                        <SelectField
                             name="powerConnector"
                             register={register}
-                            type="string"
-                            placeholder="power connecter"
+                            options={gpuPowerConnectors}
+                            placeholder="Select..."
                             error={errors.powerConnector}
+                            label="Power Connector"
                         />
-                        <FormField
+                        <SelectField
                             name="interface"
                             register={register}
-                            type="text"
-                            placeholder="interface"
+                            options={gpuInterfaces}
+                            placeholder="Select.."
                             error={errors.interface}
+                            label="Interface"
                         />
                         <FormField
                             name="power"
@@ -88,6 +93,7 @@ const GpuCreateDialog = () => {
                             type="number"
                             placeholder="power"
                             error={errors.power}
+                            label="Power"
                         />
                     </div>
                 </div>
