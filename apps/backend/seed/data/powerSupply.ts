@@ -1,19 +1,245 @@
-import { PowerSupply } from "../../src/components/powerSupply/types"
-import faker from "../seed"
-import { DATA_AMOUNT } from "../seed"
+import { PowerSupplyCreate } from "../../src/components/powerSupply/validation/powerSupply.types"
 
-const powerSupplyData: PowerSupply[] = Array.from({ length: DATA_AMOUNT }).map((_, index) => ({
-    id: index + 1,
-    name: faker.commerce.productName(),
-    price: faker.number.int({ min: 0, max: 100 }),
-    manufacturer: faker.company.name(),
-    fromFactor: faker.system.networkInterface(),
-    powerOutput: faker.number.int({ min: 50, max: 250 }),
-    efficiency: faker.string.alphanumeric({ length: { min: 5, max: 25 } }),
-}))
-
-export const seedPowerSupply = async (tx) => {
-    await tx.powerSupply.createMany({
-        data: powerSupplyData,
-    })
-}
+const powerSupplyData: PowerSupplyCreate[] = [
+    {
+        powerOutput: 750,
+        efficiency: "80 PLUS Gold",
+        formFactor: "ATX",
+        component: {
+            name: "Corsair RM750x",
+            componentType: "POWERSUPPLY",
+            price: 129.99,
+            manufacturer: "Corsair",
+            imageUrl: "https://example.com/rm750x.jpg",
+        },
+    },
+    {
+        powerOutput: 650,
+        efficiency: "80 PLUS Bronze",
+        formFactor: "ATX",
+        component: {
+            name: "EVGA 650 BQ",
+            componentType: "POWERSUPPLY",
+            price: 74.99,
+            manufacturer: "EVGA",
+            imageUrl: "https://example.com/650bq.jpg",
+        },
+    },
+    {
+        powerOutput: 850,
+        efficiency: "80 PLUS Platinum",
+        formFactor: "ATX",
+        component: {
+            name: "Seasonic Prime TX-850",
+            componentType: "POWERSUPPLY",
+            price: 229.99,
+            manufacturer: "Seasonic",
+            imageUrl: "https://example.com/primetx850.jpg",
+        },
+    },
+    {
+        powerOutput: 500,
+        efficiency: "80 PLUS Bronze",
+        formFactor: "ATX",
+        component: {
+            name: "Cooler Master MWE 500",
+            componentType: "POWERSUPPLY",
+            price: 54.99,
+            manufacturer: "Cooler Master",
+            imageUrl: "https://example.com/mwe500.jpg",
+        },
+    },
+    {
+        powerOutput: 600,
+        efficiency: "80 PLUS Gold",
+        formFactor: "SFX",
+        component: {
+            name: "SilverStone SX600-G",
+            componentType: "POWERSUPPLY",
+            price: 139.99,
+            manufacturer: "SilverStone",
+            imageUrl: "https://example.com/sx600g.jpg",
+        },
+    },
+    {
+        powerOutput: 1000,
+        efficiency: "80 PLUS Titanium",
+        formFactor: "ATX",
+        component: {
+            name: "EVGA SuperNOVA 1000 T2",
+            componentType: "POWERSUPPLY",
+            price: 299.99,
+            manufacturer: "EVGA",
+            imageUrl: "https://example.com/supernova1000t2.jpg",
+        },
+    },
+    {
+        powerOutput: 450,
+        efficiency: "80 PLUS Bronze",
+        formFactor: "ATX",
+        component: {
+            name: "Thermaltake Smart 450W",
+            componentType: "POWERSUPPLY",
+            price: 39.99,
+            manufacturer: "Thermaltake",
+            imageUrl: "https://example.com/smart450w.jpg",
+        },
+    },
+    {
+        powerOutput: 700,
+        efficiency: "80 PLUS Silver",
+        formFactor: "ATX",
+        component: {
+            name: "Antec Earthwatts EA-700",
+            componentType: "POWERSUPPLY",
+            price: 99.99,
+            manufacturer: "Antec",
+            imageUrl: "https://example.com/earthwatts700.jpg",
+        },
+    },
+    {
+        powerOutput: 550,
+        efficiency: "80 PLUS Gold",
+        formFactor: "ATX",
+        component: {
+            name: "Corsair TX550M",
+            componentType: "POWERSUPPLY",
+            price: 84.99,
+            manufacturer: "Corsair",
+            imageUrl: "https://example.com/tx550m.jpg",
+        },
+    },
+    {
+        powerOutput: 750,
+        efficiency: "80 PLUS Platinum",
+        formFactor: "ATX",
+        component: {
+            name: "Seasonic Focus PX-750",
+            componentType: "POWERSUPPLY",
+            price: 139.99,
+            manufacturer: "Seasonic",
+            imageUrl: "https://example.com/focuspx750.jpg",
+        },
+    },
+    {
+        powerOutput: 850,
+        efficiency: "80 PLUS Gold",
+        formFactor: "ATX",
+        component: {
+            name: "Corsair RM850x",
+            componentType: "POWERSUPPLY",
+            price: 149.99,
+            manufacturer: "Corsair",
+            imageUrl: "https://example.com/rm850x.jpg",
+        },
+    },
+    {
+        powerOutput: 650,
+        efficiency: "80 PLUS Gold",
+        formFactor: "SFX",
+        component: {
+            name: "SilverStone SX650-G",
+            componentType: "POWERSUPPLY",
+            price: 149.99,
+            manufacturer: "SilverStone",
+            imageUrl: "https://example.com/sx650g.jpg",
+        },
+    },
+    {
+        powerOutput: 1000,
+        efficiency: "80 PLUS Gold",
+        formFactor: "ATX",
+        component: {
+            name: "Thermaltake Toughpower Grand RGB 1000W",
+            componentType: "POWERSUPPLY",
+            price: 179.99,
+            manufacturer: "Thermaltake",
+            imageUrl: "https://example.com/toughpower1000w.jpg",
+        },
+    },
+    {
+        powerOutput: 550,
+        efficiency: "80 PLUS Platinum",
+        formFactor: "ATX",
+        component: {
+            name: "EVGA SuperNOVA 550 P2",
+            componentType: "POWERSUPPLY",
+            price: 99.99,
+            manufacturer: "EVGA",
+            imageUrl: "https://example.com/supernova550p2.jpg",
+        },
+    },
+    {
+        powerOutput: 750,
+        efficiency: "80 PLUS Bronze",
+        formFactor: "ATX",
+        component: {
+            name: "Cooler Master MWE 750 Bronze V2",
+            componentType: "POWERSUPPLY",
+            price: 79.99,
+            manufacturer: "Cooler Master",
+            imageUrl: "https://example.com/mwe750bronze.jpg",
+        },
+    },
+    {
+        powerOutput: 650,
+        efficiency: "80 PLUS Silver",
+        formFactor: "ATX",
+        component: {
+            name: "Antec Earthwatts EA-650",
+            componentType: "POWERSUPPLY",
+            price: 89.99,
+            manufacturer: "Antec",
+            imageUrl: "https://example.com/earthwatts650.jpg",
+        },
+    },
+    {
+        powerOutput: 850,
+        efficiency: "80 PLUS Titanium",
+        formFactor: "ATX",
+        component: {
+            name: "Seasonic Prime TX-850",
+            componentType: "POWERSUPPLY",
+            price: 229.99,
+            manufacturer: "Seasonic",
+            imageUrl: "https://example.com/primetx850.jpg",
+        },
+    },
+    {
+        powerOutput: 750,
+        efficiency: "80 PLUS Platinum",
+        formFactor: "ATX",
+        component: {
+            name: "EVGA SuperNOVA 750 P2",
+            componentType: "POWERSUPPLY",
+            price: 159.99,
+            manufacturer: "EVGA",
+            imageUrl: "https://example.com/supernova750p2.jpg",
+        },
+    },
+    {
+        powerOutput: 600,
+        efficiency: "80 PLUS Bronze",
+        formFactor: "ATX",
+        component: {
+            name: "Thermaltake Smart 600W",
+            componentType: "POWERSUPPLY",
+            price: 49.99,
+            manufacturer: "Thermaltake",
+            imageUrl: "https://example.com/smart600w.jpg",
+        },
+    },
+    {
+        powerOutput: 500,
+        efficiency: "80 PLUS Gold",
+        formFactor: "SFX",
+        component: {
+            name: "SilverStone SX500-LG",
+            componentType: "POWERSUPPLY",
+            price: 119.99,
+            manufacturer: "SilverStone",
+            imageUrl: "https://example.com/sx500lg.jpg",
+        },
+    },
+]
+export default powerSupplyData

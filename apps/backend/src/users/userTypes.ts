@@ -1,17 +1,10 @@
 import { UserType } from "@prisma/client"
 
-export type User = {
-    id: number
-    username: string
-    email: string
-    password: string
-    role: UserType
-}
-
 export type UserCreate = {
     username: string
     email: string
     password: string
+    userRole?: UserType
 }
 
 export type UserEdit = {
