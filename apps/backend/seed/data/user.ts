@@ -10,10 +10,10 @@ const userData: UserCreate[] = Array.from({ length: 100 }).map((_, index) => ({
 }))
 
 export const seedUsers = async () => {
-  for (const user of userData) {
-    const result = await UsersRepository.create(user);
-    if (result.isErr) {
-      console.error("Failed to create pc case:", result.error)
+    for (const user of userData) {
+        const result = await UsersRepository.create(user)
+        if (result.isErr) {
+            console.error("Failed to create pc case:", result.error)
+        }
     }
-  }
 }
