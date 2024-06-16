@@ -3,7 +3,7 @@ import { prisma } from "../../../client"
 import { DbResult } from "../../../../types"
 import handleError from "../../../utils"
 import { Result } from "@badrap/result"
-import { RamCreate, RamEdit, RamWithComponent } from "../validation/ram.types";
+import { RamCreate, RamEdit, RamWithComponent } from "../validation/ram.types"
 
 async function getMany(query: ComponentQuery): DbResult<RamWithComponent[]> {
     try {
@@ -48,7 +48,7 @@ async function create(createObj: RamCreate): DbResult<RamWithComponent> {
         })
         return Result.ok(ram)
     } catch (e) {
-        console.log(e);
+        console.log(e)
         return handleError(e, "Ram create")
     }
 }

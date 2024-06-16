@@ -1,4 +1,4 @@
-import { RamCreate } from '../../src/components/rams/validation/ram.types';
+import { RamCreate } from "../../src/components/rams/validation/ram.types"
 
 const ramData: RamCreate[] = [
     {
@@ -240,7 +240,7 @@ const ramData: RamCreate[] = [
         memoryType: "DDR4",
         capacity: 64,
         computerType: "DESKTOP",
-  }
+    },
 ]
 
 export default ramData

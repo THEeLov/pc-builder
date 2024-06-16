@@ -18,8 +18,8 @@ export const RamEdit = z.object({
 })
 
 const RamSchema = {
-  RamCreate,
-  RamEdit,
+    RamCreate,
+    RamEdit,
 }
 
 export default RamSchema
