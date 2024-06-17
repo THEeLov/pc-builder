@@ -88,7 +88,6 @@ const seedStorages = async () => {
     }
 }
 
-
 async function seedOfficeConfig() {
     const ram_1 = await RAMRepo.create({
         component: {
@@ -353,7 +352,7 @@ async function seedWorkConfig() {
         memoryType: "ddr4",
         capacity: 16,
         computerType: "DESKTOP",
-    });
+    })
     const processor = await ProcessorRepo.create({
         component: {
             name: "Intel Core i7-10700",
@@ -368,7 +367,7 @@ async function seedWorkConfig() {
         threads: 16,
         bits: 64,
         architecture: "Intel Core i7",
-    });
+    })
     const motherboard = await MotherboardRepo.create({
         component: {
             name: "ASUS PRIME Z490-A",
@@ -384,7 +383,7 @@ async function seedWorkConfig() {
         ramType: "ddr4",
         storageBusType: "sata",
         gpuInterface: "pcie",
-    });
+    })
     const gpu = await GPURepo.create({
         component: {
             name: "NVIDIA GeForce GTX 1650",
@@ -398,7 +397,7 @@ async function seedWorkConfig() {
         powerConnector: "6-pin",
         interface: "pcie",
         power: 300,
-    });
+    })
     const storage = await StorageRepo.create({
         component: {
             name: "Samsung 970 EVO 1TB NVMe SSD",
@@ -411,7 +410,7 @@ async function seedWorkConfig() {
         capacity: 1000,
         storageType: "ssd",
         busType: "nvme",
-    });
+    })
     const powerSupply = await PowerSupplyRepo.create({
         component: {
             name: "Corsair RM650",
@@ -424,7 +423,7 @@ async function seedWorkConfig() {
         powerOutput: 650,
         efficiency: "80+ Gold",
         formFactor: "ATX",
-    });
+    })
     const pccase = await PCCaseRepo.create({
         component: {
             name: "Fractal Design Meshify C",
@@ -435,7 +434,7 @@ async function seedWorkConfig() {
         },
         id: "a82279d4-184e-4ee3-81e6-db8edebcdc02",
         formFactor: "ATX",
-    });
+    })
     if (
         !pccase.isOk ||
         !storage.isOk ||
@@ -445,10 +444,10 @@ async function seedWorkConfig() {
         !ram_1.isOk ||
         !processor.isOk
     ) {
-        return false;
+        return false
     }
 
-    return true;
+    return true
 }
 
 const main = async (): Promise<any> => {
