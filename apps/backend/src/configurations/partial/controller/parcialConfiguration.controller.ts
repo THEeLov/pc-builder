@@ -27,10 +27,25 @@ const OfficeConfig = {
     rams: [{ id: "a1b2c3d4-1234-5678-9101-abcdef123456" }, { id: "b2c3d4e5-2345-6789-1011-bcdef2345678" }],
 }
 
+const WorkConfig = {
+    processorId: "03985bcc-6051-4b2d-bb0f-5404eee89af5",
+    motherboardId: "57986798-aea1-401c-887f-47e9c1cb3f42",
+    gpuId: "f749593c-5970-49f2-bf53-d69dc3d12f22",
+    powerSupplyId: "2c677ad4-e260-495e-8ee2-2a55225a1078",
+    pcCaseId: "a82279d4-184e-4ee3-81e6-db8edebcdc02",
+    storages: [{ id: "7cd266dd-da80-4cf0-98e6-10a74d626fc5" }],
+    rams: [{ id: "1b75b4b9-3988-40af-acb7-2535512d7eda" }],
+}
+
 function getConfigAttributes(config: ConfigurationType) {
     switch (config) {
         case ConfigurationType.GAMING:
             return GamingConfig
+        case ConfigurationType.OFFICE:
+            return OfficeConfig
+        case ConfigurationType.WORK:
+            return WorkConfig
+
         default:
             return {}
     }
