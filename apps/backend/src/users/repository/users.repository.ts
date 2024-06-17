@@ -81,8 +81,7 @@ async function getByEmail(email: string): DbResult<UserWithEverything> {
 
 async function get(identifier: string): DbResult<UserWithEverything> {
     try {
-        let user
-        user = await prisma.user.findUniqueOrThrow({
+        const user = await prisma.user.findUniqueOrThrow({
             where: {
                 id: identifier,
             },
