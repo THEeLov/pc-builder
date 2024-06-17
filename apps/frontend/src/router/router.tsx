@@ -9,6 +9,7 @@ import OptionsPage from "../pages/Options/OptionsPage"
 import ProtectedRouteLayout from "../layouts/ProtectedRouteLayout"
 import Dashboard from "@/pages/Dashboard/Dashboard"
 import { DialogProvider } from "@/providers/DialogProvider"
+import ErrorsNotFound from "@/pages/Errors/NotFound"
 
 export const router = createBrowserRouter([
     {
@@ -45,11 +46,15 @@ export const router = createBrowserRouter([
         ],
     },
     {
-        path: "login",
+        path: "/login",
         Component: Login,
     },
     {
-        path: "register",
+        path: "/register",
         Component: Register,
+    },
+    {
+        path: "*",
+        Component: ErrorsNotFound,
     },
 ])
