@@ -1,6 +1,6 @@
 import { Result } from "@badrap/result"
 import { prisma } from "../../../client"
-import {PartialConfigCreate} from "../parcialConfigTypes"
+import { PartialConfigCreate } from "../parcialConfigTypes"
 import handleError from "../../../utils"
 import { DbResult } from "../../../../types"
 import includeQuery, { ParcialConfigEdit } from "../../configurationQuery"
@@ -17,7 +17,7 @@ async function create(userId: string, createObj: PartialConfigCreate): DbResult<
                 },
                 storages: {
                     connect: createObj.storages,
-                }
+                },
             },
             include: includeQuery,
         })

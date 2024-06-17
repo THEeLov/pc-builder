@@ -13,8 +13,8 @@ const GamingConfig = {
     gpuId: "078d2ad4-2c53-4a15-b76c-07e11c7d3491",
     powerSupplyId: "86f01c83-5a92-4610-a39b-46cdf0a2ad56",
     pcCaseId: "7e4aeb5d-df20-47e2-b5f2-89222e1d8885",
-    storages: [{id: "f8d61bd0-98a7-419f-bbe9-0c7458a1b2cb"}],
-    rams: [{id: "b7d8392b-2470-45e1-9fe2-e52ed52137a8"}, {id: "e82bbf74-442e-432c-8579-23cc4a183515"}],
+    storages: [{ id: "f8d61bd0-98a7-419f-bbe9-0c7458a1b2cb" }],
+    rams: [{ id: "b7d8392b-2470-45e1-9fe2-e52ed52137a8" }, { id: "e82bbf74-442e-432c-8579-23cc4a183515" }],
 }
 
 const OfficeConfig = {
@@ -23,10 +23,9 @@ const OfficeConfig = {
     gpuId: "e5f6g7h8-5678-9101-1222-ef5678901234",
     powerSupplyId: "g7h8i9j0-7891-0112-3444-678901234567",
     pcCaseId: "h8i9j0k1-8910-1121-4555-789012345678",
-    storages: [{id: "f6g7h8i9-6789-1011-2333-f67890123456"}],
-    rams: [{id: "a1b2c3d4-1234-5678-9101-abcdef123456"}, {id: "b2c3d4e5-2345-6789-1011-bcdef2345678"}],
+    storages: [{ id: "f6g7h8i9-6789-1011-2333-f67890123456" }],
+    rams: [{ id: "a1b2c3d4-1234-5678-9101-abcdef123456" }, { id: "b2c3d4e5-2345-6789-1011-bcdef2345678" }],
 }
-
 
 function getConfigAttributes(config: ConfigurationType) {
     switch (config) {
@@ -95,12 +94,10 @@ async function create(req: Request, res: Response): Promise<Response<ParcialConf
         return res.status(400).json(new Error("Bad request"))
     }
     const configAttributes: ConfigEdit = getConfigAttributes(validatedBody.data.configurationType)
-    const createdPartialConfig = await ParcialConfigurationRepository.create(
-        validatedParams.data.id,
-        {...validatedBody.data,
-        ...configAttributes
-        },
-    )
+    const createdPartialConfig = await ParcialConfigurationRepository.create(validatedParams.data.id, {
+        ...validatedBody.data,
+        ...configAttributes,
+    })
     if (!createdPartialConfig.isOk) {
         return res
             .status(500)

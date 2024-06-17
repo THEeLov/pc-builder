@@ -121,12 +121,20 @@ async function seedOfficeConfig() {
         id: "h8i9j0k1-8910-1121-4555-789012345678",
         formFactor: "microATX",
     })
-    if (!pccase.isOk || !storage.isOk || !gpu.isOk || !motherboard.isOk 
-        || !powerSupply.isOk || !ram_1.isOk || !ram_2.isOk || !processor.isOk) {
-            return false;
+    if (
+        !pccase.isOk ||
+        !storage.isOk ||
+        !gpu.isOk ||
+        !motherboard.isOk ||
+        !powerSupply.isOk ||
+        !ram_1.isOk ||
+        !ram_2.isOk ||
+        !processor.isOk
+    ) {
+        return false
     }
 
-    return true;
+    return true
 }
 
 async function seedGamingConfig() {
@@ -164,7 +172,7 @@ async function seedGamingConfig() {
             manufacturer: "AMD",
             imageUrl: "https://img-cdn.heureka.group/v1/6955e21e-289b-4afd-9039-6aa61997ee02.jpg?width=350&height=350",
         },
-        id:"9463465c-a8a7-4aa9-8424-94e22b617f96",
+        id: "9463465c-a8a7-4aa9-8424-94e22b617f96",
         socket: "am4",
         cores: 8,
         threads: 16,
@@ -177,7 +185,8 @@ async function seedGamingConfig() {
             componentType: "MOTHERBOARD",
             price: 149.99,
             manufacturer: "MSI",
-            imageUrl: "https://asset.msi.com/resize/image/global/product/product_1_20200806161944_5f2bbd20c4441.png62405b38c58fe0f07fcef2367d8a9ba1/600.png",
+            imageUrl:
+                "https://asset.msi.com/resize/image/global/product/product_1_20200806161944_5f2bbd20c4441.png62405b38c58fe0f07fcef2367d8a9ba1/600.png",
         },
         id: "b8dbb237-f40d-416f-87f3-6a704063e9bd",
         socket: "am4",
@@ -193,7 +202,8 @@ async function seedGamingConfig() {
             componentType: "GPU",
             price: 299.99,
             manufacturer: "MSI",
-            imageUrl: "https://asset.msi.com/resize/image/global/product/product_1623834930083e54118002c13961e3ce71a2f22f6e.png62405b38c58fe0f07fcef2367d8a9ba1/1024.png",
+            imageUrl:
+                "https://asset.msi.com/resize/image/global/product/product_1623834930083e54118002c13961e3ce71a2f22f6e.png62405b38c58fe0f07fcef2367d8a9ba1/1024.png",
         },
         id: "078d2ad4-2c53-4a15-b76c-07e11c7d3491",
         memory: 16,
@@ -238,11 +248,19 @@ async function seedGamingConfig() {
         id: "7e4aeb5d-df20-47e2-b5f2-89222e1d8885",
         formFactor: "atx",
     })
-    if (!pccase.isOk || !storage.isOk || !gpu.isOk || !motherboard.isOk 
-        || !powerSupply.isOk || !ram_1.isOk || !ram_2.isOk || !processor.isOk) {
-            return false;
+    if (
+        !pccase.isOk ||
+        !storage.isOk ||
+        !gpu.isOk ||
+        !motherboard.isOk ||
+        !powerSupply.isOk ||
+        !ram_1.isOk ||
+        !ram_2.isOk ||
+        !processor.isOk
+    ) {
+        return false
     }
-    return true;
+    return true
 }
 
 async function main() {
