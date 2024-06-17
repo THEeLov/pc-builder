@@ -65,7 +65,7 @@ Tento súbor obsahuje pokyny na spustenie a používanie React aplikácie.
 5. **Naimportujte dáta do databázy:**
     Prejdite do koreňového adresára a spustite príkaz:
     ```bash
-    npx nx run backend
+    npx nx run backend:seed
     ```
 
 6. **Spustite backend:**
