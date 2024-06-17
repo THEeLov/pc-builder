@@ -27,3 +27,74 @@ of the build and can request a summary with the configuration.
 
 ---
 ![Class DTO Diagram](docs/diagrams/images/class-dto.png "Class DTO Diagram")
+
+## README.md
+
+### React Aplikácia - Návod na spustenie
+
+Tento súbor obsahuje pokyny na spustenie a používanie React aplikácie.
+
+**Predpoklady:**
+
+* Docker
+* npm
+
+**Postup:**
+
+1. **Nainštalujte závislosti:**
+    Prejdite do koreňového adresára projektu a spustite príkaz:
+    ```bash
+    npm install
+    ```
+
+2. **Vytvorte a spustite databázový kontajner:**
+    Prejdite do adresára `apps/backend` a spustite skript `database.sh`:
+    ```bash
+    ./database.sh
+    ```
+
+3. **Nastavte .env súbor pre Prismu:**
+    Premenujte súbor `.env.example` na `.env` a upravte ho podľa vašich potrieb.
+
+4. **Migrujte databázu:**
+    Prejdite do adresára `apps/backend` a spustite príkaz:
+    ```bash
+    npx prisma migrate dev
+    ```
+
+5. **Naimportujte dáta do databázy:**
+    Prejdite do koreňového adresára a spustite príkaz:
+    ```bash
+    npx nx run backend
+    ```
+
+6. **Spustite backend:**
+    Prejdite do koreňového adresára a spustite príkaz:
+    ```bash
+    npx nx serve backend
+    ```
+
+7. **Spustite frontend:**
+    Prejdite do koreňového adresára a spustite príkaz:
+    ```bash
+    npx nx serve frontend
+    ```
+
+**Poznámky:**
+
+* Aplikácia bude bežať na adrese `http://localhost:3000`.
+* Môžete upraviť konfiguračné súbory a kód aplikácie podľa vašich potrieb.
+* Pre viac informácií o Prisme a React navštívte oficiálnu dokumentáciu.
+
+**Ďalšie zdroje:**
+
+* [Dokumentácia Prismy](https://www.prisma.io/docs/)
+* Dokumentácia React [neplatná webová adresa bola odstránená]
+
+**Tipy:**
+
+* Pre pohodlný vývoj odporúčame používať IDE s podporou Dockeru a Node.js.
+* Pre testovanie aplikácie môžete použiť nástroje ako Postman alebo Insomnia.
+* Pre nasadenie aplikácie do produkcie môžete použiť platformy ako Vercel alebo Netlify.
+
+Dúfame, že vám tento návod pomohol!
