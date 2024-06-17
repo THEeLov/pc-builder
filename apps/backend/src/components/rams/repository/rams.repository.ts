@@ -35,6 +35,7 @@ async function create(createObj: RamCreate): DbResult<RamWithComponent> {
             })
             const ram = await prisma.rAM.create({
                 data: {
+                    id: createObj.id,
                     memoryType: createObj.memoryType,
                     capacity: createObj.capacity,
                     computerType: createObj.computerType,

@@ -10,6 +10,7 @@ async function create(userId: string, data: ConfigurationCreate): DbResult<Confi
         const config = await prisma.$transaction(async (prisma) => {
             const config = await prisma.pCConfiguration.create({
                 data: {
+                    id: data.id,
                     configurationType: data.configurationType,
                     motherboardId: data.motherboardId,
                     processorId: data.processorId,

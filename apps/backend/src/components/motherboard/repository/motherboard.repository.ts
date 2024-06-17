@@ -13,6 +13,7 @@ async function create(createObj: MotherboardCreate): DbResult<MotherboardWithCom
             })
             const motherboard = await prisma.motherboard.create({
                 data: {
+                    id: createObj.id,
                     socket: createObj.socket,
                     formFactor: createObj.formFactor,
                     ramSlots: createObj.ramSlots,

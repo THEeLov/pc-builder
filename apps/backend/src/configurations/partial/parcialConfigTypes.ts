@@ -13,6 +13,13 @@ import includeQuery from "../configurationQuery"
 
 export type PartialConfigCreate = {
     configurationType: ConfigurationType
+    motherboardId?: string,
+    processorId?: string,
+    gpuId?: string,
+    powerSupplyId?: string,
+    PCCaseId?: string,
+    rams?: {id: string}[],
+    storages?: {id: string}[],
 }
 
 export type ParcialConfigWithComponent = Prisma.ParcialPCConfigurationGetPayload<{ include: typeof includeQuery }>

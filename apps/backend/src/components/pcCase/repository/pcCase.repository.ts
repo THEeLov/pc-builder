@@ -13,6 +13,7 @@ async function create(createObj: PCCaseCreate): DbResult<PCCaseWithComponent> {
             })
             const pcCase = await prisma.pCCase.create({
                 data: {
+                    id: createObj.id,
                     formFactor: createObj.formFactor,
                     componentId: component.id,
                 },

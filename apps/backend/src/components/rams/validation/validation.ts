@@ -5,6 +5,7 @@ import { ComputerType } from "@prisma/client"
 const computerType = z.enum(Object.values(ComputerType) as [ComputerType, ...ComputerType[]])
 
 export const RamCreate = z.object({
+    id: z.string().uuid().optional(),
     component: componentCreate,
     memoryType: z.string(),
     capacity: z.number(),

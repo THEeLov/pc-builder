@@ -2,6 +2,7 @@ import z from "zod"
 import { componentCreate } from "../../base/validation/validation"
 
 const GPUCreate = z.object({
+    id: z.string().uuid().optional(),
     memory: z.number(),
     powerConnector: z.string(),
     interface: z.string(),

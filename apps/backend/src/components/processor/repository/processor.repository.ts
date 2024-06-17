@@ -13,6 +13,7 @@ async function create(createObj: ProcessorCreate): DbResult<ProcessorWithCompone
             })
             const processor = await prisma.processor.create({
                 data: {
+                    id: createObj.id,
                     architecture: createObj.architecture,
                     cores: createObj.cores,
                     threads: createObj.threads,

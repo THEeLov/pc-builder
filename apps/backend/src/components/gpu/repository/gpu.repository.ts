@@ -13,6 +13,7 @@ async function create(createObj: GPUCreate): DbResult<GPUWithComponent> {
             })
             const gpu = await prisma.gPU.create({
                 data: {
+                    id: createObj.id,
                     memory: createObj.memory,
                     powerConnector: createObj.powerConnector,
                     interface: createObj.interface,

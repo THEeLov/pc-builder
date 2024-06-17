@@ -13,6 +13,7 @@ async function create(createObj: PowerSupplyCreate): DbResult<PowerSupplyWithCom
             })
             const powerSupply = await prisma.powerSupply.create({
                 data: {
+                    id: createObj.id,
                     powerOutput: createObj.powerOutput,
                     efficiency: createObj.efficiency,
                     formFactor: createObj.formFactor,

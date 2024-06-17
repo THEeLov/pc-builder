@@ -2,6 +2,7 @@ import z from "zod"
 import { componentCreate } from "../../base/validation/validation"
 
 const StorageCreate = z.object({
+    id: z.string().uuid().optional(),
     storageType: z.string(),
     capacity: z.number(),
     busType: z.string(),

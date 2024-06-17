@@ -13,6 +13,7 @@ async function create(createObj: StorageCreate): DbResult<StorageWithComponent> 
             })
             const storage = await prisma.storage.create({
                 data: {
+                    id: createObj.id,
                     storageType: createObj.storageType,
                     capacity: createObj.capacity,
                     busType: createObj.busType,

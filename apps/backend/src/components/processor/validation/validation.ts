@@ -2,6 +2,7 @@ import z from "zod"
 import { componentCreate } from "../../base/validation/validation"
 
 const ProcessorCreate = z.object({
+    id: z.string().uuid().optional(),
     architecture: z.string(),
     cores: z.number(),
     threads: z.number(),

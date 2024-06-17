@@ -3,6 +3,13 @@ import { configType } from "../../baseValidation"
 
 const createObject = z.object({
     configurationType: configType,
+    motherboardId: z.string().uuid().optional(),
+    processorId: z.string().uuid().optional(),
+    gpuId: z.string().uuid().optional(),
+    powerSupplyId: z.string().uuid().optional(),
+    PCCaseId: z.string().uuid().optional(),
+    ramId: z.string().uuid().optional(),
+    storageId: z.string().uuid().optional(),
 })
 
 const fullUpdateObject = z.object({

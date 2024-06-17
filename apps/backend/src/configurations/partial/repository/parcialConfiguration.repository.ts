@@ -1,17 +1,23 @@
 import { Result } from "@badrap/result"
 import { prisma } from "../../../client"
-import { ConfigurationType } from "@prisma/client"
+import {PartialConfigCreate} from "../parcialConfigTypes"
 import handleError from "../../../utils"
 import { DbResult } from "../../../../types"
 import includeQuery, { ParcialConfigEdit } from "../../configurationQuery"
 import { ParcialConfigWithComponent } from "../parcialConfigTypes"
 
-async function create(userId: string, type: ConfigurationType): DbResult<ParcialConfigWithComponent> {
+async function create(userId: string, createObj: PartialConfigCreate): DbResult<ParcialConfigWithComponent> {
     try {
         const newConfig = await prisma.parcialPCConfiguration.create({
             data: {
+                ...createObj,
                 userId,
-                configurationType: type,
+                rams: {
+                    connect: createObj.rams,
+                },
+                storages: {
+                    connect: createObj.storages,
+                }
             },
             include: includeQuery,
         })
