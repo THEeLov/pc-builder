@@ -1,6 +1,6 @@
 # PcAssemblies
 
-### React Aplikácia - Návod na spustenie
+### Návod na spustenie
 
 Tento súbor obsahuje pokyny na spustenie a používanie React aplikácie.
 
