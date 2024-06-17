@@ -71,7 +71,8 @@ async function seedHighEndConfig() {
             componentType: "GPU",
             price: 1199.99,
             manufacturer: "NVIDIA",
-            imageUrl: "https://cdn.aukro.cz/images/sk1641752877810/prodam-gigabyte-geforce-rtx-3080-ti-gaming-oc-12g-115284985.jpeg",
+            imageUrl:
+                "https://cdn.aukro.cz/images/sk1641752877810/prodam-gigabyte-geforce-rtx-3080-ti-gaming-oc-12g-115284985.jpeg",
         },
         id: "a1e6b2c5-8a4f-4b1e-8d3e-5e1a6a7c8f4b",
         memory: 12,
@@ -118,7 +119,6 @@ async function seedHighEndConfig() {
     return true
 }
 
-
 async function seedOfficeConfig() {
     const ram_1 = await RAMRepo.create({
         component: {
@@ -152,7 +152,8 @@ async function seedOfficeConfig() {
             componentType: "PROCESSOR",
             price: 179.99,
             manufacturer: "Intel",
-            imageUrl: "https://www.nc.cz/intel-core-i5-10400-2-9ghz-6core-12mb-lga1200-graphics-comet-lake_ie869827.jpg",
+            imageUrl:
+                "https://www.nc.cz/intel-core-i5-10400-2-9ghz-6core-12mb-lga1200-graphics-comet-lake_ie869827.jpg",
         },
         id: "c3d4e5f6-3456-7891-0112-cdef34567890",
         socket: "lga1200",
@@ -197,7 +198,8 @@ async function seedOfficeConfig() {
             componentType: "STORAGE",
             price: 49.99,
             manufacturer: "Western Digital",
-            imageUrl: "https://www.westerndigital.com/content/dam/store/en-us/assets/products/internal-storage/wd-blue-desktop-sata-hdd/gallery/wd-blue-pc-desktop-hard-drive-1tb.png.thumb.319.319.png",
+            imageUrl:
+                "https://www.westerndigital.com/content/dam/store/en-us/assets/products/internal-storage/wd-blue-desktop-sata-hdd/gallery/wd-blue-pc-desktop-hard-drive-1tb.png.thumb.319.319.png",
         },
         id: "f6g7h8i9-6789-1011-2333-f67890123456",
         capacity: 1000,
