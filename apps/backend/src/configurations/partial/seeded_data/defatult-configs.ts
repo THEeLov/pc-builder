@@ -37,4 +37,3 @@ export const WorkConfig = {
     storages: [{ id: "7cd266dd-da80-4cf0-98e6-10a74d626fc5" }],
     rams: [{ id: "1b75b4b9-3988-40af-acb7-2535512d7eda" }],
 }
-
