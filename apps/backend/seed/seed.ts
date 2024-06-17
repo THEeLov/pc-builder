@@ -12,6 +12,7 @@ import ProcessorRepo from "../src/components/processor/repository/processor.repo
 import processorData from "./data/processor"
 import RAMRepo from "../src/components/rams/repository/rams.repository"
 import ramData from "./data/ram"
+import { UsersRepository } from "../src/users/repository/users.repository"
 import StorageRepo from "../src/components/storage/repository/storage.repository"
 import storageData from "./data/storage"
 import { seedUsers } from "./data/user"
@@ -564,6 +565,19 @@ async function seedWorkConfig() {
     return true
 }
 
+async function seedAdmin() {
+    const user = await UsersRepository.create({
+        username: "admin",
+        email: "admin@admin.com",
+        password: "adminadmin",
+        userRole: "ADMIN",
+    })
+    if (!user.isOk) {
+        return false
+    }
+    return true
+}
+
 const main = async (): Promise<any> => {
     await client.$connect()
     await deleteAll()
@@ -579,6 +593,7 @@ const main = async (): Promise<any> => {
     await seedGamingConfig()
     await seedOfficeConfig()
     await seedHighEndConfig()
+    await seedAdmin()
 }
 
 main()
