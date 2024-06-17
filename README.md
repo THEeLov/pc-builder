@@ -50,6 +50,12 @@ Tento súbor obsahuje pokyny na spustenie a používanie React aplikácie.
     npx nx serve frontend
     ```
 
+**Troubleshooting**
+    V prípade že sa vyskytne pri **npx nx serve frontend** problém s watchermi:
+    ```bash
+    sudo sysctl fs.inotify.max_user_watches=524288
+    ```
+
 **Poznámky:**
 
 * Aplikácia bude bežať na adrese `http://localhost:3000`.
