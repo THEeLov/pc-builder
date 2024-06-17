@@ -47,7 +47,7 @@ const Build = () => {
             }
         }, 0)
 
-        setTotalPrice(price)
+        setTotalPrice(parseFloat(price.toFixed(2)))
     }, [componentInfo])
 
     if (data === null) {
