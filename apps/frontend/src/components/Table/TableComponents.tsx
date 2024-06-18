@@ -1,30 +1,30 @@
-import type { TableColumnsType } from "antd"
-import { Table } from "antd"
-import { useSearch } from "../../hooks/useSearch"
-import { useComponent } from "@/hooks/useComponents"
-import { Component, ComponentTypes } from "../../models/components"
-import { useState } from "react"
-import ComponentView from "../ComponentView/ComponentView"
-import TableActions from "./TableActions"
-import "./table.css"
-import useAuthData from "@/hooks/useAuthData"
+import type { TableColumnsType } from "antd";
+import { Table } from "antd";
+import { useSearch } from "../../hooks/useSearch";
+import { useComponent } from "@/hooks/useComponents";
+import { Component, ComponentTypes } from "../../models/components";
+import { useState } from "react";
+import ComponentView from "../ComponentView/ComponentView";
+import TableActions from "./TableActions";
+import "./table.css";
+import useAuthData from "@/hooks/useAuthData";
 
-type DataIndex = keyof Component["component"]
+type DataIndex = keyof Component["component"];
 
 type TableComponentsProps = {
-    fetchedData: Component[]
-    admin: boolean
-    name: ComponentTypes
-}
+    fetchedData: Component[];
+    admin: boolean;
+    name: ComponentTypes;
+};
 
 const TableComponents: React.FC<TableComponentsProps> = ({ fetchedData, admin, name }) => {
-    const { user } = useAuthData()
-    const [openView, setOpenView] = useState(false)
-    const [componentId, setComponentId] = useState("")
+    const { user } = useAuthData();
+    const [openView, setOpenView] = useState(false);
+    const [componentId, setComponentId] = useState("");
 
-    const { data } = useComponent(name, componentId)
+    const { data } = useComponent(name, componentId);
 
-    const { getColumnSearchProps } = useSearch()
+    const { getColumnSearchProps } = useSearch();
 
     const columns: TableColumnsType<Component> = [
         {
@@ -65,11 +65,16 @@ const TableComponents: React.FC<TableComponentsProps> = ({ fetchedData, admin, n
             align: "right",
             width: "10%",
         },
-    ]
+    ];
 
     const handleCloseView = () => {
-        setOpenView(false)
-    }
+        setOpenView(false);
+    };
+
+    const dataSourceWithKeys = fetchedData.map((item) => ({
+        ...item,
+        key: item.id,
+    }));
 
     return (
         <>
@@ -77,11 +82,11 @@ const TableComponents: React.FC<TableComponentsProps> = ({ fetchedData, admin, n
                 columns={columns}
                 scroll={{ x: 480 }}
                 pagination={{ position: ["none", "bottomCenter"] }}
-                dataSource={fetchedData}
+                dataSource={dataSourceWithKeys}
             />
             {openView && data && <ComponentView data={data} handleClose={handleCloseView} />}
         </>
-    )
-}
+    );
+};
 
-export default TableComponents
+export default TableComponents;
