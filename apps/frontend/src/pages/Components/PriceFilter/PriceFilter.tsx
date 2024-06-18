@@ -1,17 +1,23 @@
 import { Slider } from "antd"
 import { useSearchParams } from "react-router-dom"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import "./pricefilter.css"
+import { useComponents } from "@/hooks/useComponents"
+import { ComponentTypes } from "@/models/components"
 
-const PriceFilter = () => {
+const PriceFilter = ({ name }: { name: ComponentTypes }) => {
     const [searchParam, setSearchParams] = useSearchParams()
+
+    const { data, isLoading } = useComponents(name , "")
+    
+    const maxPrice = data ? Math.max(...data.map(component => component.component.price)) : 1000
 
     const [rangeValues, setRangeValues] = useState(() => {
         const minPrice = Number(searchParam.get("minPrice") ?? "0")
         const maxPrice = Number(searchParam.get("maxPrice") ?? "400")
         return [minPrice, maxPrice]
     })
-
+    
     const handlePriceChange = (values: number[]) => {
         setRangeValues(values)
         searchParam.set("minPrice", `${values[0]}`)
@@ -28,7 +34,7 @@ const PriceFilter = () => {
                 range={{ draggableTrack: true }}
                 defaultValue={rangeValues}
                 min={0}
-                max={1000}
+                max={maxPrice}
                 onChangeComplete={handlePriceChange}
                 step={10}
             />
