@@ -1,4 +1,5 @@
-import { GPUCreate } from "../../src/components/gpu/validation/gpu.types"
+import { GPUCreate } from "../../../src/components/gpu/validation/gpu.types"
+import GPURepo from "../../../src/components/gpu/repository/gpu.repository"
 
 const gpuData: GPUCreate[] = [
     {
@@ -283,4 +284,13 @@ const gpuData: GPUCreate[] = [
     },
 ]
 
-export default gpuData
+const seedGPUs = async () => {
+  for (const gpu of gpuData) {
+    const result = await GPURepo.create(gpu)
+    if (result.isErr) {
+      console.error("Failed to create GPU:", result.error)
+    }
+  }
+}
+
+export default seedGPUs;

@@ -1,4 +1,5 @@
-import { PCCaseCreate } from "../../src/components/pcCase/validation/pcCase.types"
+import { PCCaseCreate } from "../../../src/components/pcCase/validation/pcCase.types"
+import PCCaseRepo from "../../../src/components/pcCase/repository/pcCase.repository"
 
 const pcCaseData: PCCaseCreate[] = [
     {
@@ -223,4 +224,13 @@ const pcCaseData: PCCaseCreate[] = [
     },
 ]
 
-export default pcCaseData
+const seedPcCases = async () => {
+  for (const pcCase of pcCaseData) {
+    const result = await PCCaseRepo.create(pcCase)
+    if (result.isErr) {
+      console.error("Failed to create pc case:", result.error)
+    }
+  }
+}
+
+export default seedPcCases

@@ -1,4 +1,5 @@
-import { MotherboardCreate } from "../../src/components/motherboard/validation/motherboard.types"
+import { MotherboardCreate } from "../../../src/components/motherboard/validation/motherboard.types"
+import MotherboardRepo from "../../../src/components/motherboard/repository/motherboard.repository"
 
 const motherboardData: MotherboardCreate[] = [
     {
@@ -323,4 +324,13 @@ const motherboardData: MotherboardCreate[] = [
     },
 ]
 
-export default motherboardData
+const seedMotherboards = async () => {
+  for (const motherboard of motherboardData) {
+    const result = await MotherboardRepo.create(motherboard)
+    if (result.isErr) {
+      console.error("Failed to create Motherboard:", result.error)
+    }
+  }
+}
+
+export default seedMotherboards
