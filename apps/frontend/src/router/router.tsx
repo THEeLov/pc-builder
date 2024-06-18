@@ -29,7 +29,7 @@ export const router = createBrowserRouter([
                 path: "/components",
                 element: (
                     <DialogProvider>
-                        <ProtectedRouteLayout admin={true} />
+                        <ProtectedRouteLayout admin={false} />
                     </DialogProvider>
                 ),
                 children: [{ path: "", Component: Components }],
