@@ -265,12 +265,12 @@ const storageData: StorageCreate[] = [
 ]
 
 const seedStorages = async () => {
-  for (const storage of storageData) {
-    const result = await StorageRepo.create(storage)
-    if (result.isErr) {
-      console.error("Failed to create pc case:", result.error)
+    for (const storage of storageData) {
+        const result = await StorageRepo.create(storage)
+        if (result.isErr) {
+            console.error("Failed to create pc case:", result.error)
+        }
     }
-  }
 }
 
 export default seedStorages

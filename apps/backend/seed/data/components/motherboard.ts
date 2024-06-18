@@ -325,12 +325,12 @@ const motherboardData: MotherboardCreate[] = [
 ]
 
 const seedMotherboards = async () => {
-  for (const motherboard of motherboardData) {
-    const result = await MotherboardRepo.create(motherboard)
-    if (result.isErr) {
-      console.error("Failed to create Motherboard:", result.error)
+    for (const motherboard of motherboardData) {
+        const result = await MotherboardRepo.create(motherboard)
+        if (result.isErr) {
+            console.error("Failed to create Motherboard:", result.error)
+        }
     }
-  }
 }
 
 export default seedMotherboards

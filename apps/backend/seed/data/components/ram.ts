@@ -264,14 +264,13 @@ const ramData: RamCreate[] = [
     },
 ]
 
-
 const seedRams = async () => {
-  for (const ram of ramData) {
-    const result = await RAMRepo.create(ram)
-    if (result.isErr) {
-      console.error("Failed to create pc case:", result.error)
+    for (const ram of ramData) {
+        const result = await RAMRepo.create(ram)
+        if (result.isErr) {
+            console.error("Failed to create pc case:", result.error)
+        }
     }
-  }
 }
 
 export default seedRams

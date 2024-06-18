@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client"
 import * as dotenv from "dotenv"
-import seedGPUs from "./data/components/gpu";
+import seedGPUs from "./data/components/gpu"
 import { seedUsers } from "./data/user"
 import seedHighEndConfig from "./data/configurations/high.end"
 import seedWorkConfig from "./data/configurations/work"
@@ -9,7 +9,7 @@ import seedOfficeConfig from "./data/configurations/office"
 import seedAdmin from "./data/admin"
 import seedMotherboards from "./data/components/motherboard"
 import seedPcCases from "./data/components/pcCase"
-import seedPowerSupplies from "./data/components/powerSupply";
+import seedPowerSupplies from "./data/components/powerSupply"
 import seedProcessors from "./data/components/processor"
 import seedRams from "./data/components/ram"
 import seedStorages from "./data/components/storage"
@@ -24,20 +24,20 @@ const deleteAll = async () => {
 }
 
 const seedComponents = async () => {
-  await seedGPUs()
-  await seedMotherboards()
-  await seedPcCases()
-  await seedPowerSupplies()
-  await seedProcessors()
-  await seedRams()
-  await seedStorages()
+    await seedGPUs()
+    await seedMotherboards()
+    await seedPcCases()
+    await seedPowerSupplies()
+    await seedProcessors()
+    await seedRams()
+    await seedStorages()
 }
 
 const seedConfigurations = async () => {
-  await seedHighEndConfig()
-  await seedWorkConfig()
-  await seedGamingConfig()
-  await seedOfficeConfig()
+    await seedHighEndConfig()
+    await seedWorkConfig()
+    await seedGamingConfig()
+    await seedOfficeConfig()
 }
 
 const main = async (): Promise<any> => {

@@ -265,12 +265,12 @@ const powerSupplyData: PowerSupplyCreate[] = [
 ]
 
 const seedPowerSupplies = async () => {
-  for (const powerSupply of powerSupplyData) {
-    const result = await PowerSupplyRepo.create(powerSupply)
-    if (result.isErr) {
-      console.error("Failed to create power s case:", result.error)
+    for (const powerSupply of powerSupplyData) {
+        const result = await PowerSupplyRepo.create(powerSupply)
+        if (result.isErr) {
+            console.error("Failed to create power s case:", result.error)
+        }
     }
-  }
 }
 
 export default seedPowerSupplies

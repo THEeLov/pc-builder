@@ -305,12 +305,12 @@ const processorData: ProcessorCreate[] = [
 ]
 
 const seedProcessors = async () => {
-  for (const processor of processorData) {
-    const result = await ProcessorRepo.create(processor)
-    if (result.isErr) {
-      console.error("Failed to create pc case:", result.error)
+    for (const processor of processorData) {
+        const result = await ProcessorRepo.create(processor)
+        if (result.isErr) {
+            console.error("Failed to create pc case:", result.error)
+        }
     }
-  }
 }
 
 export default seedProcessors

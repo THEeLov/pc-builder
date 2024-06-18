@@ -285,12 +285,12 @@ const gpuData: GPUCreate[] = [
 ]
 
 const seedGPUs = async () => {
-  for (const gpu of gpuData) {
-    const result = await GPURepo.create(gpu)
-    if (result.isErr) {
-      console.error("Failed to create GPU:", result.error)
+    for (const gpu of gpuData) {
+        const result = await GPURepo.create(gpu)
+        if (result.isErr) {
+            console.error("Failed to create GPU:", result.error)
+        }
     }
-  }
 }
 
-export default seedGPUs;
+export default seedGPUs

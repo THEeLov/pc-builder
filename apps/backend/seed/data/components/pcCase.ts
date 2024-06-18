@@ -225,12 +225,12 @@ const pcCaseData: PCCaseCreate[] = [
 ]
 
 const seedPcCases = async () => {
-  for (const pcCase of pcCaseData) {
-    const result = await PCCaseRepo.create(pcCase)
-    if (result.isErr) {
-      console.error("Failed to create pc case:", result.error)
+    for (const pcCase of pcCaseData) {
+        const result = await PCCaseRepo.create(pcCase)
+        if (result.isErr) {
+            console.error("Failed to create pc case:", result.error)
+        }
     }
-  }
 }
 
 export default seedPcCases
