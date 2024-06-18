@@ -13,10 +13,11 @@ const components = ["Motherboards", "Processors", "Rams", "GPUs", "Storages", "P
 
 const Components = () => {
     const [searchParams] = useSearchParams()
-    const componentParam = searchParams.get("component")
+    
     const queryParams = new URLSearchParams(searchParams).toString()
 
     const [currentComponent, setCurrentComponent] = useState<ComponentTypes>("motherboards")
+    const componentParam = searchParams.get(currentComponent)
 
     const handleClick = (component: string) => {
         setCurrentComponent(component as ComponentTypes)
@@ -40,7 +41,12 @@ const Components = () => {
                         </div>
                     ))}
                 </div>
-                <DashboardTable name={currentComponent} isDashboard={false} params={queryParams} name2={componentParam}/>
+                <DashboardTable
+                    name={currentComponent}
+                    isDashboard={false}
+                    params={queryParams}
+                    name2={currentComponent}
+                />
             </div>
         </div>
     )

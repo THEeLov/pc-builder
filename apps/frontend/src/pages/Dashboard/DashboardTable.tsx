@@ -13,7 +13,17 @@ import TableComponents from "@/components/Table/TableComponents"
 import CustomButton from "@/components/CustomButton/CustomButton"
 import { FaPlus } from "react-icons/fa"
 
-const DashboardTable = ({ name, isDashboard, params, name2 }: { name: ComponentTypes; isDashboard: boolean; params: string; name2: string | null; }) => {
+const DashboardTable = ({
+    name,
+    isDashboard,
+    params,
+    name2,
+}: {
+    name: ComponentTypes
+    isDashboard: boolean
+    params: string
+    name2: string | null
+}) => {
     const { isDialogOpen, openDialog } = useDialog()
 
     const { data, isLoading } = useComponents((name2 as ComponentTypes) || "", params)

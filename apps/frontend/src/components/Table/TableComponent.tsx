@@ -1,13 +1,13 @@
-import { Component } from "react";
+import { Component } from "react"
 import "./tableComponent.css"
-import { ComponentTypes } from "@/models/components";
-import DashboardTable from "@/pages/Dashboard/DashboardTable";
-import CustomButton from "../CustomButton/CustomButton";
+import { ComponentTypes } from "@/models/components"
+import DashboardTable from "@/pages/Dashboard/DashboardTable"
+import CustomButton from "../CustomButton/CustomButton"
 
 type TableProps = {
-    components: string[];
-    currentComponent: ComponentTypes;
-    handleClick: (component: string) => void;
+    components: string[]
+    currentComponent: ComponentTypes
+    handleClick: (component: string) => void
 }
 
 /*const TableComponent: React.FC<TableProps> = ({ components, currentComponent, handleClick }) => {
