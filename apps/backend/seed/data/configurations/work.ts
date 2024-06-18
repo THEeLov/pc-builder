@@ -45,7 +45,7 @@ export default async function seedWorkConfig() {
         },
         id: "57986798-aea1-401c-887f-47e9c1cb3f42",
         socket: "lga1200",
-        formFactor: "ATX",
+        formFactor: "atx",
         ramSlots: 4,
         ramType: "ddr4",
         storageBusType: "sata",
@@ -89,7 +89,7 @@ export default async function seedWorkConfig() {
         id: "2c677ad4-e260-495e-8ee2-2a55225a1078",
         powerOutput: 650,
         efficiency: "80+ Gold",
-        formFactor: "ATX",
+        formFactor: "atx",
     })
     const pccase = await PCCaseRepo.create({
         component: {
@@ -100,7 +100,7 @@ export default async function seedWorkConfig() {
             imageUrl: "https://image.alza.cz/products/CB321k5i/CB321k5i.jpg?width=800&height=800",
         },
         id: "a82279d4-184e-4ee3-81e6-db8edebcdc02",
-        formFactor: "ATX",
+        formFactor: "atx",
     })
     return !(
         !pccase.isOk ||
