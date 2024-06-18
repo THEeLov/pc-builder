@@ -40,7 +40,7 @@ const Components = () => {
                         </div>
                     ))}
                 </div>
-                <DashboardTable name={currentComponent} />
+                <DashboardTable name={currentComponent} isDashboard={false} params={queryParams} name2={componentParam}/>
             </div>
         </div>
     )

@@ -1,1 +1,1 @@
-nx format --all
+npx nx format --all

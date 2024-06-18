@@ -1,30 +1,32 @@
-import type { TableColumnsType } from "antd";
-import { Table } from "antd";
-import { useSearch } from "../../hooks/useSearch";
-import { useComponent } from "@/hooks/useComponents";
-import { Component, ComponentTypes } from "../../models/components";
-import { useState } from "react";
-import ComponentView from "../ComponentView/ComponentView";
-import TableActions from "./TableActions";
-import "./table.css";
-import useAuthData from "@/hooks/useAuthData";
+import type { TableColumnsType } from "antd"
+import { Table } from "antd"
+import { useSearch } from "../../hooks/useSearch"
+import { useComponent } from "@/hooks/useComponents"
+import { Component, ComponentTypes } from "../../models/components"
+import { useState } from "react"
+import ComponentView from "../ComponentView/ComponentView"
+import TableActions from "./TableActions"
+import "./table.css"
+import useAuthData from "@/hooks/useAuthData"
+import ComponentsTableActions from "@/components/Table/ComponentsTableActions"
 
-type DataIndex = keyof Component["component"];
+type DataIndex = keyof Component["component"]
 
 type TableComponentsProps = {
-    fetchedData: Component[];
-    admin: boolean;
-    name: ComponentTypes;
-};
+    fetchedData: Component[]
+    admin: boolean
+    name: ComponentTypes
+    isDashboard: boolean
+}
 
-const TableComponents: React.FC<TableComponentsProps> = ({ fetchedData, admin, name }) => {
-    const { user } = useAuthData();
-    const [openView, setOpenView] = useState(false);
-    const [componentId, setComponentId] = useState("");
+const TableComponents: React.FC<TableComponentsProps> = ({ fetchedData, admin, name, isDashboard }) => {
+    const { user } = useAuthData()
+    const [openView, setOpenView] = useState(false)
+    const [componentId, setComponentId] = useState("")
 
-    const { data } = useComponent(name, componentId);
+    const { data } = useComponent(name, componentId)
 
-    const { getColumnSearchProps } = useSearch();
+    const { getColumnSearchProps } = useSearch()
 
     const columns: TableColumnsType<Component> = [
         {
@@ -51,30 +53,37 @@ const TableComponents: React.FC<TableComponentsProps> = ({ fetchedData, admin, n
             title: "Action",
             dataIndex: "",
             key: "add",
-            render: (record: Component) => (
-                <TableActions
-                    record={record}
-                    admin={admin}
-                    name={name}
-                    setOpenView={setOpenView}
-                    setComponentId={setComponentId}
-                    loggedIn={user !== null}
-                />
-            ),
-
+            render: (record: Component) =>
+                isDashboard ? (
+                    <TableActions
+                        record={record}
+                        admin={admin}
+                        name={name}
+                        setOpenView={setOpenView}
+                        setComponentId={setComponentId}
+                        loggedIn={user !== null}
+                    />
+                ) : (
+                    <ComponentsTableActions
+                        record={record}
+                        setOpenView={setOpenView}
+                        setComponentId={setComponentId}
+                        loggedIn={user !== null}
+                    />
+                ),
             align: "right",
             width: "10%",
         },
-    ];
+    ]
 
     const handleCloseView = () => {
-        setOpenView(false);
-    };
+        setOpenView(false)
+    }
 
     const dataSourceWithKeys = fetchedData.map((item) => ({
         ...item,
         key: item.id,
-    }));
+    }))
 
     return (
         <>
@@ -86,7 +95,7 @@ const TableComponents: React.FC<TableComponentsProps> = ({ fetchedData, admin, n
             />
             {openView && data && <ComponentView data={data} handleClose={handleCloseView} />}
         </>
-    );
-};
+    )
+}
 
-export default TableComponents;
+export default TableComponents

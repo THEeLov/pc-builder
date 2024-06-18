@@ -29,7 +29,7 @@ const Dashboard = () => {
                     )
                 })}
             </div>
-            <DashboardTable name={currentComponent} />
+            <DashboardTable name={currentComponent} isDashboard={true} params="" name2={null}/>
         </div>
     )
 }

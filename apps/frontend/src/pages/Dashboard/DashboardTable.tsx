@@ -13,10 +13,10 @@ import TableComponents from "@/components/Table/TableComponents"
 import CustomButton from "@/components/CustomButton/CustomButton"
 import { FaPlus } from "react-icons/fa"
 
-const DashboardTable = ({ name }: { name: ComponentTypes }) => {
+const DashboardTable = ({ name, isDashboard, params, name2 }: { name: ComponentTypes; isDashboard: boolean; params: string; name2: string | null; }) => {
     const { isDialogOpen, openDialog } = useDialog()
 
-    const { data, isLoading } = useComponents(name, "")
+    const { data, isLoading } = useComponents((name2 as ComponentTypes) || "", params)
 
     const componentMapping: { [key in ComponentTypes]?: React.ComponentType } = {
         motherboards: MotherboardCreateDialog,
@@ -37,11 +37,11 @@ const DashboardTable = ({ name }: { name: ComponentTypes }) => {
     return (
         <div className="dashboard-components">
             <div className="dashboard-components__add-button" onClick={openDialog}>
-                <CustomButton label="" btype="primary" icon={<FaPlus />} />
+                {isDashboard && <CustomButton label="" btype="primary" icon={<FaPlus />} />}
             </div>
             {isDialogOpen && CurrentDialog && <CurrentDialog />}
             <h2>{name.toLocaleUpperCase()}</h2>
-            {data && <TableComponents fetchedData={data} admin={true} name={name} />}
+            {data && <TableComponents fetchedData={data} admin={true} name={name} isDashboard={isDashboard} />}
         </div>
     )
 }

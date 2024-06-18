@@ -8,16 +8,16 @@ import { ComponentTypes } from "@/models/components"
 const PriceFilter = ({ name }: { name: ComponentTypes }) => {
     const [searchParam, setSearchParams] = useSearchParams()
 
-    const { data, isLoading } = useComponents(name , "")
-    
-    const maxPrice = data ? Math.max(...data.map(component => component.component.price)) : 1000
+    const { data, isLoading } = useComponents(name, "")
+
+    const maxPrice = data ? Math.max(...data.map((component) => component.component.price)) : 1000
 
     const [rangeValues, setRangeValues] = useState(() => {
         const minPrice = Number(searchParam.get("minPrice") ?? "0")
         const maxPrice = Number(searchParam.get("maxPrice") ?? "400")
         return [minPrice, maxPrice]
     })
-    
+
     const handlePriceChange = (values: number[]) => {
         setRangeValues(values)
         searchParam.set("minPrice", `${values[0]}`)
