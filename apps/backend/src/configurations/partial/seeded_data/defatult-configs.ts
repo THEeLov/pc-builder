@@ -20,11 +20,11 @@ export const HighEndConfig = {
 
 export const OfficeConfig = {
     processorId: "c3d4e5f6-3456-7891-0112-cdef34567890",
-    motherboardId: "d4e5f6g7-4567-8910-1121-def456789012",
-    gpuId: "e5f6g7h8-5678-9101-1222-ef5678901234",
-    powerSupplyId: "g7h8i9j0-7891-0112-3444-678901234567",
-    pcCaseId: "h8i9j0k1-8910-1121-4555-789012345678",
-    storages: [{ id: "f6g7h8i9-6789-1011-2333-f67890123456" }],
+    motherboardId: "9ba560a7-b9e4-49c7-8e55-463f94a01322",
+    gpuId: "88ae25c1-8da2-42a2-b958-3c426c5d40f3",
+    powerSupplyId: "dd2a737d-c0e2-4e59-8b31-05eae6c7b475",
+    pcCaseId: "9c3ea7ae-ada1-421a-9d7a-e14e75687161",
+    storages: [{ id: "8202596c-1427-4e8f-a396-56082596de4a" }],
     rams: [{ id: "a1b2c3d4-1234-5678-9101-abcdef123456" }, { id: "b2c3d4e5-2345-6789-1011-bcdef2345678" }],
 }
 

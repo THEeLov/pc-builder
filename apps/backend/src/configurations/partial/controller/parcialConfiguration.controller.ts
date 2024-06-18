@@ -45,6 +45,7 @@ async function update(req: Request, res: Response): Promise<Response<ParcialConf
     }
     const validatedBody = parcialConfigSchema.updateObject.safeParse(req.body)
     if (!validatedBody.success) {
+        console.log(req.body)
         return res.status(400).json(new Error("Bad request"))
     }
     if (validatedBody.data.delete) {

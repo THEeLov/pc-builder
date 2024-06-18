@@ -252,7 +252,7 @@ async function seedOfficeConfig() {
             manufacturer: "ASUS",
             imageUrl: "https://interlink-static1.tsbohemia.cz/asus-prime-b460m-a-image1-big_ies27860193.jpg",
         },
-        id: "d4e5f6g7-4567-8910-1121-def456789012",
+        id: "9ba560a7-b9e4-49c7-8e55-463f94a01322",
         socket: "lga1200",
         formFactor: "microATX",
         ramSlots: 4,
@@ -268,7 +268,7 @@ async function seedOfficeConfig() {
             manufacturer: "NVIDIA",
             imageUrl: "https://www.tonerpartner.cz/userdata/products/1510/1557800_0a-fed72b2a1925d71.jpg",
         },
-        id: "e5f6g7h8-5678-9101-1222-ef5678901234",
+        id: "88ae25c1-8da2-42a2-b958-3c426c5d40f3",
         memory: 2,
         powerConnector: "None",
         interface: "pcie",
@@ -283,7 +283,7 @@ async function seedOfficeConfig() {
             imageUrl:
                 "https://www.westerndigital.com/content/dam/store/en-us/assets/products/internal-storage/wd-blue-desktop-sata-hdd/gallery/wd-blue-pc-desktop-hard-drive-1tb.png.thumb.319.319.png",
         },
-        id: "f6g7h8i9-6789-1011-2333-f67890123456",
+        id: "8202596c-1427-4e8f-a396-56082596de4a",
         capacity: 1000,
         storageType: "hdd",
         busType: "sata",
@@ -296,7 +296,7 @@ async function seedOfficeConfig() {
             manufacturer: "Corsair",
             imageUrl: "https://im9.cz/iR/importprodukt-orig/144/144c3f40d1535088caf88de030a73c90--mmf350x350.jpg",
         },
-        id: "g7h8i9j0-7891-0112-3444-678901234567",
+        id: "dd2a737d-c0e2-4e59-8b31-05eae6c7b475",
         powerOutput: 450,
         efficiency: "80+ Bronze",
         formFactor: "microATX",
@@ -309,7 +309,7 @@ async function seedOfficeConfig() {
             manufacturer: "NZXT",
             imageUrl: "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6486/6486440_sd.jpg",
         },
-        id: "h8i9j0k1-8910-1121-4555-789012345678",
+        id: "9c3ea7ae-ada1-421a-9d7a-e14e75687161",
         formFactor: "microATX",
     })
     if (
@@ -493,10 +493,10 @@ async function seedWorkConfig() {
         },
         id: "57986798-aea1-401c-887f-47e9c1cb3f42",
         socket: "lga1200",
-        formFactor: "ATX",
+        formFactor: "atx",
         ramSlots: 4,
         ramType: "ddr4",
-        storageBusType: "sata",
+        storageBusType: "nvme",
         gpuInterface: "pcie",
     })
     const gpu = await GPURepo.create({
@@ -537,7 +537,7 @@ async function seedWorkConfig() {
         id: "2c677ad4-e260-495e-8ee2-2a55225a1078",
         powerOutput: 650,
         efficiency: "80+ Gold",
-        formFactor: "ATX",
+        formFactor: "atx",
     })
     const pccase = await PCCaseRepo.create({
         component: {
@@ -548,7 +548,7 @@ async function seedWorkConfig() {
             imageUrl: "https://image.alza.cz/products/CB321k5i/CB321k5i.jpg?width=800&height=800",
         },
         id: "a82279d4-184e-4ee3-81e6-db8edebcdc02",
-        formFactor: "ATX",
+        formFactor: "atx",
     })
     if (
         !pccase.isOk ||
