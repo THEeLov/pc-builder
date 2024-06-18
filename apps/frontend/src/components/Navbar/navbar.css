@@ -20,13 +20,16 @@
 .nav__login {
     height: 100%;
     display: flex;
+    align-items: center;
+    gap: var(--normal-indent);
 }
 
-.nav__icons {
+.nav-mobile {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
+    margin-right: var(--normal-indent);
 }
 
 .icon-container {
@@ -36,6 +39,7 @@
     align-items: center;
     margin-right: var(--small-indent);
     cursor: pointer;
+    z-index: 1;
 }
 
 .icon-container img {
@@ -56,7 +60,7 @@
         margin-right: var(--normal-indent);
     }
 
-    .nav__icons {
+    .nav-mobile {
         display: none;
     }
 }

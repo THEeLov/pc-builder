@@ -13,6 +13,7 @@ async function create(createObj: GPUCreate): DbResult<GPUWithComponent> {
             })
             const gpu = await prisma.gPU.create({
                 data: {
+                    id: createObj.id,
                     memory: createObj.memory,
                     powerConnector: createObj.powerConnector,
                     interface: createObj.interface,
@@ -36,7 +37,15 @@ async function getMany(query: ComponentQuery): DbResult<GPUWithComponent[]> {
         const gpus = await prisma.gPU.findMany({
             where: {
                 interface: query.gpuInterface,
-                power: query.powerIO,
+                power: {
+                    lte: query.powerIO,
+                },
+                component: {
+                    price: {
+                        gte: query.minPrice,
+                        lte: query.maxPrice,
+                    },
+                },
             },
             include: {
                 component: true,
@@ -81,11 +90,11 @@ async function remove(id: string) {
             const gpu = await prisma.gPU.findUniqueOrThrow({
                 where: { id },
             })
-            await prisma.component.delete({
-                where: { id: gpu.componentId },
-            })
             await prisma.gPU.delete({
                 where: { id },
+            })
+            await prisma.component.delete({
+                where: { id: gpu.componentId },
             })
         })
         return Result.ok(undefined)

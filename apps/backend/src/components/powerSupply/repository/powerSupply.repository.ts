@@ -13,6 +13,7 @@ async function create(createObj: PowerSupplyCreate): DbResult<PowerSupplyWithCom
             })
             const powerSupply = await prisma.powerSupply.create({
                 data: {
+                    id: createObj.id,
                     powerOutput: createObj.powerOutput,
                     efficiency: createObj.efficiency,
                     formFactor: createObj.formFactor,
@@ -34,8 +35,16 @@ async function getMany(query: ComponentQuery): DbResult<PowerSupplyWithComponent
     try {
         const powerSupplies = await prisma.powerSupply.findMany({
             where: {
-                powerOutput: query.powerIO,
+                powerOutput: {
+                    gte: query.powerIO,
+                },
                 formFactor: query.formFactor,
+                component: {
+                    price: {
+                        gte: query.minPrice,
+                        lte: query.maxPrice,
+                    },
+                },
             },
             include: {
                 component: true,
@@ -78,13 +87,13 @@ async function remove(id: string): DbResult<void> {
             const powerSupply = await prisma.powerSupply.findUniqueOrThrow({
                 where: { id },
             })
+            await prisma.powerSupply.delete({
+                where: { id },
+            })
             await prisma.component.delete({
                 where: {
                     id: powerSupply.componentId,
                 },
-            })
-            await prisma.powerSupply.delete({
-                where: { id },
             })
         })
         return Result.ok(undefined)

@@ -13,6 +13,7 @@ async function create(createObj: ProcessorCreate): DbResult<ProcessorWithCompone
             })
             const processor = await prisma.processor.create({
                 data: {
+                    id: createObj.id,
                     architecture: createObj.architecture,
                     cores: createObj.cores,
                     threads: createObj.threads,
@@ -37,6 +38,12 @@ async function getMany(query: ComponentQuery): DbResult<ProcessorWithComponent[]
         const processors = await prisma.processor.findMany({
             where: {
                 socket: query.socket,
+                component: {
+                    price: {
+                        gte: query.minPrice,
+                        lte: query.maxPrice,
+                    },
+                },
             },
             include: {
                 component: true,
@@ -79,11 +86,11 @@ async function remove(id: string): DbResult<void> {
             const processor = await prisma.processor.findUniqueOrThrow({
                 where: { id },
             })
-            await prisma.component.delete({
-                where: { id: processor.componentId },
-            })
             await prisma.processor.delete({
                 where: { id },
+            })
+            await prisma.component.delete({
+                where: { id: processor.componentId },
             })
         })
         return Result.ok(undefined)

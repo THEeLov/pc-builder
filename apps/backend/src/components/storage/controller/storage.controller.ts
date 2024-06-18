@@ -5,6 +5,10 @@ import { StorageWithComponent } from "../validation/storage.types"
 import StorageSchema from "../validation/validation"
 
 async function create(req: Request, res: Response): Promise<Response<StorageWithComponent>> {
+    if (!req.body.capacity) {
+        return res.status(400)
+    }
+    req.body.capacity = parseInt(req.body.capacity)
     return await baseComponentController.create(StorageSchema.StorageCreate, StorageRepo, req, res)
 }
 

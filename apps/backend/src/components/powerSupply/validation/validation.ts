@@ -2,6 +2,7 @@ import z from "zod"
 import { componentCreate } from "../../base/validation/validation"
 
 const PowerSupplyCreate = z.object({
+    id: z.string().uuid().optional(),
     powerOutput: z.number(),
     efficiency: z.string(),
     formFactor: z.string(),

@@ -12,6 +12,8 @@ import GPURouter from "./components/gpu/router/gpu.router"
 import StorageRouter from "./components/storage/router/storage.router"
 import PowerSupplyRouter from "./components/powerSupply/router/powerSupply.router"
 import PCCaseRouter from "./components/pcCase/router/pcCase.router"
+import ImageRouter from "./images/images.router"
+import componentRouter from "./components/base/router/components.router"
 
 config()
 
@@ -41,8 +43,10 @@ app.use("/components/gpus", GPURouter)
 app.use("/components/processors", ProcessorRouter)
 app.use("/components/rams", RAMRouter)
 app.use("/components/motherboards", MotherboardRouter)
+app.use("/components", componentRouter)
 app.use("/users", UserRouter)
 app.use("/configurations", ConfigRouter)
+app.use("/images", ImageRouter)
 
 app.use((_req, res) => {
     res.status(404).send("Not found")

@@ -5,6 +5,11 @@ import { GPUWithComponent } from "../validation/gpu.types"
 import GPUSchema from "../validation/validation"
 
 async function create(req: Request, res: Response): Promise<Response<GPUWithComponent>> {
+    if (!req.body.memory || !req.body.power) {
+        return res.status(400)
+    }
+    req.body.memory = parseInt(req.body.memory)
+    req.body.power = parseInt(req.body.power)
     return await baseComponentController.create(GPUSchema.GPUCreate, GPURepo, req, res)
 }
 

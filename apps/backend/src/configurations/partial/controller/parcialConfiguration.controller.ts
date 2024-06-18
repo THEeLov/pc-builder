@@ -1,10 +1,27 @@
-import { ParcialPCConfiguration } from "@prisma/client"
 import { Request, Response } from "express"
 import { parcialConfigSchema } from "../validation/validation"
 import { baseValidation } from "../../../base/validation/validation"
 import { authorize } from "../../../utils"
 import { ParcialConfigurationRepository } from "../repository/parcialConfiguration.repository"
 import { ParcialConfigWithComponent } from "../parcialConfigTypes"
+import { ConfigEdit, ParcialConfigEdit } from "../../configurationQuery"
+import { ConfigurationType } from "@prisma/client"
+import { GamingConfig, OfficeConfig, HighEndConfig, WorkConfig } from "../seeded_data/defatult-configs"
+
+function getConfigAttributes(config: ConfigurationType) {
+    switch (config) {
+        case ConfigurationType.GAMING:
+            return GamingConfig
+        case ConfigurationType.OFFICE:
+            return OfficeConfig
+        case ConfigurationType.HIGH_END:
+            return HighEndConfig
+        case ConfigurationType.WORK:
+            return WorkConfig
+        default:
+            return {}
+    }
+}
 
 async function get(req: Request, res: Response): Promise<Response<ParcialConfigWithComponent>> {
     const validatedParams = baseValidation.IdRequestParams.safeParse(req.params)
@@ -28,10 +45,26 @@ async function update(req: Request, res: Response): Promise<Response<ParcialConf
     }
     const validatedBody = parcialConfigSchema.updateObject.safeParse(req.body)
     if (!validatedBody.success) {
+        console.log(req.body)
         return res.status(400).json(new Error("Bad request"))
     }
-
+    if (validatedBody.data.delete) {
+        return removeComponentFromConfig(res, validatedParams.data.id, validatedBody.data)
+    }
     const updatedConfig = await ParcialConfigurationRepository.update(validatedParams.data.id, validatedBody.data)
+    if (!updatedConfig.isOk) {
+        return res.status(500).json(updatedConfig.isErr ? updatedConfig.error : new Error("Internal error"))
+    }
+    return res.status(200).json(updatedConfig.value)
+}
+
+async function removeComponentFromConfig(res: Response, userId: string, body: ParcialConfigEdit) {
+    body.motherboardId = body.motherboardId ? null : undefined
+    body.processorId = body.processorId ? null : undefined
+    body.gpuId = body.gpuId ? null : undefined
+    body.PCCaseId = body.PCCaseId ? null : undefined
+    body.powerSupplyId = body.powerSupplyId ? null : undefined
+    const updatedConfig = await ParcialConfigurationRepository.removeComponent(userId, body)
     if (!updatedConfig.isOk) {
         return res.status(500).json(updatedConfig.isErr ? updatedConfig.error : new Error("Internal error"))
     }
@@ -48,10 +81,11 @@ async function create(req: Request, res: Response): Promise<Response<ParcialConf
     ) {
         return res.status(400).json(new Error("Bad request"))
     }
-    const createdPartialConfig = await ParcialConfigurationRepository.create(
-        validatedParams.data.id,
-        validatedBody.data.configurationType,
-    )
+    const configAttributes: ConfigEdit = getConfigAttributes(validatedBody.data.configurationType)
+    const createdPartialConfig = await ParcialConfigurationRepository.create(validatedParams.data.id, {
+        ...validatedBody.data,
+        ...configAttributes,
+    })
     if (!createdPartialConfig.isOk) {
         return res
             .status(500)
@@ -77,4 +111,5 @@ export const ParcialConfigurationController = {
     update,
     create,
     remove,
+    removeComponentFromConfig,
 }

@@ -13,6 +13,7 @@ async function create(createObj: MotherboardCreate): DbResult<MotherboardWithCom
             })
             const motherboard = await prisma.motherboard.create({
                 data: {
+                    id: createObj.id,
                     socket: createObj.socket,
                     formFactor: createObj.formFactor,
                     ramSlots: createObj.ramSlots,
@@ -43,6 +44,12 @@ async function getMany(query: ComponentQuery): DbResult<MotherboardWithComponent
                 ramType: query.ramType,
                 gpuInterface: query.gpuInterface,
                 stroageBusType: query.storageBusType,
+                component: {
+                    price: {
+                        gte: query.minPrice,
+                        lte: query.maxPrice,
+                    },
+                },
             },
             include: {
                 component: true,
@@ -87,13 +94,13 @@ async function remove(id: string): DbResult<void> {
             const motherboard = await prisma.motherboard.findUniqueOrThrow({
                 where: { id },
             })
+            await prisma.motherboard.delete({
+                where: { id },
+            })
             await prisma.component.delete({
                 where: {
                     id: motherboard.componentId,
                 },
-            })
-            await prisma.motherboard.delete({
-                where: { id },
             })
         })
         return Result.ok(undefined)

@@ -13,6 +13,7 @@ async function create(createObj: PCCaseCreate): DbResult<PCCaseWithComponent> {
             })
             const pcCase = await prisma.pCCase.create({
                 data: {
+                    id: createObj.id,
                     formFactor: createObj.formFactor,
                     componentId: component.id,
                 },
@@ -33,6 +34,12 @@ async function getMany(query: ComponentQuery): DbResult<PCCaseWithComponent[]> {
         const pcCases = await prisma.pCCase.findMany({
             where: {
                 formFactor: query.formFactor,
+                component: {
+                    price: {
+                        gte: query.minPrice,
+                        lte: query.maxPrice,
+                    },
+                },
             },
             include: {
                 component: true,
@@ -77,11 +84,11 @@ async function remove(id: string): DbResult<void> {
             const pcCase = await prisma.pCCase.findUniqueOrThrow({
                 where: { id },
             })
-            await prisma.component.delete({
-                where: { id: pcCase.componentId },
-            })
             await prisma.pCCase.delete({
                 where: { id },
+            })
+            await prisma.component.delete({
+                where: { id: pcCase.componentId },
             })
         })
         return Result.ok(undefined)

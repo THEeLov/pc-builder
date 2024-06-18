@@ -3,6 +3,7 @@ import includeQuery from "../configurationQuery"
 
 //ZOD musi zvalidovat ze ci rams a storages maju aspon 1 položku.
 export type ConfigurationCreate = {
+    id?: string
     configurationType: ConfigurationType
     motherboardId: string
     processorId: string

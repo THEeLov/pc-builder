@@ -1,17 +1,23 @@
 import { Result } from "@badrap/result"
 import { prisma } from "../../../client"
-import { ConfigurationType } from "@prisma/client"
+import { PartialConfigCreate } from "../parcialConfigTypes"
 import handleError from "../../../utils"
 import { DbResult } from "../../../../types"
 import includeQuery, { ParcialConfigEdit } from "../../configurationQuery"
 import { ParcialConfigWithComponent } from "../parcialConfigTypes"
 
-async function create(userId: string, type: ConfigurationType): DbResult<ParcialConfigWithComponent> {
+async function create(userId: string, createObj: PartialConfigCreate): DbResult<ParcialConfigWithComponent> {
     try {
         const newConfig = await prisma.parcialPCConfiguration.create({
             data: {
+                ...createObj,
                 userId,
-                configurationType: type,
+                rams: {
+                    connect: createObj.rams,
+                },
+                storages: {
+                    connect: createObj.storages,
+                },
             },
             include: includeQuery,
         })
@@ -35,17 +41,46 @@ async function update(userId: string, data: ParcialConfigEdit): DbResult<Parcial
                 pcCaseId: data.PCCaseId,
                 powerSupplyId: data.powerSupplyId,
                 storages: {
-                    set: data.storages,
+                    connect: data.storageId ? { id: data.storageId } : undefined,
                 },
                 rams: {
-                    set: data.rams,
+                    connect: data.ramId ? { id: data.ramId } : undefined,
                 },
             },
             include: includeQuery,
         })
         return Result.ok(config)
     } catch (e) {
+        console.log(e)
         return handleError(e, "at update partial config")
+    }
+}
+
+async function removeComponent(userId: string, data: ParcialConfigEdit): DbResult<ParcialConfigWithComponent> {
+    try {
+        const config = await prisma.parcialPCConfiguration.update({
+            where: {
+                userId,
+            },
+            data: {
+                motherboardId: data.motherboardId,
+                processorId: data.processorId,
+                powerSupplyId: data.powerSupplyId,
+                pcCaseId: data.PCCaseId,
+                gpuId: data.gpuId,
+                storages: {
+                    disconnect: data.storageId ? { id: data.storageId } : undefined,
+                },
+                rams: {
+                    disconnect: data.ramId ? { id: data.ramId } : undefined,
+                },
+            },
+            include: includeQuery,
+        })
+        return Result.ok(config)
+    } catch (e) {
+        console.log(e)
+        return handleError(e, "in rams or storage cparcialconfig delete")
     }
 }
 
@@ -81,4 +116,5 @@ export const ParcialConfigurationRepository = {
     update,
     remove,
     get,
+    removeComponent,
 }

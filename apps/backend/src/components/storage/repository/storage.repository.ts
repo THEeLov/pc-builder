@@ -13,6 +13,7 @@ async function create(createObj: StorageCreate): DbResult<StorageWithComponent> 
             })
             const storage = await prisma.storage.create({
                 data: {
+                    id: createObj.id,
                     storageType: createObj.storageType,
                     capacity: createObj.capacity,
                     busType: createObj.busType,
@@ -35,6 +36,12 @@ async function getMany(query: ComponentQuery): DbResult<StorageWithComponent[]> 
         const storages = await prisma.storage.findMany({
             where: {
                 busType: query.storageBusType,
+                component: {
+                    price: {
+                        gte: query.minPrice,
+                        lte: query.maxPrice,
+                    },
+                },
             },
             include: {
                 component: true,
@@ -79,11 +86,11 @@ async function remove(id: string): DbResult<void> {
             const storage = await prisma.storage.findUniqueOrThrow({
                 where: { id },
             })
-            await prisma.component.delete({
-                where: { id: storage.componentId },
-            })
             await prisma.storage.delete({
                 where: { id },
+            })
+            await prisma.component.delete({
+                where: { id: storage.componentId },
             })
         })
         return Result.ok(undefined)

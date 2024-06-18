@@ -2,6 +2,7 @@ import z from "zod"
 import { componentCreate } from "../../base/validation/validation"
 
 const MotherboardCreate = z.object({
+    id: z.string().uuid().optional(),
     component: componentCreate,
     socket: z.string(),
     formFactor: z.string(),
