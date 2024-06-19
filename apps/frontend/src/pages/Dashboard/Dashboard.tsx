@@ -20,14 +20,11 @@ const Dashboard = () => {
                 <h1>Dashboard</h1>
             </div>
             <div className="dashboard__component-selectors">
-                {components.map((component) => {
-                    return (
-                        <div onClick={() => handleClick(component.toLocaleLowerCase())}>
-                            {" "}
-                            <CustomButton label={component} btype="secondary" key={component} />
-                        </div>
-                    )
-                })}
+                {components.map((component) => (
+                    <div key={component} onClick={() => handleClick(component.toLocaleLowerCase())}>
+                        <CustomButton label={component} btype="secondary" />
+                    </div>
+                ))}
             </div>
             <DashboardTable name={currentComponent} isDashboard={true} params="" name2={currentComponent} />
         </div>
