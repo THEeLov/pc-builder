@@ -10,7 +10,7 @@ const PriceFilter = ({ name }: { name: ComponentTypes }) => {
 
     const { data, isLoading } = useComponents(name, "")
 
-    const maxPrice = data ? Math.ceil(Math.max(...data.map((component) => component.component.price))) : 1000;
+    const maxPrice = data ? Math.ceil(Math.max(...data.map((component) => component.component.price))) : 1000
 
     const [rangeValues, setRangeValues] = useState(() => {
         const minPrice = Number(searchParam.get("minPrice") ?? "0")

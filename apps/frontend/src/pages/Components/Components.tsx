@@ -11,7 +11,7 @@ const components = ["Motherboards", "Processors", "Rams", "GPUs", "Storages", "P
 
 const Components = () => {
     const [searchParams] = useSearchParams()
-    
+
     const queryParams = new URLSearchParams(searchParams).toString()
     const componentParam = searchParams.get("component")
     const [currentComponent, setCurrentComponent] = useState<ComponentTypes>("motherboards")
@@ -35,16 +35,16 @@ const Components = () => {
                     <div className="dashboard__component-selectors">
                         {components.map((component) => (
                             <div onClick={() => handleClick(component.toLocaleLowerCase())} key={component}>
-                            <CustomButton label={component} btype="secondary" />
+                                <CustomButton label={component} btype="secondary" />
                             </div>
                         ))}
                     </div>
                 )}
                 <DashboardTable2
-                    name={componentParam == null ? currentComponent : componentParam as ComponentTypes}
+                    name={componentParam == null ? currentComponent : (componentParam as ComponentTypes)}
                     isDashboard={componentParam == null ? false : true}
                     params={queryParams}
-                    name2={componentParam == null ? currentComponent : componentParam as ComponentTypes}
+                    name2={componentParam == null ? currentComponent : (componentParam as ComponentTypes)}
                 />
             </div>
         </div>
