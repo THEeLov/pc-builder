@@ -1,23 +1,20 @@
 import PriceFilter from "./PriceFilter/PriceFilter"
-import TableComponents from "@/components/Table/TableComponents"
-import { useComponents } from "@/hooks/useComponents"
 import { ComponentTypes } from "@/models/components"
-import { Spin } from "antd"
 import { useSearchParams } from "react-router-dom"
 import "./components.css"
 import { useState } from "react"
 import DashboardTable from "../Dashboard/DashboardTable"
 import CustomButton from "@/components/CustomButton/CustomButton"
+import DashboardTable2 from "../Dashboard/DashboardTable2"
 
 const components = ["Motherboards", "Processors", "Rams", "GPUs", "Storages", "Power-Supplies", "Pc-Cases"]
 
 const Components = () => {
     const [searchParams] = useSearchParams()
-    
-    const queryParams = new URLSearchParams(searchParams).toString()
 
+    const queryParams = new URLSearchParams(searchParams).toString()
+    const componentParam = searchParams.get("component")
     const [currentComponent, setCurrentComponent] = useState<ComponentTypes>("motherboards")
-    const componentParam = searchParams.get(currentComponent)
 
     const handleClick = (component: string) => {
         setCurrentComponent(component as ComponentTypes)
@@ -34,18 +31,20 @@ const Components = () => {
                 </div>
             </div>
             <div className="dashboard">
-                <div className="dashboard__component-selectors">
-                    {components.map((component) => (
-                        <div onClick={() => handleClick(component.toLocaleLowerCase())} key={component}>
-                            <CustomButton label={component} btype="secondary" />
-                        </div>
-                    ))}
-                </div>
-                <DashboardTable
-                    name={currentComponent}
-                    isDashboard={false}
+                {componentParam === null && (
+                    <div className="dashboard__component-selectors">
+                        {components.map((component) => (
+                            <div onClick={() => handleClick(component.toLocaleLowerCase())} key={component}>
+                                <CustomButton label={component} btype="secondary" />
+                            </div>
+                        ))}
+                    </div>
+                )}
+                <DashboardTable2
+                    name={componentParam == null ? currentComponent : (componentParam as ComponentTypes)}
+                    isDashboard={componentParam == null ? false : true}
                     params={queryParams}
-                    name2={currentComponent}
+                    name2={componentParam == null ? currentComponent : (componentParam as ComponentTypes)}
                 />
             </div>
         </div>

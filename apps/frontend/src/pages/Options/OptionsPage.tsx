@@ -42,8 +42,8 @@ const OptionsPage = () => {
             </div>
             <div className="options__container">
                 {cardData.map((card, index) => (
-                    <div className="options_container__link" onClick={() => handleClick(card.label)}>
-                        <OptionCard key={index} label={card.label} icon={<card.icon style={{ fontSize: "12rem" }} />} />
+                    <div key={index} className="options_container__link" onClick={() => handleClick(card.label)}>
+                        <OptionCard label={card.label} icon={<card.icon style={{ fontSize: "12rem" }} />} />
                     </div>
                 ))}
             </div>
